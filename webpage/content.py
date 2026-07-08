@@ -45,10 +45,10 @@ ITEMS = [
         "coupling": "离机场最近，首尾住这里最省事；紧邻佩尼达出发港 Sanur。",
         "video_q": "Uluwatu temple Kecak fire dance sunset Bali",
         "subspots": [
-            {"id": "A1a", "zh": "乌鲁瓦图断崖庙", "en": "Uluwatu Temple", "q": "Uluwatu Temple Bali cliff"},
-            {"id": "A1b", "zh": "Kecak 火祭舞", "en": "Kecak Fire Dance", "q": "Kecak dance Uluwatu Bali"},
-            {"id": "A1c", "zh": "金巴兰海鲜沙滩", "en": "Jimbaran Bay", "q": "Jimbaran Bay beach Bali sunset"},
-            {"id": "A1d", "zh": "水明漾/库塔海滩", "en": "Seminyak / Kuta Beach", "q": "Seminyak beach Bali sunset"},
+            {"id": "A1a", "zh": "乌鲁瓦图断崖庙", "en": "Uluwatu Temple", "q": "Uluwatu Temple Bali cliff", "desc": "矗立海蚀断崖上的海神庙，黄昏可顺道看 Kecak 火舞。崖边风大且无护栏，靠近观景台时注意脚下安全。"},
+            {"id": "A1b", "zh": "Kecak 火祭舞", "en": "Kecak Fire Dance", "q": "Kecak dance Uluwatu Bali", "desc": "黄昏在断崖剧场以人声合唱伴演史诗，配海上落日。露天无空调，建议提前占座并带驱蚊。"},
+            {"id": "A1c", "zh": "金巴兰海鲜沙滩", "en": "Jimbaran Bay", "q": "Jimbaran Bay beach Bali sunset", "desc": "沙滩上现烤海鲜的露天排档，边吃边看海上日落。想踏浪宜查潮时，傍晚稍早到占位更从容。"},
+            {"id": "A1d", "zh": "水明漾/库塔海滩", "en": "Seminyak / Kuta Beach", "q": "Seminyak beach Bali sunset", "desc": "巴厘最热闹的冲浪与日落海滩，沿线多俱乐部餐厅。部分岸段有离岸流，按能力选冲浪点，亲子留意浪况。"},
         ],
     },
     {
@@ -60,11 +60,11 @@ ITEMS = [
         "coupling": "地处中部，是前往东部/北部火山瀑布的最佳中转基地。",
         "video_q": "Ubud Bali Tegallalang rice terrace 4k",
         "subspots": [
-            {"id": "A2a", "zh": "德格拉朗梯田", "en": "Tegallalang Rice Terrace", "q": "Tegallalang rice terrace Bali"},
-            {"id": "A2b", "zh": "圣猴森林", "en": "Sacred Monkey Forest", "q": "Sacred Monkey Forest Ubud Bali"},
-            {"id": "A2c", "zh": "Tirta Empul 圣泉庙", "en": "Tirta Empul Temple", "q": "Tirta Empul temple Bali"},
-            {"id": "A2d", "zh": "丛林秋千", "en": "Bali Swing", "q": "Bali swing Tegallalang jungle"},
-            {"id": "A2e", "zh": "Tegenungan 瀑布", "en": "Tegenungan Waterfall", "q": "Tegenungan waterfall Bali"},
+            {"id": "A2a", "zh": "德格拉朗梯田", "en": "Tegallalang Rice Terrace", "q": "Tegallalang rice terrace Bali", "desc": "顺山势层叠的稻田，田埂有秋千和咖啡亭可歇脚。为收费网红点、人多，建议早去光线好也少排队。"},
+            {"id": "A2b", "zh": "圣猴森林", "en": "Sacred Monkey Forest", "q": "Sacred Monkey Forest Ubud Bali", "desc": "雨林里自由行走的猴群与古老石庙，互动感强。猴子会抢手机眼镜食物，随身物品收好、别对视挑逗。"},
+            {"id": "A2c", "zh": "Tirta Empul 圣泉庙", "en": "Tirta Empul Temple", "q": "Tirta Empul temple Bali", "desc": "圣泉涌出的浴池，信徒排队浸浴祈福。进庙须围纱笼，想参与浸浴带替换衣物，留意队列秩序。"},
+            {"id": "A2d", "zh": "丛林秋千", "en": "Bali Swing", "q": "Bali swing Tegallalang jungle", "desc": "悬于峡谷上的大秋千与鸟巢打卡点，出片轻松。项目收费、排队久，恐高者量力，注意扣好安全带。"},
+            {"id": "A2e", "zh": "Tegenungan 瀑布", "en": "Tegenungan Waterfall", "q": "Tegenungan waterfall Bali", "desc": "市区近郊的宽幅瀑布，可走到水潭边戏水。步道湿滑、午后易人多，早去更清静，下水留意脚下石头。"},
         ],
     },
     {
@@ -76,11 +76,11 @@ ITEMS = [
         "coupling": "凌晨出发的火山团常与乌布联住，串东部一日环线。",
         "video_q": "Mount Batur sunrise trekking Bali 4k",
         "subspots": [
-            {"id": "A3a", "zh": "巴图尔火山日出", "en": "Mt Batur Sunrise", "q": "Mount Batur sunrise summit Bali"},
-            {"id": "A3b", "zh": "Lempuyang 天堂之门", "en": "Gates of Heaven", "q": "Lempuyang temple gates of heaven Bali"},
-            {"id": "A3c", "zh": "Tirta Gangga 水宫", "en": "Tirta Gangga", "q": "Tirta Gangga water palace Bali"},
-            {"id": "A3d", "zh": "Besakih 母庙", "en": "Besakih Temple", "q": "Besakih temple Bali"},
-            {"id": "A3e", "zh": "USS Liberty 沉船", "en": "USS Liberty Wreck", "q": "USS Liberty wreck Tulamben diving"},
+            {"id": "A3a", "zh": "巴图尔火山日出", "en": "Mt Batur Sunrise", "q": "Mount Batur sunrise summit Bali", "desc": "凌晨爬山看云海日出的活火山，山顶视野开阔。需向导、约两点出发，穿保暖防风、带头灯与小食。"},
+            {"id": "A3b", "zh": "Lempuyang 天堂之门", "en": "Gates of Heaven", "q": "Lempuyang temple gates of heaven Bali", "desc": "山门框住阿贡火山的对景，经典对称构图。倒影靠镜面道具拍出、需排队，建议一早到以减少等待。"},
+            {"id": "A3c", "zh": "Tirta Gangga 水宫", "en": "Tirta Gangga", "q": "Tirta Gangga water palace Bali", "desc": "昔日王宫的层层水池与石雕，鱼池可赤脚走。园区不大、节奏慢，正午晒，带遮阳与换洗备用。"},
+            {"id": "A3d", "zh": "Besakih 母庙", "en": "Besakih Temple", "q": "Besakih temple Bali", "desc": "阿贡火山坡上的母庙建筑群，规模最宏。进庙须围纱笼，山路长，随向导走主轴线即可。"},
+            {"id": "A3e", "zh": "USS Liberty 沉船", "en": "USS Liberty Wreck", "q": "USS Liberty wreck Tulamben diving", "desc": "近岸的二战货轮沉船，浮潜即可见鱼群与船体。需一定水性、可能有流，新手跟船听教练、勿触碰。"},
         ],
     },
     {
@@ -92,11 +92,11 @@ ITEMS = [
         "coupling": "可与东部火山、乌布串成中北部环线一并玩。",
         "video_q": "Ulun Danu Beratan temple Sekumpul waterfall north Bali",
         "subspots": [
-            {"id": "A4a", "zh": "Ulun Danu Beratan 湖庙", "en": "Ulun Danu Beratan", "q": "Ulun Danu Beratan temple lake Bali"},
-            {"id": "A4b", "zh": "Sekumpul 瀑布", "en": "Sekumpul Waterfall", "q": "Sekumpul waterfall Bali"},
-            {"id": "A4c", "zh": "Handara 网红门", "en": "Handara Gate", "q": "Handara gate Bali"},
-            {"id": "A4d", "zh": "Munduk 双子湖", "en": "Munduk Twin Lakes", "q": "Buyan Tamblingan twin lake Bali viewpoint"},
-            {"id": "A4e", "zh": "Banyumala 瀑布", "en": "Banyumala Waterfall", "q": "Banyumala twin waterfall Bali"},
+            {"id": "A4a", "zh": "Ulun Danu Beratan 湖庙", "en": "Ulun Danu Beratan", "q": "Ulun Danu Beratan temple lake Bali", "desc": "湖心轻雾中的水上庙，纸币同款图案。清晨湖面平静倒影好，山区凉，带件薄外套。"},
+            {"id": "A4b", "zh": "Sekumpul 瀑布", "en": "Sekumpul Waterfall", "q": "Sekumpul waterfall Bali", "desc": "北巴厘最壮观的多股瀑布群，需下切山谷步行到达。雨后台阶湿滑较累，穿防滑鞋、留足体力。"},
+            {"id": "A4c", "zh": "Handara 网红门", "en": "Handara Gate", "q": "Handara gate Bali", "desc": "巨型石柱拱门框住绿意山道，对称构图好拍。景点小、排队拍人像，早去省时，旁山路弯多易晕车。"},
+            {"id": "A4d", "zh": "Munduk 双子湖", "en": "Munduk Twin Lakes", "q": "Buyan Tamblingan twin lake Bali viewpoint", "desc": "山间两汪相连湖泊，配咖啡园与凉雾。观景点停车即看、不累，山路弯多慢行，适合顺路歇脚。"},
+            {"id": "A4e", "zh": "Banyumala 瀑布", "en": "Banyumala Waterfall", "q": "Banyumala twin waterfall Bali", "desc": "幽谷里的双流瀑布汇成碧潭，可游泳。需走一段下坡石径，雨后湿滑，带换洗衣物与防滑鞋。"},
         ],
     },
     {
@@ -107,24 +107,24 @@ ITEMS = [
         "coupling": "位于西南沿海，可与 Canggu / 乌布顺路安排。",
         "video_q": "Tanah Lot temple sunset Bali 4k",
         "subspots": [
-            {"id": "A5a", "zh": "海神庙日落", "en": "Tanah Lot Sunset", "q": "Tanah Lot temple sunset Bali"},
-            {"id": "A5b", "zh": "海中神庙", "en": "Sea Temple", "q": "Tanah Lot temple rock Bali"},
+            {"id": "A5a", "zh": "海神庙日落", "en": "Tanah Lot Sunset", "q": "Tanah Lot temple sunset Bali", "desc": "海中岩庙配橘色落日的巴厘名片。日落时段人极多，宜提前到占位，退潮才可走近庙底礁石。"},
+            {"id": "A5b", "zh": "海中神庙", "en": "Sea Temple", "q": "Tanah Lot temple rock Bali", "desc": "退潮露出礁石可走近的海上庙宇，独立于浪中。涨潮淹没通道无法靠近，出发前查好潮时、注意湿滑。"},
         ],
     },
     {
         "id": "B1", "region": "B", "zh": "佩尼达网红海岸", "en": "Nusa Penida Coast", "highlight": True,
         "tags": ["海岛", "悬崖打卡", "浮潜"], "time": "1–2 天",
         "price": "一日跳岛团人均约 ¥250–450（含往返快艇）",
-        "feature": "Kelingking 霸王龙海滩、Broken Beach、Angel's Billabong、Diamond Beach、Crystal Bay 浮潜。巴厘最出片的悬崖海景。",
+        "feature": "精灵坠崖(Kelingking)、破碎沙滩(Broken Beach)、天使浴池(Angel's Billabong)、钻石沙滩(Diamond Beach)、水晶湾(Crystal Bay) 浮潜。巴厘最出片的悬崖海景。",
         "caution": "岛内道路极差、坡陡，建议包车 + 司机而非自驾摩托；网红点悬崖台阶陡、排队久；备晕船药。",
         "coupling": "与南巴厘同一港区，最易衔接；可与蝠鲼共游同日安排。",
         "video_q": "Nusa Penida Kelingking beach Bali drone 4k",
         "subspots": [
-            {"id": "B1a", "zh": "Kelingking 霸王龙海滩", "en": "Kelingking Beach", "q": "Kelingking Beach Nusa Penida"},
-            {"id": "B1b", "zh": "Broken Beach", "en": "Broken Beach", "q": "Broken Beach Nusa Penida"},
-            {"id": "B1c", "zh": "Angel's Billabong", "en": "Angel's Billabong", "q": "Angel's Billabong Nusa Penida"},
-            {"id": "B1d", "zh": "Diamond Beach", "en": "Diamond Beach", "q": "Diamond Beach Nusa Penida"},
-            {"id": "B1e", "zh": "Crystal Bay", "en": "Crystal Bay", "q": "Crystal Bay Nusa Penida beach"},
+            {"id": "B1a", "zh": "精灵坠崖 (Kelingking)", "en": "Kelingking Beach", "q": "Kelingking Beach Nusa Penida", "desc": "经典悬崖海湾，俯瞰如精灵坠入大海的白色沙滩，巴厘出片王。下到沙滩台阶极陡且晒，体力一般者崖顶观景即可。"},
+            {"id": "B1b", "zh": "破碎沙滩 (Broken Beach)", "en": "Broken Beach", "q": "Broken Beach Nusa Penida", "desc": "海浪穿出山体形成的天然拱洞与圆形泻湖。沿崖边步道走一圈即看，无护栏，靠近边缘注意风浪与脚下。"},
+            {"id": "B1c", "zh": "天使浴池 (Angel's Billabong)", "en": "Angel's Billabong", "q": "Angel's Billabong Nusa Penida", "desc": "礁石环抱的天然潮池，水清可泡。涨潮浪会漫入、易滑，下池前看浪情，留意被浪卷走风险。"},
+            {"id": "B1d", "zh": "钻石沙滩 (Diamond Beach)", "en": "Diamond Beach", "q": "Diamond Beach Nusa Penida", "desc": "银白沙滩嵌在陡峭崖壁间，需下木梯到达。崖壁无遮挡、阶梯晒，下到底戏水再爬回较耗体力。"},
+            {"id": "B1e", "zh": "水晶湾 (Crystal Bay)", "en": "Crystal Bay", "q": "Crystal Bay Nusa Penida beach", "desc": "弧形海湾，浮潜看珊瑚、可能遇海龟。旱季透明度高，岸边有休憩摊，备浮潜装备与防晒。"},
         ],
     },
     {
@@ -135,8 +135,8 @@ ITEMS = [
         "coupling": "常与佩尼达陆地打卡拼成一日跳岛团。",
         "video_q": "snorkeling manta ray Nusa Penida Manta Point",
         "subspots": [
-            {"id": "B2a", "zh": "蝠鲼(魔鬼鱼)同游", "en": "Manta Ray", "q": "Manta ray snorkeling Nusa Penida"},
-            {"id": "B2b", "zh": "海龟浮潜", "en": "Sea Turtle", "q": "green sea turtle snorkeling Indonesia reef"},
+            {"id": "B2a", "zh": "蝠鲼(魔鬼鱼)同游", "en": "Manta Ray", "q": "Manta ray snorkeling Nusa Penida", "desc": "跟船到 Manta Point 与大型蝠鲼同游，旱季概率高。有涌浪、需跟船听教练，晕船者提前服药。"},
+            {"id": "B2b", "zh": "海龟浮潜", "en": "Sea Turtle", "q": "green sea turtle snorkeling Indonesia reef", "desc": "Crystal Bay/Gamat Bay 珊瑚区浮潜常遇海龟。水况看天气，防晒用珊瑚友好型，保持距离勿追摸。"},
         ],
     },
     {
@@ -148,9 +148,9 @@ ITEMS = [
         "coupling": "与佩尼达仅隔一条水道，可两岛连住。",
         "video_q": "Nusa Lembongan Ceningan devil's tear yellow bridge",
         "subspots": [
-            {"id": "B3a", "zh": "恶魔的眼泪", "en": "Devil's Tear", "q": "Devil's Tear Nusa Lembongan"},
-            {"id": "B3b", "zh": "Ceningan 黄桥", "en": "Yellow Bridge", "q": "Yellow Bridge Nusa Ceningan Lembongan"},
-            {"id": "B3c", "zh": "梦幻海滩", "en": "Dream Beach Lembongan", "q": "Dream Beach Nusa Lembongan"},
+            {"id": "B3a", "zh": "恶魔的眼泪", "en": "Devil's Tear", "q": "Devil's Tear Nusa Lembongan", "desc": "海浪砸向岩缝激起的巨大水爆，气势足。浪大切勿靠太近岩边，被浪卷下危险，外围稳妥观看。"},
+            {"id": "B3b", "zh": "Ceningan 黄桥", "en": "Yellow Bridge", "q": "Yellow Bridge Nusa Ceningan Lembongan", "desc": "连接两岛的黄色小桥，步行或骑车跨过即到对岛。桥窄仅容单线，骑车慢行礼让，日落顺路看。"},
+            {"id": "B3c", "zh": "梦幻海滩", "en": "Dream Beach Lembongan", "q": "Dream Beach Nusa Lembongan", "desc": "白沙海湾配崖景，人少安静。浪偏大不宜贸然下水，岸边有泳池与餐厅，适合躺平发呆。"},
         ],
     },
     {
@@ -162,8 +162,8 @@ ITEMS = [
         "coupling": "与龙目岛同一线；三岛之间跳岛船 15–30 分钟。",
         "video_q": "Gili Islands Trawangan Lombok beach 4k",
         "subspots": [
-            {"id": "C1a", "zh": "吉利岛海滩秋千", "en": "Gili Beach Swing", "q": "Gili Trawangan beach swing sunset"},
-            {"id": "C1b", "zh": "海底雕塑/秋千", "en": "Underwater Statues", "q": "Gili Meno underwater statues Nest"},
+            {"id": "C1a", "zh": "吉利岛海滩秋千", "en": "Gili Beach Swing", "q": "Gili Trawangan beach swing sunset", "desc": "海中木秋千，荡出去即是无边海景。岛上无机动车、骑车或马车可达，排队拍人像早去更好。"},
+            {"id": "C1b", "zh": "海底雕塑/秋千", "en": "Underwater Statues", "q": "Gili Meno underwater statues Nest", "desc": "水下的人像雕塑与秋千，浮潜即可看。水母季留意蛰刺，跟船浮潜更安全，岛上现金多备。"},
         ],
     },
     {
@@ -174,8 +174,8 @@ ITEMS = [
         "coupling": "独立硬核项目，适合体力好的分队；玩完可下山接吉利放松。",
         "video_q": "Mount Rinjani trekking crater lake Lombok",
         "subspots": [
-            {"id": "C2a", "zh": "火山口湖 Segara Anak", "en": "Segara Anak Lake", "q": "Mount Rinjani Segara Anak crater lake"},
-            {"id": "C2b", "zh": "登顶日出云海", "en": "Summit Sunrise", "q": "Mount Rinjani summit sunrise Lombok"},
+            {"id": "C2a", "zh": "火山口湖 Segara Anak", "en": "Segara Anak Lake", "q": "Mount Rinjani Segara Anak crater lake", "desc": "火山口内的翠蓝湖，旁有温泉可泡。位于多日重装徒步中段，需体力与向导，夜间冷备保暖装备。"},
+            {"id": "C2b", "zh": "登顶日出云海", "en": "Summit Sunrise", "q": "Mount Rinjani summit sunrise Lombok", "desc": "登 3726m 顶看日出云海，视野开阔。难度高、夜行冷，需体能与向导，对 9–10 天行程偏重。"},
         ],
     },
     {
@@ -187,9 +187,9 @@ ITEMS = [
         "coupling": "与吉利、林贾尼同属龙目一线，可组合安排。",
         "video_q": "South Lombok Tanjung Aan Merese Hill beach 4k",
         "subspots": [
-            {"id": "C3a", "zh": "Tanjung Aan 粉沙海湾", "en": "Tanjung Aan Beach", "q": "Tanjung Aan beach Lombok"},
-            {"id": "C3b", "zh": "Tiu Kelep 瀑布", "en": "Tiu Kelep Waterfall", "q": "Tiu Kelep waterfall Lombok"},
-            {"id": "C3c", "zh": "粉色沙滩", "en": "Pink Beach Lombok", "q": "Pink Beach Lombok Tangsi"},
+            {"id": "C3a", "zh": "Tanjung Aan 粉沙海湾", "en": "Tanjung Aan Beach", "q": "Tanjung Aan beach Lombok", "desc": "细软粉沙与渐变蓝海的小海湾，比巴厘安静。景点分散需包车，正午晒，带遮阳与水。"},
+            {"id": "C3b", "zh": "Tiu Kelep 瀑布", "en": "Tiu Kelep Waterfall", "q": "Tiu Kelep waterfall Lombok", "desc": "林中多层瀑布汇流，可走到水帘后。需走一段丛林步道，雨后湿滑，带换洗衣物与防滑鞋。"},
+            {"id": "C3c", "zh": "粉色沙滩", "en": "Pink Beach Lombok", "q": "Pink Beach Lombok Tangsi", "desc": "偏远海湾的淡粉沙，含船程方到。路况一般、路远，防晒防中暑，退潮粉色更明显。"},
         ],
     },
     {
@@ -201,10 +201,10 @@ ITEMS = [
         "coupling": "相对独立(需飞机)；玩法内部紧凑，一次跳岛全包。",
         "video_q": "Komodo island Padar viewpoint pink beach drone 4k",
         "subspots": [
-            {"id": "D1a", "zh": "Padar 岛三色海湾", "en": "Padar Island", "q": "Padar island viewpoint Komodo"},
-            {"id": "D1b", "zh": "科莫多巨蜥", "en": "Komodo Dragon", "q": "Komodo dragon Komodo national park"},
-            {"id": "D1c", "zh": "粉色沙滩", "en": "Pink Beach", "q": "Pink Beach Komodo island"},
-            {"id": "D1d", "zh": "Kanawa/Kelor 浮潜", "en": "Kelor Island", "q": "Kelor island Komodo viewpoint"},
+            {"id": "D1a", "zh": "Padar 岛三色海湾", "en": "Padar Island", "q": "Padar island viewpoint Komodo", "desc": "登顶看三处不同色海湾的视野，经典构图。需爬一段曝晒山坡，早去避热与团，带足水。"},
+            {"id": "D1b", "zh": "科莫多巨蜥", "en": "Komodo Dragon", "q": "Komodo dragon Komodo national park", "desc": "野生巨蜥在岛上漫步，体型大具攻击性。上岛必须跟园区向导、保持距离，勿掉队与投喂。"},
+            {"id": "D1c", "zh": "粉色沙滩", "en": "Pink Beach", "q": "Pink Beach Komodo island", "desc": "珊瑚碎屑形成的淡粉沙滩，浮潜看珊瑚。正午晒、人潮随船到，早去更清静，防晒补水。"},
+            {"id": "D1d", "zh": "Kanawa/Kelor 浮潜", "en": "Kelor Island", "q": "Kelor island Komodo viewpoint", "desc": "小岛周边清澈珊瑚礁，浮潜轻松看鱼。部分海域有流，跟船浮潜、勿远离，带珊瑚友好防晒。"},
         ],
     },
     {
@@ -216,8 +216,8 @@ ITEMS = [
         "coupling": "把科莫多所有点一次打包，替代散拼跳岛。",
         "video_q": "Komodo liveaboard phinisi boat sailing sunrise",
         "subspots": [
-            {"id": "D2a", "zh": "Phinisi 帆船船宿", "en": "Phinisi Liveaboard", "q": "phinisi boat Komodo Labuan Bajo"},
-            {"id": "D2b", "zh": "清晨 Padar", "en": "Padar Sunrise", "q": "Padar island sunrise Komodo"},
+            {"id": "D2a", "zh": "Phinisi 帆船船宿", "en": "Phinisi Liveaboard", "q": "phinisi boat Komodo Labuan Bajo", "desc": "住传统帆船巡游科莫多海域，省去日间奔波。10 月旺季船位紧需早订，晕船者备药、确认船况口碑。"},
+            {"id": "D2b", "zh": "清晨 Padar", "en": "Padar Sunrise", "q": "Padar island sunrise Komodo", "desc": "船宿可清晨独占 Padar 观景与无人海滩。需早起登顶，凉意重带外套，光线最佳人最少。"},
         ],
     },
     {
@@ -229,8 +229,8 @@ ITEMS = [
         "coupling": "可从巴厘陆路 + 渡轮当地联游。可选延伸：再花 1–2 天西行接布罗莫(Bromo)日出。",
         "video_q": "Ijen blue fire crater sulfur East Java night",
         "subspots": [
-            {"id": "E1a", "zh": "蓝色火焰", "en": "Blue Fire", "q": "Ijen blue fire crater night"},
-            {"id": "E1b", "zh": "翠绿硫磺酸湖", "en": "Sulfur Crater Lake", "q": "Ijen crater acid lake sulfur"},
+            {"id": "E1a", "zh": "蓝色火焰", "en": "Blue Fire", "q": "Ijen blue fire crater night", "desc": "火山口裂缝夜间的蓝色火焰，全球罕见。凌晨下火山口、有硫毒气，必须戴防毒面具跟向导，夜冷保暖。"},
+            {"id": "E1b", "zh": "翠绿硫磺酸湖", "en": "Sulfur Crater Lake", "q": "Ijen crater acid lake sulfur", "desc": "火山口翠绿酸湖与扛硫矿工，工业感独特。气味刺鼻、边缘松软，沿向导路线走、勿靠近湖岸。"},
         ],
     },
 ]
@@ -238,7 +238,7 @@ ITEMS = [
 # 精华速览 (references a subspot image + one-liner). order = display order.
 HIGHLIGHTS = [
     {"item": "A2", "img": "A2a", "title": "乌布文化区", "blurb": "梯田 / 圣猴森林 / 瀑布，巴厘的灵魂与文艺慢生活"},
-    {"item": "B1", "img": "B1a", "title": "佩尼达 · 霸王龙海滩", "blurb": "全巴厘最出片的悬崖海景"},
+    {"item": "B1", "img": "B1a", "title": "佩尼达 · 精灵坠崖", "blurb": "全巴厘最出片的悬崖海景"},
     {"item": "A1", "img": "A1a", "title": "乌鲁瓦图断崖庙 + 火舞", "blurb": "悬崖上的日落 + Kecak 火祭舞"},
     {"item": "A3", "img": "A3b", "title": "天堂之门 + 东巴厘火山", "blurb": "网红打卡 + 火山日出徒步"},
     {"item": "B2", "img": "B2a", "title": "蝠鲼 / 海龟浮潜", "blurb": "近距离与海龟、魔鬼鱼同游"},
