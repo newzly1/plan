@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# 网页构建：可再生的中间产物与验收截图（不入库，跑脚本会自动生成）
+webpage/opt/
+webpage/sheets/
+webpage/*.png
+webpage/fetch.log
+webpage/img.jpg
+webpage/yt.jpg
+webpage/yt_search.html
