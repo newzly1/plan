@@ -18,10 +18,10 @@ LEGEND = ["海岛/海滩", "火山", "徒步", "潜水/浮潜", "文化/寺庙",
 REGIONS = [
     {"id": "A", "name": "巴厘岛本岛 (Bali)", "tag": "大本营 · 枢纽", "days": "建议 5–7 天",
      "budget": "人均约 ¥700–1400",
-     "desc": "落地机场所在、向外辐射的枢纽；内部靠包车/摩托，跨区约 1–2 小时车程。9–10 天的行程主体一定落在这里。"},
-    {"id": "B", "name": "佩尼达三岛 (Nusa Penida/Lembongan/Ceningan)", "tag": "紧耦合 · 几乎必玩", "days": "建议 1–2 天",
+     "desc": "落地机场所在、向外辐射的枢纽；内部靠包车/摩托，跨区约 1–2 小时车程。9–10 天的行程主要时间都在这里。"},
+    {"id": "B", "name": "佩尼达三岛 (Nusa Penida/Lembongan/Ceningan)", "tag": "无缝衔接 · 几乎必玩", "days": "建议 1–2 天",
      "budget": "人均约 ¥300–800",
-     "desc": "从巴厘 Sanur 港快艇 30–45 分钟，与南巴厘紧耦合。可一日跟团或住岛 1–2 晚。"},
+     "desc": "从巴厘 Sanur 港快艇 30–45 分钟，与南巴厘紧密相连。可一日跟团或住岛 1–2 晚。"},
     {"id": "C", "name": "龙目岛 + 吉利三岛 (Lombok + Gili)", "tag": "跨岛可行圈", "days": "建议 2–3 天",
      "budget": "人均约 ¥500–1000（加林贾尼更高）",
      "desc": "从巴厘快艇约 1.5–2 小时，属可行圈，但会占掉一整段，与其他跨岛项目二选一。"},
@@ -33,7 +33,7 @@ REGIONS = [
      "desc": "离巴厘最近的火山：巴厘西端 Gilimanuk 渡轮过海到 Banyuwangi 即达，可陆路联游。"},
 ]
 
-# Each item: id, region, names, tags, time, price, feature/caution/coupling (from source doc),
+# Each item: id, region, names, tags, time, price, feature/caution/coupling (亮点/注意/串联),
 # subspots [{id,zh,en,q}], video_q. `highlight` marks items that also appear in 精华速览.
 ITEMS = [
     {
@@ -46,7 +46,7 @@ ITEMS = [
         "video_q": "Uluwatu temple Kecak fire dance sunset Bali",
         "subspots": [
             {"id": "A1a", "zh": "情人崖 (乌鲁瓦图庙)", "en": "Uluwatu Temple", "q": "Uluwatu Temple Bali cliff", "desc": "矗立海蚀断崖上的海神庙，又称情人崖，黄昏可顺道看 Kecak 火舞。崖边风大且无护栏，靠近观景台时注意脚下安全。"},
-            {"id": "A1b", "zh": "Kecak 火祭舞", "en": "Kecak Fire Dance", "q": "Kecak dance Uluwatu Bali", "desc": "黄昏在断崖剧场以人声合唱伴演史诗，配海上落日。露天无空调，建议提前占座并带驱蚊。"},
+            {"id": "A1b", "zh": "Kecak 火祭舞", "en": "Kecak Fire Dance", "q": "Kecak dance Uluwatu Bali", "desc": "黄昏在断崖剧场以人声合唱伴演史诗，配海上落日。露天无空调，建议提前占座并带驱蚊液。"},
             {"id": "A1c", "zh": "金巴兰海鲜沙滩", "en": "Jimbaran Bay", "q": "Jimbaran Bay beach Bali sunset", "desc": "沙滩上现烤海鲜的露天排档，边吃边看海上日落。想踏浪宜查潮时，傍晚稍早到占位更从容。"},
             {"id": "A1d", "zh": "水明漾/库塔海滩", "en": "Seminyak / Kuta Beach", "q": "Seminyak beach Bali sunset", "desc": "巴厘最热闹的冲浪与日落海滩，沿线多俱乐部餐厅。部分岸段有离岸流，按能力选冲浪点，亲子留意浪况。"},
         ],
@@ -62,7 +62,7 @@ ITEMS = [
         "subspots": [
             {"id": "A2a", "zh": "德格拉朗梯田", "en": "Tegallalang Rice Terrace", "q": "Tegallalang rice terrace Bali", "desc": "顺山势层叠的稻田，田埂有秋千和咖啡亭可歇脚。为收费网红点、人多，建议早去光线好也少排队。"},
             {"id": "A2b", "zh": "圣猴森林", "en": "Sacred Monkey Forest", "q": "Sacred Monkey Forest Ubud Bali", "desc": "雨林里自由行走的猴群与古老石庙，互动感强。猴子会抢手机眼镜食物，随身物品收好、别对视挑逗。"},
-            {"id": "A2c", "zh": "Tirta Empul 圣泉庙", "en": "Tirta Empul Temple", "q": "Tirta Empul temple Bali", "desc": "圣泉涌出的浴池，信徒排队浸浴祈福。进庙须围纱笼，想参与浸浴带替换衣物，留意队列秩序。"},
+            {"id": "A2c", "zh": "Tirta Empul 圣泉庙", "en": "Tirta Empul Temple", "q": "Tirta Empul temple Bali", "desc": "圣泉涌出的浴池，信徒排队浸浴祈福。进庙须围纱笼，想参与浸浴需带替换衣物，留意队列秩序。"},
             {"id": "A2d", "zh": "丛林秋千", "en": "Bali Swing", "q": "Bali swing Tegallalang jungle", "desc": "悬于峡谷上的大秋千与鸟巢打卡点，出片轻松。项目收费、排队久，恐高者量力，注意扣好安全带。"},
             {"id": "A2e", "zh": "Tegenungan 瀑布", "en": "Tegenungan Waterfall", "q": "Tegenungan waterfall Bali", "desc": "市区近郊的宽幅瀑布，可走到水潭边戏水。步道湿滑、午后易人多，早去更清静，下水留意脚下石头。"},
         ],
@@ -71,14 +71,14 @@ ITEMS = [
         "id": "A3", "region": "A", "zh": "东巴厘 · 巴图尔火山", "en": "East Bali · Mt Batur", "highlight": True,
         "tags": ["火山", "徒步", "潜水", "天堂之门"], "time": "2–3 天",
         "price": "火山日出徒步人均约 ¥200–350（含天堂之门门票与包车）",
-        "feature": "巴图尔火山(Batur)日出徒步、Lempuyang 天堂之门、Tirta Gangga 水宫、Besakih 母庙、Tulamben/Amed 的 USS Liberty 沉船浮潜潜水。",
+        "feature": "巴图尔火山(Batur)日出徒步、Lempuyang 天堂之门、Tirta Gangga 水宫、Besakih 母庙、Tulamben/Amed 的 USS Liberty 沉船浮潜与潜水。",
         "caution": "火山徒步需向导、凌晨约 2 点出发；『天堂之门倒影』是排队 + 镜面道具拍出来的；沉船潜点需一定水性。",
         "coupling": "凌晨出发的火山团常与乌布联住，串东部一日环线。",
         "video_q": "Mount Batur sunrise trekking Bali 4k",
         "subspots": [
-            {"id": "A3a", "zh": "巴图尔火山日出", "en": "Mt Batur Sunrise", "q": "Mount Batur sunrise summit Bali", "desc": "凌晨爬山看云海日出的活火山，山顶视野开阔。需向导、约两点出发，穿保暖防风、带头灯与小食。"},
+            {"id": "A3a", "zh": "巴图尔火山日出", "en": "Mt Batur Sunrise", "q": "Mount Batur sunrise summit Bali", "desc": "凌晨爬山看云海日出的活火山，山顶视野开阔。需向导、约两点出发，穿保暖防风衣物、带头灯与小食。"},
             {"id": "A3b", "zh": "Lempuyang 天堂之门", "en": "Gates of Heaven", "q": "Lempuyang temple gates of heaven Bali", "desc": "山门框住阿贡火山的对景，经典对称构图。倒影靠镜面道具拍出、需排队，建议一早到以减少等待。"},
-            {"id": "A3c", "zh": "Tirta Gangga 水宫", "en": "Tirta Gangga", "q": "Tirta Gangga water palace Bali", "desc": "昔日王宫的层层水池与石雕，鱼池可赤脚走。园区不大、节奏慢，正午晒，带遮阳与换洗备用。"},
+            {"id": "A3c", "zh": "Tirta Gangga 水宫", "en": "Tirta Gangga", "q": "Tirta Gangga water palace Bali", "desc": "昔日王宫的层层水池与石雕，鱼池可赤脚走。园区不大、节奏慢，正午晒，带遮阳用具与换洗衣物。"},
             {"id": "A3d", "zh": "Besakih 母庙", "en": "Besakih Temple", "q": "Besakih temple Bali", "desc": "阿贡火山坡上的母庙建筑群，规模最宏。进庙须围纱笼，山路长，随向导走主轴线即可。"},
             {"id": "A3e", "zh": "USS Liberty 沉船", "en": "USS Liberty Wreck", "q": "USS Liberty wreck Tulamben diving", "desc": "近岸的二战货轮沉船，浮潜即可见鱼群与船体。需一定水性、可能有流，新手跟船听教练、勿触碰。"},
         ],
@@ -88,8 +88,8 @@ ITEMS = [
         "tags": ["瀑布", "湖庙", "打卡"], "time": "1–2 天",
         "price": "包车分摊人均约 ¥60–90/天；湖庙 ¥35、Handara 门 ¥15、Sekumpul 瀑布 ¥45",
         "feature": "Sekumpul/Banyumala 瀑布、Munduk 山区与双子湖、水神庙(Ulun Danu Beratan，50000 卢比纸币图案)、Handara 网红门、Lovina 看海豚。凉爽清幽。",
-        "caution": "山路弯多易晕车；Sekumpul 需下切徒步、雨后湿滑较累；Lovina 为野生海豚不保证遇见。",
-        "coupling": "可与东部火山、乌布串成中北部环线一并玩。",
+        "caution": "山路弯多易晕车；Sekumpul 需下切徒步、雨后湿滑较累；Lovina 为野生海豚，不保证能看到。",
+        "coupling": "可与东部火山、乌布串成中北部环线，一并游玩。",
         "video_q": "Ulun Danu Beratan temple Sekumpul waterfall north Bali",
         "subspots": [
             {"id": "A4a", "zh": "水神庙 (Ulun Danu Beratan)", "en": "Ulun Danu Beratan", "q": "Ulun Danu Beratan temple lake Bali", "desc": "湖心轻雾中的水上庙，纸币同款图案。清晨湖面平静倒影好，山区凉，带件薄外套。"},
@@ -130,7 +130,7 @@ ITEMS = [
     {
         "id": "B2", "region": "B", "zh": "蝠鲼 & 海龟共游", "en": "Manta & Turtle Snorkel", "highlight": True,
         "tags": ["浮潜", "海洋"], "time": "半天", "price": "浮潜团人均约 ¥200–400",
-        "feature": "Manta Point 与蝠鲼(魔鬼鱼)同游、Crystal Bay/Gamat Bay 浮潜看海龟与珊瑚。旱季海况透明度高。",
+        "feature": "Manta Point 与蝠鲼(魔鬼鱼)同游、Crystal Bay/Gamat Bay 浮潜看海龟与珊瑚。旱季海水透明度高。",
         "caution": "Manta Point 有涌浪、需跟船听教练；晕船者提前服药；防晒用珊瑚友好型。",
         "coupling": "常与佩尼达陆地打卡拼成一日跳岛团。",
         "video_q": "snorkeling manta ray Nusa Penida Manta Point",
@@ -143,8 +143,8 @@ ITEMS = [
         "id": "B3", "region": "B", "zh": "蓝梦岛 Lembongan/Ceningan", "en": "Nusa Lembongan/Ceningan",
         "tags": ["海岛", "跳水", "黄桥"], "time": "1–2 天",
         "price": "往返快艇约 ¥120–200/人 + 岛上包车/活动人均 ¥100–200",
-        "feature": "红树林划船、恶魔的眼泪(Devil's Tear)浪爆、Ceningan 黄桥与蓝湖跳水、慢生活小岛氛围。比佩尼达更悠闲。",
-        "caution": "恶魔的眼泪浪大勿靠太近岩边；蓝湖跳水需评估自身能力与潮位。",
+        "feature": "红树林划船、恶魔的眼泪(Devil's Tear)巨浪、Ceningan 黄桥与蓝湖跳水、慢生活小岛氛围。比佩尼达更悠闲。",
+        "caution": "恶魔的眼泪浪大，勿靠太近岩边；蓝湖跳水需评估自身能力与潮位。",
         "coupling": "与佩尼达仅隔一条水道，可两岛连住。",
         "video_q": "Nusa Lembongan Ceningan devil's tear yellow bridge",
         "subspots": [
@@ -169,27 +169,27 @@ ITEMS = [
     {
         "id": "C2", "region": "C", "zh": "林贾尼火山徒步", "en": "Mt Rinjani Trek",
         "tags": ["火山", "重装徒步"], "time": "2–3 天", "price": "2 天 1 夜团人均约 ¥800–1500",
-        "feature": "Rinjani(3726m)火山口湖 + 温泉，印尼最经典的多日重装徒步之一，登顶看日出云海震撼。",
-        "caution": "难度高、需体力与向导；10 月仍为开放旺季且天气好，雨季关闭；夜间极冷需保暖装备。对 9–10 天行程偏重。",
-        "coupling": "独立硬核项目，适合体力好的分队；玩完可下山接吉利放松。",
+        "feature": "Rinjani(3726m)火山口湖 + 温泉，印尼最经典的多日重装徒步之一，登顶日出云海十分震撼。",
+        "caution": "难度高、需体力与向导；10 月仍为开放旺季且天气好，雨季关闭；夜间极冷，需备保暖装备。对 9–10 天行程来说偏重。",
+        "coupling": "独立硬核项目，适合体力好的队员；结束后可下山前往吉利三岛放松。",
         "video_q": "Mount Rinjani trekking crater lake Lombok",
         "subspots": [
-            {"id": "C2a", "zh": "火山口湖 Segara Anak", "en": "Segara Anak Lake", "q": "Mount Rinjani Segara Anak crater lake", "desc": "火山口内的翠蓝湖，旁有温泉可泡。位于多日重装徒步中段，需体力与向导，夜间冷备保暖装备。"},
-            {"id": "C2b", "zh": "登顶日出云海", "en": "Summit Sunrise", "q": "Mount Rinjani summit sunrise Lombok", "desc": "登 3726m 顶看日出云海，视野开阔。难度高、夜行冷，需体能与向导，对 9–10 天行程偏重。"},
+            {"id": "C2a", "zh": "火山口湖 Segara Anak", "en": "Segara Anak Lake", "q": "Mount Rinjani Segara Anak crater lake", "desc": "火山口内的翠蓝湖，旁有温泉可泡。位于多日重装徒步中段，需体力与向导，夜间寒冷，备好保暖装备。"},
+            {"id": "C2b", "zh": "登顶日出云海", "en": "Summit Sunrise", "q": "Mount Rinjani summit sunrise Lombok", "desc": "登 3726m 顶看日出云海，视野开阔。难度高、夜行冷，需体能与向导，对 9–10 天行程来说偏重。"},
         ],
     },
     {
         "id": "C3", "region": "C", "zh": "龙目岛南岸", "en": "South Lombok",
         "tags": ["海滩", "粉沙", "瀑布"], "time": "2–3 天",
         "price": "龙目包车分摊人均约 ¥80–130/天 + 粉色沙滩船程约 ¥50–100/人",
-        "feature": "Kuta Lombok 冲浪、Tanjung Aan 粉沙海湾、Merese Hill 观景、Tiu Kelep/Sendang Gile 瀑布、东南部粉色沙滩。比巴厘更原始少人。",
+        "feature": "Kuta Lombok 冲浪、Tanjung Aan 粉沙海湾、Merese Hill 观景、Tiu Kelep/Sendang Gile 瀑布、东南部粉色沙滩。比巴厘更原始，游客也更少。",
         "caution": "景点分散、路况一般，需包车；粉色沙滩较偏远，含船程；防晒防中暑。",
         "coupling": "与吉利、林贾尼同属龙目一线，可组合安排。",
         "video_q": "South Lombok Tanjung Aan Merese Hill beach 4k",
         "subspots": [
             {"id": "C3a", "zh": "Tanjung Aan 粉沙海湾", "en": "Tanjung Aan Beach", "q": "Tanjung Aan beach Lombok", "desc": "细软粉沙与渐变蓝海的小海湾，比巴厘安静。景点分散需包车，正午晒，带遮阳与水。"},
             {"id": "C3b", "zh": "Tiu Kelep 瀑布", "en": "Tiu Kelep Waterfall", "q": "Tiu Kelep waterfall Lombok", "desc": "林中多层瀑布汇流，可走到水帘后。需走一段丛林步道，雨后湿滑，带换洗衣物与防滑鞋。"},
-            {"id": "C3c", "zh": "粉色沙滩", "en": "Pink Beach Lombok", "q": "Pink Beach Lombok Tangsi", "desc": "偏远海湾的淡粉沙，含船程方到。路况一般、路远，防晒防中暑，退潮粉色更明显。"},
+            {"id": "C3c", "zh": "粉色沙滩", "en": "Pink Beach Lombok", "q": "Pink Beach Lombok Tangsi", "desc": "偏远海湾的淡粉沙，需乘船方可到达。路况一般、路远，防晒防中暑，退潮粉色更明显。"},
         ],
     },
     {
@@ -201,7 +201,7 @@ ITEMS = [
         "coupling": "相对独立(需飞机)；玩法内部紧凑，一次跳岛全包。",
         "video_q": "Komodo island Padar viewpoint pink beach drone 4k",
         "subspots": [
-            {"id": "D1a", "zh": "Padar 岛三色海湾", "en": "Padar Island", "q": "Padar island viewpoint Komodo", "desc": "登顶看三处不同色海湾的视野，经典构图。需爬一段曝晒山坡，早去避热与团，带足水。"},
+            {"id": "D1a", "zh": "Padar 岛三色海湾", "en": "Padar Island", "q": "Padar island viewpoint Komodo", "desc": "登顶看三处不同色海湾的视野，经典构图。需爬一段曝晒山坡，早去可避开炎热与人潮，带足水。"},
             {"id": "D1b", "zh": "科莫多巨蜥", "en": "Komodo Dragon", "q": "Komodo dragon Komodo national park", "desc": "野生巨蜥在岛上漫步，体型大具攻击性。上岛必须跟园区向导、保持距离，勿掉队与投喂。"},
             {"id": "D1c", "zh": "粉色沙滩", "en": "Pink Beach", "q": "Pink Beach Komodo island", "desc": "珊瑚碎屑形成的淡粉沙滩，浮潜看珊瑚。正午晒、人潮随船到，早去更清静，防晒补水。"},
             {"id": "D1d", "zh": "Kanawa/Kelor 浮潜", "en": "Kelor Island", "q": "Kelor island Komodo viewpoint", "desc": "小岛周边清澈珊瑚礁，浮潜轻松看鱼。部分海域有流，跟船浮潜、勿远离，带珊瑚友好防晒。"},
@@ -213,10 +213,10 @@ ITEMS = [
         "price": "2 天船宿人均约 ¥1500–3000+（另含机票）",
         "feature": "住在船上巡游科莫多海域，避开日间人潮，清晨独占 Padar 观景与无人海滩，潜水条件世界级。体验感最强。",
         "caution": "10 月仍为旺季，船位需提前预订；晕船者慎选或备药；确认船只安全与卫生口碑。",
-        "coupling": "把科莫多所有点一次打包，替代散拼跳岛。",
+        "coupling": "将科莫多所有精华点一次打包，替代零散跳岛游。",
         "video_q": "Komodo liveaboard phinisi boat sailing sunrise",
         "subspots": [
-            {"id": "D2a", "zh": "Phinisi 帆船船宿", "en": "Phinisi Liveaboard", "q": "phinisi boat Komodo Labuan Bajo", "desc": "住传统帆船巡游科莫多海域，省去日间奔波。10 月旺季船位紧需早订，晕船者备药、确认船况口碑。"},
+            {"id": "D2a", "zh": "Phinisi 帆船船宿", "en": "Phinisi Liveaboard", "q": "phinisi boat Komodo Labuan Bajo", "desc": "住传统帆船巡游科莫多海域，省去日间奔波。10 月旺季船位紧张，需尽早预订，晕船者备药、确认船况口碑。"},
             {"id": "D2b", "zh": "清晨 Padar", "en": "Padar Sunrise", "q": "Padar island sunrise Komodo", "desc": "船宿可清晨独占 Padar 观景与无人海滩。需早起登顶，凉意重带外套，光线最佳人最少。"},
         ],
     },
@@ -225,11 +225,11 @@ ITEMS = [
         "tags": ["火山", "夜徒步", "蓝火"], "time": "2 天（含夜间徒步）",
         "price": "含往返渡轮的 2 天团人均约 ¥500–900",
         "feature": "Ijen——全球罕见的蓝色火焰(Blue Fire)、翠绿硫磺酸湖、扛硫磺的矿工。凌晨下火山口的独特体验。",
-        "caution": "凌晨 1–2 点出发下火山口；有硫磺毒气，必须戴防毒面具、跟向导行动；夜间冷需保暖。",
+        "caution": "凌晨 1–2 点出发下火山口；有硫磺毒气，必须戴防毒面具、跟向导行动；夜间寒冷，需备保暖衣物。",
         "coupling": "可从巴厘陆路 + 渡轮当地联游。可选延伸：再花 1–2 天西行接布罗莫(Bromo)日出。",
         "video_q": "Ijen blue fire crater sulfur East Java night",
         "subspots": [
-            {"id": "E1a", "zh": "蓝色火焰", "en": "Blue Fire", "q": "Ijen blue fire crater night", "desc": "火山口裂缝夜间的蓝色火焰，全球罕见。凌晨下火山口、有硫毒气，必须戴防毒面具跟向导，夜冷保暖。"},
+            {"id": "E1a", "zh": "蓝色火焰", "en": "Blue Fire", "q": "Ijen blue fire crater night", "desc": "火山口裂缝夜间的蓝色火焰，全球罕见。凌晨下火山口、有硫毒气，必须戴防毒面具跟向导，夜间寒冷，注意保暖。"},
             {"id": "E1b", "zh": "翠绿硫磺酸湖", "en": "Sulfur Crater Lake", "q": "Ijen crater acid lake sulfur", "desc": "火山口翠绿酸湖与扛硫矿工，工业感独特。气味刺鼻、边缘松软，沿向导路线走、勿靠近湖岸。"},
         ],
     },
@@ -258,7 +258,7 @@ COMBOS = [
      "note": "科莫多封神，海岛风光天花板，跨岛一次到位。"},
     {"no": "④", "name": "巴厘 + 宜珍火山", "content": "A + B + E", "cross": "陆路 + 渡轮",
      "days": "巴厘 7 + 宜珍 2", "budget": "¥1600–2800",
-     "note": "用最短代价加一座世界级火山，体验差异化。"},
+     "note": "用最小代价多看一座世界级火山，体验差异化。"},
 ]
 
 COMBO_HINT = "9–10 天的现实：巴厘本岛 + 佩尼达为主轴，最多再加 1 个跨岛项目。不建议同时塞两个跨岛项目(如吉利+科莫多)，交通太赶。"
@@ -292,7 +292,7 @@ PRICES = [
 ]
 
 NOTES = [
-    ("签证", "约 9–10 天在落地签(VOA)30 天免签范围内，落地办 VOA 即可(备返程票与住宿信息)。"),
+    ("签证", "印尼对中国公民实行落地签(VOA)，停留期 30 天，9–10 天行程完全在范围内。抵达后办理即可，建议备好返程票与住宿信息。"),
     ("货币", "印尼盾(IDR)，小岛与村镇 ATM 少，多备现金、认准正规换汇点；大城市多数商户可刷卡。"),
     ("交通", "市区用 Grab/Gojek；巴厘常见『包车+司机』(6 人分摊很划算)；跨岛靠快艇或航班，旺季务必提前订票。"),
     ("网络", "落地即买电话卡，Telkomsel 信号覆盖最好。"),

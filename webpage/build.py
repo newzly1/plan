@@ -77,7 +77,7 @@ def spot(item):
     tags = "".join(f'<span class="tag">{esc(t)}</span>' for t in item["tags"])
     star = '<span class="pick-star" title="精华">★</span>' if item.get("highlight") else ''
     notes = ""
-    for label, key in (("特点","feature"),("注意","caution"),("耦合","coupling")):
+    for label, key in (("亮点","feature"),("注意","caution"),("串联","coupling")):
         if item.get(key):
             notes += f'<div class="note"><span class="note-k">{label}</span><p>{esc(item[key])}</p></div>'
     return f'''<article class="spot" id="{item['id']}" data-id="{item['id']}">
@@ -90,7 +90,7 @@ def spot(item):
   {gallery(item)}
   {video_plate(item)}
   <div class="spot-meta"><span class="mt"><i>时间</i>{esc(item['time'])}</span><span class="mt"><i>人均</i>{esc(item['price'])}</span></div>
-  <details class="notes"><summary><span>特点 · 注意 · 耦合</span><span class="chev"></span></summary>{notes}</details>
+  <details class="notes"><summary><span>亮点 · 注意 · 串联</span><span class="chev"></span></summary>{notes}</details>
   <div class="vote" role="group" aria-label="为 {esc(item['zh'])} 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
