@@ -2,8 +2,10 @@
 
 这是投票参考网页的**完整生成源码**。一条命令即可从源码重新生成自包含的 `index.html`（约 5.4 MB，图片/视频封面全部内嵌，无需联网即可打开）。
 
-- **在线版（Artifact）**：https://claude.ai/code/artifact/b157e3f4-4102-4bbe-8004-d67ce5f0332c
-  修改后让 Claude 用 Artifact 工具把新的 `index.html` **重新发布到同一个 URL**（覆盖更新，链接不变）。
+- **在线版 · 国内可直连（腾讯云 CloudBase）**：https://plan-d0gstt7r6507aa319-1451599494.tcloudbaseapp.com
+  发给 6 人投票用的正式链接，**无需梯子**。改完内容重新构建后，用下方「重新部署到 CloudBase」一节的命令覆盖上线，链接不变。
+- **在线版（Claude Artifact，需梯子）**：https://claude.ai/code/artifact/b157e3f4-4102-4bbe-8004-d67ce5f0332c
+  国内需 VPN 才能访问。修改后让 Claude 用 Artifact 工具把新的 `index.html` **重新发布到同一个 URL**（覆盖更新，链接不变）。
 - **内容源头**：`../印尼旅行项目投票清单.md`（所有文字由此转写进 `content.py`）
 - **设计说明**：`../docs/superpowers/specs/2026-07-07-bali-trip-voting-webpage-design.md`
 
@@ -29,6 +31,22 @@ python3 build.py          # 读 content.py + *.json + style.css + app.js → 写
 | 换/加/删一张景点图或视频封面 | 见下方「重新抓取媒体」 |
 
 改完 `content.py` / `style.css` / `app.js` 后跑一次 `python3 build.py`，`index.html` 就更新了。
+
+---
+
+## 重新部署到 CloudBase（让线上链接也更新）
+
+投票链接 https://plan-d0gstt7r6507aa319-1451599494.tcloudbaseapp.com 托管在腾讯云 CloudBase 静态托管（国内可直连）。改完内容重新构建后，一条命令覆盖上线，链接不变：
+
+```bash
+cd webpage
+python3 build.py                                                   # 先重新生成 index.html
+tcb hosting deploy index.html index.html -e plan-d0gstt7r6507aa319 # 覆盖上线（CDN 数分钟内刷新）
+```
+
+- **环境 ID**：`plan-d0gstt7r6507aa319`（腾讯云 CloudBase 免费体验版）。
+- **首次配置**：`npm i -g @cloudbase/cli --registry=https://registry.npmmirror.com`（本机默认 npm 源会卡，故用国内镜像），再 `tcb login --flow device` 扫码登录。
+- ⚠️ **续期**：免费环境 **2027-01-08 到期**，到期前需在 [CloudBase 控制台](https://console.cloud.tencent.com/tcb) 手动续 6 个月，否则环境销毁、链接失效（不支持自动续费）。
 
 ---
 
