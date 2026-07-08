@@ -7,7 +7,7 @@ import content as C
 BUILD = os.path.dirname(os.path.abspath(__file__))
 def load(name):
     p = os.path.join(BUILD, name)
-    return json.load(open(p)) if os.path.exists(p) else {}
+    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
 MEDIA = load("media.json")       # {subspotId: dataURI, "vid:A1": dataURI}
 VIDEOS = load("videos.json")     # {itemId: {yt_id,title,author}}
 CREDITS = load("credits.json")   # {subspotId: {artist,license}}
@@ -183,14 +183,23 @@ STYLE = open(os.path.join(BUILD,"style.css"), encoding="utf-8").read()
 SCRIPT = open(os.path.join(BUILD,"app.js"), encoding="utf-8").read()
 SCRIPT = SCRIPT.replace("/*__ITEMS__*/", ITEMS_JS).replace("/*__COMBOS__*/", COMBOS_JS)
 
-OUT = f'''<title>巴厘岛及周边 · 6 人选点手册</title>
+OUT = f'''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>巴厘岛及周边 · 6 人选点手册</title>
 <style>
 {STYLE}
 </style>
+</head>
+<body>
 {BODY}
 <script>
 {SCRIPT}
-</script>'''
+</script>
+</body>
+</html>'''
 
 open(os.path.join(BUILD,"index.html"),"w",encoding="utf-8").write(OUT)
 kb = len(OUT.encode("utf-8"))/1024
