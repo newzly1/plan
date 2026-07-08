@@ -11,9 +11,20 @@ def load(name):
 MEDIA = load("media.json")       # {subspotId: dataURI, "vid:A1": dataURI}
 VIDEOS = load("videos.json")     # {itemId: {yt_id,title,author}}
 CREDITS = load("credits.json")   # {subspotId: {artist,license}}
+FONT = load("font.json")         # {"serif_woff2": "<b64>"} 或 {"serif_woff": "<b64>"}；缺失则降级系统宋体栈
 
 def esc(s): return html.escape(str(s), quote=True)
 def img_uri(key): return MEDIA.get(key, "")
+
+def font_face():
+    """有内嵌子集则输出 @font-face（'Trip Serif'）；否则空串，降级到系统宋体栈。"""
+    if FONT.get("serif_woff2"):
+        return ("@font-face{font-family:'Trip Serif';font-style:normal;font-weight:600;font-display:swap;"
+                "src:url(data:font/woff2;base64,%s) format('woff2')}\n" % FONT["serif_woff2"])
+    if FONT.get("serif_woff"):
+        return ("@font-face{font-family:'Trip Serif';font-style:normal;font-weight:600;font-display:swap;"
+                "src:url(data:font/woff;base64,%s) format('woff')}\n" % FONT["serif_woff"])
+    return ""
 
 def img_tag(key, cls, alt, lazy=True):
     uri = img_uri(key)
@@ -190,7 +201,7 @@ OUT = f'''<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(C.META["title"])}</title>
 <style>
-{STYLE}
+{font_face()}{STYLE}
 </style>
 </head>
 <body>

@@ -1,43 +1,44 @@
-/* ===== 印尼群岛 · 选点手册 — field-guide identity ===== */
+/* ===== 印尼群岛 · 选点手册 — 安缦杂志风 identity ===== */
 *,*::before,*::after{box-sizing:border-box}
 :root{
-  --ground:#EBE6DC; --ground-2:#E4DED1; --surface:#F7F3EB; --surface-2:#FCFAF3;
-  --ink:#211A12; --ink-soft:#6A6053; --ink-faint:#978B78;
-  --line:#DAD2C2; --line-2:#C7BCA6;
-  --gold:#AD6906; --gold-bright:#E79A2B; --gold-soft:rgba(231,154,43,.15);
-  --sea:#0B665C; --sea-soft:rgba(11,102,92,.12);
-  --shadow:0 1px 2px rgba(60,44,20,.07),0 8px 26px rgba(60,44,20,.08);
-  --shadow-lg:0 12px 40px rgba(50,36,16,.16);
+  /* 权威调色板：骨白纸 / 墨 / 松绿 / 黄铜 */
+  --ground:#FAF8F2; --ground-2:#F1EEE4; --surface:#F4F1E8; --surface-2:#FCFAF3;
+  --ink:#1B1815; --ink-soft:#575147; --ink-faint:#8A8272;
+  --line:#E5E0D4; --line-2:#D8D2C4; --line-strong:#1B1815;
+  --pine:#1E4D44; --pine-soft:rgba(30,77,68,.10);
+  --brass:#9C7C3C; --brass-bright:#B08A3F; --brass-soft:rgba(156,124,60,.12);
+  /* 向后兼容别名（未迁移区块读这些，指向新值，迁移完可清理） */
+  --gold:var(--brass); --gold-bright:var(--brass-bright); --gold-soft:var(--brass-soft);
+  --sea:var(--pine); --sea-soft:var(--pine-soft);
+  --shadow:none; --shadow-lg:0 14px 44px rgba(27,24,21,.16);
   --font-cjk:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Trip Serif","Source Han Serif SC","Noto Serif CJK SC","Songti SC","STSong","SimSun",serif;
   --font-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
-  --rad:14px; --maxw:760px;
+  --rad:0px; --maxw:760px;
 }
 @media (prefers-color-scheme:dark){:root{
-  --ground:#15100C; --ground-2:#1A140F; --surface:#211A13; --surface-2:#282017;
-  --ink:#F1EADD; --ink-soft:#B1A592; --ink-faint:#8A7E6C;
-  --line:#332A20; --line-2:#453829;
-  --gold:#F2A63D; --gold-bright:#F2A63D; --gold-soft:rgba(242,166,61,.16);
-  --sea:#45B4A3; --sea-soft:rgba(69,180,163,.15);
-  --shadow:0 1px 2px rgba(0,0,0,.45),0 10px 30px rgba(0,0,0,.38);
-  --shadow-lg:0 16px 48px rgba(0,0,0,.5);
+  --ground:#16140F; --ground-2:#1D1A14; --surface:#1D1A14; --surface-2:#221E17;
+  --ink:#EDE7DA; --ink-soft:#B3AA97; --ink-faint:#857C69;
+  --line:#2E2A22; --line-2:#3C382F; --line-strong:#EDE7DA;
+  --pine:#4E9A8A; --pine-soft:rgba(78,154,138,.15);
+  --brass:#C29A54; --brass-bright:#C29A54; --brass-soft:rgba(194,154,84,.15);
+  --shadow:none; --shadow-lg:0 16px 48px rgba(0,0,0,.5);
 }}
 :root[data-theme="light"]{
-  --ground:#EBE6DC; --ground-2:#E4DED1; --surface:#F7F3EB; --surface-2:#FCFAF3;
-  --ink:#211A12; --ink-soft:#6A6053; --ink-faint:#978B78;
-  --line:#DAD2C2; --line-2:#C7BCA6;
-  --gold:#AD6906; --gold-bright:#E79A2B; --gold-soft:rgba(231,154,43,.15);
-  --sea:#0B665C; --sea-soft:rgba(11,102,92,.12);
-  --shadow:0 1px 2px rgba(60,44,20,.07),0 8px 26px rgba(60,44,20,.08);
-  --shadow-lg:0 12px 40px rgba(50,36,16,.16);
+  --ground:#FAF8F2; --ground-2:#F1EEE4; --surface:#F4F1E8; --surface-2:#FCFAF3;
+  --ink:#1B1815; --ink-soft:#575147; --ink-faint:#8A8272;
+  --line:#E5E0D4; --line-2:#D8D2C4; --line-strong:#1B1815;
+  --pine:#1E4D44; --pine-soft:rgba(30,77,68,.10);
+  --brass:#9C7C3C; --brass-bright:#B08A3F; --brass-soft:rgba(156,124,60,.12);
+  --shadow:none; --shadow-lg:0 14px 44px rgba(27,24,21,.16);
 }
 :root[data-theme="dark"]{
-  --ground:#15100C; --ground-2:#1A140F; --surface:#211A13; --surface-2:#282017;
-  --ink:#F1EADD; --ink-soft:#B1A592; --ink-faint:#8A7E6C;
-  --line:#332A20; --line-2:#453829;
-  --gold:#F2A63D; --gold-bright:#F2A63D; --gold-soft:rgba(242,166,61,.16);
-  --sea:#45B4A3; --sea-soft:rgba(69,180,163,.15);
-  --shadow:0 1px 2px rgba(0,0,0,.45),0 10px 30px rgba(0,0,0,.38);
-  --shadow-lg:0 16px 48px rgba(0,0,0,.5);
+  --ground:#16140F; --ground-2:#1D1A14; --surface:#1D1A14; --surface-2:#221E17;
+  --ink:#EDE7DA; --ink-soft:#B3AA97; --ink-faint:#857C69;
+  --line:#2E2A22; --line-2:#3C382F; --line-strong:#EDE7DA;
+  --pine:#4E9A8A; --pine-soft:rgba(78,154,138,.15);
+  --brass:#C29A54; --brass-bright:#C29A54; --brass-soft:rgba(194,154,84,.15);
+  --shadow:none; --shadow-lg:0 16px 48px rgba(0,0,0,.5);
 }
 
 html{-webkit-text-size-adjust:100%}
@@ -48,7 +49,11 @@ img{display:block;max-width:100%}
 h1,h2,h3,h4,p{margin:0}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer}
-:focus-visible{outline:2.5px solid var(--gold-bright);outline-offset:2px;border-radius:3px}
+:focus-visible{outline:2.5px solid var(--pine);outline-offset:2px;border-radius:2px}
+
+/* 衬线标题域：仅这些标题走宋体，正文与数据保持黑体/等宽 */
+.hero h1,.chap-meta h2,.spot-title h3,.combo-b h3,.hl-cap b,.sheet-head b,.stamp::after{
+  font-family:var(--serif);font-weight:600;letter-spacing:.03em}
 
 /* placeholders while media loads */
 .ph{background:
@@ -56,8 +61,8 @@ button{font-family:inherit;cursor:pointer}
   display:grid;place-items:center;color:var(--ink-faint);font-family:var(--font-mono);font-size:12px;text-align:center;padding:8px}
 .ph span{opacity:.8}
 
-/* mono field-data label helper */
-.facts,.chap-data,.combo-row i,.mt i,.code,.en,.tag,.hl-code,.vid-badge,.idx b,.bar-n,.num,.note-k,.tip-k{
+/* mono 字段标签 helper */
+.facts,.chap-data,.combo-row i,.mt i,.code,.en,.tag,.hl-code,.vid-badge,.idx b,.bar-n,.num,.note-k,.tip-k,.cap-line,.mast-l,.mast-r,.chap-region{
   font-family:var(--font-mono)}
 
 /* ============ HERO ============ */
