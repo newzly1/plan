@@ -40,7 +40,35 @@
     }
     var shot = e.target.closest(".shot-img");
     if(shot && shot.tagName==="IMG" && shot.src){ openLB(shot.src, shot.alt); return; }
+    var vid = e.target.closest(".vid");
+    if(vid && !vid.hasAttribute("data-playing")){ playVid(vid); return; }
   });
+  document.addEventListener("keydown", function(e){
+    if((e.key==="Enter"||e.key===" ")){
+      var vid = e.target.closest && e.target.closest(".vid");
+      if(vid && !vid.hasAttribute("data-playing")){ e.preventDefault(); playVid(vid); }
+    }
+  });
+
+  // ---- video inline playback (one at a time) ----
+  function vidFrame(bvid){
+    return '<iframe class="vid-frame" src="//player.bilibili.com/player.html?bvid='+bvid+'&page=1&high_quality=1&autoplay=1&as_wide=1" allowfullscreen="true" scrolling="no" border="0" frameborder="no" framespacing="0" sandbox="allow-scripts allow-same-origin allow-popups allow-presentation"></iframe>';
+  }
+  var vidOrig = new WeakMap();
+  function playVid(vid){
+    var bvid = vid.getAttribute("data-bvid");
+    if(!bvid) return;
+    $$(".vid[data-playing]").forEach(function(other){ if(other!==vid) closeVid(other); });
+    vidOrig.set(vid, vid.innerHTML);
+    vid.setAttribute("data-playing","");
+    vid.innerHTML = vidFrame(bvid);
+  }
+  function closeVid(vid){
+    if(!vid.hasAttribute("data-playing")) return;
+    var orig = vidOrig.get(vid);
+    if(orig){ vid.innerHTML = orig; vidOrig.delete(vid); }
+    vid.removeAttribute("data-playing");
+  }
 
   // ---- my-list sheet ----
   var sheet = $("#sheet");

@@ -66,12 +66,12 @@ def video_plate(item):
     v = VIDEOS.get(item["id"])
     if not v: return ""
     cover = img_uri("vid:"+item["id"])
-    url = f'https://www.youtube.com/watch?v={v["yt_id"]}'
+    bvid = v.get("bvid","")
     inner = f'<img class="vid-img" src="{cover}" alt="" loading="lazy">' if cover else '<div class="vid-img ph"></div>'
-    return f'''<a class="vid" href="{url}" target="_blank" rel="noopener">
+    return f'''<div class="vid" data-bvid="{esc(bvid)}" role="button" tabindex="0" aria-label="播放影片 {esc(v['title'])}">
       {inner}<span class="vid-play" aria-hidden="true"></span>
-      <span class="vid-badge">▶ 影片</span>
-      <span class="vid-cap">{esc(v["title"])}<i>{esc(v.get("author",""))} · YouTube</i></span></a>'''
+      <span class="vid-badge">▶ 点击播放</span>
+      <span class="vid-cap">{esc(v["title"])}<i>{esc(v.get("author",""))} · 哔哩哔哩</i></span></div>'''
 
 def spot(item):
     tags = "".join(f'<span class="tag">{esc(t)}</span>' for t in item["tags"])
@@ -150,7 +150,7 @@ def footer():
         if uniq:
             creds = '<p class="cred">图片来源(Wikimedia Commons 等)：' + "；".join(uniq[:60]) + "。版权归原作者，依各自许可使用。</p>"
     if not creds:
-        creds = '<p class="cred">景点图片来自 Wikimedia Commons 等公开来源，版权归原作者，依各自许可使用；影片封面与链接来自 YouTube，版权归原上传者。</p>'
+        creds = '<p class="cred">景点图片来自 Wikimedia Commons 等公开来源，版权归原作者，依各自许可使用；影片封面来自 YouTube，嵌入播放来自哔哩哔哩，版权归原上传者。</p>'
     return f'''<footer class="foot">
     {creds}
     <p class="disc">价格/时间为 2026-07-07 粗略估算，随季节、汇率与政策浮动，具体以出行前官方渠道为准。本页为 6 人出行投票参考，非商业用途。</p>
