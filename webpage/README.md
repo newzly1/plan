@@ -8,6 +8,7 @@
   国内需 VPN 才能访问。修改后让 Claude 用 Artifact 工具把新的 `index.html` **重新发布到同一个 URL**（覆盖更新，链接不变）。
 - **内容源头**：`../印尼旅行项目投票清单.md`（所有文字由此转写进 `content.py`）
 - **设计说明**：`../docs/superpowers/specs/2026-07-07-bali-trip-voting-webpage-design.md`
+- **项目速览（给 Claude）**：`../CLAUDE.md`（构建、CloudBase 部署与续期、环境要点）
 
 ---
 
