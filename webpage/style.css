@@ -65,31 +65,31 @@ button{font-family:inherit;cursor:pointer}
 .facts,.chap-data,.combo-row i,.mt i,.code,.en,.tag,.hl-code,.vid-badge,.idx b,.bar-n,.num,.note-k,.tip-k,.cap-line,.mast-l,.mast-r,.chap-region{
   font-family:var(--font-mono)}
 
-/* ============ HERO ============ */
-.hero{background:var(--ground);color:var(--ink);max-width:var(--maxw);margin:0 auto}
-.hero-media{position:relative;isolation:isolate;overflow:hidden}
-.hero-img{width:100%;aspect-ratio:4/5;max-height:68vh;object-fit:cover;object-position:center 35%;display:block;filter:saturate(1.05)}
-.hero-scrim{position:absolute;inset:0;background:
-  linear-gradient(180deg,rgba(6,4,2,.12) 0%,rgba(6,4,2,.04) 32%,rgba(6,4,2,.5) 72%,rgba(6,4,2,.84) 100%)}
-.hero-cap{position:absolute;inset:auto 0 0 0;padding:0 20px 22px}
-.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#F2C888;
-  margin-bottom:12px;text-shadow:0 1px 12px rgba(0,0,0,.6)}
-.hero h1{font-size:clamp(30px,8.4vw,46px);line-height:1.05;font-weight:800;letter-spacing:-.01em;color:#FCF7EC;
-  text-wrap:balance;text-shadow:0 2px 22px rgba(0,0,0,.55)}
-.hero .sub{margin-top:10px;font-size:clamp(15px,4vw,18px);color:#F0E6D6;font-weight:500;text-shadow:0 1px 12px rgba(0,0,0,.6)}
-.facts{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:16px;font-size:12.5px;letter-spacing:.06em;
-  color:#FBEFD9;text-shadow:0 1px 10px rgba(0,0,0,.6)}
-.facts i{width:4px;height:4px;border-radius:50%;background:var(--gold-bright);opacity:.9}
-.hero-foot{padding:18px 20px 24px}
-.howto{font-size:14px;line-height:1.75;color:var(--ink-soft)}
-
-.index{display:flex;gap:8px;overflow-x:auto;margin-top:20px;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.index::-webkit-scrollbar{display:none}
-.idx{flex:0 0 auto;display:flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;
-  background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);white-space:nowrap}
-.idx b{color:var(--gold);font-size:12px;font-weight:700}
-.idx span{font-size:13px;color:var(--ink)}
-.idx-star b{color:var(--gold-bright)}
+/* ============ HERO（杂志封面式）============ */
+.hero{max-width:var(--maxw);margin:0 auto}
+.masthead{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 20px 0;
+  font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint)}
+.hero-title{padding:36px 22px 24px;text-align:center}
+.hero-title .rule{display:block;width:36px;height:1px;background:var(--line-strong);margin:0 auto 22px}
+.hero h1{font-size:clamp(30px,7vw,44px);line-height:1.3;color:var(--ink);text-wrap:balance}
+.hero .sub{margin-top:15px;font-size:13px;letter-spacing:.26em;color:var(--ink-soft)}
+.facts{display:flex;flex-wrap:wrap;justify-content:center;gap:9px 18px;margin-top:22px;
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint)}
+.hero-media{position:relative;margin:0;isolation:isolate}
+.hero-img{width:100%;aspect-ratio:4/4.4;object-fit:cover;object-position:center 35%;filter:saturate(1.03)}
+@media (prefers-color-scheme:dark){.hero-img{filter:saturate(1.03) brightness(.94)}}
+:root[data-theme="dark"] .hero-img{filter:saturate(1.03) brightness(.94)}
+.cap-line{display:flex;justify-content:space-between;gap:12px;padding:11px 22px 0;
+  font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint)}
+.cap-line span:last-child{color:var(--brass)}
+.hero-foot{padding:28px 22px 8px}
+.howto{font-size:13.5px;line-height:1.85;color:var(--ink-soft);max-width:58ch;margin:0 auto;text-align:center}
+.index{display:flex;flex-wrap:wrap;margin-top:26px;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
+.idx{flex:1 0 30%;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 12px;
+  border-right:1px solid var(--line);border-top:1px solid var(--line);white-space:nowrap}
+.idx b{color:var(--brass);font-size:11px;font-weight:700}
+.idx span{font-size:12.5px;color:var(--ink)}
+.idx-star b{color:var(--pine)}
 
 /* ============ shared chapter bits ============ */
 main{display:block;max-width:var(--maxw);margin:0 auto;padding:0 16px}

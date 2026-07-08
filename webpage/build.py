@@ -38,16 +38,17 @@ def hero():
     m = C.META
     idx = "".join(f'<a class="idx" href="#region-{r["id"]}"><b>{r["id"]}</b><span>{esc(r["name"].split(" (")[0])}</span></a>' for r in C.REGIONS)
     return f'''<header class="hero">
-  <div class="hero-media">
-    {img_tag("B1a","hero-img","佩尼达 Kelingking 霸王龙海滩",lazy=False)}
-    <div class="hero-scrim"></div>
-    <div class="hero-cap">
-      <div class="eyebrow">印尼群岛 · 选点手册</div>
-      <h1>{esc(m["title"])}</h1>
-      <p class="sub">{esc(m["subtitle"])}</p>
-      <div class="facts"><span>6 人同行</span><i></i><span>9–10 天</span><i></i><span>基地 DPS 巴厘岛</span></div>
-    </div>
+  <div class="masthead"><span class="mast-l">INDONESIA · 巴厘岛及周边</span><span class="mast-r">FIELD NOTES · 2026</span></div>
+  <div class="hero-title">
+    <span class="rule" aria-hidden="true"></span>
+    <h1>{esc(m["title"])}</h1>
+    <p class="sub">{esc(m["subtitle"])}</p>
+    <div class="facts"><span>10.2 – 10.11</span><span>9–10 天</span><span>6 人</span><span>基地 DPS</span></div>
   </div>
+  <figure class="hero-media">
+    {img_tag("B1a","hero-img","佩尼达 Kelingking 霸王龙海滩",lazy=False)}
+    <figcaption class="cap-line"><span>Kelingking · Nusa Penida</span><span>Fig. 01</span></figcaption>
+  </figure>
   <div class="hero-foot">
     <p class="howto">{esc(m["howto"])}</p>
     <nav class="index" aria-label="分区导航"><a class="idx idx-star" href="#highlights"><b>★</b><span>精选</span></a>{idx}</nav>
