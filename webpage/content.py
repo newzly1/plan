@@ -6,7 +6,7 @@ Media (image data URIs, youtube ids) are resolved by fetch_media.py into media.j
 """
 
 META = {
-    "title": "巴厘岛及周边 · 6 人投票参考",
+    "title": "巴厘岛及周边 · 选点手册",
     "subtitle": "看图看视频，选出你想去的地方",
     "window": "10/2 落地 → 10/11 返程 · 约 9–10 天 · 基地巴厘岛(DPS)",
     "howto": "每个景点看图/看视频了解它长什么样，点「必去 / 可去」标记，底部一键复制你的选择发到群里。",

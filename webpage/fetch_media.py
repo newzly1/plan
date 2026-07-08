@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Encode downloaded raw images -> WebP data URIs; fetch+encode YouTube covers; collect Commons credits.
+"""Encode downloaded raw images -> WebP data URIs; fetch+encode Bilibili covers; collect Commons credits.
 Outputs media.json + credits.json."""
 import os, json, base64, io, subprocess, urllib.parse, re
 from PIL import Image, ImageFile
@@ -10,8 +10,8 @@ BUILD = os.path.dirname(os.path.abspath(__file__))
 RAW = os.path.join(BUILD, "raw")
 VRAW = os.path.join(BUILD, "vraw"); os.makedirs(VRAW, exist_ok=True)
 UA = "BaliTripPlanner/1.0 (personal trip research; mail2zhangly@gmail.com)"
-cand = json.load(open(os.path.join(BUILD, "candidates.json")))
-videos = json.load(open(os.path.join(BUILD, "videos.json")))
+cand = json.load(open(os.path.join(BUILD, "candidates.json"), encoding="utf-8"))
+videos = json.load(open(os.path.join(BUILD, "videos.json"), encoding="utf-8"))
 
 def curl(url, out, timeout=45):
     subprocess.run(["curl","-s","--max-time",str(timeout),"-A",UA,"-L","--retry","2","-o",out,url])
@@ -26,6 +26,10 @@ def webp(path, maxw=850, maxh=850, q=68):
 def uri(b): return "data:image/webp;base64," + base64.b64encode(b).decode()
 
 media, sizes = {}, {}
+_mediap = os.path.join(BUILD, "media.json")
+if os.path.exists(_mediap):
+    try: media = json.load(open(_mediap, encoding="utf-8"))
+    except Exception: media = {}
 subspots = [s for it in C.ITEMS for s in it["subspots"]]
 miss = []
 for s in subspots:
@@ -38,18 +42,34 @@ for s in subspots:
     else:
         miss.append(s["id"])
 
+BILI_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
 for iid, v in videos.items():
-    yid = v["yt_id"]; out = os.path.join(VRAW, iid + ".jpg")
-    ok = curl(f"https://img.youtube.com/vi/{yid}/maxresdefault.jpg", out)
-    if not ok or os.path.getsize(out) < 9000:
-        ok = curl(f"https://img.youtube.com/vi/{yid}/hqdefault.jpg", out)
+    bvid = v.get("bvid", "")
+    out = os.path.join(VRAW, iid + ".jpg")
+    if not bvid:
+        print("VID NOBVID", iid); continue
+    api = "https://api.bilibili.com/x/web-interface/view?bvid=" + bvid
+    r = subprocess.run(["curl", "-s", "--max-time", "20", "-A", BILI_UA,
+                        "-H", "Referer: https://www.bilibili.com", api], capture_output=True)
+    pic = ""
+    try:
+        dj = json.loads(r.stdout)
+        pic = (dj.get("data") or {}).get("pic", "") if dj.get("code") == 0 else ""
+    except Exception as e:
+        print("VID API ERR", iid, e)
+    ok = False
+    if pic:
+        pic = pic.replace("http://", "https://", 1)
+        subprocess.run(["curl", "-s", "--max-time", "30", "-A", BILI_UA,
+                        "-H", "Referer: https://www.bilibili.com", "-L", "-o", out, pic])
+        ok = os.path.exists(out) and os.path.getsize(out) > 2000
     if ok:
         try:
             b = webp(out, 640, 640, 66); media["vid:"+iid] = uri(b); sizes["vid:"+iid] = len(b)
         except Exception as e: print("VID ERR", iid, e)
-    else: print("VID MISS", iid)
+    else: print("VID MISS", iid, bvid)
 
-json.dump(media, open(os.path.join(BUILD, "media.json"), "w"))
+json.dump(media, open(os.path.join(BUILD, "media.json"), "w", encoding="utf-8"))
 
 # credits: one batched Commons call for chosen titles
 def strip(x): return re.sub("<[^>]+>", "", x or "").replace("\n"," ").strip()
@@ -57,7 +77,12 @@ titles = {}
 for s in subspots:
     cs = cand.get(s["id"], {}).get("cands") or []
     if cs and s["id"] in media: titles[s["id"]] = cs[0]["title"]
-creds = {}; tl = list(titles.items())
+_credp = os.path.join(BUILD, "credits.json")
+creds = {}
+if os.path.exists(_credp):
+    try: creds = json.load(open(_credp, encoding="utf-8"))
+    except Exception: creds = {}
+tl = list(titles.items())
 for i in range(0, len(tl), 40):
     grp = tl[i:i+40]
     q = {"action":"query","titles":"|".join(t for _,t in grp),"prop":"imageinfo","iiprop":"extmetadata","format":"json"}
@@ -74,7 +99,7 @@ for i in range(0, len(tl), 40):
                           "license": strip(em.get("LicenseShortName", {}).get("value",""))}
     except Exception as e:
         print("CRED ERR", e)
-json.dump(creds, open(os.path.join(BUILD, "credits.json"), "w"), ensure_ascii=False)
+json.dump(creds, open(_credp, "w", encoding="utf-8"), ensure_ascii=False)
 
 tot = sum(sizes.values())
 print(f"media: {len(media)} items | webp {tot/1024:.0f} KB | ~b64 {tot*1.34/1024:.0f} KB | credits {len(creds)}")
