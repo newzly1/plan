@@ -60,9 +60,9 @@ def highlights():
     for h in C.HIGHLIGHTS:
         cards += f'''<a class="hl" href="#{h['item']}">
       {img_tag(h['img'],'hl-img',h['title'])}
-      <div class="hl-cap"><span class="hl-code">{h['item']}</span><b>{esc(h['title'])}</b><span class="hl-blurb">{esc(h['blurb'])}</span></div></a>'''
+      <figcaption class="hl-cap"><b>{esc(h['title'])}</b><span class="hl-sub">{esc(h['blurb'])}</span></figcaption></a>'''
     return f'''<section class="shelf" id="highlights">
-  <div class="chap-eyebrow"><span class="k">精华速览</span> 大多数人必去 · 先看这一屏</div>
+  <div class="chap-eyebrow"><span class="k">精华速览</span>大多数人必去 · 先看这一屏</div>
   <div class="shelf-scroll">{cards}</div>
   <p class="shelf-note">以上 + 佩尼达跳岛 = 6 人不会踩雷的「稳妥核心盘」；差异化项目再从下面 A–E 里挑。</p>
 </section>'''
