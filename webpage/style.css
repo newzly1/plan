@@ -1,43 +1,43 @@
-/* ===== 印尼群岛 · 选点手册 — 安缦杂志风 identity ===== */
+/* ===== 印尼群岛 · 选点手册 — 热带海洋 Tropical Ocean identity ===== */
 *,*::before,*::after{box-sizing:border-box}
 :root{
-  /* 权威调色板：骨白纸 / 墨 / 松绿 / 黄铜 */
-  --ground:#FAF8F2; --ground-2:#F1EEE4; --surface:#F4F1E8; --surface-2:#FCFAF3;
-  --ink:#1B1815; --ink-soft:#575147; --ink-faint:#8A8272;
-  --line:#E5E0D4; --line-2:#D8D2C4; --line-strong:#1B1815;
-  --pine:#1E4D44; --pine-soft:rgba(30,77,68,.10);
-  --brass:#9C7C3C; --brass-bright:#B08A3F; --brass-soft:rgba(156,124,60,.12);
+  /* 热带海洋调色板：骨白青 / 深墨 / 深海绿 / 珊瑚橙 */
+  --ground:#F0F5F3; --ground-2:#E2EDE9; --surface:#E8F0EC; --surface-2:#F5F9F7;
+  --ink:#1B3A35; --ink-soft:#4A6B62; --ink-faint:#7A9590;
+  --line:#D0DED8; --line-2:#C0D0CA; --line-strong:#1B3A35;
+  --pine:#0E5C52; --pine-soft:rgba(14,92,82,.12);
+  --brass:#E87A5D; --brass-bright:#F08A6D; --brass-soft:rgba(232,122,93,.15);
   /* 向后兼容别名（未迁移区块读这些，指向新值，迁移完可清理） */
   --gold:var(--brass); --gold-bright:var(--brass-bright); --gold-soft:var(--brass-soft);
   --sea:var(--pine); --sea-soft:var(--pine-soft);
-  --shadow:none; --shadow-lg:0 14px 44px rgba(27,24,21,.16);
+  --shadow:none; --shadow-lg:0 14px 44px rgba(27,58,53,.16);
   --font-cjk:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
   --serif:"Trip Serif","Source Han Serif SC","Noto Serif CJK SC","Songti SC","STSong","SimSun",serif;
   --font-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
   --rad:0px; --maxw:760px;
 }
 @media (prefers-color-scheme:dark){:root{
-  --ground:#16140F; --ground-2:#1D1A14; --surface:#1D1A14; --surface-2:#221E17;
-  --ink:#EDE7DA; --ink-soft:#B3AA97; --ink-faint:#857C69;
-  --line:#2E2A22; --line-2:#3C382F; --line-strong:#EDE7DA;
-  --pine:#4E9A8A; --pine-soft:rgba(78,154,138,.15);
-  --brass:#C29A54; --brass-bright:#C29A54; --brass-soft:rgba(194,154,84,.15);
+  --ground:#0D1A17; --ground-2:#122220; --surface:#122220; --surface-2:#182724;
+  --ink:#E0EBE7; --ink-soft:#9AB0AA; --ink-faint:#6A8580;
+  --line:#243330; --line-2:#2E423E; --line-strong:#E0EBE7;
+  --pine:#2BA88F; --pine-soft:rgba(43,168,143,.18);
+  --brass:#F08A6D; --brass-bright:#F5A088; --brass-soft:rgba(240,138,109,.18);
   --shadow:none; --shadow-lg:0 16px 48px rgba(0,0,0,.5);
 }}
 :root[data-theme="light"]{
-  --ground:#FAF8F2; --ground-2:#F1EEE4; --surface:#F4F1E8; --surface-2:#FCFAF3;
-  --ink:#1B1815; --ink-soft:#575147; --ink-faint:#8A8272;
-  --line:#E5E0D4; --line-2:#D8D2C4; --line-strong:#1B1815;
-  --pine:#1E4D44; --pine-soft:rgba(30,77,68,.10);
-  --brass:#9C7C3C; --brass-bright:#B08A3F; --brass-soft:rgba(156,124,60,.12);
-  --shadow:none; --shadow-lg:0 14px 44px rgba(27,24,21,.16);
+  --ground:#F0F5F3; --ground-2:#E2EDE9; --surface:#E8F0EC; --surface-2:#F5F9F7;
+  --ink:#1B3A35; --ink-soft:#4A6B62; --ink-faint:#7A9590;
+  --line:#D0DED8; --line-2:#C0D0CA; --line-strong:#1B3A35;
+  --pine:#0E5C52; --pine-soft:rgba(14,92,82,.12);
+  --brass:#E87A5D; --brass-bright:#F08A6D; --brass-soft:rgba(232,122,93,.15);
+  --shadow:none; --shadow-lg:0 14px 44px rgba(27,58,53,.16);
 }
 :root[data-theme="dark"]{
-  --ground:#16140F; --ground-2:#1D1A14; --surface:#1D1A14; --surface-2:#221E17;
-  --ink:#EDE7DA; --ink-soft:#B3AA97; --ink-faint:#857C69;
-  --line:#2E2A22; --line-2:#3C382F; --line-strong:#EDE7DA;
-  --pine:#4E9A8A; --pine-soft:rgba(78,154,138,.15);
-  --brass:#C29A54; --brass-bright:#C29A54; --brass-soft:rgba(194,154,84,.15);
+  --ground:#0D1A17; --ground-2:#122220; --surface:#122220; --surface-2:#182724;
+  --ink:#E0EBE7; --ink-soft:#9AB0AA; --ink-faint:#6A8580;
+  --line:#243330; --line-2:#2E423E; --line-strong:#E0EBE7;
+  --pine:#2BA88F; --pine-soft:rgba(43,168,143,.18);
+  --brass:#F08A6D; --brass-bright:#F5A088; --brass-soft:rgba(240,138,109,.18);
   --shadow:none; --shadow-lg:0 16px 48px rgba(0,0,0,.5);
 }
 
@@ -87,7 +87,7 @@ button{font-family:inherit;cursor:pointer}
 .index{display:flex;flex-wrap:wrap;margin-top:26px;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
 .idx{flex:1 0 30%;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 12px;
   border-right:1px solid var(--line);border-top:1px solid var(--line);white-space:nowrap}
-.idx b{color:var(--brass);font-size:11px;font-weight:700}
+.idx b{color:var(--ink);font-size:14px;font-weight:700}
 .idx span{font-size:12.5px;color:var(--ink)}
 .idx-star b{color:var(--pine)}
 
@@ -125,7 +125,7 @@ main{display:block;max-width:var(--maxw);margin:0 auto;padding:0 16px}
   border-radius:0;padding:26px 0 24px;margin:0;box-shadow:none;scroll-margin-top:12px}
 .spot:first-of-type{border-top:0}
 .spot-head{display:flex;align-items:baseline;gap:12px}
-.code{flex:0 0 auto;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--brass);
+.code{flex:0 0 auto;font-size:15px;font-weight:700;letter-spacing:.1em;color:var(--ink);
   border:0;border-radius:0;padding:0;background:none}
 .spot-title{min-width:0}
 .spot-title h3{font-size:19px;line-height:1.28;display:flex;align-items:baseline;gap:8px}
@@ -149,22 +149,33 @@ main{display:block;max-width:var(--maxw);margin:0 auto;padding:0 16px}
 :root[data-theme="dark"] .shot-img{filter:brightness(.95)}
 
 /* video plate（去圆角 + 黄铜徽标）*/
+.vid-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.vid-row .vid{margin-top:0}
 .vid{position:relative;display:block;margin-top:16px;border-radius:0;overflow:hidden;aspect-ratio:16/9;
   background:#0c0a08;isolation:isolate;cursor:pointer}
-.vid-img{width:100%;height:100%;object-fit:cover;opacity:.94;transition:opacity .2s,transform .3s}
-.vid:hover .vid-img{opacity:1;transform:scale(1.02)}
+.vid-img{width:100%;height:100%;object-fit:cover;opacity:.92;transition:opacity .2s,transform .3s}
+.vid:hover .vid-img{opacity:1;transform:scale(1.03)}
 .vid-play{position:absolute;top:50%;left:50%;width:56px;height:56px;transform:translate(-50%,-50%);
-  border-radius:50%;background:rgba(20,14,8,.5);backdrop-filter:blur(2px);border:1.5px solid rgba(255,255,255,.9)}
+  border-radius:50%;background:rgba(20,14,8,.45);backdrop-filter:blur(2px);border:1.5px solid rgba(255,255,255,.85);
+  transition:transform .2s,background .2s}
+.vid:hover .vid-play{transform:translate(-50%,-50%) scale(1.1);background:rgba(20,14,8,.65)}
 .vid-play::after{content:"";position:absolute;top:50%;left:54%;transform:translate(-50%,-50%);
   border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent #fff}
-.vid-badge{position:absolute;top:12px;left:12px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink);background:var(--brass-bright);padding:4px 9px;border-radius:0}
-.vid-cap{position:absolute;inset:auto 0 0 0;padding:28px 14px 12px;color:#fff;font-size:12.5px;line-height:1.4;font-weight:600;
-  background:linear-gradient(0deg,rgba(6,4,2,.9),transparent);display:flex;flex-direction:column;gap:3px}
+.vid-badge{position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3);padding:4px 9px;border-radius:0}
+.vid-cap{position:absolute;inset:auto 0 0 0;padding:30px 14px 11px;color:#fff;font-size:12.5px;line-height:1.35;font-weight:600;
+  background:linear-gradient(0deg,rgba(6,4,2,.92) 20%,transparent);display:flex;flex-direction:column;gap:2px}
 .vid-cap i{font-style:normal;font-size:9.5px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:#cdbfa8;font-family:var(--font-mono)}
 .vid[data-playing]{background:#000;cursor:default}
 .vid-frame{width:100%;height:100%;border:0;display:block}
 .vid[data-playing] .vid-img,.vid[data-playing] .vid-play,.vid[data-playing] .vid-badge,.vid[data-playing] .vid-cap{display:none}
+/* grid: slightly compact captions */
+.vid-row .vid-cap{font-size:11.5px;padding:24px 10px 9px}
+.vid-row .vid-cap i{font-size:9px}
+.vid-row .vid-badge{font-size:9px;padding:3px 7px;top:8px;left:8px}
+.vid-row .vid-play{width:46px;height:46px}
+.vid-row .vid-play::after{border-width:7px 0 7px 12px}
+@media(max-width:520px){.vid-row{grid-template-columns:1fr}}
 
 /* meta（细线顶边）*/
 .spot-meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}

@@ -107,15 +107,24 @@ def gallery(item):
     return f'<div class="gallery">{figs}</div>'
 
 def video_plate(item):
-    v = VIDEOS.get(item["id"])
-    if not v: return ""
-    cover = img_uri("vid:"+item["id"])
-    bvid = v.get("bvid","")
-    inner = f'<img class="vid-img" src="{cover}" alt="" loading="lazy">' if cover else '<div class="vid-img ph"></div>'
-    return f'''<div class="vid" data-bvid="{esc(bvid)}" role="button" tabindex="0" aria-label="播放影片 {esc(v['title'])}">
+    vids = VIDEOS.get(item["id"])
+    if not vids: return ""
+    # Handle both old format (dict) and new format (list)
+    if isinstance(vids, dict):
+        vids = [vids]
+    plates = ""
+    for i, v in enumerate(vids):
+        cover_key = f"vid:{item['id']}_{i}"
+        cover = img_uri(cover_key)
+        bvid = v.get("bvid","")
+        inner = f'<img class="vid-img" src="{cover}" alt="" loading="lazy">' if cover else '<div class="vid-img ph"></div>'
+        plates += f'''<div class="vid" data-bvid="{esc(bvid)}" role="button" tabindex="0" aria-label="播放影片 {esc(v['title'])}">
       {inner}<span class="vid-play" aria-hidden="true"></span>
       <span class="vid-badge">▶ 点击播放</span>
       <span class="vid-cap">{esc(v["title"])}<i>{esc(v.get("author",""))} · 哔哩哔哩</i></span></div>'''
+    if len(vids) > 1:
+        return f'<div class="vid-row">{plates}</div>'
+    return plates
 
 def spot(item):
     tags = "".join(f'<span class="tag">{esc(t)}</span>' for t in item["tags"])
