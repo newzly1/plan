@@ -113,7 +113,7 @@ main{display:block;max-width:var(--maxw);margin:0 auto;padding:0 16px}
 .chapter{padding:44px 0 8px;scroll-margin-top:12px}
 .chap-head{border-top:1.5px solid var(--line-strong);padding-top:16px}
 .chap-meta{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
-.chap-meta h2{font-size:clamp(21px,4.6vw,26px);line-height:1.3;text-wrap:balance}
+.chap-meta h2{font-size:clamp(21px,4.6vw,26px);line-height:1.3;text-wrap:balance;min-width:0;overflow-wrap:anywhere}
 .chap-region{flex:0 0 auto;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
 .chap-data{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:10px;font-size:10.5px;
   letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
