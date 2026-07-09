@@ -16,9 +16,9 @@ META = {
 LEGEND = ["海岛/海滩", "火山", "徒步", "潜水/浮潜", "文化/寺庙", "网红打卡"]
 
 REGIONS = [
-    {"id": "A", "name": "巴厘岛本岛 (Bali)", "tag": "大本营 · 枢纽", "days": "建议 5–7 天",
+    {"id": "A", "name": "巴厘岛本岛 (Bali)", "tag": "首站 交通枢纽", "days": "建议 3–8 天",
      "budget": "人均约 ¥700–1400",
-     "desc": "落地机场所在、向外辐射的枢纽；内部靠包车/摩托，跨区约 1–2 小时车程。9–10 天的行程主要时间都在这里。"},
+     "desc": "落地机场所在、向外辐射的枢纽；内部靠包车/摩托，跨区约 1–2 小时车程。节奏参考：时间紧凑 2–3 天（乌布核心 + 南巴厘断崖日落）；只逛精华 3–4 天（乌布深度 + 南巴厘全部 + 海神庙）；舒适加一个方向 5–6 天（精华 + 东或北任选其一）；四片区全覆盖 7–8 天。9–10 天的行程主要时间都在这里。"},
     {"id": "B", "name": "佩尼达三岛 (Nusa Penida/Lembongan/Ceningan)", "tag": "无缝衔接 · 几乎必玩", "days": "建议 1–2 天",
      "budget": "人均约 ¥300–800",
      "desc": "从巴厘 Sanur 港快艇 30–45 分钟，与南巴厘紧密相连。可一日跟团或住岛 1–2 晚。"},
@@ -54,8 +54,8 @@ ITEMS = [
     {
         "id": "A2", "region": "A", "zh": "乌布文化区", "en": "Ubud", "highlight": True,
         "tags": ["文化", "梯田", "瀑布"], "time": "2–3 天",
-        "price": "门票各 ¥25–100；漂流约 ¥250–400；SPA ¥150+",
-        "feature": "德格拉朗梯田、圣猴森林、Tirta Empul 圣泉庙、丛林秋千、多条瀑布(Tegenungan/Tibumana)、Ayung 河漂流、瑜伽与 SPA、手工艺村。文艺慢节奏核心。",
+        "price": "门票各 ¥25–100；漂流约 ¥250–350；SPA ¥150+",
+        "feature": "德格拉朗梯田、圣猴森林、Tirta Empul 圣泉庙、丛林秋千、多条瀑布(Tegenungan/Tibumana)、Ayung 河漂流、ATV 四驱越野、瑜伽与 SPA、手工艺村。文艺慢节奏核心。",
         "caution": "猴子会抢眼镜/手机/食物；梯田与秋千为收费网红点、人多需早去；进庙须围纱笼(sarong)。",
         "coupling": "地处中部，是前往东部/北部火山瀑布的最佳中转基地。",
         "video_q": "Ubud Bali Tegallalang rice terrace 4k",
@@ -87,7 +87,7 @@ ITEMS = [
         "id": "A4", "region": "A", "zh": "北巴厘 & 中部高地", "en": "North Bali & Highlands",
         "tags": ["瀑布", "湖庙", "打卡"], "time": "1–2 天",
         "price": "包车分摊人均约 ¥60–90/天；湖庙 ¥35、Handara 门 ¥15、Sekumpul 瀑布 ¥45",
-        "feature": "Sekumpul/Banyumala 瀑布、Munduk 山区与双子湖、水神庙(Ulun Danu Beratan，50000 卢比纸币图案)、Handara 网红门、Lovina 看海豚。凉爽清幽。",
+        "feature": "Sekumpul/Banyumala 瀑布、Munduk 山区与双子湖、水神庙(Ulun Danu Beratan，50000 印尼盾纸币图案)、Handara 网红门、Lovina 看海豚。凉爽清幽。",
         "caution": "山路弯多易晕车；Sekumpul 需下切徒步、雨后湿滑较累；Lovina 为野生海豚，不保证能看到。",
         "coupling": "可与东部火山、乌布串成中北部环线，一并游玩。",
         "video_q": "Ulun Danu Beratan temple Sekumpul waterfall north Bali",
@@ -95,7 +95,7 @@ ITEMS = [
             {"id": "A4a", "zh": "水神庙 (Ulun Danu Beratan)", "en": "Ulun Danu Beratan", "q": "Ulun Danu Beratan temple lake Bali", "desc": "湖心轻雾中的水上庙，纸币同款图案。清晨湖面平静倒影好，山区凉，带件薄外套。"},
             {"id": "A4b", "zh": "Sekumpul 瀑布", "en": "Sekumpul Waterfall", "q": "Sekumpul waterfall Bali", "desc": "北巴厘最壮观的多股瀑布群，需下切山谷步行到达。雨后台阶湿滑较累，穿防滑鞋、留足体力。"},
             {"id": "A4c", "zh": "Handara 网红门", "en": "Handara Gate", "q": "Handara gate Bali", "desc": "巨型石柱拱门框住绿意山道，对称构图好拍。景点小、排队拍人像，早去省时，旁山路弯多易晕车。"},
-            {"id": "A4d", "zh": "Munduk 双子湖", "en": "Munduk Twin Lakes", "q": "Buyan Tamblingan twin lake Bali viewpoint", "desc": "山间两汪相连湖泊，配咖啡园与凉雾。观景点停车即看、不累，山路弯多慢行，适合顺路歇脚。"},
+            {"id": "A4d", "zh": "Munduk 双子湖", "en": "Munduk Twin Lakes", "q": "Buyan Tamblingan twin lake Bali viewpoint", "desc": "山间两汪毗邻湖泊，配咖啡园与凉雾。观景点停车即看、不累，山路弯多慢行，适合顺路歇脚。"},
             {"id": "A4e", "zh": "Banyumala 瀑布", "en": "Banyumala Waterfall", "q": "Banyumala twin waterfall Bali", "desc": "幽谷里的双流瀑布汇成碧潭，可游泳。需走一段下坡石径，雨后湿滑，带换洗衣物与防滑鞋。"},
         ],
     },
@@ -107,8 +107,7 @@ ITEMS = [
         "coupling": "位于西南沿海，可与 Canggu / 乌布顺路安排。",
         "video_q": "Tanah Lot temple sunset Bali 4k",
         "subspots": [
-            {"id": "A5a", "zh": "海神庙日落", "en": "Tanah Lot Sunset", "q": "Tanah Lot temple sunset Bali", "desc": "海中岩庙配橘色落日的巴厘名片。日落时段人极多，宜提前到占位，退潮才可走近庙底礁石。"},
-            {"id": "A5b", "zh": "海中神庙", "en": "Sea Temple", "q": "Tanah Lot temple rock Bali", "desc": "退潮露出礁石可走近的海上庙宇，独立于浪中。涨潮淹没通道无法靠近，出发前查好潮时、注意湿滑。"},
+            {"id": "A5a", "zh": "海神庙日落", "en": "Tanah Lot Sunset", "q": "Tanah Lot temple sunset Bali", "desc": "海中岩庙配橘色落日的巴厘名片。日落时段人极多，宜提前到占位；退潮露出礁石可走近庙底，涨潮时通道淹没，出发前查好潮时、注意湿滑。"},
         ],
     },
     {
@@ -189,21 +188,21 @@ ITEMS = [
         "subspots": [
             {"id": "C3a", "zh": "Tanjung Aan 粉沙海湾", "en": "Tanjung Aan Beach", "q": "Tanjung Aan beach Lombok", "desc": "细软粉沙与渐变蓝海的小海湾，比巴厘安静。景点分散需包车，正午晒，带遮阳与水。"},
             {"id": "C3b", "zh": "Tiu Kelep 瀑布", "en": "Tiu Kelep Waterfall", "q": "Tiu Kelep waterfall Lombok", "desc": "林中多层瀑布汇流，可走到水帘后。需走一段丛林步道，雨后湿滑，带换洗衣物与防滑鞋。"},
-            {"id": "C3c", "zh": "粉色沙滩", "en": "Pink Beach Lombok", "q": "Pink Beach Lombok Tangsi", "desc": "偏远海湾的淡粉沙，需乘船方可到达。路况一般、路远，防晒防中暑，退潮粉色更明显。"},
+            {"id": "C3c", "zh": "龙目粉色沙滩 (Tangsi)", "en": "Pink Beach Lombok", "q": "Pink Beach Lombok Tangsi", "desc": "偏远海湾的淡粉沙，需乘船方可到达。路况一般、路远，防晒防中暑，退潮粉色更明显。"},
         ],
     },
     {
         "id": "D1", "region": "D", "zh": "科莫多跳岛", "en": "Komodo Island Hopping",
         "tags": ["海岛", "Padar 观景", "浮潜"], "time": "2–3 天",
-        "price": "往返机票人均约 ¥600–1200 + 跳岛团 ¥400–900",
-        "feature": "科莫多巨蜥(野生)、Padar 岛三色海湾观景、粉色沙滩、Manta Point 蝠鲼、Kanawa/Kelor 浮潜、蝙蝠岛日落。印尼海岛风光天花板之一。",
+        "price": "往返机票人均约 ¥600–1200 + 跳岛团 ¥300–1200（1 日/2 日 1 夜）",
+        "feature": "科莫多巨蜥(野生)、Padar 岛三色海湾观景、粉色沙滩、科莫多 Manta Point 蝠鲼、Kanawa/Kelor 浮潜、蝙蝠岛日落。印尼海岛风光天花板之一。",
         "caution": "上岛看龙必须跟园区向导——巨蜥能奔跑与游泳、具攻击性；部分海域有流，浮潜跟船。",
         "coupling": "相对独立(需飞机)；玩法内部紧凑，一次跳岛全包。",
         "video_q": "Komodo island Padar viewpoint pink beach drone 4k",
         "subspots": [
             {"id": "D1a", "zh": "Padar 岛三色海湾", "en": "Padar Island", "q": "Padar island viewpoint Komodo", "desc": "登顶看三处不同色海湾的视野，经典构图。需爬一段曝晒山坡，早去可避开炎热与人潮，带足水。"},
             {"id": "D1b", "zh": "科莫多巨蜥", "en": "Komodo Dragon", "q": "Komodo dragon Komodo national park", "desc": "野生巨蜥在岛上漫步，体型大具攻击性。上岛必须跟园区向导、保持距离，勿掉队与投喂。"},
-            {"id": "D1c", "zh": "粉色沙滩", "en": "Pink Beach", "q": "Pink Beach Komodo island", "desc": "珊瑚碎屑形成的淡粉沙滩，浮潜看珊瑚。正午晒、人潮随船到，早去更清静，防晒补水。"},
+            {"id": "D1c", "zh": "科莫多粉色沙滩", "en": "Pink Beach", "q": "Pink Beach Komodo island", "desc": "珊瑚碎屑形成的淡粉沙滩，浮潜看珊瑚。正午晒、人潮随船到，早去更清静，防晒补水。"},
             {"id": "D1d", "zh": "Kanawa/Kelor 浮潜", "en": "Kelor Island", "q": "Kelor island Komodo viewpoint", "desc": "小岛周边清澈珊瑚礁，浮潜轻松看鱼。部分海域有流，跟船浮潜、勿远离，带珊瑚友好防晒。"},
         ],
     },
