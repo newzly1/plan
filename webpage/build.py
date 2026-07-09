@@ -132,8 +132,10 @@ def combos():
         <div class="combo-row"><span><i>天数</i>{esc(c['days'])}</span><span><i>人均</i>{esc(c['budget'])}</span></div>
         <p>{esc(c['note'])}</p></div></div>'''
     return f'''<section class="chapter combos-sec" id="combos">
-  <div class="chap-head"><span class="chap-letter alt">线</span>
-    <div class="chap-meta"><h2>组合建议 · 主线①–④</h2><div class="chap-data"><span>9–10 天 · 二选一即可</span></div></div></div>
+  <div class="chap-head">
+    <div class="chap-meta"><h2>组合建议 · 主线①–④</h2><span class="chap-region">Routes</span></div>
+    <div class="chap-data"><span>9–10 天 · 二选一即可</span></div>
+  </div>
   <p class="chap-desc">{esc(C.COMBO_HINT)}</p>
   <div class="combos">{cards}</div></section>'''
 
