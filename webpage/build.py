@@ -115,10 +115,8 @@ def region(r):
     body = "".join(spot(it) for it in items)
     return f'''<section class="chapter" id="region-{r['id']}">
   <div class="chap-head">
-    <span class="chap-letter">{r['id']}</span>
-    <div class="chap-meta"><h2>{esc(r['name'])}</h2>
-      <div class="chap-data"><span>{esc(r['tag'])}</span><i></i><span>{esc(r['days'])}</span><i></i><span>{esc(r['budget'])}</span></div>
-    </div>
+    <div class="chap-meta"><h2>{esc(r['name'])}</h2><span class="chap-region">Region {r['id']}</span></div>
+    <div class="chap-data"><span>{esc(r['tag'])}</span><i></i><span>{esc(r['days'])}</span><i></i><span>{esc(r['budget'])}</span></div>
   </div>
   <p class="chap-desc">{esc(r['desc'])}</p>
   {body}
