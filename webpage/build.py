@@ -170,7 +170,7 @@ def footer():
 
 def mylist():
     combo_opts = "".join(f'<label class="cr"><input type="radio" name="combo" value="{c["no"]}"><span>组{c["no"]} {esc(c["name"])}</span></label>' for c in C.COMBOS)
-    return f'''<button type="button" class="bar" id="bar"><span class="bar-l"><span class="bar-dot"></span>我的清单</span><span class="bar-n" id="barN">0</span></button>
+    return f'''<button type="button" class="bar" id="bar"><span class="bar-l"><span class="bar-dot"></span>我的清单 · MY LIST</span><span class="bar-n" id="barN">0</span></button>
 <div class="sheet" id="sheet" hidden>
   <div class="sheet-card" role="dialog" aria-label="我的清单" aria-modal="true">
     <div class="sheet-head"><b>我的清单</b><button type="button" class="x" id="sheetX" aria-label="关闭">×</button></div>
