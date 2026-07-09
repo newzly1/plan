@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "desc": "景点图片搜索关键字表 - 每个子点 4 个不同视角关键词",
+    "version": "1.0",
+    "updated": "2026-07-09",
+    "usage": "用于搜集多样化景点图片,搜集后放入 review/<子点id>/ 供审核"
+  },
+  "subspots": [
+    {"id": "A1a", "zh": "情人崖 (乌鲁瓦图庙)", "en": "Uluwatu Temple", "keywords": ["Uluwatu Temple cliff ocean view", "Uluwatu Temple sunset Bali", "Uluwatu sea temple aerial drone", "Uluwatu Temple monkey Bali"]},
+    {"id": "A1b", "zh": "Kecak 火祭舞", "en": "Kecak Fire Dance", "keywords": ["Kecak dance Uluwatu performance", "Kecak fire dance Bali sunset", "Balinese Kecak traditional dance", "Uluwatu amphitheater dance"]},
+    {"id": "A1c", "zh": "金巴兰海鲜沙滩", "en": "Jimbaran Bay", "keywords": ["Jimbaran Bay beach sunset", "Jimbaran seafood BBQ beach dinner", "Jimbaran Bay dining night", "Jimbaran Bali sunset restaurant"]},
+    {"id": "A1d", "zh": "水明漾/库塔海滩", "en": "Seminyak / Kuta Beach", "keywords": ["Seminyak beach sunset Bali", "Kuta beach surfing Bali", "Seminyak beach club Bali", "Bali beach sunset palm trees"]},
+
+    {"id": "A2a", "zh": "德格拉朗梯田", "en": "Tegallalang Rice Terrace", "keywords": ["Tegallalang rice terrace Bali", "Bali rice terrace aerial drone", "Tegallalang rice field swing", "Tegallalang green rice paddies"]},
+    {"id": "A2b", "zh": "圣猴森林", "en": "Sacred Monkey Forest", "keywords": ["Sacred Monkey Forest Ubud", "Ubud monkey forest Bali", "Monkey Forest temple Bali", "Bali macaque monkeys sanctuary"]},
+    {"id": "A2c", "zh": "Tirta Empul 圣泉庙", "en": "Tirta Empul Temple", "keywords": ["Tirta Empul temple holy water", "Tirta Empul purification ritual", "Tirta Empul Bali temple", "Tirta Empul water blessing"]},
+    {"id": "A2d", "zh": "丛林秋千", "en": "Bali Swing", "keywords": ["Bali swing Tegallalang", "Bali jungle swing bird nest", "Ubud Bali swing over valley", "Bali swing rice terrace"]},
+    {"id": "A2e", "zh": "Tegenungan 瀑布", "en": "Tegenungan Waterfall", "keywords": ["Tegenungan waterfall Bali", "Tegenungan waterfall aerial", "Bali waterfall Tegenungan", "Tegenungan falls swimming"]},
+
+    {"id": "A3a", "zh": "巴图尔火山日出", "en": "Mt Batur Sunrise", "keywords": ["Mount Batur sunrise summit", "Mount Batur volcano Bali", "Mount Batur sunrise trekking", "Batur caldera lake sunrise"]},
+    {"id": "A3b", "zh": "Lempuyang 天堂之门", "en": "Gates of Heaven", "keywords": ["Lempuyang temple gates of heaven", "Lempuyang Bali reflection photo", "Gates of heaven Lempuyang Agung", "Lempuyang temple mountain view"]},
+    {"id": "A3c", "zh": "Tirta Gangga 水宫", "en": "Tirta Gangga", "keywords": ["Tirta Gangga water palace Bali", "Tirta Gangga garden statues", "Tirta Gangga fish pond Bali", "Tirta Gangga water garden"]},
+    {"id": "A3d", "zh": "Besakih 母庙", "en": "Besakih Temple", "keywords": ["Besakih temple Bali mother temple", "Besakih temple Mount Agung", "Pura Besakih Bali", "Besakih temple complex aerial"]},
+    {"id": "A3e", "zh": "USS Liberty 沉船", "en": "USS Liberty Wreck", "keywords": ["USS Liberty wreck Tulamben", "Liberty shipwreck diving Bali", "Tulamben shipwreck snorkel", "USS Liberty wreck underwater"]},
+
+    {"id": "A4a", "zh": "水神庙 (Ulun Danu Beratan)", "en": "Ulun Danu Beratan", "keywords": ["Ulun Danu Beratan temple", "Ulun Danu lake temple Bali", "Ulun Danu Beratan misty", "Beratan lake temple aerial"]},
+    {"id": "A4b", "zh": "Sekumpul 瀑布", "en": "Sekumpul Waterfall", "keywords": ["Sekumpul waterfall Bali", "Sekumpul falls aerial", "Sekumpul waterfall jungle", "Bali Sekumpul waterfall trek"]},
+    {"id": "A4c", "zh": "Handara 网红门", "en": "Handara Gate", "keywords": ["Handara Gate Bali", "Handara golf gate Bali", "Bali Handara gate photo", "Handara Gate mountain road"]},
+    {"id": "A4d", "zh": "Munduk 双子湖", "en": "Munduk Twin Lakes", "keywords": ["Buyan Tamblingan twin lake Bali", "Munduk twin lakes viewpoint", "Lake Buyan Bali aerial", "Tamblingan lake Bali misty"]},
+    {"id": "A4e", "zh": "Banyumala 瀑布", "en": "Banyumala Waterfall", "keywords": ["Banyumala twin waterfall Bali", "Banyumala waterfall pool", "Banyumala waterfall jungle", "Banyumala falls Bali swimming"]},
+
+    {"id": "A5a", "zh": "海神庙日落", "en": "Tanah Lot Sunset", "keywords": ["Tanah Lot temple sunset Bali", "Tanah Lot sunset reflection", "Tanah Lot temple ocean", "Tanah Lot Bali aerial drone"]},
+    {"id": "A5b", "zh": "海中神庙", "en": "Sea Temple", "keywords": ["Tanah Lot temple rock", "Tanah Lot low tide Bali", "Tanah Lot sea temple", "Tanah Lot temple waves"]},
+
+    {"id": "B1a", "zh": "精灵坠崖 (Kelingking)", "en": "Kelingking Beach", "keywords": ["Kelingking Beach Nusa Penida", "Kelingking Beach drone aerial", "Kelingking T-Rex cliff Nusa Penida", "Kelingking Beach viewpoint"]},
+    {"id": "B1b", "zh": "破碎沙滩", "en": "Broken Beach", "keywords": ["Broken Beach Nusa Penida", "Broken Beach arch Nusa Penida", "Broken Beach aerial drone", "Pasih Uug Beach Nusa Penida"]},
+    {"id": "B1c", "zh": "天使浴池", "en": "Angel's Billabong", "keywords": ["Angel's Billabong Nusa Penida", "Angel's Billabong natural pool", "Angel's Billabong tide pool", "Nusa Penida Angel's Billabong ocean"]},
+    {"id": "B1d", "zh": "钻石沙滩", "en": "Diamond Beach", "keywords": ["Diamond Beach Nusa Penida", "Diamond Beach stairs Nusa Penida", "Diamond Beach aerial", "Nusa Penida Diamond Beach cliff"]},
+    {"id": "B1e", "zh": "水晶湾", "en": "Crystal Bay", "keywords": ["Crystal Bay Nusa Penida", "Crystal Bay snorkeling", "Crystal Bay beach sunset", "Nusa Penida Crystal Bay coral"]},
+
+    {"id": "B2a", "zh": "蝠鲼同游", "en": "Manta Ray", "keywords": ["Manta ray snorkeling Nusa Penida", "Manta ray Manta Point Bali", "Manta ray underwater", "Manta ray diving Indonesia"]},
+    {"id": "B2b", "zh": "海龟浮潜", "en": "Sea Turtle", "keywords": ["sea turtle snorkeling Indonesia", "green turtle underwater reef", "sea turtle Bali snorkel", "turtle Gili snorkeling"]},
+
+    {"id": "B3a", "zh": "恶魔的眼泪", "en": "Devil's Tear", "keywords": ["Devil's Tear Nusa Lembongan", "Devil's Tear waves splash", "Devil's Tear Nusa Lembongan sunset", "Nusa Lembongan Devil's Tear blowhole"]},
+    {"id": "B3b", "zh": "Ceningan 黄桥", "en": "Yellow Bridge", "keywords": ["Yellow Bridge Nusa Ceningan", "Yellow Bridge Lembongan Ceningan", "Nusa Ceningan yellow bridge sunset", "Lembongan Ceningan bridge"]},
+    {"id": "B3c", "zh": "梦幻海滩", "en": "Dream Beach Lembongan", "keywords": ["Dream Beach Nusa Lembongan", "Dream Beach Lembongan cliff", "Dream Beach Nusa Lembongan sunset", "Nusa Lembongan Dream Beach ocean"]},
+
+    {"id": "C1a", "zh": "吉利岛海滩秋千", "en": "Gili Beach Swing", "keywords": ["Gili Trawangan beach swing", "Gili Trawangan sunset swing", "Gili Islands beach swing", "Gili Trawangan ocean swing"]},
+    {"id": "C1b", "zh": "海底雕塑/秋千", "en": "Underwater Statues", "keywords": ["Gili Meno underwater statues", "Gili Meno Nest underwater", "underwater sculpture Gili Meno", "Gili Meno underwater snorkeling"]},
+
+    {"id": "C2a", "zh": "火山口湖 Segara Anak", "en": "Segara Anak Lake", "keywords": ["Mount Rinjani Segara Anak crater lake", "Rinjani crater lake aerial", "Segara Anak lake Rinjani", "Rinjani volcano crater lake"]},
+    {"id": "C2b", "zh": "登顶日出云海", "en": "Summit Sunrise", "keywords": ["Mount Rinjani summit sunrise", "Rinjani summit view Lombok", "Mount Rinjani sunrise clouds", "Rinjani peak sunrise trek"]},
+
+    {"id": "C3a", "zh": "Tanjung Aan 粉沙海湾", "en": "Tanjung Aan Beach", "keywords": ["Tanjung Aan beach Lombok", "Tanjung Aan pink sand", "Tanjung Aan Merese Hill", "Lombok Tanjung Aan aerial"]},
+    {"id": "C3b", "zh": "Tiu Kelep 瀑布", "en": "Tiu Kelep Waterfall", "keywords": ["Tiu Kelep waterfall Lombok", "Tiu Kelep falls jungle", "Tiu Kelep waterfall Senaru", "Tiu Kelep Lombok trek"]},
+    {"id": "C3c", "zh": "粉色沙滩", "en": "Pink Beach Lombok", "keywords": ["Pink Beach Lombok", "Tangsi Beach pink sand Lombok", "Lombok Pink Beach aerial", "Pink Beach Lombok snorkeling"]},
+
+    {"id": "D1a", "zh": "Padar 岛三色海湾", "en": "Padar Island", "keywords": ["Padar island viewpoint Komodo", "Padar island aerial drone", "Padar island summit", "Padar Komodo three bays"]},
+    {"id": "D1b", "zh": "科莫多巨蜥", "en": "Komodo Dragon", "keywords": ["Komodo dragon Komodo national park", "Komodo dragon close up", "Komodo dragon walking", "Komodo dragon wild Rinca"]},
+    {"id": "D1c", "zh": "粉色沙滩", "en": "Pink Beach", "keywords": ["Pink Beach Komodo island", "Komodo Pink Beach aerial", "Pink Beach Komodo snorkeling", "Komodo Pink Beach drone"]},
+    {"id": "D1d", "zh": "Kanawa/Kelor 浮潜", "en": "Kelor Island", "keywords": ["Kelor island Komodo", "Kanawa island snorkeling Komodo", "Kelor island viewpoint", "Kanawa Komodo beach"]},
+
+    {"id": "D2a", "zh": "Phinisi 帆船船宿", "en": "Phinisi Liveaboard", "keywords": ["phinisi boat Komodo Labuan Bajo", "phinisi sailing boat Indonesia", "Komodo liveaboard phinisi", "phinisi boat aerial Komodo"]},
+    {"id": "D2b", "zh": "清晨 Padar", "en": "Padar Sunrise", "keywords": ["Padar island sunrise", "Padar sunrise Komodo", "Padar island morning view", "Padar sunrise drone"]},
+
+    {"id": "E1a", "zh": "蓝色火焰", "en": "Blue Fire", "keywords": ["Ijen blue fire crater", "Ijen blue flame night", "Ijen volcano blue fire", "Kawah Ijen blue fire sulfur"]},
+    {"id": "E1b", "zh": "翠绿硫磺酸湖", "en": "Sulfur Crater Lake", "keywords": ["Ijen crater acid lake", "Ijen sulfur lake green", "Ijen crater lake miner", "Kawah Ijen sulfur mining"]}
+  ]
+}
