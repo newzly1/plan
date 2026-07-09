@@ -38,7 +38,7 @@ def hero():
     m = C.META
     idx = "".join(f'<a class="idx" href="#region-{r["id"]}"><b>{r["id"]}</b><span>{esc(r["name"].split(" (")[0])}</span></a>' for r in C.REGIONS)
     return f'''<header class="hero">
-  <div class="masthead"><span class="mast-l">INDONESIA · 巴厘岛及周边</span><span class="mast-r">FIELD NOTES · 2026</span></div>
+  <div class="masthead"><span class="mast-l">INDONESIA</span><span class="mast-r">FIELD NOTES · 2026</span></div>
   <div class="hero-title">
     <span class="rule" aria-hidden="true"></span>
     <h1>{esc(m["title"])}</h1>
