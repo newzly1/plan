@@ -1,0 +1,43 @@
+{
+ "id": "A2c",
+ "zh": "金巴兰海鲜沙滩",
+ "pure_name": "Jimbaran Bay Bali",
+ "extra_keywords": [
+  "Jimbaran seafood BBQ dinner"
+ ],
+ "files": [
+  {
+   "file": "01_pixabay.jpg",
+   "title": "sunset, beach, sea, ocean, sand, paradise, nature, jimbaran bay, bali, indonesia, holiday, travel, island, exotic, relaxation, tourism",
+   "artist": "WonderfulBali",
+   "license": "Pixabay License",
+   "source": "pixabay",
+   "foreign_url": "https://pixabay.com/photos/sunset-beach-sea-ocean-sand-6579876/",
+   "url": "https://pixabay.com/get/g33444aba58cc0014c74261d3f46398912ba188ebe47b251a3fda1bb47b85abe4058926a75e7f1abfca4b0401603d96ef74bb885987e628e40b96c04fb64dbd42_1280.jpg",
+   "kw": "Jimbaran Bay Bali",
+   "tags": "sunset, beach, sea, ocean, sand, paradise, nature, jimbaran bay, bali, indonesia, holiday, travel, island, exotic, relaxation, tourism"
+  },
+  {
+   "file": "02_pixabay.jpg",
+   "title": "jimbaran bay, bali, indonesia, sea front luxury resort, coastline, friends, blue, blue sky, travel, asia, holiday, beach, bay, coastal, frolic, scenic, seaside, shore, seascape, sky, horizon, scenery, ocean, nature, sea, outdoor",
+   "artist": "jeniffertn",
+   "license": "Pixabay License",
+   "source": "pixabay",
+   "foreign_url": "https://pixabay.com/photos/jimbaran-bay-bali-indonesia-4544321/",
+   "url": "https://pixabay.com/get/g84f417f7fd3e28f9d9ebe7b3d6ff686cc9d98a7e741a98824c949c520d89ec07f893183d6451f3da4dfc794136076e9f7833d5caa5f6cda760e962c8431e0555_1280.jpg",
+   "kw": "Jimbaran Bay Bali",
+   "tags": "jimbaran bay, bali, indonesia, sea front luxury resort, coastline, friends, blue, blue sky, travel, asia, holiday, beach, bay, coastal, frolic, scenic, seaside, shore, seascape, sky, horizon, scenery, ocean, nature, sea, outdoor"
+  },
+  {
+   "file": "03_pixabay.jpg",
+   "title": "bbq, grill, grass, nature, dinner, meat",
+   "artist": "songsy",
+   "license": "Pixabay License",
+   "source": "pixabay",
+   "foreign_url": "https://pixabay.com/photos/bbq-grill-grass-dinner-meat-1408806/",
+   "url": "https://pixabay.com/get/gc885b600d97a45d6435e357e9eb0c19aa1593ffd4a008860922395d97f3f65a444d61e23dbb5a5a97b904dcdf9ee0fd7720050e3d69352ffef084366872ee329_1280.jpg",
+   "kw": "Jimbaran seafood BBQ dinner",
+   "tags": "bbq, grill, grass, nature, dinner, meat"
+  }
+ ]
+}

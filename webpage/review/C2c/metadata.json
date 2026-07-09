@@ -1,0 +1,55 @@
+{
+ "id": "C2c",
+ "zh": "科莫多粉色沙滩",
+ "pure_name": "Pink Beach Komodo",
+ "extra_keywords": [
+  "Komodo Pink Beach aerial",
+  "Pink Beach Komodo snorkeling"
+ ],
+ "files": [
+  {
+   "file": "01_unsplash.jpg",
+   "title": "Pink beach with clear water under a blue sky.",
+   "artist": "Hongbin",
+   "license": "Unsplash License",
+   "source": "unsplash",
+   "foreign_url": "https://unsplash.com/photos/pink-beach-with-clear-water-under-a-blue-sky-4t8ar23MmJs",
+   "url": "https://images.unsplash.com/photo-1747806735725-ad02ac970269?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTU0NDJ8MHwxfHNlYXJjaHwxfHxQaW5rJTIwQmVhY2glMjBLb21vZG98ZW58MXwwfHx8MTc4MzU5ODI4N3ww&ixlib=rb-4.1.0&q=80&w=1600",
+   "kw": "Pink Beach Komodo",
+   "tags": ""
+  },
+  {
+   "file": "02_pixabay.jpg",
+   "title": "komodo dragon, animal, rock, reptile, komodo monitor, komodo, lizard, large komodo, wildlife, fauna, zoo, wilderness, nature, komodo dragon, komodo dragon, komodo dragon, komodo dragon, komodo dragon, komodo, komodo",
+   "artist": "parkineer",
+   "license": "Pixabay License",
+   "source": "pixabay",
+   "foreign_url": "https://pixabay.com/photos/komodo-dragon-animal-rock-reptile-5983432/",
+   "url": "https://pixabay.com/get/g8d0702fb87d7a3d3016371c53da6b33283de4bb2d4eacc1e41e8f937282dda60f752a6cff992d2f22ce5116c2350a0e1e61d1f1974ea3f116fa5268df79a2b76_1280.jpg",
+   "kw": "Pink Beach Komodo",
+   "tags": "komodo dragon, animal, rock, reptile, komodo monitor, komodo, lizard, large komodo, wildlife, fauna, zoo, wilderness, nature, komodo dragon, komodo dragon, komodo dragon, komodo dragon, komodo dragon, komodo, komodo"
+  },
+  {
+   "file": "03_pixabay.jpg",
+   "title": "komodo dragon, animal, rock, reptile, komodo monitor, komodo, lizard, large komodo, wildlife, fauna, zoo, wilderness, nature, komodo dragon, komodo dragon, komodo dragon, komodo dragon, komodo dragon, komodo, komodo",
+   "artist": "parkineer",
+   "license": "Pixabay License",
+   "source": "pixabay",
+   "foreign_url": "https://pixabay.com/photos/komodo-dragon-animal-rock-reptile-5983432/",
+   "url": "https://pixabay.com/get/gf0de4e47d51d5c2e5c34b2312b914638f0499ed9a56e0c0245664d1123caf245b99bd7610997387916eace981926257a0640881cf20bceeab9bc53c3c46c1b6d_1280.jpg",
+   "kw": "Komodo Pink Beach aerial",
+   "tags": "komodo dragon, animal, rock, reptile, komodo monitor, komodo, lizard, large komodo, wildlife, fauna, zoo, wilderness, nature, komodo dragon, komodo dragon, komodo dragon, komodo dragon, komodo dragon, komodo, komodo"
+  },
+  {
+   "file": "04_pixabay.jpg",
+   "title": "woman, dive, bikini, snorkeling, snorkel, goggles, snorkeling goggles, snorkeling mask, diver, nature, diving, mask, ocean, sea, swimming, underwater, water",
+   "artist": "PublicDomainPictures",
+   "license": "Pixabay License",
+   "source": "pixabay",
+   "foreign_url": "https://pixabay.com/photos/woman-dive-bikini-snorkeling-15840/",
+   "url": "https://pixabay.com/get/ge82fadd258fa47ad07861a677d45866b9f27898db0596cfe8240de245efe2bf14a3955cb66bb4546fda8616df3482f1f_1280.jpg",
+   "kw": "Pink Beach Komodo snorkeling",
+   "tags": "woman, dive, bikini, snorkeling, snorkel, goggles, snorkeling goggles, snorkeling mask, diver, nature, diving, mask, ocean, sea, swimming, underwater, water"
+  }
+ ]
+}

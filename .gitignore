@@ -12,9 +12,6 @@ webpage/img.jpg
 webpage/yt.jpg
 webpage/yt_search.html
 
-# 图片审核中间产物（可由 fetch_review_candidates.py 重新抓取，体积大，不入库）
-webpage/review/
-
 # 本地工具/编辑器配置
 .codebuddy/
 .vscode/

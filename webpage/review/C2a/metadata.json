@@ -1,0 +1,33 @@
+{
+ "id": "C2a",
+ "zh": "Padar 岛三色海湾",
+ "pure_name": "Padar island Komodo",
+ "extra_keywords": [
+  "Padar island aerial drone",
+  "Padar island summit three bays"
+ ],
+ "files": [
+  {
+   "file": "01_unsplash.jpg",
+   "title": "An aerial view of a large body of water",
+   "artist": "Simon Spring",
+   "license": "Unsplash License",
+   "source": "unsplash",
+   "foreign_url": "https://unsplash.com/photos/an-aerial-view-of-a-large-body-of-water-kUjkV_NKczA",
+   "url": "https://images.unsplash.com/photo-1736523076168-fdda4640f1d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTU0NDJ8MHwxfHNlYXJjaHw0fHxQYWRhciUyMGlzbGFuZCUyMEtvbW9kb3xlbnwxfDB8fHwxNzgzNTk4MjYzfDA&ixlib=rb-4.1.0&q=80&w=1600",
+   "kw": "Padar island Komodo",
+   "tags": ""
+  },
+  {
+   "file": "02_pixabay.jpg",
+   "title": "padar island, komodo national park, flores island, indonesia, southeast asia, padar island, padar island, padar island, padar island, padar island, flores island, flores island, flores island",
+   "artist": "WanderingRedhead",
+   "license": "Pixabay License",
+   "source": "pixabay",
+   "foreign_url": "https://pixabay.com/photos/padar-island-komodo-national-park-3680171/",
+   "url": "https://pixabay.com/get/g2e19d1772a94b068780fedc0055c7d013123c2875229283dc1ba3cfa9490774c376a27e2f256cf4bace51929267cb2d3396e9b3bd08de448de6cda6817557ae1_1280.jpg",
+   "kw": "Padar island Komodo",
+   "tags": "padar island, komodo national park, flores island, indonesia, southeast asia, padar island, padar island, padar island, padar island, padar island, flores island, flores island, flores island"
+  }
+ ]
+}

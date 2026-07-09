@@ -79,9 +79,12 @@ tcb hosting deploy index.html index.html -e plan-d0gstt7r6507aa319  # 文字/样
 - `credits.json` — Wikimedia Commons 图片的作者与许可（页脚署名用）。
 
 **抓取管线（只有要换图/重抓时才用，需联网 + Pillow）**
-- `fetch_candidates.py` → `candidates.json`：按 `content.py` 里的 `q` 去 Commons 找候选图。
+- `fetch_candidates.py` → `candidates.json`：按 `content.py` 里的 `q` 去 Wikimedia Commons 找候选图（需梯子）。
+- `fetch_review_candidates.py` → `review/<子点id>/`：批量收集候选图，支持两种模式（详见下方「收集图片」一节）。
 - `fetch_media.py`：把 `raw/*.img` 编码成 WebP 存进 `media.json`，并抓哔哩哔哩封面（走 bilibili API、按 `bvid`）、收集署名。
+- `apply_review.py`：从 `review/<子点id>/` 中选最佳图，编码为 WebP 写入 `media.json` + `credits.json`。
 - `raw/`（47 张原图）、`vraw/`（14 张视频封面原图）— **保留的原始素材**，可离线重新压缩/换质量，省得再联网下载。
+- `image_sourcing/keywords.md` — 每个子点的 4 组搜图关键词（主名/航拍/日落细节/别称活动），供外部工具搜图参考。
 - 一次性辅助脚本：`fix_options.py`、`finalize_fixes.py`、`patch_media.py`、`make_contactsheet.py`、`opt.json`、`api.json`（历史构建过程留存，改内容用不到）。
 - `screenshot.py` / `screenshot2.py` — 用 Playwright 给 `index.html` 截图做验收（需另装 Playwright chromium）。
 
@@ -91,28 +94,74 @@ tcb hosting deploy index.html index.html -e plan-d0gstt7r6507aa319  # 文字/样
 
 ```
 content.py  ─┐
-raw/*.img ──→ fetch_media.py ──→ media.json ─┐
+review/<id>/ ──→ apply_review.py ──→ media.json ──┐  ← 方式一（首选，国内直连）
+raw/*.img ──→ fetch_media.py ──────────────────┤  ← 方式二（备选，需梯子）
 videos.json ─┘                    credits.json┤
                                   style.css   ├─→ build.py ──→ index.html（壳）+ images/*.webp
                                   app.js      ┘
 ```
 
 改文字/样式/交互 → 只需 `build.py`。
-换图/重抓 → 先 `fetch_media.py`（要 `pip install Pillow`，且能联网），再 `build.py`。
+换图/重抓 → 首选方式一：`fetch_review_candidates.py` + `apply_review.py`（Unsplash/Pixabay，国内直连）；次选方式二：`fetch_candidates.py` + `fetch_media.py`（Commons，需梯子）。再 `build.py`。
 
-## 重新抓取媒体（进阶）
+## 收集图片
+
+页面有 **两套图片收集流程**，两者最终都写入 `media.json`，再由 `build.py` 生成 `images/*.webp`。**优先使用方式一**（国内可直连），方式二作为备选。
+
+### 方式一（首选）：Review 候选图收集（国内直连，无需梯子）
+
+先批量收集多个候选到 `review/` 目录，人工筛选后编入页面。通过 Unsplash + Pixabay API 抓图，**国内可直连**。
 
 ```bash
 pip install Pillow
-python3 fetch_candidates.py   # 可选：刷新 Commons 候选（改了 content.py 的 q 时）
-python3 fetch_media.py        # raw/ + vraw/ → media.json + credits.json
-python3 build.py              # 重新生成 index.html
+
+# ── 设置 API key（二选一或都设，设了就走国内直连模式） ──
+# Unsplash：https://unsplash.com/developers 注册免费应用获取 Access Key
+$env:UNSPLASH_KEY="Ds9PwsNBJDLtZ3ecWwEneDTZIeRY_v6x8pug8qlsxpI"
+# Pixabay：https://pixabay.com/api/docs 注册获取 API Key
+$env:PIXABAY_KEY="56614242-5c904b8b8af5334b2d209bc5e"
+
+python3 fetch_review_candidates.py              # 全部子点，每景点 ~20 张候选
+python3 fetch_review_candidates.py --only D1    # 只抓指定景点（如布罗莫）
+# → review/<子点id>/ 目录，含多张候选图 + metadata.json（来源/作者/许可）
+
+# ── 人工筛选：删掉不满意的，保留的最低编号图即为选中 ──
+
+python3 apply_review.py     # review/ 中保留的图 → media.json + credits.json（WebP 1280px q82）
+python3 build.py           # → index.html + images/*.webp
 ```
 
-> 环境注意：本机 Bash 联网只能走本地代理的 `curl`（`urllib`/`npm` 会卡住）；脚本里已用 `curl` 抓取。要换某张图，把新原图放进 `raw/<子点id>.img`（如 `raw/B1a.img`）再跑 `fetch_media.py` 即可。
+- 优点：**Unsplash + Pixabay 国内可直连，无需梯子**；图片质量高、可人工筛选；多角度关键词（见 `image_sourcing/keywords.md`）覆盖航拍/日落/活动等不同视角。
+- 缺点：需注册 API key（免费）；多一步人工筛选。
+- 模式说明：设置了 `UNSPLASH_KEY` 或 `PIXABAY_KEY` → **DIRECT 模式**（Unsplash + Pixabay，不走代理）；未设置 → **PROXY 模式**（Wikimedia Commons + Openverse，走 `REVIEW_PROXY` 默认 `http://127.0.0.1:7897`）。
+
+### 方式二（备选）：Wikimedia Commons 直接抓取（需梯子）
+
+最早的管线，当前页面上已有的 45 张景点图均由此抓取。按 `content.py` 中每个子点的 `q`（英文搜索词）去 Wikimedia Commons 找候选、自动下载 top-1。
+
+```bash
+pip install Pillow
+python3 fetch_candidates.py   # → candidates.json + raw/*.img（按 q 搜 Commons，下载最佳候选原图）
+python3 fetch_media.py        # raw/*.img → media.json（WebP 编码）+ 哔哩哔哩封面 + Commons 署名
+python3 build.py              # → index.html + images/*.webp
+```
+
+- 优点：全自动、一步到位，署名信息完整。
+- 缺点：**Wikimedia Commons 国内访问需梯子**；图片质量参差不齐，无法人工筛选。
+- 适用：批量初始化、替换同一 key 下的单张图（把新原图放进 `raw/<子点id>.img` 再跑 `fetch_media.py`）。
+
+### 换图速查
+
+| 场景 | 操作 |
+|---|---|
+| 换同一 key 的一张图（方式一） | 把新原图放 `raw/<子点id>.img` → `fetch_media.py` → `build.py` |
+| 补充缺失图片（方式二，如 D1 布罗莫） | 设 API key → `fetch_review_candidates.py --only D1` → 筛选 → `apply_review.py` → `build.py` |
+| 全部重抓 | 方式一：`fetch_candidates.py` + `fetch_media.py`；方式二：`fetch_review_candidates.py` + `apply_review.py` |
+
+> 环境注意：本机联网只能走本地代理的 `curl`（`urllib`/`npm` 会卡住）；脚本里已用 `curl` 抓取。PROXY 模式默认走 `http://127.0.0.1:7897`，可用 `REVIEW_PROXY` 环境变量覆盖。
 
 ---
 
 ## 说明
 - 内容源文档里的「本次不纳入」部分是刻意不放进页面的；C2 林贾尼、D2 船宿保留在册。
-- 价格/时间为 2026 年粗估，随季节汇率浮动，仅作 6 人出行投票参考、非商业用途；图片来自 Wikimedia Commons 等公开来源，版权归原作者。
+- 价格/时间为 2026 年粗估，随季节汇率浮动，仅作 6 人出行投票参考、非商业用途；图片来自 Wikimedia Commons、Unsplash、Pixabay 等公开来源，版权归原作者，依各自许可使用。

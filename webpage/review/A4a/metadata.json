@@ -1,0 +1,55 @@
+{
+ "id": "A4a",
+ "zh": "巴图尔火山日出",
+ "pure_name": "Mount Batur Bali",
+ "extra_keywords": [
+  "Mount Batur sunrise summit",
+  "Batur caldera lake sunrise"
+ ],
+ "files": [
+  {
+   "file": "01_unsplash.jpg",
+   "title": "landscape photography of mountains",
+   "artist": "Juan Cruz Mountford",
+   "license": "Unsplash License",
+   "source": "unsplash",
+   "foreign_url": "https://unsplash.com/photos/landscape-photography-of-mountains-cIZdY7jLzDI",
+   "url": "https://images.unsplash.com/photo-1518730573647-359c73385dc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTU0NDJ8MHwxfHNlYXJjaHwxfHxNb3VudCUyMEJhdHVyJTIwQmFsaXxlbnwxfDB8fHwxNzgzNTk4MTMyfDA&ixlib=rb-4.1.0&q=80&w=1600",
+   "kw": "Mount Batur Bali",
+   "tags": ""
+  },
+  {
+   "file": "02_unsplash.jpg",
+   "title": "white clouds over mountains during daytime",
+   "artist": "Dennis van Dalen",
+   "license": "Unsplash License",
+   "source": "unsplash",
+   "foreign_url": "https://unsplash.com/photos/white-clouds-over-mountains-during-daytime-9lLE2mJecqM",
+   "url": "https://images.unsplash.com/photo-1609590959678-09adc5cbbe00?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTU0NDJ8MHwxfHNlYXJjaHw2fHxNb3VudCUyMEJhdHVyJTIwQmFsaXxlbnwxfDB8fHwxNzgzNTk4MTMyfDA&ixlib=rb-4.1.0&q=80&w=1600",
+   "kw": "Mount Batur Bali",
+   "tags": ""
+  },
+  {
+   "file": "03_pixabay.jpg",
+   "title": "volcano, mount batur, mount abang, mount agung, bali, indonesia, sunrise, landscape, nature, outdoor, kintamani, clouds, people, mountain, hiking, brown mountain, brown sunrise",
+   "artist": "adliwahid",
+   "license": "Pixabay License",
+   "source": "pixabay",
+   "foreign_url": "https://pixabay.com/photos/volcano-mount-batur-mount-abang-3782612/",
+   "url": "https://pixabay.com/get/g9c57ee82f3ad3649040acbceacf424f489a787b73acb1a2e1077e0ef8b06cf3dd7b85c371f757b8b9e1e1d75995a88ddca15646d5a6fe05e21b1f884ec6a227f_1280.jpg",
+   "kw": "Mount Batur sunrise summit",
+   "tags": "volcano, mount batur, mount abang, mount agung, bali, indonesia, sunrise, landscape, nature, outdoor, kintamani, clouds, people, mountain, hiking, brown mountain, brown sunrise"
+  },
+  {
+   "file": "04_pixabay.jpg",
+   "title": "bali, mount batur, mountain, volcano, sunrise, nature, landscape, relax, to travel, batur, vacations, mount batur, mount batur, mount batur, mount batur, mount batur, batur, batur, batur, batur",
+   "artist": "Aurayaa",
+   "license": "Pixabay License",
+   "source": "pixabay",
+   "foreign_url": "https://pixabay.com/photos/bali-mount-batur-mountain-volcano-4880742/",
+   "url": "https://pixabay.com/get/gbb43a21ec4e572aaa1a72e0669c3044674b9d6705c1d1458f93c53a449ab7c5a7194c2fda64c309c340891e2395d6d3145368fbe998c5c727f06deb746eea5e2_1280.jpg",
+   "kw": "Batur caldera lake sunrise",
+   "tags": "bali, mount batur, mountain, volcano, sunrise, nature, landscape, relax, to travel, batur, vacations, mount batur, mount batur, mount batur, mount batur, mount batur, batur, batur, batur, batur"
+  }
+ ]
+}

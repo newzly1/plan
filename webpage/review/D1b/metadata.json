@@ -1,0 +1,30 @@
+{
+ "id": "D1b",
+ "zh": "布罗莫火山口 & 沙海",
+ "pure_name": "Mount Bromo crater",
+ "extra_keywords": [],
+ "files": [
+  {
+   "file": "01_unsplash.jpg",
+   "title": "Rugged white mountains under a cloudy sky.",
+   "artist": "Rowan Heuvel",
+   "license": "Unsplash License",
+   "source": "unsplash",
+   "foreign_url": "https://unsplash.com/photos/rugged-white-mountains-under-a-cloudy-sky-0VRa5BfgRNU",
+   "url": "https://images.unsplash.com/photo-1782489579231-5d2fdd48afcc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTU0NDJ8MHwxfHNlYXJjaHw0fHxNb3VudCUyMEJyb21vJTIwY3JhdGVyfGVufDF8MHx8fDE3ODM1OTgzMTF8MA&ixlib=rb-4.1.0&q=80&w=1600",
+   "kw": "Mount Bromo crater",
+   "tags": ""
+  },
+  {
+   "file": "02_unsplash.jpg",
+   "title": "Ash-covered volcanic mountains and green vegetation under a cloudy sky.",
+   "artist": "Rowan Heuvel",
+   "license": "Unsplash License",
+   "source": "unsplash",
+   "foreign_url": "https://unsplash.com/photos/ash-covered-volcanic-mountains-and-green-vegetation-under-a-cloudy-sky-LjUpw15tBaY",
+   "url": "https://images.unsplash.com/photo-1782489560220-962e4b63c513?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTU0NDJ8MHwxfHNlYXJjaHw1fHxNb3VudCUyMEJyb21vJTIwY3JhdGVyfGVufDF8MHx8fDE3ODM1OTgzMTF8MA&ixlib=rb-4.1.0&q=80&w=1600",
+   "kw": "Mount Bromo crater",
+   "tags": ""
+  }
+ ]
+}

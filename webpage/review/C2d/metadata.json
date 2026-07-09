@@ -1,0 +1,43 @@
+{
+ "id": "C2d",
+ "zh": "Kanawa/Kelor 浮潜",
+ "pure_name": "Kelor island Komodo",
+ "extra_keywords": [
+  "Kanawa island snorkeling Komodo"
+ ],
+ "files": [
+  {
+   "file": "01_unsplash.jpg",
+   "title": "An aerial view of a large body of water",
+   "artist": "Simon Spring",
+   "license": "Unsplash License",
+   "source": "unsplash",
+   "foreign_url": "https://unsplash.com/photos/an-aerial-view-of-a-large-body-of-water-kUjkV_NKczA",
+   "url": "https://images.unsplash.com/photo-1736523076168-fdda4640f1d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTU0NDJ8MHwxfHNlYXJjaHw4fHxLZWxvciUyMGlzbGFuZCUyMEtvbW9kb3xlbnwxfDB8fHwxNzgzNTk4MzAwfDA&ixlib=rb-4.1.0&q=80&w=1600",
+   "kw": "Kelor island Komodo",
+   "tags": ""
+  },
+  {
+   "file": "02_pixabay.jpg",
+   "title": "komodo dragon, animal, rock, reptile, komodo monitor, komodo, lizard, large komodo, wildlife, fauna, zoo, wilderness, nature, komodo dragon, komodo dragon, komodo dragon, komodo dragon, komodo dragon, komodo, komodo",
+   "artist": "parkineer",
+   "license": "Pixabay License",
+   "source": "pixabay",
+   "foreign_url": "https://pixabay.com/photos/komodo-dragon-animal-rock-reptile-5983432/",
+   "url": "https://pixabay.com/get/gc82fb9d99a39655c26a95d01fb98c18ca44461551b0c65a0d9a50f805293dbf1c96dfd7792c5fe865667910ee5a50baa305ef51da68f73a20109dbd157645be9_1280.jpg",
+   "kw": "Kelor island Komodo",
+   "tags": "komodo dragon, animal, rock, reptile, komodo monitor, komodo, lizard, large komodo, wildlife, fauna, zoo, wilderness, nature, komodo dragon, komodo dragon, komodo dragon, komodo dragon, komodo dragon, komodo, komodo"
+  },
+  {
+   "file": "03_pixabay.jpg",
+   "title": "woman, dive, bikini, snorkeling, snorkel, goggles, snorkeling goggles, snorkeling mask, diver, nature, diving, mask, ocean, sea, swimming, underwater, water",
+   "artist": "PublicDomainPictures",
+   "license": "Pixabay License",
+   "source": "pixabay",
+   "foreign_url": "https://pixabay.com/photos/woman-dive-bikini-snorkeling-15840/",
+   "url": "https://pixabay.com/get/g0e168b0ce2c8539b513470103c3a71bda76940b1ed6c0ec54ab50e474f75b75d137b300cb18d3652759167efe545ff41_1280.jpg",
+   "kw": "Kanawa island snorkeling Komodo",
+   "tags": "woman, dive, bikini, snorkeling, snorkel, goggles, snorkeling goggles, snorkeling mask, diver, nature, diving, mask, ocean, sea, swimming, underwater, water"
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "id": "F1a",
+ "zh": "吉利岛海滩秋千",
+ "pure_name": "Gili Trawangan beach",
+ "extra_keywords": [],
+ "files": [
+  {
+   "file": "01_unsplash.jpg",
+   "title": "a sea turtle swimming over a coral reef",
+   "artist": "Aria Bima",
+   "license": "Unsplash License",
+   "source": "unsplash",
+   "foreign_url": "https://unsplash.com/photos/a-sea-turtle-swimming-over-a-coral-reef-l0r0tX8E4yY",
+   "url": "https://images.unsplash.com/photo-1709166796897-d5da6e01ca4f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTU0NDJ8MHwxfHNlYXJjaHw1fHxHaWxpJTIwVHJhd2FuZ2FuJTIwYmVhY2h8ZW58MXwwfHx8MTc4MzU5ODMyN3ww&ixlib=rb-4.1.0&q=80&w=1600",
+   "kw": "Gili Trawangan beach",
+   "tags": ""
+  },
+  {
+   "file": "02_unsplash.jpg",
+   "title": "leafless tree on beach shore during sunset",
+   "artist": "Marek Okon",
+   "license": "Unsplash License",
+   "source": "unsplash",
+   "foreign_url": "https://unsplash.com/photos/leafless-tree-on-beach-shore-during-sunset-HxZSYZr8lIg",
+   "url": "https://images.unsplash.com/photo-1590117270064-59a817831e05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTU0NDJ8MHwxfHNlYXJjaHw2fHxHaWxpJTIwVHJhd2FuZ2FuJTIwYmVhY2h8ZW58MXwwfHx8MTc4MzU5ODMyN3ww&ixlib=rb-4.1.0&q=80&w=1600",
+   "kw": "Gili Trawangan beach",
+   "tags": ""
+  }
+ ]
+}

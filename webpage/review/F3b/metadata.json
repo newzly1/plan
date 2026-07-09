@@ -1,0 +1,30 @@
+{
+ "id": "F3b",
+ "zh": "登顶日出云海",
+ "pure_name": "Mount Rinjani summit",
+ "extra_keywords": [],
+ "files": [
+  {
+   "file": "01_unsplash.jpg",
+   "title": "a silhouette of a mountain with a sunset in the background",
+   "artist": "Joshua Kettle",
+   "license": "Unsplash License",
+   "source": "unsplash",
+   "foreign_url": "https://unsplash.com/photos/a-silhouette-of-a-mountain-with-a-sunset-in-the-background-sUnk9_clRd8",
+   "url": "https://images.unsplash.com/photo-1707650042645-f4123aeef0b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTU0NDJ8MHwxfHNlYXJjaHwxfHxNb3VudCUyMFJpbmphbmklMjBzdW1taXR8ZW58MXwwfHx8MTc4MzU5ODM1OHww&ixlib=rb-4.1.0&q=80&w=1600",
+   "kw": "Mount Rinjani summit",
+   "tags": ""
+  },
+  {
+   "file": "02_pixabay.jpg",
+   "title": "landscape, lombok, rinjani, indonesia, nature, travel, mountain, tropical, volcanic, hiking, panorama, volcano, mount, trekking, hike, outdoor, lombok, lombok, lombok, lombok, lombok, rinjani",
+   "artist": "workingzen",
+   "license": "Pixabay License",
+   "source": "pixabay",
+   "foreign_url": "https://pixabay.com/photos/landscape-lombok-rinjani-indonesia-5108674/",
+   "url": "https://pixabay.com/get/g674624b07c22e12552ad082325738134983af7d8b7a1d370f20df7fe218435935d636b039b11d00f45ba0838500f1aff5625cf40eb1fab36d3ac5d85167f3c07_1280.jpg",
+   "kw": "Mount Rinjani summit",
+   "tags": "landscape, lombok, rinjani, indonesia, nature, travel, mountain, tropical, volcanic, hiking, panorama, volcano, mount, trekking, hike, outdoor, lombok, lombok, lombok, lombok, lombok, rinjani"
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "id": "B1d",
+ "zh": "钻石沙滩 (Diamond Beach)",
+ "pure_name": "Diamond Beach Nusa Penida",
+ "extra_keywords": [],
+ "files": [
+  {
+   "file": "01_unsplash.jpg",
+   "title": "brown rock formation on blue sea water during daytime",
+   "artist": "Polina Kuzovkova",
+   "license": "Unsplash License",
+   "source": "unsplash",
+   "foreign_url": "https://unsplash.com/photos/brown-rock-formation-on-blue-sea-water-during-daytime-fqANqUaJ-1Y",
+   "url": "https://images.unsplash.com/photo-1604430289272-0851a606105d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTU0NDJ8MHwxfHNlYXJjaHwxfHxEaWFtb25kJTIwQmVhY2glMjBOdXNhJTIwUGVuaWRhfGVufDF8MHx8fDE3ODM1OTgyMTZ8MA&ixlib=rb-4.1.0&q=80&w=1600",
+   "kw": "Diamond Beach Nusa Penida",
+   "tags": ""
+  },
+  {
+   "file": "02_unsplash.jpg",
+   "title": "a beach with rocks and trees",
+   "artist": "Anton Rymarev",
+   "license": "Unsplash License",
+   "source": "unsplash",
+   "foreign_url": "https://unsplash.com/photos/a-beach-with-rocks-and-trees-nQ1UfV9ny4M",
+   "url": "https://images.unsplash.com/photo-1651157630480-f77cc6a73afe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTU0NDJ8MHwxfHNlYXJjaHwyfHxEaWFtb25kJTIwQmVhY2glMjBOdXNhJTIwUGVuaWRhfGVufDF8MHx8fDE3ODM1OTgyMTZ8MA&ixlib=rb-4.1.0&q=80&w=1600",
+   "kw": "Diamond Beach Nusa Penida",
+   "tags": ""
+  }
+ ]
+}

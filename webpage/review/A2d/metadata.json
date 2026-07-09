@@ -1,0 +1,43 @@
+{
+ "id": "A2d",
+ "zh": "水明漾/库塔海滩",
+ "pure_name": "Seminyak beach Bali",
+ "extra_keywords": [
+  "Kuta beach surfing Bali"
+ ],
+ "files": [
+  {
+   "file": "01_unsplash.jpg",
+   "title": "aerial view of city near sea during daytime",
+   "artist": "Afif Ramdhasuma",
+   "license": "Unsplash License",
+   "source": "unsplash",
+   "foreign_url": "https://unsplash.com/photos/aerial-view-of-city-near-sea-during-daytime-Rybp57KoYPU",
+   "url": "https://images.unsplash.com/photo-1624033332671-136eedd571a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTU0NDJ8MHwxfHNlYXJjaHwxfHxTZW1pbnlhayUyMGJlYWNoJTIwQmFsaXxlbnwxfDB8fHwxNzgzNTk4MTE4fDA&ixlib=rb-4.1.0&q=80&w=1600",
+   "kw": "Seminyak beach Bali",
+   "tags": ""
+  },
+  {
+   "file": "02_unsplash.jpg",
+   "title": "sea waves crashing on shore during sunset",
+   "artist": "Stefano Magini",
+   "license": "Unsplash License",
+   "source": "unsplash",
+   "foreign_url": "https://unsplash.com/photos/sea-waves-crashing-on-shore-during-sunset-P4faKaUdlRs",
+   "url": "https://images.unsplash.com/photo-1621855970408-e8f226ed1512?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTU0NDJ8MHwxfHNlYXJjaHw2fHxTZW1pbnlhayUyMGJlYWNoJTIwQmFsaXxlbnwxfDB8fHwxNzgzNTk4MTE4fDA&ixlib=rb-4.1.0&q=80&w=1600",
+   "kw": "Seminyak beach Bali",
+   "tags": ""
+  },
+  {
+   "file": "03_pixabay.jpg",
+   "title": "bali, kuta, nature, beach, sunset, surfing",
+   "artist": "Adnandros",
+   "license": "Pixabay License",
+   "source": "pixabay",
+   "foreign_url": "https://pixabay.com/photos/bali-kuta-beach-sunset-surfing-2681979/",
+   "url": "https://pixabay.com/get/g5871cc17673326628dc030e37e0f93c7292d7ede75fd09a683de0db989aa05511b688118f50ad217a76771245ffa1fc27d7f251c49462f63251b0e176fbb72d7_1280.jpg",
+   "kw": "Kuta beach surfing Bali",
+   "tags": "bali, kuta, nature, beach, sunset, surfing"
+  }
+ ]
+}
