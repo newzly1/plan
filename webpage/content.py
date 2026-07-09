@@ -8,7 +8,7 @@ Media (image data URIs, youtube ids) are resolved by fetch_media.py into media.j
 META = {
     "title": "巴厘岛及周边 · 选点手册",
     "subtitle": "看图看视频，选出你想去的地方",
-    "window": "10/2 落地 → 10/11 返程 · 约 9–10 天 · 基地巴厘岛(DPS)",
+    "window": "10/2 落地 → 10/11 返程 · 约 9–10 天 · 首站巴厘岛(DPS)",
     "howto": "每个景点看图/看视频了解它长什么样，点「必去 / 可去」标记，底部一键复制你的选择发到群里。",
     "rate": "价格为人均活动费(不含机票住宿)，1 万印尼盾 ≈ ¥4.5，旺季粗估，仅供参考。",
 }
@@ -57,7 +57,7 @@ ITEMS = [
         "price": "门票各 ¥25–100；漂流约 ¥250–350；SPA ¥150+",
         "feature": "德格拉朗梯田、圣猴森林、Tirta Empul 圣泉庙、丛林秋千、多条瀑布(Tegenungan/Tibumana)、Ayung 河漂流、ATV 四驱越野、瑜伽与 SPA、手工艺村。文艺慢节奏核心。",
         "caution": "猴子会抢眼镜/手机/食物；梯田与秋千为收费网红点、人多需早去；进庙须围纱笼(sarong)。",
-        "coupling": "地处中部，是前往东部/北部火山瀑布的最佳中转基地。",
+        "coupling": "地处中部，是前往东部/北部火山瀑布的最佳中转位置。",
         "video_q": "Ubud Bali Tegallalang rice terrace 4k",
         "subspots": [
             {"id": "A2a", "zh": "德格拉朗梯田", "en": "Tegallalang Rice Terrace", "q": "Tegallalang rice terrace Bali", "desc": "顺山势层叠的稻田，田埂有秋千和咖啡亭可歇脚。为收费网红点、人多，建议早去光线好也少排队。"},
