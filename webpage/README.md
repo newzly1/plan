@@ -75,12 +75,12 @@ tcb hosting deploy index.html index.html -e plan-d0gstt7r6507aa319  # 文字/样
 **媒体数据（`build.py` 读取，通常不用手改）**
 - `media.json` — 所有图片和视频封面，已编码成 WebP base64（约 8.85 MB）。
 - `images/` — `build.py` 从 `media.json` 解码生成的约 60 个 `.webp` 文件，`index.html` 里的 `<img src>` 指向这里（如 `images/A1a.webp`）；每次 `python3 build.py` 都会覆盖生成，随 `index.html` 一起提交/部署。换同一 key 下的图时文件名不变，无需重新部署 `index.html`。
-- `videos.json` — 每个景点的 YouTube 视频 `{yt_id, title, author}`。
+- `videos.json` — 每个景点的哔哩哔哩视频 `{bvid, title, author}`。
 - `credits.json` — Wikimedia Commons 图片的作者与许可（页脚署名用）。
 
 **抓取管线（只有要换图/重抓时才用，需联网 + Pillow）**
 - `fetch_candidates.py` → `candidates.json`：按 `content.py` 里的 `q` 去 Commons 找候选图。
-- `fetch_media.py`：把 `raw/*.img` 编码成 WebP 存进 `media.json`，并抓 YouTube 封面、收集署名。
+- `fetch_media.py`：把 `raw/*.img` 编码成 WebP 存进 `media.json`，并抓哔哩哔哩封面（走 bilibili API、按 `bvid`）、收集署名。
 - `raw/`（47 张原图）、`vraw/`（14 张视频封面原图）— **保留的原始素材**，可离线重新压缩/换质量，省得再联网下载。
 - 一次性辅助脚本：`fix_options.py`、`finalize_fixes.py`、`patch_media.py`、`make_contactsheet.py`、`opt.json`、`api.json`（历史构建过程留存，改内容用不到）。
 - `screenshot.py` / `screenshot2.py` — 用 Playwright 给 `index.html` 截图做验收（需另装 Playwright chromium）。
