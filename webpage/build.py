@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Render the self-contained index.html from content.py + media.json + videos.json.
 Media missing (still fetching) degrades to a labeled placeholder so the page always builds."""
-import json, os, html
+import json, os, html, base64
 import content as C
 
 BUILD = os.path.dirname(os.path.abspath(__file__))
@@ -13,8 +13,40 @@ VIDEOS = load("videos.json")     # {itemId: {yt_id,title,author}}
 CREDITS = load("credits.json")   # {subspotId: {artist,license}}
 FONT = load("font.json")         # {"serif_woff2": "<b64>"} 或 {"serif_woff": "<b64>"}；缺失则降级系统宋体栈
 
+IMAGES_DIR = os.path.join(BUILD, "images")
+USED_KEYS = set()   # img_uri 记录 index.html 实际引用到的 key，write_images 只写这些
+def _fname(key):
+    """'A1a' -> 'A1a.webp'；'vid:A1' -> 'vid-A1.webp'（冒号在 Windows 文件名里非法）。"""
+    return key.replace(":", "-") + ".webp"
+
 def esc(s): return html.escape(str(s), quote=True)
-def img_uri(key): return MEDIA.get(key, "")
+def img_uri(key):
+    if not MEDIA.get(key, ""):
+        return ""
+    USED_KEYS.add(key)
+    return "images/" + _fname(key)
+
+def write_images():
+    """把 index.html 实际引用到的 media 解码写成独立 .webp 文件，供页面用相对路径引用。
+    只写被引用的 key，跳过 media.json 里的历史遗留孤儿；先清空目录再全量重写，
+    顺带删掉改名/删除后残留的陈旧 .webp，保证 images/ 与页面一一对应。
+    须在 BODY 组装完（USED_KEYS 填满）之后调用。60 张小图解码+写入毫秒级，不做增量。"""
+    os.makedirs(IMAGES_DIR, exist_ok=True)
+    for old in os.listdir(IMAGES_DIR):
+        if old.lower().endswith(".webp"):
+            os.remove(os.path.join(IMAGES_DIR, old))
+    seen, n = {}, 0
+    for key in sorted(USED_KEYS):
+        fname = _fname(key)
+        clash = seen.get(fname.lower())
+        if clash is not None:
+            raise SystemExit(f"images/ filename collision: {key!r} and {clash!r} both map to {fname}")
+        seen[fname.lower()] = key
+        raw = base64.b64decode(MEDIA[key].split(",", 1)[1])
+        with open(os.path.join(IMAGES_DIR, fname), "wb") as f:
+            f.write(raw)
+        n += 1
+    return n
 
 def font_face():
     """有内嵌子集则输出 @font-face（'Trip Serif'）；否则空串，降级到系统宋体栈。"""
@@ -189,6 +221,7 @@ COMBOS_JS = json.dumps({c["no"]: f'组{c["no"]} {c["name"]}' for c in C.COMBOS},
 
 BODY = (hero() + highlights() + '<main>' + "".join(region(r) for r in C.REGIONS)
         + combos() + prices() + notes_sec() + footer() + '</main>' + mylist())
+N_IMAGES = write_images()   # BODY 里所有 img_uri 已调用完，USED_KEYS 就绪，此时才落盘
 
 # ---------- assemble ----------
 STYLE = open(os.path.join(BUILD,"style.css"), encoding="utf-8").read()
@@ -216,3 +249,4 @@ OUT = f'''<!DOCTYPE html>
 open(os.path.join(BUILD,"index.html"),"w",encoding="utf-8").write(OUT)
 kb = len(OUT.encode("utf-8"))/1024
 print(f"wrote index.html : {kb:.0f} KB  (media keys: {len(MEDIA)}, videos: {len(VIDEOS)})")
+print(f"wrote images/     : {N_IMAGES} files")
