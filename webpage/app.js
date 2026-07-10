@@ -32,7 +32,8 @@
         try {
           var app = cloudbase.init({ env: ENV_ID });
           var auth = app.auth({ persistence: "local" });
-          auth.anonymousAuthProvider().signIn().then(function(){
+          auth.signInAnonymously().then(function(res){
+            if (res && res.error){ reject(res.error); return; }
             db = app.database();
             docId = localStorage.getItem(DOCID_KEY) || null;
             resolve();

@@ -17,7 +17,7 @@
   - `cd webpage && tcb hosting deploy cloudbase.js cloudbase.js -e plan-d0gstt7r6507aa319`（vendored SDK 变更时才需要，一般首次一次即可）
 - 正式访问链接（发给 6 人、国内无需梯子）：https://plan-d0gstt7r6507aa319-1451599494.tcloudbaseapp.com
 - ⚠️ CloudBase 免费体验环境 **2027-01-08 到期**，到期前须在 [控制台](https://console.cloud.tencent.com/tcb) 手动续 6 个月，否则环境销毁、链接失效（不支持自动续费）。
-- 投票已接入 CloudBase 云数据库实时汇总（集合 `votes`，匿名登录，人人可读、仅本人可写自己那条）：改汇总算法看 `webpage/tally.js`，改同步/渲染看 `webpage/app.js` 里的 `cloud` 模块与 `renderTally`/`refreshTally`；详细数据流、控制台一次性配置四步见 `webpage/README.md`「投票实时汇总（CloudBase 云数据库）」一节。
+- 投票已接入 CloudBase 云数据库实时汇总（集合 `votes`，匿名登录，安全规则 `{ "read": true, "write": "auth.uid != null" }`——人人可读、已登录即可写）：改汇总算法看 `webpage/tally.js`，改同步/渲染看 `webpage/app.js` 里的 `cloud` 模块与 `renderTally`/`refreshTally`；详细数据流与控制台配置见 `webpage/README.md`「投票实时汇总（CloudBase 云数据库）」一节。⚠️ SDK 必须用 **v2.31.0（`cloudbase.js`，全局 `cloudbase`）**、登录用 `auth.signInAnonymously()`；本环境已停用 v1.x 旧匿名登录（会报 `ACCESS_TOKEN_DISABLED`）。规则勿用 `doc._openid == auth.openid`（匿名用户无 openid，会全拒）。
 - 单测：`node --test webpage/test/tally.test.js`（零依赖，Node 内置）。
 
 ## 环境与注意事项

@@ -82,8 +82,9 @@ tcb hosting deploy index.html index.html -e plan-d0gstt7r6507aa319  # 文字/样
 - `tally.js` — 纯汇总算法（算分/排序），不依赖网络，浏览器与 `node --test` 共用。
 - `app.js` 的 `cloud` 模块 — 匿名登录、`syncMine()` 防抖同步、`fetchAll()` 拉取全量；以及
   `renderTally` / `refreshTally` 负责面板渲染和三个刷新时机（打开浮层 / 投完票 / 点「刷新」）。
-- `cloudbase.js` — vendored 的 CloudBase Web SDK（UMD，全局变量 `cloudbase`），随站点同源部署，
-  不依赖第三方 CDN。
+- `cloudbase.js` — vendored 的 CloudBase Web SDK **v2.31.0**（UMD，全局变量 `cloudbase`），随站点同源部署，
+  不依赖第三方 CDN。⚠️ 必须 **2.0+**：本环境（2026-07 新建）已停用旧版 access-token 匿名登录，v1.x 会报
+  `ACCESS_TOKEN_DISABLED`。登录调用为 v2 的 `auth.signInAnonymously()`。
 
 **构建变化**：`build.py` 现在还会把 `tally.js` 内联进页面，并在 `index.html` 里加一行
 `<script src="cloudbase.js"></script>`（在内联脚本之前加载）。构建命令不变，仍是 `python3 build.py`。
@@ -101,11 +102,14 @@ tcb hosting deploy cloudbase.js cloudbase.js -e plan-d0gstt7r6507aa319
 2. **建集合**：「云数据库」→ 新建集合 `votes`。
 3. **设安全规则**：集合 `votes` →「权限设置」→ 自定义安全规则，填入：
    ```json
-   { "read": true, "write": "doc._openid == auth.openid" }
+   { "read": true, "write": "auth.uid != null" }
    ```
-   （所有人可读，用于汇总；仅本人可写自己那条，防止误改/删别人的票。）
-4. **加 Web 安全域名**：「环境」→「安全配置」→「Web 安全域名」，加入
-   `plan-d0gstt7r6507aa319-1451599494.tcloudbaseapp.com`（否则浏览器端 SDK 认证会被拒）。
+   （所有人可读，用于汇总；已登录——匿名登录也算——即可写。）
+   ⚠️ **不要用 `doc._openid == auth.openid`**：新版环境的匿名用户没有可用的 `openid`（身份主键是 `uid`），
+   那条规则会把所有写入都拒掉（`DATABASE_PERMISSION_DENIED`）。当前规则不限制「仅本人可改」，但正常使用下
+   每个浏览器只写自己那条（docId 存本地），6 人熟人私链场景可接受。若要「仅本人可改」需另存 uid + 对应规则。
+4. **加 Web 安全域名**（**通常可跳过**）：「环境」→「安全配置」→「Web 安全域名」。实测本环境把自有托管域名
+   `…tcloudbaseapp.com` 默认视为可信，无需手动添加即可认证；仅当日后换到自定义域名、SDK 认证被拒时才需加。
 
 **单测**：
 ```bash
