@@ -76,7 +76,7 @@ def hero():
     <span class="rule" aria-hidden="true"></span>
     <h1>{esc(m["title"])}</h1>
     <p class="sub">{esc(m["subtitle"])}</p>
-    <div class="facts"><span>10.2 – 10.11</span><span>9–10 天</span><span>6 人</span><span>基地 DPS</span></div>
+    <div class="facts"><span>10.2 – 10.11</span><span>9–10 天</span><span>多人同行</span><span>起止 DPS</span></div>
   </div>
   <figure class="hero-media">
     {img_tag("B1a","hero-img","佩尼达 Kelingking 霸王龙海滩",lazy=False)}
@@ -97,7 +97,7 @@ def highlights():
     return f'''<section class="shelf" id="highlights">
   <div class="chap-eyebrow"><span class="k">精华速览</span>大多数人必去 · 先看这一屏</div>
   <div class="shelf-scroll">{cards}</div>
-  <p class="shelf-note">以上 + 佩尼达跳岛 = 6 人不会踩雷的「稳妥核心盘」；差异化项目再从下面 A–E 里挑。</p>
+  <p class="shelf-note">以上 + 佩尼达跳岛 = 稳妥不踩雷的「核心盘」；差异化项目再从下面 A–E 里挑。</p>
 </section>'''
 
 def gallery(item):
@@ -221,8 +221,8 @@ def footer():
         creds = '<p class="cred">景点图片来自 Unsplash / Pixabay / Wikimedia Commons 等公开来源，版权归原作者，依各自许可使用；影片封面与嵌入播放均来自哔哩哔哩，版权归原上传者。</p>'
     return f'''<footer class="foot">
     {creds}
-    <p class="disc">价格/时间为 2026-07-07 粗略估算，随季节、汇率与政策浮动，具体以出行前官方渠道为准。本页为 6 人出行投票参考，非商业用途。</p>
-    <p class="made">巴厘岛及周边 · 选点手册 · 为 6 人出行制作</p></footer>'''
+    <p class="disc">价格/时间为 2026-07-07 粗略估算，随季节、汇率与政策浮动，具体以出行前官方渠道为准。本页为同行投票参考，非商业用途。</p>
+    <p class="made">巴厘岛及周边 · 选点手册 · 为你此行制作</p></footer>'''
 
 def mylist():
     combo_opts = "".join(f'<label class="cr"><input type="radio" name="combo" value="{c["no"]}"><span>组{c["no"]} {esc(c["name"])}</span></label>' for c in C.COMBOS)

@@ -98,8 +98,8 @@ ITEMS = [
             {"id": "A4d", "zh": "Besakih 母庙", "en": "Besakih Temple", "q": "Besakih temple Bali", "desc": "阿贡火山坡上的母庙建筑群，规模最宏。进庙须围纱笼，山路长，随向导走主轴线即可。"},
             {"id": "A4e", "zh": "USS Liberty 沉船", "en": "USS Liberty Wreck", "q": "USS Liberty wreck Tulamben diving", "desc": "近岸的二战货轮沉船，浮潜即可见鱼群与船体。需一定水性、可能有流，新手跟船听教练、勿触碰。"},
             {"id": "A4f", "zh": "Sidemen 梯田谷", "en": "Sidemen Valley", "q": "Sidemen valley rice terrace Bali Agung", "desc": "阿贡火山脚下静谧的梯田河谷，被称作'没有游客的乌布'，适合放慢脚步住一晚、看云开见峰。山路弯多易晕车，雨后田埂湿滑，清晨光线最好。"},
-            {"id": "A4g", "zh": "Amed 潜水渔村", "en": "Amed", "q": "Amed Bali jukung boats black sand", "desc": "东岸黑沙渔村，成排传统 jukung 独木舟停靠滩上，清晨以阿贡火山为背景，也是自由潜与浮潜看珊瑚、沉船的基地。日出前最美，下海留意海流。"},
-            {"id": "A4h", "zh": "白沙滩 (Virgin Beach)", "en": "White Sand Beach", "q": "White Sand Beach Virgin Beach Karangasem Bali", "desc": "Karangasem 的白沙湾（俗称处女海滩），碧水白沙、比南部安静。设施简易只有海鲜排档，自备现金与防晒，注意涨落潮与礁石。"},
+            {"id": "A4g", "zh": "Amed 潜水渔村", "en": "Amed", "q": "Amed Bali jukung boats black sand", "desc": "东岸黑沙渔村，成排传统 jukung 独木舟停靠滩上，清晨以阿贡火山为背景，也是自由潜与浮潜看珊瑚、沉船的好去处。日出前最美，下海留意海流。"},
+            {"id": "A4h", "zh": "白沙滩 (Virgin Beach)", "en": "White Sand Beach", "q": "White Sand Beach Virgin Beach Karangasem Bali", "desc": "Karangasem 的白沙湾（俗称处女海滩），碧水白沙、比南部安静。设施简单，只有海鲜排档，自备现金与防晒，注意涨落潮与礁石。"},
             {"id": "A4i", "zh": "Taman Ujung 水上宫殿", "en": "Taman Ujung", "q": "Taman Ujung water palace Bali", "desc": "末代王朝的水上宫殿，大片水池、连廊与拱桥倒映远山，比 Tirta Gangga 更开阔大气。园区大遮荫少、正午晒，带遮阳、错峰避团。"},
             {"id": "A4j", "zh": "阿贡火山 (Agung)", "en": "Mount Agung", "q": "Mount Agung Bali volcano", "desc": "巴厘最高的圣火山(3031m)，锥形山体是东部天际线的主角，从 Lempuyang、Sidemen、Amed 皆可远眺。清晨云雾少最易见顶；登顶需向导、凌晨出发、体力要求高。"},
         ],
@@ -273,7 +273,7 @@ HIGHLIGHTS = [
     {"item": "B1", "img": "B1a", "title": "佩尼达 · 精灵坠崖", "blurb": "全巴厘最壮观的悬崖海岸，俯瞰如霸王龙脊背伸入碧海"},
     {"item": "C1", "img": "C1c", "title": "科莫多 · Padar 三色海湾", "blurb": "印尼海岛天花板，黑-白-粉三色海湾与史前巨兽的史诗级相遇"},
     {"item": "D1", "img": "D1f", "title": "布罗莫 · 月球表面日出", "blurb": "月球表面般的火山日出，地球上最不像地球的地方"},
-    {"item": "B2", "img": "B2a", "title": "佩尼达 · 蝠鲼&海龟浮潜点", "blurb": "与魔鬼鱼、海龟同游，旱季海水透明度绝佳"},
+    {"item": "B2", "img": "B2a", "title": "佩尼达 · 蝠鲼&海龟浮潜点", "blurb": "与魔鬼鱼、海龟同游，旱季海水清透，能见度极佳"},
 ]
 
 COMBOS = [
@@ -306,7 +306,7 @@ PRICES = [
         ("USS Liberty 沉船 浮潜/潜水", "¥100–150 / ¥350–500"),
     ]),
     ("包车 & 市内交通", [
-        ("巴厘包车+司机(约10h)", "¥350–500/车/天（6人分摊≈¥60–90/人）"),
+        ("巴厘包车+司机(约10h)", "¥350–500/车/天（同行分摊≈¥60–90/人）"),
         ("机场接送", "¥100–150/车"), ("Grab/Gojek 市区", "¥15–40/程"),
     ]),
     ("跨岛交通 (人均往返)", [
@@ -326,7 +326,7 @@ PRICES = [
 NOTES = [
     ("签证", "印尼对中国公民实行落地签(VOA)，停留期 30 天，9–10 天行程完全在范围内。抵达后办理即可，建议备好返程票与住宿信息。"),
     ("货币", "印尼盾(IDR)，小岛与村镇 ATM 少，多备现金、认准正规换汇点；大城市多数商户可刷卡。"),
-    ("交通", "市区用 Grab/Gojek；巴厘常见『包车+司机』(6 人分摊很划算)；跨岛靠快艇或航班，旺季务必提前订票。"),
+    ("交通", "市区用 Grab/Gojek；巴厘常见『包车+司机』(几人同行分摊更划算)；跨岛靠快艇或航班，旺季务必提前订票。"),
     ("网络", "落地即买电话卡，Telkomsel 信号覆盖最好。"),
     ("健康", "防『巴厘肚』——只喝瓶装水、慎吃生冷；强防晒且用珊瑚友好防晒霜；常备晕船药与肠胃药。"),
     ("安全", "海滩看旗帜、防离岸流；火山务必听向导、备保暖与防毒面具；摩托事故高发，租车需国际驾照并确认保险。"),
