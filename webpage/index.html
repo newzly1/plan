@@ -830,10 +830,10 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 
   function computeTally(docs, items, combos) {
     docs = docs || []; items = items || []; combos = combos || {};
-    var zh = {}, i;
+    var zh = Object.create(null), i;
     for (i = 0; i < items.length; i++) zh[items[i].id] = items[i].zh;
 
-    var acc = {}, comboCount = {}, voterCount = 0, d, id, cno;
+    var acc = Object.create(null), comboCount = Object.create(null), voterCount = 0, d, id, cno;
     for (d = 0; d < docs.length; d++) {
       var doc = docs[d] || {};
       voterCount++;
@@ -935,6 +935,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
       syncT = setTimeout(function(){
         readyP.then(function(){
           var data = currentState();
+          if (!docId) docId = localStorage.getItem(DOCID_KEY) || null;
           function done(){ if (sheet && !sheet.hasAttribute("hidden")) refreshTally(); }
           if (docId){
             db.collection(COLL).doc(docId).update(data).then(function(res){

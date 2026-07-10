@@ -5,10 +5,10 @@
 
   function computeTally(docs, items, combos) {
     docs = docs || []; items = items || []; combos = combos || {};
-    var zh = {}, i;
+    var zh = Object.create(null), i;
     for (i = 0; i < items.length; i++) zh[items[i].id] = items[i].zh;
 
-    var acc = {}, comboCount = {}, voterCount = 0, d, id, cno;
+    var acc = Object.create(null), comboCount = Object.create(null), voterCount = 0, d, id, cno;
     for (d = 0; d < docs.length; d++) {
       var doc = docs[d] || {};
       voterCount++;

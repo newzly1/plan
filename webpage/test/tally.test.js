@@ -51,3 +51,14 @@ test("组合票数相同按线路号升序", () => {
     { no: "2", label: "组2 东巴厘", count: 1 }
   ]);
 });
+
+test("恶意 __proto__ 键不污染 Object.prototype", () => {
+  const before = Object.prototype.must;
+  const r = computeTally([{ picks: { "__proto__": "must", A1: "must" } }], ITEMS, COMBOS);
+  assert.strictEqual(Object.prototype.must, before); // 未被污染（仍为 undefined）
+  assert.strictEqual(({}).must, undefined);
+  assert.strictEqual(r.voterCount, 1);
+  // A1 正常计入；__proto__ 作为普通字符串键存在，不影响真实景点
+  const a1 = r.spots.find(s => s.id === "A1");
+  assert.deepStrictEqual(a1, { id: "A1", zh: "巴厘岛门户", must: 1, maybe: 0, score: 2 });
+});

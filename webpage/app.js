@@ -56,6 +56,7 @@
       syncT = setTimeout(function(){
         readyP.then(function(){
           var data = currentState();
+          if (!docId) docId = localStorage.getItem(DOCID_KEY) || null;
           function done(){ if (sheet && !sheet.hasAttribute("hidden")) refreshTally(); }
           if (docId){
             db.collection(COLL).doc(docId).update(data).then(function(res){
