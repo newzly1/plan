@@ -14,8 +14,11 @@
   - `cd webpage && tcb hosting deploy images images -e plan-d0gstt7r6507aa319`（图片变化时）
   - `cd webpage && tcb hosting deploy index.html index.html -e plan-d0gstt7r6507aa319`（文字/样式/交互变化时）
   - 换同一景点 key 下的单张图，只需重部署那一个文件，无需碰 `index.html`：`tcb hosting deploy images/<key>.webp images/<key>.webp -e plan-d0gstt7r6507aa319`
+  - `cd webpage && tcb hosting deploy cloudbase.js cloudbase.js -e plan-d0gstt7r6507aa319`（vendored SDK 变更时才需要，一般首次一次即可）
 - 正式访问链接（发给 6 人、国内无需梯子）：https://plan-d0gstt7r6507aa319-1451599494.tcloudbaseapp.com
 - ⚠️ CloudBase 免费体验环境 **2027-01-08 到期**，到期前须在 [控制台](https://console.cloud.tencent.com/tcb) 手动续 6 个月，否则环境销毁、链接失效（不支持自动续费）。
+- 投票已接入 CloudBase 云数据库实时汇总（集合 `votes`，匿名登录，人人可读、仅本人可写自己那条）：改汇总算法看 `webpage/tally.js`，改同步/渲染看 `webpage/app.js` 里的 `cloud` 模块与 `renderTally`/`refreshTally`；详细数据流、控制台一次性配置四步见 `webpage/README.md`「投票实时汇总（CloudBase 云数据库）」一节。
+- 单测：`node --test webpage/test/tally.test.js`（零依赖，Node 内置）。
 
 ## 环境与注意事项
 - **npm 会卡**：本机默认源 `registry.npmjs.org` 联网卡住；装包一律加 `--registry=https://registry.npmmirror.com`（国内镜像）。同理 `urllib` 也卡，脚本联网抓取用 `curl`（走本地代理）。

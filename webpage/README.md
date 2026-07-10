@@ -32,6 +32,7 @@ wrote images/     : 60 files
 | 景点文字、价格、注意事项、组合线路、精华速览 | `content.py`（唯一内容源） |
 | 配色、排版、卡片样式、深浅色主题 | `style.css` |
 | 投票逻辑、「我的清单」、一键复制、灯箱 | `app.js` |
+| 实时汇总的算分/排序逻辑 | `tally.js`（纯函数，浏览器与 `node --test` 共用） |
 | 换同一景点/视频下的一张图（key 不变） | 见下方「重新抓取媒体」——只需重新部署那一张图，`index.html` 不用动 |
 | 新增/删除景点或视频（key 变化） | 见下方「重新抓取媒体」，之后 `images/` 和 `index.html` 都要重新部署 |
 
@@ -52,15 +53,67 @@ tcb hosting deploy index.html index.html -e plan-d0gstt7r6507aa319  # 文字/样
 
 | 改了什么 | 需要重新部署 |
 |---|---|
-| `content.py` / `style.css` / `app.js` | 只需 `index.html` |
+| `content.py` / `style.css` / `app.js` / `tally.js` | 只需 `index.html`（构建时会内联进去） |
 | 换同一 key 下的图（如替换 `raw/B1a.img`） | **只需那一张图**，`index.html` 文本不变，例：`tcb hosting deploy images/B1a.webp images/B1a.webp -e plan-d0gstt7r6507aa319` |
 | 新增景点/视频（新 key） | `images/`（新文件）+ `index.html`（新增引用） |
+| `cloudbase.js`（vendored CloudBase SDK，一般只在升级 SDK 时改） | `tcb hosting deploy cloudbase.js cloudbase.js -e plan-d0gstt7r6507aa319` |
 
 首次上线或不确定改了什么时，两条命令都跑一遍最保险（建议先传 `images`，避免线上 `index.html` 一度引用还不存在的图片路径）。
 
 - **环境 ID**：`plan-d0gstt7r6507aa319`（腾讯云 CloudBase 免费体验版）。
 - **首次配置**：`npm i -g @cloudbase/cli --registry=https://registry.npmmirror.com`（本机默认 npm 源会卡，故用国内镜像），再 `tcb login --flow device` 扫码登录。
 - ⚠️ **续期**：免费环境 **2027-01-08 到期**，到期前需在 [CloudBase 控制台](https://console.cloud.tencent.com/tcb) 手动续 6 个月，否则环境销毁、链接失效（不支持自动续费）。
+
+---
+
+## 投票实时汇总（CloudBase 云数据库）
+
+6 人投票现在会实时汇总：每人投票/改名/改组合线路后，浏览器把自己那条记录同步到云数据库，
+「我的清单」浮层里的「大家的选择 · 实时汇总」面板拉取全部记录、按加权分排行展示。本地
+`localStorage` 投票与「一键复制」原样保留，作为 SDK 未加载 / 断网时的兜底。
+
+**数据流**：打开页面即匿名登录（CloudBase 匿名登录，身份跨会话稳定）→ 每次投票/改名/改组合，
+防抖后把自己那条文档 upsert 进云数据库集合 `votes`（文档 id 存在 `localStorage` 的 `bali_docid`，
+更新失败时保留 docId 供下次重试，只有服务端明确返回 `updated:0`——即该文档已不存在——才会重新
+创建）→「实时汇总」面板拉取全部文档，用加权分（必去 ×2 + 可去 ×1）给景点排行，组合线路单独统计，
+顶部显示「已 N 人参与」。
+
+**涉及文件**：
+- `tally.js` — 纯汇总算法（算分/排序），不依赖网络，浏览器与 `node --test` 共用。
+- `app.js` 的 `cloud` 模块 — 匿名登录、`syncMine()` 防抖同步、`fetchAll()` 拉取全量；以及
+  `renderTally` / `refreshTally` 负责面板渲染和三个刷新时机（打开浮层 / 投完票 / 点「刷新」）。
+- `cloudbase.js` — vendored 的 CloudBase Web SDK（UMD，全局变量 `cloudbase`），随站点同源部署，
+  不依赖第三方 CDN。
+
+**构建变化**：`build.py` 现在还会把 `tally.js` 内联进页面，并在 `index.html` 里加一行
+`<script src="cloudbase.js"></script>`（在内联脚本之前加载）。构建命令不变，仍是 `python3 build.py`。
+
+**新增部署目标**：SDK 变更时（一般首次上线跑一次即可，之后基本不变）：
+```bash
+tcb hosting deploy cloudbase.js cloudbase.js -e plan-d0gstt7r6507aa319
+```
+文字/样式/交互（含 `tally.js`）改动仍只需重新部署 `index.html`。
+
+**一次性 CloudBase 控制台配置**（首次启用需在 [CloudBase 控制台](https://console.cloud.tencent.com/tcb)
+环境 `plan-d0gstt7r6507aa319` 手动点一遍，此后无需重复）：
+
+1. **开启匿名登录**：「登录授权」→ 开启「匿名登录」。
+2. **建集合**：「云数据库」→ 新建集合 `votes`。
+3. **设安全规则**：集合 `votes` →「权限设置」→ 自定义安全规则，填入：
+   ```json
+   { "read": true, "write": "doc._openid == auth.openid" }
+   ```
+   （所有人可读，用于汇总；仅本人可写自己那条，防止误改/删别人的票。）
+4. **加 Web 安全域名**：「环境」→「安全配置」→「Web 安全域名」，加入
+   `plan-d0gstt7r6507aa319-1451599494.tcloudbaseapp.com`（否则浏览器端 SDK 认证会被拒）。
+
+**单测**：
+```bash
+node --test webpage/test/tally.test.js   # 零依赖，Node 内置测试框架
+```
+
+**兜底**：SDK 未加载或断网时，本地投票、「我的清单」与「一键复制」照常可用；「实时汇总」面板会
+显示「云同步暂不可用，可用下方『一键复制』发到群里」，不影响其余功能。
 
 ---
 
