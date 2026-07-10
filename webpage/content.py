@@ -42,7 +42,7 @@ REGIONS = [
 ITEMS = [
     # ===== 巴厘岛本岛（落地首站，热门优先） =====
     {
-        "id": "A1", "region": "A", "zh": "乌布文化区", "en": "Ubud", "highlight": True,
+        "id": "A1", "region": "A", "zh": "乌布 · 丛林与梯田", "en": "Ubud", "highlight": True,
         "tags": ["文化", "梯田", "瀑布"], "time": "2–3 天",
         "price": "门票各 ¥25–100；漂流约 ¥250–350；SPA ¥150+",
         "feature": "德格拉朗梯田、圣猴森林、Tirta Empul 圣泉庙、丛林秋千、多条瀑布(Tegenungan/Tibumana)、Ayung 河漂流、ATV 四驱越野、瑜伽与 SPA、手工艺村。文艺慢节奏核心。",
@@ -73,7 +73,7 @@ ITEMS = [
         ],
     },
     {
-        "id": "A3", "region": "A", "zh": "塔那罗海神庙", "en": "Tanah Lot", "highlight": True,
+        "id": "A3", "region": "A", "zh": "塔那罗海神庙", "en": "Tanah Lot",
         "tags": ["海庙", "日落"], "time": "半天", "price": "门票约 ¥30",
         "feature": "立于海中岩石上的神庙，巴厘的日落名片。",
         "caution": "涨潮时无法走到庙底；日落时段人极多，宜提前到。",
@@ -84,7 +84,7 @@ ITEMS = [
         ],
     },
     {
-        "id": "A4", "region": "A", "zh": "东巴厘 · 巴图尔火山", "en": "East Bali · Mt Batur", "highlight": True,
+        "id": "A4", "region": "A", "zh": "东巴厘 · 巴图尔火山", "en": "East Bali · Mt Batur",
         "tags": ["火山", "徒步", "潜水", "天堂之门"], "time": "2–3 天",
         "price": "火山日出徒步人均约 ¥200–350（含天堂之门门票与包车）",
         "feature": "巴图尔火山(Batur)日出徒步、Lempuyang 天堂之门、Tirta Gangga 与 Taman Ujung 水宫、Besakih 母庙、阿贡圣山远眺、Sidemen 梯田谷、Amed 黑沙渔村与 Tulamben 的 USS Liberty 沉船浮潜、Karangasem 白沙滩(Virgin Beach)。",
@@ -123,15 +123,15 @@ ITEMS = [
 
     # ===== 佩尼达三岛（快艇衔接，从南巴厘出发） =====
     {
-        "id": "B1", "region": "B", "zh": "佩尼达网红海岸", "en": "Nusa Penida Coast", "highlight": True,
+        "id": "B1", "region": "B", "zh": "佩尼达悬崖海岸", "en": "Nusa Penida Coast", "highlight": True,
         "tags": ["海岛", "悬崖打卡", "浮潜"], "time": "1–2 天",
         "price": "一日跳岛团人均约 ¥250–450（含往返快艇）",
-        "feature": "精灵坠崖(Kelingking)、破碎沙滩(Broken Beach)、天使浴池(Angel's Billabong)、钻石沙滩(Diamond Beach)、水晶湾(Crystal Bay) 浮潜。巴厘最出片的悬崖海景。",
-        "caution": "岛内道路极差、坡陡，建议包车 + 司机而非自驾摩托；网红点悬崖台阶陡、排队久；备晕船药。",
+        "feature": "精灵坠崖(Kelingking)、破碎沙滩(Broken Beach)、天使浴池(Angel's Billabong)、钻石沙滩(Diamond Beach)、水晶湾(Crystal Bay) 浮潜。巴厘最壮观的悬崖海景。",
+        "caution": "岛内道路极差、坡陡，建议包车 + 司机而非自驾摩托；景点悬崖台阶陡、排队久；备晕船药。",
         "coupling": "与南巴厘同一港区，最易衔接；可与蝠鲼共游同日安排。",
         "video_q": "Nusa Penida Kelingking beach Bali drone 4k",
         "subspots": [
-            {"id": "B1a", "zh": "精灵坠崖 (Kelingking)", "en": "Kelingking Beach", "q": "Kelingking Beach Nusa Penida", "desc": "经典悬崖海湾，俯瞰如精灵坠入大海的白色沙滩，巴厘出片王。下到沙滩台阶极陡且晒，体力一般者崖顶观景即可。"},
+            {"id": "B1a", "zh": "精灵坠崖 (Kelingking)", "en": "Kelingking Beach", "q": "Kelingking Beach Nusa Penida", "desc": "经典悬崖海湾，俯瞰如精灵坠入大海的白色沙滩，巴厘最标志性的悬崖景观。下到沙滩台阶极陡且晒，体力一般者崖顶观景即可。"},
             {"id": "B1b", "zh": "破碎沙滩 (Broken Beach)", "en": "Broken Beach", "q": "Broken Beach Nusa Penida", "desc": "海浪穿出山体形成的天然拱洞与圆形泻湖。沿崖边步道走一圈即看，无护栏，靠近边缘注意风浪与脚下。"},
             {"id": "B1c", "zh": "天使浴池 (Angel's Billabong)", "en": "Angel's Billabong", "q": "Angel's Billabong Nusa Penida", "desc": "礁石环抱的天然潮池，水清可泡。涨潮浪会漫入、易滑，下池前看浪情，留意被浪卷走风险。"},
             {"id": "B1d", "zh": "钻石沙滩 (Diamond Beach)", "en": "Diamond Beach", "q": "Diamond Beach Nusa Penida", "desc": "银白沙滩嵌在陡峭崖壁间，需下木梯到达。崖壁无遮挡、阶梯晒，下到底戏水再爬回较耗体力。"},
@@ -139,14 +139,14 @@ ITEMS = [
         ],
     },
     {
-        "id": "B2", "region": "B", "zh": "蝠鲼 & 海龟共游", "en": "Manta & Turtle Snorkel", "highlight": True,
+        "id": "B2", "region": "B", "zh": "蝠鲼&海龟浮潜点", "en": "Manta & Turtle Snorkel", "highlight": True,
         "tags": ["浮潜", "海洋"], "time": "半天", "price": "浮潜团人均约 ¥200–400",
-        "feature": "Manta Point 与蝠鲼(魔鬼鱼)同游、Crystal Bay/Gamat Bay 浮潜看海龟与珊瑚。旱季海水透明度高。",
+        "feature": "Manta Point 蝠鲼浮潜、Crystal Bay/Gamat Bay 海龟与珊瑚浮潜。旱季海水透明度高。",
         "caution": "Manta Point 有涌浪、需跟船听教练；晕船者提前服药；防晒用珊瑚友好型。",
         "coupling": "常与佩尼达陆地打卡拼成一日跳岛团。",
         "video_q": "snorkeling manta ray Nusa Penida Manta Point",
         "subspots": [
-            {"id": "B2a", "zh": "蝠鲼(魔鬼鱼)同游", "en": "Manta Ray", "q": "Manta ray snorkeling Nusa Penida", "desc": "跟船到 Manta Point 与大型蝠鲼同游，旱季概率高。有涌浪、需跟船听教练，晕船者提前服药。"},
+            {"id": "B2a", "zh": "蝠鲼浮潜点 (Manta Point)", "en": "Manta Point", "q": "Manta ray snorkeling Nusa Penida", "desc": "跟船到 Manta Point 与大型蝠鲼同游，旱季概率高。有涌浪、需跟船听教练，晕船者提前服药。"},
             {"id": "B2b", "zh": "海龟浮潜", "en": "Sea Turtle", "q": "green sea turtle snorkeling Indonesia reef", "desc": "Crystal Bay/Gamat Bay 珊瑚区浮潜常遇海龟。水况看天气，防晒用珊瑚友好型，保持距离勿追摸。"},
         ],
     },
@@ -167,7 +167,7 @@ ITEMS = [
 
     # ===== 科莫多（你的首选，船宿优先） =====
     {
-        "id": "C1", "region": "C", "zh": "船宿/跳岛", "en": "Komodo Liveaboard & Island Hopping",
+        "id": "C1", "region": "C", "zh": "船宿/跳岛", "en": "Komodo Liveaboard & Island Hopping", "highlight": True,
         "tags": ["潜水", "海上过夜", "日出", "海岛", "Padar 观景", "浮潜"], "time": "2–4 天",
         "price": "往返机票人均约 ¥600–1200 + 跳岛团 ¥300–1200（1 日/2 日 1 夜）；2 天船宿人均约 ¥1500–3000+ / 3 天约 ¥2500–5000+",
         "feature": "住在船上巡游科莫多海域，避开日间人潮，清晨独占 Padar 观景与无人海滩，潜水条件世界级。跳岛则覆盖科莫多巨蜥(野生)、Padar 岛三色海湾、粉色沙滩、Manta Point 蝠鲼同游、Taka Makassar 新月沙洲、Gili Lawa 草原观景、Kalong 蝙蝠岛日落。印尼海岛风光天花板之一。",
@@ -175,21 +175,19 @@ ITEMS = [
         "coupling": "将科莫多所有精华点一次打包，船宿体验感最强，跳岛灵活度高。",
         "video_q": "Komodo liveaboard phinisi boat Padar pink beach",
         "subspots": [
-            {"id": "C1c", "zh": "Padar 岛三色海湾", "en": "Padar Three Bays", "q": "Padar island viewpoint Komodo", "desc": "科莫多群岛最经典的俯瞰视角，三处海湾呈现不同深浅的蓝绿，旱季草坡金黄。"},
-            {"id": "C2c", "zh": "科莫多粉色沙滩", "en": "Pink Beach", "q": "Pink Beach Komodo island", "desc": "珊瑚碎屑形成的淡粉沙滩，浮潜看珊瑚。正午晒、人潮随船到，早去更清静，防晒补水。"},
-            {"id": "C2e", "zh": "蝠鲼同游 (Manta Point)", "en": "Manta Point", "q": "Manta Point Komodo manta ray snorkeling", "desc": "科莫多 Manta Point 常年聚集巨型蝠鲼，浮潜即可看它们贴着水面滑翔掠食。海流较强，务必跟船听教练指挥、保持距离勿追逐触碰，晕船者提前备药。"},
+            {"id": "C1c", "zh": "Padar 岛三色海湾", "en": "Padar Island", "q": "Padar island viewpoint Komodo", "desc": "科莫多群岛最经典的俯瞰视角，三处海湾呈现不同深浅的蓝绿，旱季草坡金黄。需爬一段曝晒山坡，早去可避开炎热与人潮，带足水。"},
+            {"id": "C1l", "zh": "科莫多粉色沙滩", "en": "Pink Beach", "q": "Pink Beach Komodo island", "desc": "珊瑚碎屑形成的淡粉沙滩，浮潜看珊瑚。正午晒、人潮随船到，早去更清静，防晒补水。"},
+            {"id": "C1n", "zh": "蝠鲼同游 (Manta Point)", "en": "Manta Point", "q": "Manta Point Komodo manta ray snorkeling", "desc": "科莫多 Manta Point 常年聚集巨型蝠鲼，浮潜即可看它们贴着水面滑翔掠食。海流较强，务必跟船听教练指挥、保持距离勿追逐触碰，晕船者提前备药。"},
             {"id": "C1h", "zh": "海龟同游", "en": "Sea Turtle Encounter", "q": "Komodo snorkeling sea turtle coral", "desc": "浮潜时与海龟并肩游过珊瑚礁，动作放缓、保持距离，勿追逐触碰。"},
-            {"id": "C2b", "zh": "科莫多巨蜥", "en": "Komodo Dragon", "q": "Komodo dragon Komodo national park", "desc": "野生巨蜥在岛上漫步，体型大具攻击性。上岛必须跟园区向导、保持距离，勿掉队与投喂。"},
-            {"id": "C2f", "zh": "Taka Makassar 新月沙洲", "en": "Taka Makassar", "q": "Taka Makassar sandbar Komodo aerial", "desc": "退潮时浮出海面的新月形白沙洲，四周是渐层松石色浅滩与珊瑚礁，跳岛必拍的梦幻一景。仅退潮可登、无遮荫极晒，注意防晒补水、勿踩踏珊瑚。"},
-            {"id": "C2d", "zh": "Kanawa/Kelor 浮潜", "en": "Kelor Island", "q": "Kelor island Komodo viewpoint", "desc": "小岛周边清澈珊瑚礁，浮潜轻松看鱼。部分海域有流，跟船浮潜、勿远离，带珊瑚友好防晒。"},
+            {"id": "C1k", "zh": "科莫多巨蜥", "en": "Komodo Dragon", "q": "Komodo dragon Komodo national park", "desc": "野生巨蜥在岛上漫步，体型大具攻击性。上岛必须跟园区向导、保持距离，勿掉队与投喂。"},
+            {"id": "C1o", "zh": "Taka Makassar 新月沙洲", "en": "Taka Makassar", "q": "Taka Makassar sandbar Komodo aerial", "desc": "退潮时浮出海面的新月形白沙洲，四周是渐层松石色浅滩与珊瑚礁，跳岛必拍的梦幻一景。仅退潮可登、无遮荫极晒，注意防晒补水、勿踩踏珊瑚。"},
+            {"id": "C1m", "zh": "Kanawa/Kelor 浮潜", "en": "Kelor Island", "q": "Kelor island Komodo viewpoint", "desc": "小岛周边清澈珊瑚礁，浮潜轻松看鱼。部分海域有流，跟船浮潜、勿远离，带珊瑚友好防晒。"},
             {"id": "C1i", "zh": "山顶俯瞰海湾", "en": "Summit Bay View", "q": "Komodo island hilltop bay view", "desc": "登上无人小岛的高坡，俯瞰停泊的船只与曲折海湾，是跳岛行程中隐秘的观景位。"},
-            {"id": "C2g", "zh": "Gili Lawa 草原观景", "en": "Gili Lawa", "q": "Gili Lawa island Komodo viewpoint", "desc": "登上无人小岛的草坡俯瞰科莫多群岛与湛蓝海湾，旱季金黄、雨季翠绿，日落尤其壮阔。需徒步爬一段裸坡、无遮荫，穿防滑鞋带足水，清晨或傍晚上山避晒。"},
+            {"id": "C1p", "zh": "Gili Lawa 草原观景", "en": "Gili Lawa", "q": "Gili Lawa island Komodo viewpoint", "desc": "登上无人小岛的草坡俯瞰科莫多群岛与湛蓝海湾，旱季金黄、雨季翠绿，日落尤其壮阔。需徒步爬一段裸坡、无遮荫，穿防滑鞋带足水，清晨或傍晚上山避晒。"},
             {"id": "C1d", "zh": "海湾与 Phinisi 帆船", "en": "Bay with Phinisi", "q": "Phinisi boat Komodo bay", "desc": "传统 Phinisi 帆船停泊在翡翠海湾，是船宿与跳岛之间转换航线的日常美景。"},
             {"id": "C1f", "zh": "帆船甲板巡游", "en": "Deck Cruising", "q": "Komodo liveaboard deck sailing", "desc": "在 Phinisi 木甲板上巡游群岛，海风、蓝天与远处火山轮廓，是船宿最松弛的时光。"},
             {"id": "C1g", "zh": "船头静享时光", "en": "Bow Serenity", "q": "Komodo boat bow ocean sunrise", "desc": "盘坐船头看海天一色，船行时水花声与开阔视野，船宿独有的冥想时刻。"},
-            {"id": "C1e", "zh": "黄昏船宿观蝠", "en": "Sunset Boat & Bats", "q": "Kalong island flying fox sunset boat", "desc": "黄昏在船宿甲板上等待成千上万只果蝠从红树林小岛飞出，漫天剪影与晚霞交织。"},
-            {"id": "C2h", "zh": "Kalong 蝙蝠岛日落", "en": "Kalong Island", "q": "Kalong island Komodo flying fox sunset", "desc": "黄昏时数千只果蝠从红树林小岛集体腾空觅食，遮天蔽日，是船宿夜泊前的经典画面。在船上观赏即可，备长焦与外套，日落后海上转凉。"},
-            {"id": "C2a", "zh": "Padar 岛三色海湾", "en": "Padar Island", "q": "Padar island viewpoint Komodo", "desc": "登顶看三处不同色海湾的视野，经典构图。需爬一段曝晒山坡，早去可避开炎热与人潮，带足水。"},
+            {"id": "C1e", "zh": "Kalong 蝙蝠岛日落", "en": "Kalong Island", "q": "Kalong island Komodo flying fox sunset", "desc": "黄昏在船宿甲板上等待成千上万只果蝠从红树林小岛飞出，漫天剪影与晚霞交织，是船宿夜泊前的经典画面。在船上观赏即可，备长焦与外套，日落后海上转凉。"},
             {"id": "C1j", "zh": "科莫多岛掠影", "en": "Komodo Montage", "q": "Komodo island pink beach deer sunset", "desc": "山径、粉色沙滩上的鹿、日落蝙蝠群——科莫多跳岛与船宿的精华切片集合。"},
         ],
     },
@@ -217,7 +215,7 @@ ITEMS = [
         "price": "含往返渡轮的 2 天团人均约 ¥500–900",
         "feature": "Ijen——全球罕见的蓝色火焰(Blue Fire)、翠绿硫磺酸湖、扛硫磺的矿工。凌晨下火山口的独特体验，破晓时整座火山口全景尤为壮观。",
         "caution": "凌晨 1–2 点出发下火山口；有硫磺毒气，必须戴防毒面具、跟向导行动；夜间寒冷，需备保暖衣物。",
-        "coupling": "可从巴厘陆路 + 渡轮当地联游。强烈推荐与布罗莫(F1)串联为东爪哇 3–4 天火山走廊（布罗莫→宜珍→巴厘渡轮回），一程看两座世界级火山。",
+        "coupling": "可从巴厘陆路 + 渡轮当地联游。强烈推荐与布罗莫(D1)串联为东爪哇 3–4 天火山走廊（布罗莫→宜珍→巴厘渡轮回），一程看两座世界级火山。",
         "video_q": "Ijen blue fire crater sulfur East Java night",
         "subspots": [
             {"id": "E1a", "zh": "蓝色火焰", "en": "Blue Fire", "q": "Ijen blue fire crater night", "desc": "火山口裂缝夜间的蓝色火焰，全球罕见。凌晨下火山口、有硫毒气，必须戴防毒面具跟向导，夜间寒冷，注意保暖。"},
@@ -271,12 +269,11 @@ ITEMS = [
 
 # 精华速览 (references a subspot image + one-liner). order = display order.
 HIGHLIGHTS = [
-    {"item": "A1", "img": "A1a", "title": "乌布 · 德格拉朗梯田", "blurb": "梯田 / 圣猴森林 / 瀑布，巴厘的灵魂与文艺慢生活"},
-    {"item": "B1", "img": "B1a", "title": "佩尼达 · 精灵坠崖", "blurb": "全巴厘最出片的悬崖海岸，俯瞰如霸王龙脊背伸入碧海"},
-    {"item": "C2", "img": "C2a", "title": "科莫多 · Padar 三色海湾", "blurb": "印尼海岛天花板，黑-白-粉三色海湾与史前巨兽的史诗级相遇"},
+    {"item": "A1", "img": "A1a", "title": "乌布 · 丛林与梯田", "blurb": "梯田 / 圣猴森林 / 瀑布，巴厘的灵魂与文艺慢生活"},
+    {"item": "B1", "img": "B1a", "title": "佩尼达 · 精灵坠崖", "blurb": "全巴厘最壮观的悬崖海岸，俯瞰如霸王龙脊背伸入碧海"},
+    {"item": "C1", "img": "C1c", "title": "科莫多 · Padar 三色海湾", "blurb": "印尼海岛天花板，黑-白-粉三色海湾与史前巨兽的史诗级相遇"},
     {"item": "D1", "img": "D1a", "title": "布罗莫 · 月球表面日出", "blurb": "月球表面般的火山日出，地球上最不像地球的地方"},
-    {"item": "B2", "img": "B2a", "title": "蝠鲼 & 海龟共游", "blurb": "与魔鬼鱼、海龟同游，旱季海水透明度绝佳"},
-    {"item": "A3", "img": "A3a", "title": "塔那罗海神庙日落", "blurb": "海中岩庙配橘色落日，巴厘岛的日落名片"},
+    {"item": "B2", "img": "B2a", "title": "佩尼达 · 蝠鲼&海龟浮潜点", "blurb": "与魔鬼鱼、海龟同游，旱季海水透明度绝佳"},
 ]
 
 COMBOS = [

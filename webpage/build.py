@@ -12,6 +12,7 @@ MEDIA = load("media.json")       # {subspotId: dataURI, "vid:A1": dataURI}
 VIDEOS = load("videos.json")     # {itemId: {yt_id,title,author}}
 CREDITS = load("credits.json")   # {subspotId: {artist,license}}
 FONT = load("font.json")         # {"serif_woff2": "<b64>"} 或 {"serif_woff": "<b64>"}；缺失则降级系统宋体栈
+HL_IDS = [h["item"] for h in C.HIGHLIGHTS]  # 精选景点 item ID 列表
 
 IMAGES_DIR = os.path.join(BUILD, "images")
 USED_KEYS = set()   # img_uri 记录 index.html 实际引用到的 key，write_images 只写这些
@@ -83,7 +84,7 @@ def hero():
   </figure>
   <div class="hero-foot">
     <p class="howto">{esc(m["howto"])}</p>
-    <nav class="index" aria-label="分区导航"><a class="idx idx-star" href="#highlights"><b>★</b><span>精选</span></a>{idx}</nav>
+    <nav class="index" aria-label="分区导航"><a class="idx idx-star" href="#hl-main"><b>★</b><span>精选</span></a>{idx}</nav>
   </div>
 </header>'''
 
@@ -151,16 +152,30 @@ def spot(item):
   </div>
 </article>'''
 
+def highlights_main():
+    """精选景点：将 HIGHLIGHTS 标记的 item 在主内容最前面平铺展示。"""
+    hl_items = sorted((it for it in C.ITEMS if it["id"] in HL_IDS),
+                      key=lambda it: HL_IDS.index(it["id"]))
+    body = "".join(spot(it) for it in hl_items)
+    return f'''<section class="chapter" id="hl-main">
+  <div class="chap-head">
+    <div class="chap-meta"><h2>精选景点</h2><span class="chap-region">Highlights</span></div>
+    <div class="chap-data"><span>精华优先看</span></div>
+  </div>
+  {body}
+</section>'''
+
 def region(r):
-    items = [it for it in C.ITEMS if it["region"] == r["id"]]
+    items = [it for it in C.ITEMS if it["region"] == r["id"] and it["id"] not in HL_IDS]
     body = "".join(spot(it) for it in items)
+    note = '<p class="chap-empty">该区域景点已在上方「精选景点」中展示。</p>' if not items else ''
     return f'''<section class="chapter" id="region-{r['id']}">
   <div class="chap-head">
     <div class="chap-meta"><h2>{esc(r['name'])}</h2><span class="chap-region">Region {r['id']}</span></div>
     <div class="chap-data"><span>{esc(r['tag'])}</span><i></i><span>{esc(r['days'])}</span><i></i><span>{esc(r['budget'])}</span></div>
   </div>
   <p class="chap-desc">{esc(r['desc'])}</p>
-  {body}
+  {body}{note}
 </section>'''
 
 def combos():
@@ -228,7 +243,7 @@ def mylist():
 ITEMS_JS = json.dumps([{"id":it["id"],"zh":it["zh"]} for it in C.ITEMS], ensure_ascii=False)
 COMBOS_JS = json.dumps({c["no"]: f'组{c["no"]} {c["name"]}' for c in C.COMBOS}, ensure_ascii=False)
 
-BODY = (hero() + highlights() + '<main>' + "".join(region(r) for r in C.REGIONS)
+BODY = (hero() + highlights() + '<main>' + highlights_main() + "".join(region(r) for r in C.REGIONS)
         + combos() + prices() + notes_sec() + footer() + '</main>' + mylist())
 N_IMAGES = write_images()   # BODY 里所有 img_uri 已调用完，USED_KEYS 就绪，此时才落盘
 
