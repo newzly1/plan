@@ -10,6 +10,69 @@
   var votes = getVotes();
   function save(){ try{ localStorage.setItem(K.votes, JSON.stringify(votes)); }catch(e){} }
 
+  // ---- cloud sync (CloudBase) ----
+  var ENV_ID = "plan-d0gstt7r6507aa319";
+  var COLL = "votes";
+  var DOCID_KEY = "bali_docid";
+  var cloud = (function(){
+    var db = null, docId = null, failed = false;
+    function currentState(){
+      return {
+        name: (localStorage.getItem(K.name)||"").trim(),
+        picks: votes,
+        combo: localStorage.getItem(K.combo) || "",
+        updatedAt: Date.now()
+      };
+    }
+    var readyP;
+    if (typeof cloudbase === "undefined" || !cloudbase.init){
+      failed = true; readyP = Promise.reject(new Error("no sdk"));
+    } else {
+      readyP = new Promise(function(resolve, reject){
+        try {
+          var app = cloudbase.init({ env: ENV_ID });
+          var auth = app.auth({ persistence: "local" });
+          auth.anonymousAuthProvider().signIn().then(function(){
+            db = app.database();
+            docId = localStorage.getItem(DOCID_KEY) || null;
+            resolve();
+          }).catch(reject);
+        } catch(e){ reject(e); }
+      });
+    }
+    readyP.catch(function(){ failed = true; });
+
+    function addNew(data, cb){
+      db.collection(COLL).add(data).then(function(res){
+        docId = (res && (res.id || res._id)) || null;
+        if (docId) localStorage.setItem(DOCID_KEY, docId);
+        if (cb) cb();
+      }).catch(function(){});
+    }
+    var syncT = null;
+    function syncMine(){
+      if (failed) return;
+      clearTimeout(syncT);
+      syncT = setTimeout(function(){
+        readyP.then(function(){
+          var data = currentState();
+          function done(){ if (sheet && !sheet.hasAttribute("hidden")) refreshTally(); }
+          if (docId){
+            db.collection(COLL).doc(docId).update(data).then(done).catch(function(){
+              docId = null; localStorage.removeItem(DOCID_KEY); addNew(data, done);
+            });
+          } else { addNew(data, done); }
+        }).catch(function(){});
+      }, 800);
+    }
+    function fetchAll(){
+      return readyP.then(function(){
+        return db.collection(COLL).limit(50).get().then(function(res){ return (res && res.data) || []; });
+      });
+    }
+    return { syncMine: syncMine, fetchAll: fetchAll, offline: function(){ return failed; } };
+  })();
+
   function paintSpot(art){
     var id = art.getAttribute("data-id"), st = votes[id];
     if(st){ art.setAttribute("data-vote", st); } else { art.removeAttribute("data-vote"); }
@@ -28,7 +91,7 @@
     if(vb){
       var art = vb.closest(".spot"), id = art.getAttribute("data-id"), v = vb.getAttribute("data-v");
       if(votes[id]===v){ delete votes[id]; } else { votes[id]=v; }
-      save(); paintSpot(art); updateCount(); if(!$("#sheet").hasAttribute("hidden")) renderPicks();
+      save(); cloud.syncMine(); paintSpot(art); updateCount(); if(!$("#sheet").hasAttribute("hidden")) renderPicks();
       return;
     }
     var idx = e.target.closest(".idx");
@@ -76,15 +139,15 @@
     $("#nameIn").value = localStorage.getItem(K.name)||"";
     var c = localStorage.getItem(K.combo);
     $$('input[name="combo"]').forEach(function(r){ r.checked = (r.value===c); });
-    renderPicks(); sheet.removeAttribute("hidden"); document.body.style.overflow="hidden";
+    renderPicks(); refreshTally(); sheet.removeAttribute("hidden"); document.body.style.overflow="hidden";
   }
   function closeSheet(){ sheet.setAttribute("hidden",""); document.body.style.overflow=""; }
   $("#bar").addEventListener("click", openSheet);
   $("#sheetX").addEventListener("click", closeSheet);
   sheet.addEventListener("click", function(e){ if(e.target===sheet) closeSheet(); });
-  $("#nameIn").addEventListener("input", function(){ localStorage.setItem(K.name, this.value); });
+  $("#nameIn").addEventListener("input", function(){ localStorage.setItem(K.name, this.value); cloud.syncMine(); });
   $$('input[name="combo"]').forEach(function(r){
-    r.addEventListener("change", function(){ if(r.checked) localStorage.setItem(K.combo, r.value); });
+    r.addEventListener("change", function(){ if(r.checked){ localStorage.setItem(K.combo, r.value); cloud.syncMine(); } });
   });
 
   function labelOf(id){ for(var i=0;i<ITEMS.length;i++){ if(ITEMS[i].id===id) return ITEMS[i].id+" "+ITEMS[i].zh; } return id; }
@@ -100,6 +163,39 @@
     box.innerHTML = h;
   }
   function esc(s){ return String(s).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];}); }
+
+  // ---- live tally ----
+  function renderTally(t){
+    if (!t.voterCount) return '<p class="tally-empty">还没有人投票。你投的票会实时汇总到这里。</p>';
+    var h = '<div class="tally-n">已 '+t.voterCount+' 人参与</div>';
+    if (t.spots.length){
+      h += '<ol class="tally-rank">';
+      t.spots.forEach(function(s){
+        h += '<li><span class="tr-id">'+esc(s.id)+'</span><span class="tr-zh">'+esc(s.zh)+'</span>'
+           + '<span class="tr-score">'+s.score+' 分</span>'
+           + '<span class="tr-sub">必去'+s.must+' · 可去'+s.maybe+'</span></li>';
+      });
+      h += '</ol>';
+    }
+    if (t.combos.length){
+      h += '<div class="tally-combo"><div class="tc-h">组合线路</div>';
+      t.combos.forEach(function(c){ h += '<div class="tc-row"><span>'+esc(c.label)+'</span><b>'+c.count+' 票</b></div>'; });
+      h += '</div>';
+    }
+    return h;
+  }
+  function refreshTally(){
+    var body = $("#tallyBody");
+    if (!body) return;
+    if (cloud.offline()){ body.innerHTML = '<p class="tally-empty">云同步暂不可用，可用下方「一键复制」发到群里。</p>'; return; }
+    body.innerHTML = '<p class="tally-empty">加载中…</p>';
+    cloud.fetchAll().then(function(docs){
+      body.innerHTML = renderTally(TallyLib.computeTally(docs, ITEMS, COMBOS));
+    }).catch(function(){
+      body.innerHTML = '<p class="tally-empty">暂时加载不到，稍后点「刷新」。</p>';
+    });
+  }
+  (function(){ var rb = $("#tallyRefresh"); if (rb) rb.addEventListener("click", refreshTally); })();
 
   function summary(){
     var name = (localStorage.getItem(K.name)||"").trim() || "匿名";
