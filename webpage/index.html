@@ -327,6 +327,24 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   .combos{display:grid;grid-template-columns:1fr 1fr}
 }
 
+/* ---- live tally 实时汇总 ---- */
+.tally{margin:14px 0 4px;padding-top:12px;border-top:1px solid rgba(128,128,128,.25)}
+.tally-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.tally-head b{font-size:15px}
+.tally-refresh{font:inherit;font-size:13px;padding:4px 12px;border:1px solid rgba(128,128,128,.4);border-radius:999px;background:transparent;color:inherit;cursor:pointer}
+.tally-refresh:active{opacity:.6}
+.tally-empty{font-size:13px;opacity:.7;margin:6px 0}
+.tally-n{font-size:13px;opacity:.75;margin-bottom:8px}
+.tally-rank{list-style:none;margin:0 0 10px;padding:0;counter-reset:tr}
+.tally-rank li{counter-increment:tr;display:grid;grid-template-columns:auto auto 1fr auto;align-items:baseline;gap:8px;padding:6px 0;border-bottom:1px dashed rgba(128,128,128,.2)}
+.tally-rank li::before{content:counter(tr);font-weight:700;opacity:.5;min-width:1.4em}
+.tr-id{font-weight:700;font-size:13px;opacity:.8}
+.tr-zh{font-size:14px}
+.tr-score{font-weight:700}
+.tr-sub{font-size:12px;opacity:.6;text-align:right}
+.tally-combo .tc-h{font-size:13px;opacity:.75;margin:4px 0 6px}
+.tc-row{display:flex;justify-content:space-between;font-size:13px;padding:3px 0}
+
 </style>
 </head>
 <body>
@@ -794,12 +812,71 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     <label class="fld"><span>你的名字</span><input type="text" id="nameIn" placeholder="填个名字，方便群里对号" maxlength="16"></label>
     <div class="fld"><span>主线偏好</span><div class="crs"><label class="cr"><input type="radio" name="combo" value="①"><span>组① 纯巴厘 + 佩尼达（最轻松）</span></label><label class="cr"><input type="radio" name="combo" value="②"><span>组② 巴厘 + 佩尼达 + 科莫多（海岛天花板 🔥）</span></label><label class="cr"><input type="radio" name="combo" value="③"><span>组③ 巴厘 + 佩尼达 + 布罗莫（月球表面版）</span></label><label class="cr"><input type="radio" name="combo" value="④"><span>组④ 科莫多 + 佩尼达 + 乌布 + 布罗莫（终极全景 🔥 推荐）</span></label></div></div>
     <div class="picks" id="picks"></div>
+    <div class="tally" id="tally">
+      <div class="tally-head"><b>大家的选择 · 实时汇总</b><button type="button" class="tally-refresh" id="tallyRefresh">刷新</button></div>
+      <div class="tally-body" id="tallyBody"><p class="tally-empty">加载中…</p></div>
+    </div>
     <div class="sheet-act"><button type="button" class="copy" id="copyBtn">一键复制汇总</button><button type="button" class="reset" id="resetBtn">清空</button></div>
   </div>
 </div>
 <div class="lb" id="lb" hidden><img id="lbImg" src="" alt=""><button type="button" class="lb-x" aria-label="关闭">×</button></div>
 <div class="toast" id="toast" hidden></div>
+<script src="cloudbase.js"></script>
 <script>
+// webpage/tally.js — 纯投票汇总算法，浏览器（build 内联）与 Node 测试共用。
+(function (root) {
+  "use strict";
+  function has(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
+
+  function computeTally(docs, items, combos) {
+    docs = docs || []; items = items || []; combos = combos || {};
+    var zh = {}, i;
+    for (i = 0; i < items.length; i++) zh[items[i].id] = items[i].zh;
+
+    var acc = {}, comboCount = {}, voterCount = 0, d, id, cno;
+    for (d = 0; d < docs.length; d++) {
+      var doc = docs[d] || {};
+      voterCount++;
+      var picks = doc.picks || {};
+      for (id in picks) {
+        if (!has(picks, id)) continue;
+        var v = picks[id];
+        if (v !== "must" && v !== "maybe") continue;
+        if (!acc[id]) acc[id] = { must: 0, maybe: 0 };
+        acc[id][v]++;
+      }
+      if (doc.combo != null && doc.combo !== "") {
+        var c = String(doc.combo);
+        comboCount[c] = (comboCount[c] || 0) + 1;
+      }
+    }
+
+    var spots = [];
+    for (id in acc) {
+      if (!has(acc, id)) continue;
+      var m = acc[id];
+      spots.push({ id: id, zh: zh[id] || id, must: m.must, maybe: m.maybe, score: m.must * 2 + m.maybe });
+    }
+    spots.sort(function (a, b) {
+      return b.score - a.score || b.must - a.must || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+    });
+
+    var comboList = [];
+    for (cno in comboCount) {
+      if (!has(comboCount, cno)) continue;
+      comboList.push({ no: cno, label: combos[cno] || ("组" + cno), count: comboCount[cno] });
+    }
+    comboList.sort(function (a, b) {
+      return b.count - a.count || (a.no < b.no ? -1 : a.no > b.no ? 1 : 0);
+    });
+
+    return { voterCount: voterCount, spots: spots, combos: comboList };
+  }
+
+  if (typeof module !== "undefined" && module.exports) module.exports = { computeTally: computeTally };
+  else root.TallyLib = { computeTally: computeTally };
+})(typeof self !== "undefined" ? self : this);
+
 (function(){
   "use strict";
   var ITEMS = [{"id": "A1", "zh": "乌布 · 丛林与梯田"}, {"id": "A2", "zh": "南巴厘海岸线"}, {"id": "A3", "zh": "塔那罗海神庙"}, {"id": "A4", "zh": "东巴厘 · 巴图尔火山"}, {"id": "A5", "zh": "北巴厘 & 中部高地"}, {"id": "B1", "zh": "佩尼达悬崖海岸"}, {"id": "B2", "zh": "蝠鲼&海龟浮潜点"}, {"id": "B3", "zh": "蓝梦岛 Lembongan/Ceningan"}, {"id": "C1", "zh": "船宿/跳岛"}, {"id": "D1", "zh": "布罗莫火山 · 月球表面日出"}, {"id": "E1", "zh": "宜珍火山 · 蓝色火焰"}, {"id": "F1", "zh": "吉利三岛 Gili"}, {"id": "F2", "zh": "龙目岛南岸"}, {"id": "F3", "zh": "林贾尼火山徒步"}];
@@ -811,6 +888,71 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   function getVotes(){ try{ return JSON.parse(localStorage.getItem(K.votes))||{}; }catch(e){ return {}; } }
   var votes = getVotes();
   function save(){ try{ localStorage.setItem(K.votes, JSON.stringify(votes)); }catch(e){} }
+
+  // ---- cloud sync (CloudBase) ----
+  var ENV_ID = "plan-d0gstt7r6507aa319";
+  var COLL = "votes";
+  var DOCID_KEY = "bali_docid";
+  var cloud = (function(){
+    var db = null, docId = null, failed = false;
+    function currentState(){
+      return {
+        name: (localStorage.getItem(K.name)||"").trim(),
+        picks: votes,
+        combo: localStorage.getItem(K.combo) || "",
+        updatedAt: Date.now()
+      };
+    }
+    var readyP;
+    if (typeof cloudbase === "undefined" || !cloudbase.init){
+      failed = true; readyP = Promise.reject(new Error("no sdk"));
+    } else {
+      readyP = new Promise(function(resolve, reject){
+        try {
+          var app = cloudbase.init({ env: ENV_ID });
+          var auth = app.auth({ persistence: "local" });
+          auth.anonymousAuthProvider().signIn().then(function(){
+            db = app.database();
+            docId = localStorage.getItem(DOCID_KEY) || null;
+            resolve();
+          }).catch(reject);
+        } catch(e){ reject(e); }
+      });
+    }
+    readyP.catch(function(){ failed = true; });
+
+    function addNew(data, cb){
+      db.collection(COLL).add(data).then(function(res){
+        docId = (res && (res.id || res._id)) || null;
+        if (docId) localStorage.setItem(DOCID_KEY, docId);
+        if (cb) cb();
+      }).catch(function(){});
+    }
+    var syncT = null;
+    function syncMine(){
+      if (failed) return;
+      clearTimeout(syncT);
+      syncT = setTimeout(function(){
+        readyP.then(function(){
+          var data = currentState();
+          function done(){ if (sheet && !sheet.hasAttribute("hidden")) refreshTally(); }
+          if (docId){
+            db.collection(COLL).doc(docId).update(data).then(function(res){
+              if (res && res.updated === 0){ // 文档已不存在（被删），重建
+                docId = null; localStorage.removeItem(DOCID_KEY); addNew(data, done);
+              } else { done(); }
+            }).catch(function(){ /* 瞬时错误：保留 docId，下次同步再试，避免重复建档 */ });
+          } else { addNew(data, done); }
+        }).catch(function(){});
+      }, 800);
+    }
+    function fetchAll(){
+      return readyP.then(function(){
+        return db.collection(COLL).limit(50).get().then(function(res){ return (res && res.data) || []; });
+      });
+    }
+    return { syncMine: syncMine, fetchAll: fetchAll, offline: function(){ return failed; } };
+  })();
 
   function paintSpot(art){
     var id = art.getAttribute("data-id"), st = votes[id];
@@ -830,7 +972,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     if(vb){
       var art = vb.closest(".spot"), id = art.getAttribute("data-id"), v = vb.getAttribute("data-v");
       if(votes[id]===v){ delete votes[id]; } else { votes[id]=v; }
-      save(); paintSpot(art); updateCount(); if(!$("#sheet").hasAttribute("hidden")) renderPicks();
+      save(); cloud.syncMine(); paintSpot(art); updateCount(); if(!$("#sheet").hasAttribute("hidden")) renderPicks();
       return;
     }
     var idx = e.target.closest(".idx");
@@ -878,15 +1020,15 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     $("#nameIn").value = localStorage.getItem(K.name)||"";
     var c = localStorage.getItem(K.combo);
     $$('input[name="combo"]').forEach(function(r){ r.checked = (r.value===c); });
-    renderPicks(); sheet.removeAttribute("hidden"); document.body.style.overflow="hidden";
+    renderPicks(); refreshTally(); sheet.removeAttribute("hidden"); document.body.style.overflow="hidden";
   }
   function closeSheet(){ sheet.setAttribute("hidden",""); document.body.style.overflow=""; }
   $("#bar").addEventListener("click", openSheet);
   $("#sheetX").addEventListener("click", closeSheet);
   sheet.addEventListener("click", function(e){ if(e.target===sheet) closeSheet(); });
-  $("#nameIn").addEventListener("input", function(){ localStorage.setItem(K.name, this.value); });
+  $("#nameIn").addEventListener("input", function(){ localStorage.setItem(K.name, this.value); cloud.syncMine(); });
   $$('input[name="combo"]').forEach(function(r){
-    r.addEventListener("change", function(){ if(r.checked) localStorage.setItem(K.combo, r.value); });
+    r.addEventListener("change", function(){ if(r.checked){ localStorage.setItem(K.combo, r.value); cloud.syncMine(); } });
   });
 
   function labelOf(id){ for(var i=0;i<ITEMS.length;i++){ if(ITEMS[i].id===id) return ITEMS[i].id+" "+ITEMS[i].zh; } return id; }
@@ -902,6 +1044,39 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     box.innerHTML = h;
   }
   function esc(s){ return String(s).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];}); }
+
+  // ---- live tally ----
+  function renderTally(t){
+    if (!t.voterCount) return '<p class="tally-empty">还没有人投票。你投的票会实时汇总到这里。</p>';
+    var h = '<div class="tally-n">已 '+t.voterCount+' 人参与</div>';
+    if (t.spots.length){
+      h += '<ol class="tally-rank">';
+      t.spots.forEach(function(s){
+        h += '<li><span class="tr-id">'+esc(s.id)+'</span><span class="tr-zh">'+esc(s.zh)+'</span>'
+           + '<span class="tr-score">'+s.score+' 分</span>'
+           + '<span class="tr-sub">必去'+s.must+' · 可去'+s.maybe+'</span></li>';
+      });
+      h += '</ol>';
+    }
+    if (t.combos.length){
+      h += '<div class="tally-combo"><div class="tc-h">组合线路</div>';
+      t.combos.forEach(function(c){ h += '<div class="tc-row"><span>'+esc(c.label)+'</span><b>'+c.count+' 票</b></div>'; });
+      h += '</div>';
+    }
+    return h;
+  }
+  function refreshTally(){
+    var body = $("#tallyBody");
+    if (!body) return;
+    if (cloud.offline()){ body.innerHTML = '<p class="tally-empty">云同步暂不可用，可用下方「一键复制」发到群里。</p>'; return; }
+    body.innerHTML = '<p class="tally-empty">加载中…</p>';
+    cloud.fetchAll().then(function(docs){
+      body.innerHTML = renderTally(TallyLib.computeTally(docs, ITEMS, COMBOS));
+    }).catch(function(){
+      body.innerHTML = '<p class="tally-empty">暂时加载不到，稍后点「刷新」。</p>';
+    });
+  }
+  (function(){ var rb = $("#tallyRefresh"); if (rb) rb.addEventListener("click", refreshTally); })();
 
   function summary(){
     var name = (localStorage.getItem(K.name)||"").trim() || "匿名";
