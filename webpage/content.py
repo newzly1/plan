@@ -98,8 +98,8 @@ ITEMS = [
             {"id": "A4d", "zh": "Besakih 母庙", "en": "Besakih Temple", "q": "Besakih temple Bali", "desc": "阿贡火山坡上的母庙建筑群，规模最宏。进庙须围纱笼，山路长，随向导走主轴线即可。"},
             {"id": "A4e", "zh": "USS Liberty 沉船", "en": "USS Liberty Wreck", "q": "USS Liberty wreck Tulamben diving", "desc": "近岸的二战货轮沉船，浮潜即可见鱼群与船体。需一定水性、可能有流，新手跟船听教练、勿触碰。"},
             {"id": "A4f", "zh": "Sidemen 梯田谷", "en": "Sidemen Valley", "q": "Sidemen valley rice terrace Bali Agung", "desc": "阿贡火山脚下静谧的梯田河谷，被称作'没有游客的乌布'，适合放慢脚步住一晚、看云开见峰。山路弯多易晕车，雨后田埂湿滑，清晨光线最好。"},
-            {"id": "A4g", "zh": "Amed 潜水渔村", "en": "Amed", "q": "Amed Bali jukung boats black sand", "desc": "东岸黑沙渔村，成排传统 jukung 独木舟停靠滩上，清晨以阿贡火山为背景，也是自由潜与浮潜看珊瑚、沉船的基地。日出前最美，下海留意海流。"},
-            {"id": "A4h", "zh": "白沙滩 (Virgin Beach)", "en": "White Sand Beach", "q": "White Sand Beach Virgin Beach Karangasem Bali", "desc": "Karangasem 的白沙湾（俗称处女海滩），碧水白沙、比南部安静。设施简易只有海鲜排档，自备现金与防晒，注意涨落潮与礁石。"},
+            {"id": "A4g", "zh": "Amed 潜水渔村", "en": "Amed", "q": "Amed Bali jukung boats black sand", "desc": "东岸黑沙渔村，成排传统 jukung 独木舟停靠滩上，清晨以阿贡火山为背景，也是自由潜与浮潜看珊瑚、沉船的好去处。日出前最美，下海留意海流。"},
+            {"id": "A4h", "zh": "白沙滩 (Virgin Beach)", "en": "White Sand Beach", "q": "White Sand Beach Virgin Beach Karangasem Bali", "desc": "Karangasem 的白沙湾（俗称处女海滩），碧水白沙、比南部安静。设施简单，只有海鲜排档，自备现金与防晒，注意涨落潮与礁石。"},
             {"id": "A4i", "zh": "Taman Ujung 水上宫殿", "en": "Taman Ujung", "q": "Taman Ujung water palace Bali", "desc": "末代王朝的水上宫殿，大片水池、连廊与拱桥倒映远山，比 Tirta Gangga 更开阔大气。园区大遮荫少、正午晒，带遮阳、错峰避团。"},
             {"id": "A4j", "zh": "阿贡火山 (Agung)", "en": "Mount Agung", "q": "Mount Agung Bali volcano", "desc": "巴厘最高的圣火山(3031m)，锥形山体是东部天际线的主角，从 Lempuyang、Sidemen、Amed 皆可远眺。清晨云雾少最易见顶；登顶需向导、凌晨出发、体力要求高。"},
         ],
@@ -139,7 +139,7 @@ ITEMS = [
         ],
     },
     {
-        "id": "B2", "region": "B", "zh": "蝠鲼&海龟浮潜点", "en": "Manta & Turtle Snorkel", "highlight": True,
+        "id": "B2", "region": "B", "zh": "佩尼达 · 蝠鲼&海龟浮潜点", "en": "Manta & Turtle Snorkel", "highlight": True,
         "tags": ["浮潜", "海洋"], "time": "半天", "price": "浮潜团人均约 ¥200–400",
         "feature": "Manta Point 蝠鲼浮潜、Crystal Bay/Gamat Bay 海龟与珊瑚浮潜。旱季海水透明度高。",
         "caution": "Manta Point 有涌浪、需跟船听教练；晕船者提前服药；防晒用珊瑚友好型。",
@@ -170,15 +170,15 @@ ITEMS = [
         "id": "C1", "region": "C", "zh": "船宿/跳岛", "en": "Komodo Liveaboard & Island Hopping", "highlight": True,
         "tags": ["潜水", "海上过夜", "日出", "海岛", "Padar 观景", "浮潜"], "time": "2–4 天",
         "price": "往返机票人均约 ¥600–1200 + 跳岛团 ¥300–1200（1 日/2 日 1 夜）；2 天船宿人均约 ¥1500–3000+ / 3 天约 ¥2500–5000+",
-        "feature": "住在船上巡游科莫多海域，避开日间人潮，清晨独占 Padar 观景与无人海滩，潜水条件世界级。跳岛则覆盖科莫多巨蜥(野生)、Padar 岛三色海湾、粉色沙滩、Manta Point 蝠鲼同游、Taka Makassar 新月沙洲、Gili Lawa 草原观景、Kalong 蝙蝠岛日落。印尼海岛风光天花板之一。",
+        "feature": "住在船上巡游科莫多海域，避开日间人潮，清晨独占 Padar 观景与无人海滩，潜水条件世界级。跳岛则覆盖科莫多巨蜥(野生)、Padar 岛三色海湾、粉色沙滩、Manta Point 蝠鲼浮潜、Taka Makassar 新月沙洲、Gili Lawa 草原观景、Kalong 蝙蝠岛日落。印尼海岛风光天花板之一。",
         "caution": "10 月仍为旺季，船位需提前预订；晕船者慎选或备药；确认船只安全与卫生口碑。上岛看龙必须跟园区向导——巨蜥能奔跑与游泳、具攻击性；部分海域有流，浮潜跟船。",
         "coupling": "将科莫多所有精华点一次打包，船宿体验感最强，跳岛灵活度高。",
         "video_q": "Komodo liveaboard phinisi boat Padar pink beach",
         "subspots": [
             {"id": "C1c", "zh": "Padar 岛三色海湾", "en": "Padar Island", "q": "Padar island viewpoint Komodo", "desc": "科莫多群岛最经典的俯瞰视角，三处海湾呈现不同深浅的蓝绿，旱季草坡金黄。需爬一段曝晒山坡，早去可避开炎热与人潮，带足水。"},
             {"id": "C1l", "zh": "科莫多粉色沙滩", "en": "Pink Beach", "q": "Pink Beach Komodo island", "desc": "珊瑚碎屑形成的淡粉沙滩，浮潜看珊瑚。正午晒、人潮随船到，早去更清静，防晒补水。"},
-            {"id": "C1n", "zh": "蝠鲼同游 (Manta Point)", "en": "Manta Point", "q": "Manta Point Komodo manta ray snorkeling", "desc": "科莫多 Manta Point 常年聚集巨型蝠鲼，浮潜即可看它们贴着水面滑翔掠食。海流较强，务必跟船听教练指挥、保持距离勿追逐触碰，晕船者提前备药。"},
-            {"id": "C1h", "zh": "海龟同游", "en": "Sea Turtle Encounter", "q": "Komodo snorkeling sea turtle coral", "desc": "浮潜时与海龟并肩游过珊瑚礁，动作放缓、保持距离，勿追逐触碰。"},
+            {"id": "C1n", "zh": "蝠鲼浮潜点 (Manta Point)", "en": "Manta Point", "q": "Manta Point Komodo manta ray snorkeling", "desc": "科莫多 Manta Point 常年聚集巨型蝠鲼，浮潜即可看它们贴着水面滑翔掠食。海流较强，务必跟船听教练指挥、保持距离勿追逐触碰，晕船者提前备药。"},
+            {"id": "C1h", "zh": "海龟浮潜", "en": "Sea Turtle Encounter", "q": "Komodo snorkeling sea turtle coral", "desc": "浮潜时与海龟并肩游过珊瑚礁，动作放缓、保持距离，勿追逐触碰。"},
             {"id": "C1k", "zh": "科莫多巨蜥", "en": "Komodo Dragon", "q": "Komodo dragon Komodo national park", "desc": "野生巨蜥在岛上漫步，体型大具攻击性。上岛必须跟园区向导、保持距离，勿掉队与投喂。"},
             {"id": "C1o", "zh": "Taka Makassar 新月沙洲", "en": "Taka Makassar", "q": "Taka Makassar sandbar Komodo aerial", "desc": "退潮时浮出海面的新月形白沙洲，四周是渐层松石色浅滩与珊瑚礁，跳岛必拍的梦幻一景。仅退潮可登、无遮荫极晒，注意防晒补水、勿踩踏珊瑚。"},
             {"id": "C1m", "zh": "Kanawa/Kelor 浮潜", "en": "Kelor Island", "q": "Kelor island Komodo viewpoint", "desc": "小岛周边清澈珊瑚礁，浮潜轻松看鱼。部分海域有流，跟船浮潜、勿远离，带珊瑚友好防晒。"},
@@ -272,8 +272,8 @@ HIGHLIGHTS = [
     {"item": "A1", "img": "A1a", "title": "乌布 · 丛林与梯田", "blurb": "梯田 / 圣猴森林 / 瀑布，巴厘的灵魂与文艺慢生活"},
     {"item": "B1", "img": "B1a", "title": "佩尼达 · 精灵坠崖", "blurb": "全巴厘最壮观的悬崖海岸，俯瞰如霸王龙脊背伸入碧海"},
     {"item": "C1", "img": "C1c", "title": "科莫多 · Padar 三色海湾", "blurb": "印尼海岛天花板，黑-白-粉三色海湾与史前巨兽的史诗级相遇"},
-    {"item": "D1", "img": "D1a", "title": "布罗莫 · 月球表面日出", "blurb": "月球表面般的火山日出，地球上最不像地球的地方"},
-    {"item": "B2", "img": "B2a", "title": "佩尼达 · 蝠鲼&海龟浮潜点", "blurb": "与魔鬼鱼、海龟同游，旱季海水透明度绝佳"},
+    {"item": "D1", "img": "D1f", "title": "布罗莫 · 月球表面日出", "blurb": "月球表面般的火山日出，地球上最不像地球的地方"},
+    {"item": "B2", "img": "B2a", "title": "佩尼达 · 蝠鲼&海龟浮潜点", "blurb": "与魔鬼鱼、海龟同游，旱季海水清透，能见度极佳"},
 ]
 
 COMBOS = [
@@ -306,7 +306,7 @@ PRICES = [
         ("USS Liberty 沉船 浮潜/潜水", "¥100–150 / ¥350–500"),
     ]),
     ("包车 & 市内交通", [
-        ("巴厘包车+司机(约10h)", "¥350–500/车/天（6人分摊≈¥60–90/人）"),
+        ("巴厘包车+司机(约10h)", "¥350–500/车/天（同行分摊≈¥60–90/人）"),
         ("机场接送", "¥100–150/车"), ("Grab/Gojek 市区", "¥15–40/程"),
     ]),
     ("跨岛交通 (人均往返)", [
@@ -326,7 +326,7 @@ PRICES = [
 NOTES = [
     ("签证", "印尼对中国公民实行落地签(VOA)，停留期 30 天，9–10 天行程完全在范围内。抵达后办理即可，建议备好返程票与住宿信息。"),
     ("货币", "印尼盾(IDR)，小岛与村镇 ATM 少，多备现金、认准正规换汇点；大城市多数商户可刷卡。"),
-    ("交通", "市区用 Grab/Gojek；巴厘常见『包车+司机』(6 人分摊很划算)；跨岛靠快艇或航班，旺季务必提前订票。"),
+    ("交通", "市区用 Grab/Gojek；巴厘常见『包车+司机』(几人同行分摊更划算)；跨岛靠快艇或航班，旺季务必提前订票。"),
     ("网络", "落地即买电话卡，Telkomsel 信号覆盖最好。"),
     ("健康", "防『巴厘肚』——只喝瓶装水、慎吃生冷；强防晒且用珊瑚友好防晒霜；常备晕船药与肠胃药。"),
     ("安全", "海滩看旗帜、防离岸流；火山务必听向导、备保暖与防毒面具；摩托事故高发，租车需国际驾照并确认保险。"),
