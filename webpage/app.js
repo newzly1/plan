@@ -58,9 +58,11 @@
           var data = currentState();
           function done(){ if (sheet && !sheet.hasAttribute("hidden")) refreshTally(); }
           if (docId){
-            db.collection(COLL).doc(docId).update(data).then(done).catch(function(){
-              docId = null; localStorage.removeItem(DOCID_KEY); addNew(data, done);
-            });
+            db.collection(COLL).doc(docId).update(data).then(function(res){
+              if (res && res.updated === 0){ // 文档已不存在（被删），重建
+                docId = null; localStorage.removeItem(DOCID_KEY); addNew(data, done);
+              } else { done(); }
+            }).catch(function(){ /* 瞬时错误：保留 docId，下次同步再试，避免重复建档 */ });
           } else { addNew(data, done); }
         }).catch(function(){});
       }, 800);
