@@ -199,11 +199,11 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 .v{padding:13px 6px;border-radius:0;border:1px solid var(--line-strong);background:transparent;color:var(--ink);
   font-size:12px;font-weight:600;letter-spacing:.28em;text-indent:.28em;
   transition:background .15s,color .15s,border-color .15s}
-.v-no{border-color:var(--line-2);color:var(--ink-soft)}
+.v-skip{border-color:var(--line-2);color:var(--ink-soft)}
 .v:active{transform:translateY(1px)}
 .v-must[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:#F6F3EA}
 .v-maybe[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--ground)}
-.v-no[aria-pressed="true"]{background:var(--ground-2);border-color:var(--line-2);color:var(--ink-soft)}
+.v-skip[aria-pressed="true"]{background:var(--ground-2);border-color:var(--line-2);color:var(--ink-soft)}
 
 .stamp{position:absolute;top:20px;right:0;z-index:3;width:74px;height:74px;border-radius:50%;
   display:none;place-items:center;transform:rotate(-13deg);pointer-events:none;
@@ -213,6 +213,8 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 .spot[data-vote="must"] .stamp::after{content:"必去"}
 .spot[data-vote="maybe"] .stamp{display:grid;color:var(--ink);border:1.5px solid var(--ink)}
 .spot[data-vote="maybe"] .stamp::after{content:"可去"}
+.spot[data-vote="skip"] .stamp{display:grid;color:var(--ink-faint);border:1.5px solid var(--ink-faint)}
+.spot[data-vote="skip"] .stamp::after{content:"略过"}
 @keyframes stampin{0%{opacity:0;transform:rotate(-13deg) scale(1.6)}100%{opacity:.92;transform:rotate(-13deg) scale(1)}}
 
 /* ============ COMBOS（细线列表 + 宋体大编号）============ */

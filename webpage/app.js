@@ -87,6 +87,7 @@
   function paintAll(){ $$(".spot").forEach(paintSpot); updateCount(); }
 
   function pickCount(){ return Object.keys(votes).filter(function(k){ return votes[k]==="must"||votes[k]==="maybe"; }).length; }
+  function decidedCount(){ return Object.keys(votes).filter(function(k){ var v=votes[k]; return v==="must"||v==="maybe"||v==="skip"; }).length; }
   function updateCount(){ var n=$("#barN"); if(n) n.textContent = pickCount(); }
 
   // ---- voting (event delegation) ----

@@ -207,11 +207,11 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 .v{padding:13px 6px;border-radius:0;border:1px solid var(--line-strong);background:transparent;color:var(--ink);
   font-size:12px;font-weight:600;letter-spacing:.28em;text-indent:.28em;
   transition:background .15s,color .15s,border-color .15s}
-.v-no{border-color:var(--line-2);color:var(--ink-soft)}
+.v-skip{border-color:var(--line-2);color:var(--ink-soft)}
 .v:active{transform:translateY(1px)}
 .v-must[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:#F6F3EA}
 .v-maybe[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--ground)}
-.v-no[aria-pressed="true"]{background:var(--ground-2);border-color:var(--line-2);color:var(--ink-soft)}
+.v-skip[aria-pressed="true"]{background:var(--ground-2);border-color:var(--line-2);color:var(--ink-soft)}
 
 .stamp{position:absolute;top:20px;right:0;z-index:3;width:74px;height:74px;border-radius:50%;
   display:none;place-items:center;transform:rotate(-13deg);pointer-events:none;
@@ -221,6 +221,8 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 .spot[data-vote="must"] .stamp::after{content:"必去"}
 .spot[data-vote="maybe"] .stamp{display:grid;color:var(--ink);border:1.5px solid var(--ink)}
 .spot[data-vote="maybe"] .stamp::after{content:"可去"}
+.spot[data-vote="skip"] .stamp{display:grid;color:var(--ink-faint);border:1.5px solid var(--ink-faint)}
+.spot[data-vote="skip"] .stamp::after{content:"略过"}
 @keyframes stampin{0%{opacity:0;transform:rotate(-13deg) scale(1.6)}100%{opacity:.92;transform:rotate(-13deg) scale(1)}}
 
 /* ============ COMBOS（细线列表 + 宋体大编号）============ */
@@ -354,7 +356,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     <span class="rule" aria-hidden="true"></span>
     <h1>巴厘岛及周边 · 选点手册</h1>
     <p class="sub">看图看视频，选出你想去的地方</p>
-    <div class="facts"><span>10.2 – 10.11</span><span>9–10 天</span><span>多人同行</span><span>起止 DPS</span></div>
+    <div class="facts"><span>10.2 – 10.11</span><span>9–10 天</span><span>6 人同行</span><span>起止 DPS</span></div>
   </div>
   <figure class="hero-media">
     <img class="hero-img" src="images/B1a.webp" alt="佩尼达 Kelingking 霸王龙海滩">
@@ -411,7 +413,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="vote" role="group" aria-label="为 乌布 · 丛林与梯田 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article><article class="spot" id="B1" data-id="B1">
   <div class="stamp" aria-hidden="true"></div>
@@ -438,7 +440,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="vote" role="group" aria-label="为 佩尼达悬崖海岸 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article><article class="spot" id="C1" data-id="C1">
   <div class="stamp" aria-hidden="true"></div>
@@ -474,7 +476,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="vote" role="group" aria-label="为 船宿/跳岛 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article><article class="spot" id="D1" data-id="D1">
   <div class="stamp" aria-hidden="true"></div>
@@ -501,7 +503,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="vote" role="group" aria-label="为 布罗莫火山 · 月球表面日出 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article><article class="spot" id="B2" data-id="B2">
   <div class="stamp" aria-hidden="true"></div>
@@ -522,7 +524,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="vote" role="group" aria-label="为 佩尼达 · 蝠鲼&amp;海龟浮潜点 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article>
 </section><section class="chapter" id="region-A">
@@ -552,7 +554,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="vote" role="group" aria-label="为 南巴厘海岸线 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article><article class="spot" id="A3" data-id="A3">
   <div class="stamp" aria-hidden="true"></div>
@@ -572,7 +574,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="vote" role="group" aria-label="为 塔那罗海神庙 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article><article class="spot" id="A4" data-id="A4">
   <div class="stamp" aria-hidden="true"></div>
@@ -601,7 +603,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="vote" role="group" aria-label="为 东巴厘 · 巴图尔火山 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article><article class="spot" id="A5" data-id="A5">
   <div class="stamp" aria-hidden="true"></div>
@@ -622,7 +624,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="vote" role="group" aria-label="为 北巴厘 &amp; 中部高地 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article>
 </section><section class="chapter" id="region-B">
@@ -651,7 +653,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="vote" role="group" aria-label="为 蓝梦岛 Lembongan/Ceningan 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article>
 </section><section class="chapter" id="region-C">
@@ -698,7 +700,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="vote" role="group" aria-label="为 宜珍火山 · 蓝色火焰 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article>
 </section><section class="chapter" id="region-F">
@@ -729,7 +731,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="vote" role="group" aria-label="为 吉利三岛 Gili 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article><article class="spot" id="F2" data-id="F2">
   <div class="stamp" aria-hidden="true"></div>
@@ -751,7 +753,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="vote" role="group" aria-label="为 龙目岛南岸 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article><article class="spot" id="F3" data-id="F3">
   <div class="stamp" aria-hidden="true"></div>
@@ -772,7 +774,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="vote" role="group" aria-label="为 林贾尼火山徒步 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article>
 </section><section class="chapter combos-sec" id="combos">
@@ -966,6 +968,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   function paintAll(){ $$(".spot").forEach(paintSpot); updateCount(); }
 
   function pickCount(){ return Object.keys(votes).filter(function(k){ return votes[k]==="must"||votes[k]==="maybe"; }).length; }
+  function decidedCount(){ return Object.keys(votes).filter(function(k){ var v=votes[k]; return v==="must"||v==="maybe"||v==="skip"; }).length; }
   function updateCount(){ var n=$("#barN"); if(n) n.textContent = pickCount(); }
 
   // ---- voting (event delegation) ----

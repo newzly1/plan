@@ -76,7 +76,7 @@ def hero():
     <span class="rule" aria-hidden="true"></span>
     <h1>{esc(m["title"])}</h1>
     <p class="sub">{esc(m["subtitle"])}</p>
-    <div class="facts"><span>10.2 – 10.11</span><span>9–10 天</span><span>多人同行</span><span>起止 DPS</span></div>
+    <div class="facts"><span>10.2 – 10.11</span><span>9–10 天</span><span>6 人同行</span><span>起止 DPS</span></div>
   </div>
   <figure class="hero-media">
     {img_tag("B1a","hero-img","佩尼达 Kelingking 霸王龙海滩",lazy=False)}
@@ -148,7 +148,7 @@ def spot(item):
   <div class="vote" role="group" aria-label="为 {esc(item['zh'])} 投票">
     <button type="button" class="v v-must" data-v="must">必去</button>
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-no" data-v="no">无所谓</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article>'''
 
