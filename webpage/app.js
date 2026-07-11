@@ -272,6 +272,9 @@
     } else if (!g || !g.voterCount){
       subEl.textContent = "还没人投票 · 你可以抢先标记";
       subEl.className = "bar-sub";
+    } else if (!g.spots.length){
+      subEl.textContent = "还没有大家想去的点 · 你可以抢先标记";
+      subEl.className = "bar-sub";
     } else {
       var top = g.spots.slice(0,3).map(function(s){ return s.id + " " + shortZh(s.zh); });
       subEl.textContent = "群体最爱 · " + top.join("   ");
@@ -304,7 +307,7 @@
     }
   });
   $("#resetBtn").addEventListener("click", function(){
-    if(!pickCount() || confirm("清空你标记的所有必去/可去？")){ votes={}; save(); paintAll(); renderPicks(); }
+    if(!pickCount() || confirm("清空你标记的所有必去/可去？")){ votes={}; save(); cloud.syncMine(); paintAll(); renderPicks(); }
   });
 
   // ---- lightbox ----
@@ -318,7 +321,7 @@
 
   // ---- toast ----
   var toEl=$("#toast"), toT;
-  function toast(msg){ toEl.textContent=msg; toEl.removeAttribute("hidden");
+  function toast(msg){ clearTimeout(nudgeT); toEl.onclick=null; toEl.className="toast"; toEl.textContent=msg; toEl.removeAttribute("hidden");
     requestAnimationFrame(function(){ toEl.classList.add("show"); });
     clearTimeout(toT); toT=setTimeout(function(){ toEl.classList.remove("show");
       setTimeout(function(){ toEl.setAttribute("hidden",""); },220); }, 1900); }
