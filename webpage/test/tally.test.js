@@ -62,3 +62,15 @@ test("恶意 __proto__ 键不污染 Object.prototype", () => {
   const a1 = r.spots.find(s => s.id === "A1");
   assert.deepStrictEqual(a1, { id: "A1", zh: "巴厘岛门户", must: 1, maybe: 0, score: 2 });
 });
+
+test("skip 值计入参与人数但不计分、不进榜单", () => {
+  const docs = [
+    { picks: { A1: "must", B2: "skip" } },
+    { picks: { A1: "skip", C3: "skip" } }
+  ];
+  const r = computeTally(docs, ITEMS, COMBOS);
+  assert.strictEqual(r.voterCount, 2);              // 两人都算参与
+  assert.deepStrictEqual(r.spots, [                 // 只有 A1 因一票 must 上榜；skip 全部被忽略
+    { id: "A1", zh: "巴厘岛门户", must: 1, maybe: 0, score: 2 }
+  ]);
+});
