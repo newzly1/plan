@@ -312,6 +312,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   box-shadow:var(--shadow-lg);opacity:0;transition:opacity .2s,transform .2s;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast[hidden]{display:none}
+.toast.nudge{pointer-events:auto;cursor:pointer;background:var(--pine);color:#F6F3EA}
 
 /* reveal */
 @media (prefers-reduced-motion:no-preference){

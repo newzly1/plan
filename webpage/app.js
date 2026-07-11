@@ -146,8 +146,10 @@
     var vb = e.target.closest(".v");
     if(vb){
       var art = vb.closest(".spot"), id = art.getAttribute("data-id"), v = vb.getAttribute("data-v");
+      var wasZero = decidedCount()===0;
       if(votes[id]===v){ delete votes[id]; } else { votes[id]=v; }
       save(); cloud.syncMine(); paintSpot(art); renderBar(); if(!$("#sheet").hasAttribute("hidden")) renderPicks();
+      maybeNudgeName(wasZero);
       return;
     }
     var idx = e.target.closest(".idx");
@@ -320,6 +322,26 @@
     requestAnimationFrame(function(){ toEl.classList.add("show"); });
     clearTimeout(toT); toT=setTimeout(function(){ toEl.classList.remove("show");
       setTimeout(function(){ toEl.setAttribute("hidden",""); },220); }, 1900); }
+  var NUDGE_KEY = "bali_nudged";
+  function maybeNudgeName(wasZero){
+    if (!wasZero) return;                                   // 只在第一次“从 0 到有”时
+    if (localStorage.getItem(NUDGE_KEY)) return;            // 只提示一次
+    if ((localStorage.getItem(K.name)||"").trim()) return;  // 已有名字则不提示
+    localStorage.setItem(NUDGE_KEY, "1");
+    nudgeToast("给自己起个名字，才能加入大家的汇总 →");
+  }
+  var nudgeT;
+  function nudgeToast(msg){
+    toEl.textContent = msg;
+    toEl.className = "toast nudge";
+    toEl.removeAttribute("hidden");
+    requestAnimationFrame(function(){ toEl.classList.add("show"); });
+    clearTimeout(nudgeT);
+    nudgeT = setTimeout(function(){ hideToast(); }, 4200);
+    toEl.onclick = function(){ hideToast(); openSheet(); setTimeout(function(){ var n=$("#nameIn"); if(n) n.focus(); }, 120); };
+  }
+  function hideToast(){ toEl.classList.remove("show"); toEl.onclick=null;
+    setTimeout(function(){ toEl.setAttribute("hidden",""); toEl.className="toast"; }, 220); }
 
   // ---- reveal ----
   function reduce(){ return window.matchMedia("(prefers-reduced-motion:reduce)").matches; }
