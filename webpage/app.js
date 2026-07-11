@@ -88,7 +88,7 @@
               writeSet(newId, { name: st.name, picks: st.picks, combo: st.combo })
                 .then(function(){ refreshGroup(); }).catch(function(){});
             }
-          });
+          }).catch(function(){});
         }).catch(function(){});
       }, 800);
     }
@@ -99,7 +99,7 @@
       });
     }
     function refreshGroup(){
-      if (failed){ groupTally = null; updateViews(); return; }
+      if (failed){ groupTally = null; updateViews(); return Promise.resolve(); }
       return fetchAll().then(function(docs){
         groupTally = TallyLib.computeTally(docs, ITEMS, COMBOS);
         updateViews();
