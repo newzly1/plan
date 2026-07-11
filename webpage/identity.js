@@ -22,9 +22,9 @@
   function mergePicks(a, b) {
     a = a || {}; b = b || {};
     var out = {}, k;
-    for (k in a) if (Object.prototype.hasOwnProperty.call(a, k)) out[k] = a[k];
+    for (k in a) if (Object.prototype.hasOwnProperty.call(a, k) && k !== "__proto__") out[k] = a[k];
     for (k in b) {
-      if (!Object.prototype.hasOwnProperty.call(b, k)) continue;
+      if (!Object.prototype.hasOwnProperty.call(b, k) || k === "__proto__") continue;
       if (!out[k] || (RANK[b[k]] || 0) > (RANK[out[k]] || 0)) out[k] = b[k];
     }
     for (k in out) if (Object.prototype.hasOwnProperty.call(out, k) && !RANK[out[k]]) delete out[k];

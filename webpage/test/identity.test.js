@@ -44,3 +44,23 @@ test("mergeState: name 本机、picks 并集、combo 本机优先否则云端", 
   });
   assert.deepStrictEqual(mergeState({ combo: "1" }, { combo: "2" }).combo, "1");
 });
+
+test("mergePicks: 防原型污染（__proto__ 键不替换返回对象原型、不污染全局）", () => {
+  const evil = JSON.parse('{"__proto__":{"polluted":1},"A1":"must"}');
+  const r = mergePicks(evil, { B1: "maybe" });
+  assert.deepStrictEqual(r, { A1: "must", B1: "maybe" });
+  assert.strictEqual(Object.getPrototypeOf(r), Object.prototype);
+  assert.strictEqual({}.polluted, undefined);
+});
+
+test("deriveDocId: 浏览器 btoa 路径与 Node Buffer 路径派生一致（跨端确定性）", () => {
+  const names = ["小李", "Bob", "小 李"];
+  const viaBuffer = names.map(deriveDocId);        // Node 默认走 Buffer 分支
+  const saved = global.Buffer;
+  try {
+    global.Buffer = undefined;                     // 强制走 btoa(unescape(encodeURIComponent(...))) 分支（浏览器路径）
+    names.forEach((n, i) => assert.strictEqual(deriveDocId(n), viaBuffer[i]));
+  } finally {
+    global.Buffer = saved;
+  }
+});
