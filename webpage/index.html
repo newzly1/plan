@@ -70,7 +70,7 @@ button{font-family:inherit;cursor:pointer}
 .ph span{opacity:.8}
 
 /* mono 字段标签 helper */
-.facts,.chap-data,.combo-row i,.mt i,.code,.en,.tag,.hl-code,.vid-badge,.idx b,.bar-n,.num,.note-k,.tip-k,.cap-line,.mast-l,.mast-r,.chap-region{
+.facts,.chap-data,.combo-row i,.mt i,.code,.en,.tag,.hl-code,.vid-badge,.idx b,.num,.note-k,.tip-k,.cap-line,.mast-l,.mast-r,.chap-region{
   font-family:var(--font-mono)}
 
 /* ============ HERO（杂志封面式）============ */
@@ -261,15 +261,17 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 .foot .made{font-family:var(--font-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-top:14px}
 
 /* ============ MY LIST bar（全宽细线底条）============ */
-.bar{position:fixed;left:0;right:0;bottom:0;transform:none;z-index:40;display:flex;align-items:center;justify-content:space-between;
-  gap:12px;max-width:var(--maxw);margin:0 auto;padding:16px 22px;border-radius:0;
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;flex-direction:column;gap:5px;
+  max-width:var(--maxw);margin:0 auto;padding:12px 22px calc(12px + env(safe-area-inset-bottom));
   border:0;border-top:1.5px solid var(--line-strong);background:var(--ground);color:var(--ink);
-  box-shadow:0 -8px 24px rgba(27,24,21,.06);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;transition:none}
+  text-align:left;box-shadow:0 -8px 24px rgba(27,24,21,.06)}
 .bar:active{background:var(--ground-2)}
-.bar-l{display:flex;align-items:center;gap:11px}
-.bar-dot{width:7px;height:7px;border-radius:50%;background:var(--pine)}
-.bar-n{min-width:24px;height:24px;padding:0 7px;border-radius:0;border:1px solid var(--brass);background:transparent;color:var(--brass);
-  display:grid;place-items:center;font-size:12px;font-weight:700;letter-spacing:0}
+.bar-top{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%}
+.bar-l{display:flex;align-items:center;gap:9px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+.bar-dot{width:7px;height:7px;border-radius:50%;background:var(--pine);flex:0 0 auto}
+.bar-stat{font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--brass);white-space:nowrap}
+.bar-sub{width:100%;font-size:11.5px;letter-spacing:.01em;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-sub.warn{color:var(--brass)}
 
 .sheet{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;
   background:rgba(15,12,8,.5);backdrop-filter:blur(3px)}
@@ -807,7 +809,10 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     <p class="fold-note">价格为人均活动费(不含机票住宿)，1 万印尼盾 ≈ ¥4.5，旺季粗估，仅供参考。</p><div class="ptable"><h4>巴厘门票 &amp; 活动 (人均)</h4><div class="tw"><table><tr><td>德格拉朗梯田</td><td class="num">¥12（秋千另 ¥90–230）</td></tr><tr><td>圣猴森林</td><td class="num">¥40</td></tr><tr><td>Tirta Empul 圣泉庙</td><td class="num">¥35</td></tr><tr><td>Tegenungan/Tibumana 瀑布</td><td class="num">¥10–12</td></tr><tr><td>Ayung 河漂流</td><td class="num">¥250–350</td></tr><tr><td>ATV 四驱越野</td><td class="num">¥250–400</td></tr><tr><td>巴图尔火山日出徒步</td><td class="num">¥160–230</td></tr><tr><td>Lempuyang 天堂之门</td><td class="num">¥25–50</td></tr><tr><td>Besakih 母庙</td><td class="num">¥30–70</td></tr><tr><td>水神庙 (Ulun Danu Beratan)</td><td class="num">¥35</td></tr><tr><td>Handara Gate 拍照</td><td class="num">¥15</td></tr><tr><td>Sekumpul 瀑布(含向导)</td><td class="num">¥45</td></tr><tr><td>塔那罗海神庙</td><td class="num">¥30</td></tr><tr><td>乌鲁瓦图庙</td><td class="num">¥25</td></tr><tr><td>Kecak 火祭舞</td><td class="num">¥60–80</td></tr><tr><td>金巴兰沙滩海鲜</td><td class="num">¥100–200</td></tr><tr><td>Tirta Gangga 水宫</td><td class="num">¥25</td></tr><tr><td>USS Liberty 沉船 浮潜/潜水</td><td class="num">¥100–150 / ¥350–500</td></tr></table></div></div><div class="ptable"><h4>包车 &amp; 市内交通</h4><div class="tw"><table><tr><td>巴厘包车+司机(约10h)</td><td class="num">¥350–500/车/天（同行分摊≈¥60–90/人）</td></tr><tr><td>机场接送</td><td class="num">¥100–150/车</td></tr><tr><td>Grab/Gojek 市区</td><td class="num">¥15–40/程</td></tr></table></div></div><div class="ptable"><h4>跨岛交通 (人均往返)</h4><div class="tw"><table><tr><td>Sanur ⇆ 佩尼达 快艇</td><td class="num">¥120–200</td></tr><tr><td>巴厘 ⇆ 吉利/龙目 快艇</td><td class="num">¥350–600</td></tr><tr><td>巴厘(DPS) ⇆ 纳闽巴霍(LBJ) 机票</td><td class="num">¥600–1200</td></tr><tr><td>巴厘(DPS) ⇆ 泗水(SUB) 机票</td><td class="num">¥400–800</td></tr><tr><td>巴厘 ⇆ Banyuwangi 渡轮(宜珍)</td><td class="num">多含在宜珍团内</td></tr></table></div></div><div class="ptable"><h4>跟团 / 一日游 / 多日 (人均)</h4><div class="tw"><table><tr><td>佩尼达一日跳岛团(含快艇)</td><td class="num">¥250–450</td></tr><tr><td>佩尼达蝠鲼/海龟浮潜</td><td class="num">¥200–400</td></tr><tr><td>吉利浮潜团</td><td class="num">¥150–300</td></tr><tr><td>林贾尼 2 天 1 夜徒步</td><td class="num">¥800–1500</td></tr><tr><td>科莫多跳岛 1 日/2 日 1 夜</td><td class="num">¥300–500 / ¥600–1200</td></tr><tr><td>科莫多船宿 2 天</td><td class="num">¥1500–3000+</td></tr><tr><td>宜珍蓝火 2 天团</td><td class="num">¥500–900</td></tr><tr><td>布罗莫吉普日出团</td><td class="num">¥150–250</td></tr></table></div></div></details><details class="fold" id="tips"><summary><span>全程通用注意事项</span><span class="chev"></span></summary><div class="tips"><div class="tip"><span class="tip-k">签证</span><p>印尼对中国公民实行落地签(VOA)，停留期 30 天，9–10 天行程完全在范围内。抵达后办理即可，建议备好返程票与住宿信息。</p></div><div class="tip"><span class="tip-k">货币</span><p>印尼盾(IDR)，小岛与村镇 ATM 少，多备现金、认准正规换汇点；大城市多数商户可刷卡。</p></div><div class="tip"><span class="tip-k">交通</span><p>市区用 Grab/Gojek；巴厘常见『包车+司机』(几人同行分摊更划算)；跨岛靠快艇或航班，旺季务必提前订票。</p></div><div class="tip"><span class="tip-k">网络</span><p>落地即买电话卡，Telkomsel 信号覆盖最好。</p></div><div class="tip"><span class="tip-k">健康</span><p>防『巴厘肚』——只喝瓶装水、慎吃生冷；强防晒且用珊瑚友好防晒霜；常备晕船药与肠胃药。</p></div><div class="tip"><span class="tip-k">安全</span><p>海滩看旗帜、防离岸流；火山务必听向导、备保暖与防毒面具；摩托事故高发，租车需国际驾照并确认保险。</p></div><div class="tip"><span class="tip-k">礼仪</span><p>进寺庙须围纱笼、遮肩盖膝；宗教场合与传统仪式保持尊重。</p></div><div class="tip"><span class="tip-k">季节</span><p>10 月为旱季尾/肩季，天气仍佳、宜海岛与火山，仍属旺季——热门船宿/徒步/潜水越早订越好。</p></div></div></details><footer class="foot">
     <p class="cred">图片来源(Unsplash / Pixabay / Wikimedia Commons 等)：Aaron Thomas · Unsplash License；Alexander Nrjwolf · Unsplash License；Andrey Bond · Unsplash License；Anton Rymarev · Unsplash License；Asap PANG · Unsplash License；Astri nina sanderiana · CC BY-SA 4.0；Aurelia Teslaru · CC BY-SA 4.0；CEphoto, Uwe Aranas · CC BY-SA 3.0；Clement Duf · Unsplash License；DEZALB · Pixabay License；Denissa Devy · Unsplash License；Devagonal · CC BY-SA 4.0；Dmitry Kropachev · Unsplash License；Dragon_XXC · Pixabay License；Flickr user: yeowatzup  https://www.flickr.com/photos/yeowatzup/ · CC BY 2.0；G patkar · CC BY-SA 3.0；Gabriel Federa · Unsplash License；Heri Gunawan · Unsplash License；Hyparxis · Pixabay License；IqbalStock · Pixabay License；Ishan @seefromthesky · Unsplash License；Ismail Hamzah · Unsplash License；Jakub Hałun · CC BY 4.0；Jayde Keroi · Unsplash License；Jessica Wong · Unsplash License；Johnny Africa · Unsplash License；Jonathan-Smit · Pixabay License；Joshua Kettle · Unsplash License；Juan Cruz Mountford · Unsplash License；Marek Piwnicki · Unsplash License；Mario La Pergola · Unsplash License；Nastia Petruk · Unsplash License；Pexels · Pixabay License；Pinterpandai · CC BY-SA 4.0；Polina Kuzovkova · Unsplash License；René Riegal · Unsplash License；Robert Euro Djojoseputro · Unsplash License；RobertSzilagyi · Pixabay License；Ryan Brayoga · Unsplash License；Sebastian Pena Lambarri · Unsplash License；Shankara42 · CC BY-SA 4.0；Simon Spring · Unsplash License；Sora Sagano · Unsplash License；Stefano Magini · Unsplash License；Steve Douglas · Unsplash License；Tilonaut · CC BY 3.0；Tom Donders · Unsplash License；Vicki Garside · Unsplash License；Vyacheslav Argenberg · CC BY 4.0；Wahde Stock · Unsplash License；WonderfulBali · Pixabay License；ZPhotoo · Pixabay License；ajuprasetyo · Pixabay License；giusti596 · Pixabay License；https://firstlomboktour.com · CC BY-SA 4.0；jovanel · Pixabay License；loli mass · Unsplash License；max4ex · Pixabay License。版权归原作者，依各自许可使用。</p>
     <p class="disc">价格/时间为 2026-07-07 粗略估算，随季节、汇率与政策浮动，具体以出行前官方渠道为准。本页为同行投票参考，非商业用途。</p>
-    <p class="made">巴厘岛及周边 · 选点手册 · 为你此行制作</p></footer></main><button type="button" class="bar" id="bar"><span class="bar-l"><span class="bar-dot"></span>我的清单 · MY LIST</span><span class="bar-n" id="barN">0</span></button>
+    <p class="made">巴厘岛及周边 · 选点手册 · 为你此行制作</p></footer></main><button type="button" class="bar" id="bar">
+  <span class="bar-top"><span class="bar-l"><span class="bar-dot"></span>我的清单 ›</span><span class="bar-stat" id="barStat">你 0/14</span></span>
+  <span class="bar-sub" id="barSub">还没人投票 · 你可以抢先标记</span>
+</button>
 <div class="sheet" id="sheet" hidden>
   <div class="sheet-card" role="dialog" aria-label="我的清单" aria-modal="true">
     <div class="sheet-head"><b>我的清单</b><button type="button" class="x" id="sheetX" aria-label="关闭">×</button></div>
@@ -1055,8 +1060,8 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     }
   }
 
-  // 刷新依赖群体数据的视图（Task 5 会在此追加 renderBar()）
-  function updateViews(){ if (sheetOpen()) renderSheetTally(); }
+  // 刷新依赖群体数据的视图
+  function updateViews(){ renderBar(); if (sheetOpen()) renderSheetTally(); }
 
   function paintSpot(art){
     var id = art.getAttribute("data-id"), st = votes[id];
@@ -1065,11 +1070,10 @@ details[open]>summary .chev{transform:rotate(-135deg)}
       b.setAttribute("aria-pressed", b.getAttribute("data-v")===st ? "true":"false");
     });
   }
-  function paintAll(){ $$(".spot").forEach(paintSpot); updateCount(); }
+  function paintAll(){ $$(".spot").forEach(paintSpot); renderBar(); }
 
   function pickCount(){ return Object.keys(votes).filter(function(k){ return votes[k]==="must"||votes[k]==="maybe"; }).length; }
   function decidedCount(){ return Object.keys(votes).filter(function(k){ var v=votes[k]; return v==="must"||v==="maybe"||v==="skip"; }).length; }
-  function updateCount(){ var n=$("#barN"); if(n) n.textContent = pickCount(); }
 
   // ---- voting (event delegation) ----
   document.addEventListener("click", function(e){
@@ -1077,7 +1081,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     if(vb){
       var art = vb.closest(".spot"), id = art.getAttribute("data-id"), v = vb.getAttribute("data-v");
       if(votes[id]===v){ delete votes[id]; } else { votes[id]=v; }
-      save(); cloud.syncMine(); paintSpot(art); updateCount(); if(!$("#sheet").hasAttribute("hidden")) renderPicks();
+      save(); cloud.syncMine(); paintSpot(art); renderBar(); if(!$("#sheet").hasAttribute("hidden")) renderPicks();
       return;
     }
     var idx = e.target.closest(".idx");
@@ -1179,6 +1183,33 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     body.innerHTML = renderTally(t);
   }
   (function(){ var rb = $("#tallyRefresh"); if (rb) rb.addEventListener("click", function(){ cloud.refreshGroup(); }); })();
+
+  function shortZh(zh){ return (String(zh).split("·")[0] || "").trim(); }
+  function renderBar(){
+    var statEl = $("#barStat"), subEl = $("#barSub");
+    if (!statEl || !subEl) return;
+    var total = ITEMS.length, decided = decidedCount();
+    var name = (localStorage.getItem(K.name)||"").trim();
+    if (cloud.offline()){
+      statEl.textContent = "你 " + decided + "/" + total;
+      subEl.textContent = "云同步暂不可用 · 可用「一键复制」发群里";
+      subEl.className = "bar-sub warn"; return;
+    }
+    var g = cloud.group();
+    var voters = g ? g.voterCount : 0;
+    statEl.textContent = "你 " + decided + "/" + total + " · 群 " + voters + "/6";
+    if (decided > 0 && !name){
+      subEl.textContent = "⚠ 填个名字才能加入大家的汇总 →";
+      subEl.className = "bar-sub warn";
+    } else if (!g || !g.voterCount){
+      subEl.textContent = "还没人投票 · 你可以抢先标记";
+      subEl.className = "bar-sub";
+    } else {
+      var top = g.spots.slice(0,3).map(function(s){ return s.id + " " + shortZh(s.zh); });
+      subEl.textContent = "群体最爱 · " + top.join("   ");
+      subEl.className = "bar-sub";
+    }
+  }
 
   function summary(){
     var name = (localStorage.getItem(K.name)||"").trim() || "匿名";

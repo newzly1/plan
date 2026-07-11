@@ -126,8 +126,8 @@
     }
   }
 
-  // 刷新依赖群体数据的视图（Task 5 会在此追加 renderBar()）
-  function updateViews(){ if (sheetOpen()) renderSheetTally(); }
+  // 刷新依赖群体数据的视图
+  function updateViews(){ renderBar(); if (sheetOpen()) renderSheetTally(); }
 
   function paintSpot(art){
     var id = art.getAttribute("data-id"), st = votes[id];
@@ -136,11 +136,10 @@
       b.setAttribute("aria-pressed", b.getAttribute("data-v")===st ? "true":"false");
     });
   }
-  function paintAll(){ $$(".spot").forEach(paintSpot); updateCount(); }
+  function paintAll(){ $$(".spot").forEach(paintSpot); renderBar(); }
 
   function pickCount(){ return Object.keys(votes).filter(function(k){ return votes[k]==="must"||votes[k]==="maybe"; }).length; }
   function decidedCount(){ return Object.keys(votes).filter(function(k){ var v=votes[k]; return v==="must"||v==="maybe"||v==="skip"; }).length; }
-  function updateCount(){ var n=$("#barN"); if(n) n.textContent = pickCount(); }
 
   // ---- voting (event delegation) ----
   document.addEventListener("click", function(e){
@@ -148,7 +147,7 @@
     if(vb){
       var art = vb.closest(".spot"), id = art.getAttribute("data-id"), v = vb.getAttribute("data-v");
       if(votes[id]===v){ delete votes[id]; } else { votes[id]=v; }
-      save(); cloud.syncMine(); paintSpot(art); updateCount(); if(!$("#sheet").hasAttribute("hidden")) renderPicks();
+      save(); cloud.syncMine(); paintSpot(art); renderBar(); if(!$("#sheet").hasAttribute("hidden")) renderPicks();
       return;
     }
     var idx = e.target.closest(".idx");
@@ -250,6 +249,33 @@
     body.innerHTML = renderTally(t);
   }
   (function(){ var rb = $("#tallyRefresh"); if (rb) rb.addEventListener("click", function(){ cloud.refreshGroup(); }); })();
+
+  function shortZh(zh){ return (String(zh).split("·")[0] || "").trim(); }
+  function renderBar(){
+    var statEl = $("#barStat"), subEl = $("#barSub");
+    if (!statEl || !subEl) return;
+    var total = ITEMS.length, decided = decidedCount();
+    var name = (localStorage.getItem(K.name)||"").trim();
+    if (cloud.offline()){
+      statEl.textContent = "你 " + decided + "/" + total;
+      subEl.textContent = "云同步暂不可用 · 可用「一键复制」发群里";
+      subEl.className = "bar-sub warn"; return;
+    }
+    var g = cloud.group();
+    var voters = g ? g.voterCount : 0;
+    statEl.textContent = "你 " + decided + "/" + total + " · 群 " + voters + "/6";
+    if (decided > 0 && !name){
+      subEl.textContent = "⚠ 填个名字才能加入大家的汇总 →";
+      subEl.className = "bar-sub warn";
+    } else if (!g || !g.voterCount){
+      subEl.textContent = "还没人投票 · 你可以抢先标记";
+      subEl.className = "bar-sub";
+    } else {
+      var top = g.spots.slice(0,3).map(function(s){ return s.id + " " + shortZh(s.zh); });
+      subEl.textContent = "群体最爱 · " + top.join("   ");
+      subEl.className = "bar-sub";
+    }
+  }
 
   function summary(){
     var name = (localStorage.getItem(K.name)||"").trim() || "匿名";
