@@ -10,18 +10,19 @@
   var votes = getVotes();
   function save(){ try{ localStorage.setItem(K.votes, JSON.stringify(votes)); }catch(e){} }
 
-  // ---- cloud sync (CloudBase) ----
+  // ---- cloud sync (CloudBase)：身份 = 用户名 ----
   var ENV_ID = "plan-d0gstt7r6507aa319";
   var COLL = "votes";
-  var DOCID_KEY = "bali_docid";
+  var SYNCED_KEY = "bali_synced_docid"; // 上次写入云端的 docId，用于改名/清名时删除旧档
+  function sheetOpen(){ return sheet && !sheet.hasAttribute("hidden"); }
+
   var cloud = (function(){
-    var db = null, docId = null, failed = false;
+    var db = null, failed = false, groupTally = null;
     function currentState(){
       return {
         name: (localStorage.getItem(K.name)||"").trim(),
         picks: votes,
-        combo: localStorage.getItem(K.combo) || "",
-        updatedAt: Date.now()
+        combo: localStorage.getItem(K.combo) || ""
       };
     }
     var readyP;
@@ -35,47 +36,98 @@
           auth.signInAnonymously().then(function(res){
             if (res && res.error){ reject(res.error); return; }
             db = app.database();
-            docId = localStorage.getItem(DOCID_KEY) || null;
             resolve();
           }).catch(reject);
         } catch(e){ reject(e); }
       });
     }
-    readyP.catch(function(){ failed = true; });
+    readyP.catch(function(){ failed = true; updateViews(); });
 
-    function addNew(data, cb){
-      db.collection(COLL).add(data).then(function(res){
-        docId = (res && (res.id || res._id)) || null;
-        if (docId) localStorage.setItem(DOCID_KEY, docId);
-        if (cb) cb();
-      }).catch(function(){});
+    function coll(){ return db.collection(COLL); }
+    function getDoc(docId){
+      return coll().doc(docId).get().then(function(res){
+        var d = res && res.data;
+        return Array.isArray(d) ? (d[0] || null) : (d || null);
+      });
     }
+    function writeSet(docId, data){
+      data.updatedAt = Date.now();
+      return coll().doc(docId).set(data);
+    }
+
     var syncT = null;
     function syncMine(){
       if (failed) return;
       clearTimeout(syncT);
       syncT = setTimeout(function(){
         readyP.then(function(){
-          var data = currentState();
-          if (!docId) docId = localStorage.getItem(DOCID_KEY) || null;
-          function done(){ if (sheet && !sheet.hasAttribute("hidden")) refreshTally(); }
-          if (docId){
-            db.collection(COLL).doc(docId).update(data).then(function(res){
-              if (res && res.updated === 0){ // 文档已不存在（被删），重建
-                docId = null; localStorage.removeItem(DOCID_KEY); addNew(data, done);
-              } else { done(); }
-            }).catch(function(){ /* 瞬时错误：保留 docId，下次同步再试，避免重复建档 */ });
-          } else { addNew(data, done); }
+          var st = currentState();
+          var newId = IdentityLib.deriveDocId(st.name);
+          var syncedId = localStorage.getItem(SYNCED_KEY) || "";
+          var delP = (syncedId && syncedId !== newId)
+            ? coll().doc(syncedId).remove().catch(function(){})  // 改名/清名：删旧档
+            : Promise.resolve();
+          delP.then(function(){
+            if (!newId){ localStorage.removeItem(SYNCED_KEY); refreshGroup(); return; } // 没名字：只本机
+            if (syncedId !== newId){
+              // 采纳并合并（换设备/撞名/首次绑定），防丢票
+              getDoc(newId).then(function(existing){
+                var merged = IdentityLib.mergeState(st, existing || {});
+                writeSet(newId, merged).then(function(){
+                  localStorage.setItem(SYNCED_KEY, newId);
+                  adoptLocal(merged);
+                  refreshGroup();
+                }).catch(function(){});
+              }).catch(function(){
+                writeSet(newId, { name: st.name, picks: st.picks, combo: st.combo }).then(function(){
+                  localStorage.setItem(SYNCED_KEY, newId); refreshGroup();
+                }).catch(function(){});
+              });
+            } else {
+              // 常态：覆盖自己的文档，本机为准
+              writeSet(newId, { name: st.name, picks: st.picks, combo: st.combo })
+                .then(function(){ refreshGroup(); }).catch(function(){});
+            }
+          });
         }).catch(function(){});
       }, 800);
     }
+
     function fetchAll(){
       return readyP.then(function(){
-        return db.collection(COLL).limit(50).get().then(function(res){ return (res && res.data) || []; });
+        return coll().limit(50).get().then(function(res){ return (res && res.data) || []; });
       });
     }
-    return { syncMine: syncMine, fetchAll: fetchAll, offline: function(){ return failed; } };
+    function refreshGroup(){
+      if (failed){ groupTally = null; updateViews(); return; }
+      return fetchAll().then(function(docs){
+        groupTally = TallyLib.computeTally(docs, ITEMS, COMBOS);
+        updateViews();
+      }).catch(function(){ updateViews(); });
+    }
+    return {
+      syncMine: syncMine,
+      refreshGroup: refreshGroup,
+      group: function(){ return groupTally; },
+      offline: function(){ return failed; }
+    };
   })();
+
+  // 把云端合并结果写回本机并重绘（换设备输同名时把先前的票“拉下来”）
+  function adoptLocal(merged){
+    votes = merged.picks || {};
+    save();
+    if (merged.combo) localStorage.setItem(K.combo, merged.combo);
+    paintAll();
+    if (sheetOpen()){
+      var c = localStorage.getItem(K.combo);
+      $$('input[name="combo"]').forEach(function(r){ r.checked = (r.value===c); });
+      renderPicks();
+    }
+  }
+
+  // 刷新依赖群体数据的视图（Task 5 会在此追加 renderBar()）
+  function updateViews(){ if (sheetOpen()) renderSheetTally(); }
 
   function paintSpot(art){
     var id = art.getAttribute("data-id"), st = votes[id];
@@ -144,7 +196,7 @@
     $("#nameIn").value = localStorage.getItem(K.name)||"";
     var c = localStorage.getItem(K.combo);
     $$('input[name="combo"]').forEach(function(r){ r.checked = (r.value===c); });
-    renderPicks(); refreshTally(); sheet.removeAttribute("hidden"); document.body.style.overflow="hidden";
+    renderPicks(); renderSheetTally(); cloud.refreshGroup(); sheet.removeAttribute("hidden"); document.body.style.overflow="hidden";
   }
   function closeSheet(){ sheet.setAttribute("hidden",""); document.body.style.overflow=""; }
   $("#bar").addEventListener("click", openSheet);
@@ -172,7 +224,7 @@
   // ---- live tally ----
   function renderTally(t){
     if (!t.voterCount) return '<p class="tally-empty">还没有人投票。你投的票会实时汇总到这里。</p>';
-    var h = '<div class="tally-n">已 '+t.voterCount+' 人参与</div>';
+    var h = '<div class="tally-n">群 '+t.voterCount+'/6 已投</div>';
     if (t.spots.length){
       h += '<ol class="tally-rank">';
       t.spots.forEach(function(s){
@@ -189,18 +241,15 @@
     }
     return h;
   }
-  function refreshTally(){
+  function renderSheetTally(){
     var body = $("#tallyBody");
     if (!body) return;
     if (cloud.offline()){ body.innerHTML = '<p class="tally-empty">云同步暂不可用，可用下方「一键复制」发到群里。</p>'; return; }
-    body.innerHTML = '<p class="tally-empty">加载中…</p>';
-    cloud.fetchAll().then(function(docs){
-      body.innerHTML = renderTally(TallyLib.computeTally(docs, ITEMS, COMBOS));
-    }).catch(function(){
-      body.innerHTML = '<p class="tally-empty">暂时加载不到，稍后点「刷新」。</p>';
-    });
+    var t = cloud.group();
+    if (!t){ body.innerHTML = '<p class="tally-empty">加载中…</p>'; return; }
+    body.innerHTML = renderTally(t);
   }
-  (function(){ var rb = $("#tallyRefresh"); if (rb) rb.addEventListener("click", refreshTally); })();
+  (function(){ var rb = $("#tallyRefresh"); if (rb) rb.addEventListener("click", function(){ cloud.refreshGroup(); }); })();
 
   function summary(){
     var name = (localStorage.getItem(K.name)||"").trim() || "匿名";
@@ -252,6 +301,10 @@
     var io=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }); }, {rootMargin:"0px 0px -8% 0px"});
     $$(".spot,.combo,.hl").forEach(function(el){ io.observe(el); });
   }
+
+  cloud.refreshGroup();
+  document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "visible") cloud.refreshGroup(); });
+  setInterval(function(){ if (document.visibilityState === "visible") cloud.refreshGroup(); }, 45000);
 
   paintAll();
 })();
