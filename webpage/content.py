@@ -167,7 +167,7 @@ ITEMS = [
 
     # ===== 科莫多（你的首选，船宿优先） =====
     {
-        "id": "C1", "region": "C", "zh": "船宿/跳岛", "en": "Komodo Liveaboard & Island Hopping", "highlight": True,
+        "id": "C1", "region": "C", "zh": "科莫多船宿/跳岛", "en": "Komodo Liveaboard & Island Hopping", "highlight": True,
         "tags": ["潜水", "海上过夜", "日出", "海岛", "Padar 观景", "浮潜"], "time": "2–4 天",
         "price": "往返机票人均约 ¥600–1200 + 跳岛团 ¥300–1200（1 日/2 日 1 夜）；2 天船宿人均约 ¥1500–3000+ / 3 天约 ¥2500–5000+",
         "feature": "住在船上巡游科莫多海域，避开日间人潮，清晨独占 Padar 观景与无人海滩，潜水条件世界级。跳岛则覆盖科莫多巨蜥(野生)、Padar 岛三色海湾、粉色沙滩、Manta Point 蝠鲼浮潜、Taka Makassar 新月沙洲、Gili Lawa 草原观景、Kalong 蝙蝠岛日落。印尼海岛风光天花板之一。",
