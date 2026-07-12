@@ -149,8 +149,6 @@ main{display:block;max-width:var(--maxw);margin:0 auto;padding:0 16px}
 :root[data-theme="dark"] .shot-img{filter:brightness(.95)}
 
 /* video plate（去圆角 + 黄铜徽标）*/
-.vid-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
-.vid-row .vid{margin-top:0}
 .vid{position:relative;display:block;margin-top:16px;border-radius:0;overflow:hidden;aspect-ratio:16/9;
   background:#0c0a08;isolation:isolate;cursor:pointer}
 .vid-img{width:100%;height:100%;object-fit:cover;opacity:.92;transition:opacity .2s,transform .3s}
@@ -169,13 +167,6 @@ main{display:block;max-width:var(--maxw);margin:0 auto;padding:0 16px}
 .vid[data-playing]{background:#000;cursor:default}
 .vid-frame{width:100%;height:100%;border:0;display:block}
 .vid[data-playing] .vid-img,.vid[data-playing] .vid-play,.vid[data-playing] .vid-badge,.vid[data-playing] .vid-cap{display:none}
-/* grid: slightly compact captions */
-.vid-row .vid-cap{font-size:11.5px;padding:24px 10px 9px}
-.vid-row .vid-cap i{font-size:9px}
-.vid-row .vid-badge{font-size:9px;padding:3px 7px;top:8px;left:8px}
-.vid-row .vid-play{width:46px;height:46px}
-.vid-row .vid-play::after{border-width:7px 0 7px 12px}
-@media(max-width:520px){.vid-row{grid-template-columns:1fr}}
 
 /* meta（细线顶边）*/
 .spot-meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}

@@ -157,8 +157,6 @@ main{display:block;max-width:var(--maxw);margin:0 auto;padding:0 16px}
 :root[data-theme="dark"] .shot-img{filter:brightness(.95)}
 
 /* video plate（去圆角 + 黄铜徽标）*/
-.vid-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
-.vid-row .vid{margin-top:0}
 .vid{position:relative;display:block;margin-top:16px;border-radius:0;overflow:hidden;aspect-ratio:16/9;
   background:#0c0a08;isolation:isolate;cursor:pointer}
 .vid-img{width:100%;height:100%;object-fit:cover;opacity:.92;transition:opacity .2s,transform .3s}
@@ -177,13 +175,6 @@ main{display:block;max-width:var(--maxw);margin:0 auto;padding:0 16px}
 .vid[data-playing]{background:#000;cursor:default}
 .vid-frame{width:100%;height:100%;border:0;display:block}
 .vid[data-playing] .vid-img,.vid[data-playing] .vid-play,.vid[data-playing] .vid-badge,.vid[data-playing] .vid-cap{display:none}
-/* grid: slightly compact captions */
-.vid-row .vid-cap{font-size:11.5px;padding:24px 10px 9px}
-.vid-row .vid-cap i{font-size:9px}
-.vid-row .vid-badge{font-size:9px;padding:3px 7px;top:8px;left:8px}
-.vid-row .vid-play{width:46px;height:46px}
-.vid-row .vid-play::after{border-width:7px 0 7px 12px}
-@media(max-width:520px){.vid-row{grid-template-columns:1fr}}
 
 /* meta（细线顶边）*/
 .spot-meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
@@ -401,16 +392,10 @@ details[open]>summary .chev{transform:rotate(-135deg)}
         <figcaption><b>Tirta Empul 圣泉庙</b><span>Tirta Empul Temple</span></figcaption></figure><figure class="shot"><img class="shot-img" src="images/A1d.webp" alt="丛林秋千" loading="lazy" decoding="async">
         <figcaption><b>丛林秋千</b><span>Bali Swing</span></figcaption></figure><figure class="shot"><img class="shot-img" src="images/A1e.webp" alt="Tegenungan 瀑布" loading="lazy" decoding="async">
         <figcaption><b>Tegenungan 瀑布</b><span>Tegenungan Waterfall</span></figcaption></figure></div>
-  <div class="vid-row"><div class="vid" data-bvid="BV1aZmJBwEoz" role="button" tabindex="0" aria-label="播放影片 没到过乌布，你就不算真正来过巴厘岛！">
+  <div class="vid" data-bvid="BV1aZmJBwEoz" role="button" tabindex="0" aria-label="播放影片 没到过乌布，你就不算真正来过巴厘岛！">
       <img class="vid-img" src="images/vid-A1_0.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
       <span class="vid-badge">▶ 点击播放</span>
-      <span class="vid-cap">没到过乌布，你就不算真正来过巴厘岛！<i>拉格Lagreen · 哔哩哔哩</i></span></div><div class="vid" data-bvid="BV1PJ4m1Y7uT" role="button" tabindex="0" aria-label="播放影片 从神秘的圣泉寺，开启乌布的丛林之旅。/🇮🇩印尼第七站！">
-      <img class="vid-img" src="images/vid-A1_1.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
-      <span class="vid-badge">▶ 点击播放</span>
-      <span class="vid-cap">从神秘的圣泉寺，开启乌布的丛林之旅。/🇮🇩印尼第七站！<i>末路狂發 · 哔哩哔哩</i></span></div><div class="vid" data-bvid="BV1FpKmzvEw9" role="button" tabindex="0" aria-label="播放影片 巴厘岛Vlog🌴☀️ | 我竟然在乌布冲进丛林里开ATV！激流泛舟的一天太疯了！">
-      <img class="vid-img" src="images/vid-A1_2.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
-      <span class="vid-badge">▶ 点击播放</span>
-      <span class="vid-cap">巴厘岛Vlog🌴☀️ | 我竟然在乌布冲进丛林里开ATV！激流泛舟的一天太疯了！<i>sherynne · 哔哩哔哩</i></span></div></div>
+      <span class="vid-cap">没到过乌布，你就不算真正来过巴厘岛！<i>拉格Lagreen · 哔哩哔哩</i></span></div>
   <div class="spot-meta"><span class="mt"><i>时间</i>2–3 天</span><span class="mt"><i>人均</i>门票各 ¥25–100；漂流约 ¥250–350；SPA ¥150+</span></div>
   <details class="notes"><summary><span>亮点 · 注意 · 串联</span><span class="chev"></span></summary><div class="note"><span class="note-k">亮点</span><p>德格拉朗梯田、圣猴森林、Tirta Empul 圣泉庙、丛林秋千、多条瀑布(Tegenungan/Tibumana)、Ayung 河漂流、ATV 四驱越野、瑜伽与 SPA、手工艺村。文艺慢节奏核心。</p></div><div class="note"><span class="note-k">注意</span><p>猴子会抢眼镜/手机/食物；梯田与秋千为收费网红点、人多需早去；进庙须围纱笼(sarong)。</p></div><div class="note"><span class="note-k">串联</span><p>地处中部，是前往东部/北部火山瀑布的最佳中转位置。</p></div></details>
   <div class="vote" role="group" aria-label="为 乌布 · 丛林与梯田 投票">
@@ -431,13 +416,10 @@ details[open]>summary .chev{transform:rotate(-135deg)}
         <figcaption><b>天使浴池 (Angel&#x27;s Billabong)</b><span>Angel&#x27;s Billabong</span></figcaption></figure><figure class="shot"><img class="shot-img" src="images/B1d.webp" alt="钻石沙滩 (Diamond Beach)" loading="lazy" decoding="async">
         <figcaption><b>钻石沙滩 (Diamond Beach)</b><span>Diamond Beach</span></figcaption></figure><figure class="shot"><img class="shot-img" src="images/B1e.webp" alt="水晶湾 (Crystal Bay)" loading="lazy" decoding="async">
         <figcaption><b>水晶湾 (Crystal Bay)</b><span>Crystal Bay</span></figcaption></figure></div>
-  <div class="vid-row"><div class="vid" data-bvid="BV1QKTxzfEpA" role="button" tabindex="0" aria-label="播放影片 印度尼西亚 | 精灵坠崖 | 当手机壁纸照进现实">
+  <div class="vid" data-bvid="BV1QKTxzfEpA" role="button" tabindex="0" aria-label="播放影片 印度尼西亚 | 精灵坠崖 | 当手机壁纸照进现实">
       <img class="vid-img" src="images/vid-B1_0.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
       <span class="vid-badge">▶ 点击播放</span>
-      <span class="vid-cap">印度尼西亚 | 精灵坠崖 | 当手机壁纸照进现实<i>Visit_The_World · 哔哩哔哩</i></span></div><div class="vid" data-bvid="BV1PEdMBBEJC" role="button" tabindex="0" aria-label="播放影片 身在地狱，眼在天堂，热晕在佩尼达 | 印尼04">
-      <img class="vid-img" src="images/vid-B1_1.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
-      <span class="vid-badge">▶ 点击播放</span>
-      <span class="vid-cap">身在地狱，眼在天堂，热晕在佩尼达 | 印尼04<i>大团Photo · 哔哩哔哩</i></span></div></div>
+      <span class="vid-cap">印度尼西亚 | 精灵坠崖 | 当手机壁纸照进现实<i>Visit_The_World · 哔哩哔哩</i></span></div>
   <div class="spot-meta"><span class="mt"><i>时间</i>1–2 天</span><span class="mt"><i>人均</i>一日跳岛团人均约 ¥250–450（含往返快艇）</span></div>
   <details class="notes"><summary><span>亮点 · 注意 · 串联</span><span class="chev"></span></summary><div class="note"><span class="note-k">亮点</span><p>精灵坠崖(Kelingking)、破碎沙滩(Broken Beach)、天使浴池(Angel&#x27;s Billabong)、钻石沙滩(Diamond Beach)、水晶湾(Crystal Bay) 浮潜。巴厘最壮观的悬崖海景。</p></div><div class="note"><span class="note-k">注意</span><p>岛内道路极差、坡陡，建议包车 + 司机而非自驾摩托；景点悬崖台阶陡、排队久；备晕船药。</p></div><div class="note"><span class="note-k">串联</span><p>与南巴厘同一港区，最易衔接；可与蝠鲼共游同日安排。</p></div></details>
   <div class="vote" role="group" aria-label="为 佩尼达悬崖海岸 投票">
@@ -467,13 +449,10 @@ details[open]>summary .chev{transform:rotate(-135deg)}
         <figcaption><b>船头静享时光</b><span>Bow Serenity</span></figcaption></figure><figure class="shot"><img class="shot-img" src="images/C1e.webp" alt="Kalong 蝙蝠岛日落" loading="lazy" decoding="async">
         <figcaption><b>Kalong 蝙蝠岛日落</b><span>Kalong Island</span></figcaption></figure><figure class="shot"><img class="shot-img" src="images/C1j.webp" alt="科莫多岛掠影" loading="lazy" decoding="async">
         <figcaption><b>科莫多岛掠影</b><span>Komodo Montage</span></figcaption></figure></div>
-  <div class="vid-row"><div class="vid" data-bvid="BV1oiNezWE5y" role="button" tabindex="0" aria-label="播放影片 去印尼不去科莫多岛 白去了(我说滴)">
+  <div class="vid" data-bvid="BV1oiNezWE5y" role="button" tabindex="0" aria-label="播放影片 去印尼不去科莫多岛 白去了(我说滴)">
       <img class="vid-img" src="images/vid-C1_0.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
       <span class="vid-badge">▶ 点击播放</span>
-      <span class="vid-cap">去印尼不去科莫多岛 白去了(我说滴)<i>爱探店的芋圆 · 哔哩哔哩</i></span></div><div class="vid" data-bvid="BV1yH4y1H7MQ" role="button" tabindex="0" aria-label="播放影片 科莫多岛太梦幻了！人生只为活一个“时刻”！">
-      <img class="vid-img" src="images/vid-C1_1.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
-      <span class="vid-badge">▶ 点击播放</span>
-      <span class="vid-cap">科莫多岛太梦幻了！人生只为活一个“时刻”！<i>蓝战非OvO · 哔哩哔哩</i></span></div></div>
+      <span class="vid-cap">去印尼不去科莫多岛 白去了(我说滴)<i>爱探店的芋圆 · 哔哩哔哩</i></span></div>
   <div class="spot-meta"><span class="mt"><i>时间</i>2–4 天</span><span class="mt"><i>人均</i>往返机票人均约 ¥600–1200 + 跳岛团 ¥300–1200（1 日/2 日 1 夜）；2 天船宿人均约 ¥1500–3000+ / 3 天约 ¥2500–5000+</span></div>
   <details class="notes"><summary><span>亮点 · 注意 · 串联</span><span class="chev"></span></summary><div class="note"><span class="note-k">亮点</span><p>住在船上巡游科莫多海域，避开日间人潮，清晨独占 Padar 观景与无人海滩，潜水条件世界级。跳岛则覆盖科莫多巨蜥(野生)、Padar 岛三色海湾、粉色沙滩、Manta Point 蝠鲼浮潜、Taka Makassar 新月沙洲、Gili Lawa 草原观景、Kalong 蝙蝠岛日落。印尼海岛风光天花板之一。</p></div><div class="note"><span class="note-k">注意</span><p>10 月仍为旺季，船位需提前预订；晕船者慎选或备药；确认船只安全与卫生口碑。上岛看龙必须跟园区向导——巨蜥能奔跑与游泳、具攻击性；部分海域有流，浮潜跟船。</p></div><div class="note"><span class="note-k">串联</span><p>将科莫多所有精华点一次打包，船宿体验感最强，跳岛灵活度高。</p></div></details>
   <div class="vote" role="group" aria-label="为 船宿/跳岛 投票">
@@ -494,13 +473,10 @@ details[open]>summary .chev{transform:rotate(-135deg)}
         <figcaption><b>Penanjakan 日出观景台</b><span>Penanjakan Sunrise</span></figcaption></figure><figure class="shot"><img class="shot-img" src="images/D1c.webp" alt="特勒图比草原山丘" loading="lazy" decoding="async">
         <figcaption><b>特勒图比草原山丘</b><span>Teletubbies Hill</span></figcaption></figure><figure class="shot"><img class="shot-img" src="images/D1d.webp" alt="布罗莫银河星空" loading="lazy" decoding="async">
         <figcaption><b>布罗莫银河星空</b><span>Bromo Milky Way</span></figcaption></figure></div>
-  <div class="vid-row"><div class="vid" data-bvid="BV1EUxDeYEJ3" role="button" tabindex="0" aria-label="播放影片 24小时Bromo火山硬核自由行，误入末世电影既视感｜踩坑与奇遇全记录｜印度尼西亚VLOG">
+  <div class="vid" data-bvid="BV1EUxDeYEJ3" role="button" tabindex="0" aria-label="播放影片 24小时Bromo火山硬核自由行，误入末世电影既视感｜踩坑与奇遇全记录｜印度尼西亚VLOG">
       <img class="vid-img" src="images/vid-D1_0.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
       <span class="vid-badge">▶ 点击播放</span>
-      <span class="vid-cap">24小时Bromo火山硬核自由行，误入末世电影既视感｜踩坑与奇遇全记录｜印度尼西亚VLOG<i>Rikasplanet · 哔哩哔哩</i></span></div><div class="vid" data-bvid="BV1DE4m1R7cL" role="button" tabindex="0" aria-label="播放影片 VLOG63｜当我来到人生中的第一座火山｜Bromo日出 Sewu瀑布 魔戒森林｜在地球的脉搏前舞蹈">
-      <img class="vid-img" src="images/vid-D1_1.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
-      <span class="vid-badge">▶ 点击播放</span>
-      <span class="vid-cap">VLOG63｜当我来到人生中的第一座火山｜Bromo日出 Sewu瀑布 魔戒森林｜在地球的脉搏前舞蹈<i>图仔Grense · 哔哩哔哩</i></span></div></div>
+      <span class="vid-cap">24小时Bromo火山硬核自由行，误入末世电影既视感｜踩坑与奇遇全记录｜印度尼西亚VLOG<i>Rikasplanet · 哔哩哔哩</i></span></div>
   <div class="spot-meta"><span class="mt"><i>时间</i>2 天（含往返飞行+包车）</span><span class="mt"><i>人均</i>巴厘(DPS)⇆泗水(SUB)往返机票人均约 ¥400–800 + 布罗莫吉普日出团 ¥150–250/人 + 住宿 ¥100–200</span></div>
   <details class="notes"><summary><span>亮点 · 注意 · 串联</span><span class="chev"></span></summary><div class="note"><span class="note-k">亮点</span><p>凌晨乘吉普车登 Penanjakan 观景台俯瞰布罗莫火山口与腾格尔沙海的日出——被全球旅行者誉为&#x27;地球上最像月球表面的地方&#x27;，布罗莫火山口、巴托克火山锥与远方塞梅鲁火山同框。日出后穿越&#x27;沙海&#x27;步行登火山口边缘看冒烟的活火山腹地。南麓还有酷似《天线宝宝》的翠绿草原山丘，凌晨暗夜光害极低可仰望银河。</p></div><div class="note"><span class="note-k">注意</span><p>凌晨 3 点吉普出发上山，火山口海拔 2329m 但观景台可达性高；山顶极冷（5–10°C），务必带防风保暖外套；火山灰大，需口罩或头巾；上下山多弯易晕车。</p></div><div class="note"><span class="note-k">串联</span><p>与宜珍(E1)可串联为东爪哇 3–4 天火山走廊（布罗莫→宜珍→巴厘渡轮回）；单独走布罗莫则从巴厘飞泗水往返，最少预留 2 天。</p></div></details>
   <div class="vote" role="group" aria-label="为 布罗莫火山 · 月球表面日出 投票">
@@ -691,13 +667,10 @@ details[open]>summary .chev{transform:rotate(-135deg)}
         <figcaption><b>翠绿硫磺酸湖</b><span>Sulfur Crater Lake</span></figcaption></figure><figure class="shot"><img class="shot-img" src="images/E1c.webp" alt="硫磺矿工" loading="lazy" decoding="async">
         <figcaption><b>硫磺矿工</b><span>Sulfur Miner</span></figcaption></figure><figure class="shot"><img class="shot-img" src="images/E1d.webp" alt="破晓火山口全景" loading="lazy" decoding="async">
         <figcaption><b>破晓火山口全景</b><span>Ijen Crater at Dawn</span></figcaption></figure></div>
-  <div class="vid-row"><div class="vid" data-bvid="BV18cnmzSEWU" role="button" tabindex="0" aria-label="播放影片 短科普之“人间炼狱”流淌着蓝火的伊真火山~">
+  <div class="vid" data-bvid="BV18cnmzSEWU" role="button" tabindex="0" aria-label="播放影片 短科普之“人间炼狱”流淌着蓝火的伊真火山~">
       <img class="vid-img" src="images/vid-E1_0.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
       <span class="vid-badge">▶ 点击播放</span>
-      <span class="vid-cap">短科普之“人间炼狱”流淌着蓝火的伊真火山~<i>机械X朋克 · 哔哩哔哩</i></span></div><div class="vid" data-bvid="BV1HA411C7it" role="button" tabindex="0" aria-label="播放影片 【印尼火山行🌋Ep. 03】深夜探秘伊真火山 (Mt. Ijen) 神秘的蓝色火焰，岩浆翻滚，美丽与危险并存">
-      <img class="vid-img" src="images/vid-E1_1.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
-      <span class="vid-badge">▶ 点击播放</span>
-      <span class="vid-cap">【印尼火山行🌋Ep. 03】深夜探秘伊真火山 (Mt. Ijen) 神秘的蓝色火焰，岩浆翻滚，美丽与危险并存<i>妮妮江ninijiang · 哔哩哔哩</i></span></div></div>
+      <span class="vid-cap">短科普之“人间炼狱”流淌着蓝火的伊真火山~<i>机械X朋克 · 哔哩哔哩</i></span></div>
   <div class="spot-meta"><span class="mt"><i>时间</i>2 天（含夜间徒步）</span><span class="mt"><i>人均</i>含往返渡轮的 2 天团人均约 ¥500–900</span></div>
   <details class="notes"><summary><span>亮点 · 注意 · 串联</span><span class="chev"></span></summary><div class="note"><span class="note-k">亮点</span><p>Ijen——全球罕见的蓝色火焰(Blue Fire)、翠绿硫磺酸湖、扛硫磺的矿工。凌晨下火山口的独特体验，破晓时整座火山口全景尤为壮观。</p></div><div class="note"><span class="note-k">注意</span><p>凌晨 1–2 点出发下火山口；有硫磺毒气，必须戴防毒面具、跟向导行动；夜间寒冷，需备保暖衣物。</p></div><div class="note"><span class="note-k">串联</span><p>可从巴厘陆路 + 渡轮当地联游。强烈推荐与布罗莫(D1)串联为东爪哇 3–4 天火山走廊（布罗莫→宜珍→巴厘渡轮回），一程看两座世界级火山。</p></div></details>
   <div class="vote" role="group" aria-label="为 宜珍火山 · 蓝色火焰 投票">
@@ -722,13 +695,10 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   <div class="gallery"><figure class="shot"><img class="shot-img" src="images/F1a.webp" alt="吉利岛海滩秋千" loading="lazy" decoding="async">
         <figcaption><b>吉利岛海滩秋千</b><span>Gili Beach Swing</span></figcaption></figure><figure class="shot"><img class="shot-img" src="images/F1b.webp" alt="海底雕塑/秋千" loading="lazy" decoding="async">
         <figcaption><b>海底雕塑/秋千</b><span>Underwater Statues</span></figcaption></figure></div>
-  <div class="vid-row"><div class="vid" data-bvid="BV19t42137G9" role="button" tabindex="0" aria-label="播放影片 在没有汽车的避世小岛，体验一把从前慢的生活/吉利群岛/🇮🇩印尼最终站！">
+  <div class="vid" data-bvid="BV19t42137G9" role="button" tabindex="0" aria-label="播放影片 在没有汽车的避世小岛，体验一把从前慢的生活/吉利群岛/🇮🇩印尼最终站！">
       <img class="vid-img" src="images/vid-F1_0.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
       <span class="vid-badge">▶ 点击播放</span>
-      <span class="vid-cap">在没有汽车的避世小岛，体验一把从前慢的生活/吉利群岛/🇮🇩印尼最终站！<i>末路狂發 · 哔哩哔哩</i></span></div><div class="vid" data-bvid="BV1nsL567EBr" role="button" tabindex="0" aria-label="播放影片 来印尼不要只去巴厘岛了，来看看它旁边的宝藏浮潜圣地—吉利群岛">
-      <img class="vid-img" src="images/vid-F1_1.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
-      <span class="vid-badge">▶ 点击播放</span>
-      <span class="vid-cap">来印尼不要只去巴厘岛了，来看看它旁边的宝藏浮潜圣地—吉利群岛<i>TP全世界 · 哔哩哔哩</i></span></div></div>
+      <span class="vid-cap">在没有汽车的避世小岛，体验一把从前慢的生活/吉利群岛/🇮🇩印尼最终站！<i>末路狂發 · 哔哩哔哩</i></span></div>
   <div class="spot-meta"><span class="mt"><i>时间</i>2–3 天</span><span class="mt"><i>人均</i>往返快艇人均约 ¥350–600 + 浮潜团 ¥150–300</span></div>
   <details class="notes"><summary><span>亮点 · 注意 · 串联</span><span class="chev"></span></summary><div class="note"><span class="note-k">亮点</span><p>Trawangan(派对)/Air(适中)/Meno(安静)三岛任选；岛上无机动车，只有自行车与马车；浮潜近距离看海龟、海底秋千与雕塑。</p></div><div class="note"><span class="note-k">注意</span><p>岛上无警察、ATM 少、医疗有限，现金多备；浮潜留意水母与海流；跨海快艇遇风浪较颠。</p></div><div class="note"><span class="note-k">串联</span><p>与龙目岛同一线；三岛之间跳岛船 15–30 分钟。</p></div></details>
   <div class="vote" role="group" aria-label="为 吉利三岛 Gili 投票">
