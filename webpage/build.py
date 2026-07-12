@@ -12,7 +12,7 @@ MEDIA = load("media.json")       # {subspotId: dataURI, "vid:A1": dataURI}
 VIDEOS = load("videos.json")     # {itemId: {yt_id,title,author}}
 CREDITS = load("credits.json")   # {subspotId: {artist,license}}
 FONT = load("font.json")         # {"serif_woff2": "<b64>"} 或 {"serif_woff": "<b64>"}；缺失则降级系统宋体栈
-HL_IDS = [h["item"] for h in C.HIGHLIGHTS]  # 精选景点 item ID 列表
+HL_IDS = list(C.HIGHLIGHTS)  # 第一章「最热门景点」成员 item id（有序）
 
 IMAGES_DIR = os.path.join(BUILD, "images")
 USED_KEYS = set()   # img_uri 记录 index.html 实际引用到的 key，write_images 只写这些
@@ -69,7 +69,8 @@ def img_tag(key, cls, alt, lazy=True):
 # ---------- body ----------
 def hero():
     m = C.META
-    idx = "".join(f'<a class="idx" href="#region-{r["id"]}"><b>{r["id"]}</b><span>{esc(r["name"].split(" (")[0])}</span></a>' for r in C.REGIONS)
+    idx = "".join(f'<a class="idx" href="#{ch["anchor"]}"><b>{cn_chapter(i)}</b><span>{esc(ch["nav"])}</span></a>'
+                  for i, ch in enumerate(spot_chapters(), 1))
     return f'''<header class="hero">
   <div class="masthead"><span class="mast-l">INDONESIA</span><span class="mast-r">FIELD NOTES · 2026</span></div>
   <div class="hero-title">
@@ -84,21 +85,9 @@ def hero():
   </figure>
   <div class="hero-foot">
     <p class="howto">{esc(m["howto"])}</p>
-    <nav class="index" aria-label="分区导航"><a class="idx idx-star" href="#hl-main"><b>★</b><span>精选</span></a>{idx}</nav>
+    <nav class="index" aria-label="章节导航">{idx}</nav>
   </div>
 </header>'''
-
-def highlights():
-    cards = ""
-    for h in C.HIGHLIGHTS:
-        cards += f'''<a class="hl" href="#{h['item']}">
-      {img_tag(h['img'],'hl-img',h['title'])}
-      <figcaption class="hl-cap"><b>{esc(h['title'])}</b><span class="hl-sub">{esc(h['blurb'])}</span></figcaption></a>'''
-    return f'''<section class="shelf" id="highlights">
-  <div class="chap-eyebrow"><span class="k">精华速览</span>大多数人必去 · 先看这一屏</div>
-  <div class="shelf-scroll">{cards}</div>
-  <p class="shelf-note">以上 + 佩尼达跳岛 = 稳妥不踩雷的「核心盘」；差异化项目再从下面 A–E 里挑。</p>
-</section>'''
 
 def gallery(item):
     figs = ""
@@ -147,31 +136,46 @@ def spot(item):
   </div>
 </article>'''
 
-def highlights_main():
-    """精选景点：将 HIGHLIGHTS 标记的 item 在主内容最前面平铺展示。"""
-    hl_items = sorted((it for it in C.ITEMS if it["id"] in HL_IDS),
-                      key=lambda it: HL_IDS.index(it["id"]))
-    body = "".join(spot(it) for it in hl_items)
-    return f'''<section class="chapter" id="hl-main">
+# ---------- 章节：第一章 最热门 + 各非空地区章 ----------
+CN_NUM = "一二三四五六七八九十"
+def cn_chapter(n):
+    """1 -> '第一章'（章数不会超过 10）。"""
+    return f"第{CN_NUM[n-1]}章"
+
+def spot_chapters():
+    """有序景点章的元数据（不渲染 body，供正文与 hero 导航共用，保证一一对应）。
+    第一章＝HIGHLIGHTS（最热门）；其后＝REGIONS 中仍有非热门景点的地区，按原顺序。
+    整区景点全为热门的地区（科莫多/布罗莫）items 为空 → 不成章。"""
+    chapters = [{
+        "anchor": "hl-main", "nav": "最热门", "title": "最热门景点",
+        "data": '<span>多数人必去</span>', "desc": "",
+        "items": sorted((it for it in C.ITEMS if it["id"] in HL_IDS),
+                        key=lambda it: HL_IDS.index(it["id"])),
+    }]
+    for r in C.REGIONS:
+        items = [it for it in C.ITEMS if it["region"] == r["id"] and it["id"] not in HL_IDS]
+        if not items:
+            continue
+        chapters.append({
+            "anchor": f'region-{r["id"]}', "nav": r["name"].split(" (")[0], "title": r["name"],
+            "data": f'<span>{esc(r["tag"])}</span><i></i><span>{esc(r["days"])}</span><i></i><span>{esc(r["budget"])}</span>',
+            "desc": r["desc"], "items": items,
+        })
+    return chapters
+
+def render_chapter(n, ch):
+    desc = f'<p class="chap-desc">{esc(ch["desc"])}</p>' if ch["desc"] else ''
+    body = "".join(spot(it) for it in ch["items"])
+    return f'''<section class="chapter" id="{ch['anchor']}">
   <div class="chap-head">
-    <div class="chap-meta"><h2>精选景点</h2><span class="chap-region">Highlights</span></div>
-    <div class="chap-data"><span>精华优先看</span></div>
+    <div class="chap-meta"><h2>{esc(ch['title'])}</h2><span class="chap-region">{cn_chapter(n)}</span></div>
+    <div class="chap-data">{ch['data']}</div>
   </div>
-  {body}
+  {desc}{body}
 </section>'''
 
-def region(r):
-    items = [it for it in C.ITEMS if it["region"] == r["id"] and it["id"] not in HL_IDS]
-    body = "".join(spot(it) for it in items)
-    note = '<p class="chap-empty">该区域景点已在上方「精选景点」中展示。</p>' if not items else ''
-    return f'''<section class="chapter" id="region-{r['id']}">
-  <div class="chap-head">
-    <div class="chap-meta"><h2>{esc(r['name'])}</h2><span class="chap-region">Region {r['id']}</span></div>
-    <div class="chap-data"><span>{esc(r['tag'])}</span><i></i><span>{esc(r['days'])}</span><i></i><span>{esc(r['budget'])}</span></div>
-  </div>
-  <p class="chap-desc">{esc(r['desc'])}</p>
-  {body}{note}
-</section>'''
+def chapters_html():
+    return "".join(render_chapter(i, ch) for i, ch in enumerate(spot_chapters(), 1))
 
 def combos():
     cards = ""
@@ -245,7 +249,7 @@ def mylist():
 ITEMS_JS = json.dumps([{"id":it["id"],"zh":it["zh"]} for it in C.ITEMS], ensure_ascii=False)
 COMBOS_JS = json.dumps({c["no"]: f'组{c["no"]} {c["name"]}' for c in C.COMBOS}, ensure_ascii=False)
 
-BODY = (hero() + highlights() + '<main>' + highlights_main() + "".join(region(r) for r in C.REGIONS)
+BODY = (hero() + '<main>' + chapters_html()
         + combos() + prices() + notes_sec() + footer() + '</main>' + mylist())
 N_IMAGES = write_images()   # BODY 里所有 img_uri 已调用完，USED_KEYS 就绪，此时才落盘
 

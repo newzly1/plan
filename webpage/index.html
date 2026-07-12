@@ -101,23 +101,7 @@ button{font-family:inherit;cursor:pointer}
 
 /* ============ shared chapter bits ============ */
 main{display:block;max-width:var(--maxw);margin:0 auto;padding:0 16px}
-.chap-eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--brass);margin:0 4px 16px}
-.chap-eyebrow .k{color:var(--brass);margin-right:10px;letter-spacing:.3em}
-
-/* ============ HIGHLIGHTS shelf（图上·图注下）============ */
-.shelf{max-width:var(--maxw);margin:0 auto;padding:38px 0 10px}
-.shelf .chap-eyebrow{padding:0 22px}
-.shelf-scroll{display:flex;gap:16px;overflow-x:auto;padding:6px 22px 18px;scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none}
-.shelf-scroll::-webkit-scrollbar{display:none}
-.hl{flex:0 0 60%;max-width:250px;scroll-snap-align:start;background:transparent;overflow:visible}
-.hl-img{width:100%;aspect-ratio:3/3.7;object-fit:cover}
-.hl-cap{padding:11px 0 13px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
-.hl-cap b{font-size:15.5px;color:var(--ink)}
-.hl-sub{font-size:11.5px;line-height:1.55;color:var(--ink-soft)}
-.shelf-note{padding:4px 22px 0;font-size:12.5px;color:var(--ink-faint);line-height:1.65;max-width:600px}
-
-/* ============ CHAPTER（墨线顶边 + 宋体章名 + Region 小注）============ */
+/* ============ CHAPTER（墨线顶边 + 宋体章名 + 第 N 章 小注）============ */
 .chapter{padding:44px 0 8px;scroll-margin-top:12px}
 .chap-head{border-top:1.5px solid var(--line-strong);padding-top:16px}
 .chap-meta{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
@@ -358,26 +342,12 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   </figure>
   <div class="hero-foot">
     <p class="howto">每个景点看图/看视频了解它长什么样，点「必去 / 可去」标记，底部一键复制你的选择发到群里。</p>
-    <nav class="index" aria-label="分区导航"><a class="idx idx-star" href="#hl-main"><b>★</b><span>精选</span></a><a class="idx" href="#region-A"><b>A</b><span>巴厘岛本岛</span></a><a class="idx" href="#region-B"><b>B</b><span>佩尼达三岛</span></a><a class="idx" href="#region-C"><b>C</b><span>科莫多 / 纳闽巴霍</span></a><a class="idx" href="#region-D"><b>D</b><span>东爪哇 · 布罗莫火山</span></a><a class="idx" href="#region-E"><b>E</b><span>东爪哇火山群 · 宜珍</span></a><a class="idx" href="#region-F"><b>F</b><span>龙目岛 + 吉利三岛</span></a></nav>
+    <nav class="index" aria-label="章节导航"><a class="idx" href="#hl-main"><b>第一章</b><span>最热门</span></a><a class="idx" href="#region-A"><b>第二章</b><span>巴厘岛本岛</span></a><a class="idx" href="#region-B"><b>第三章</b><span>佩尼达三岛</span></a><a class="idx" href="#region-E"><b>第四章</b><span>东爪哇火山群 · 宜珍</span></a><a class="idx" href="#region-F"><b>第五章</b><span>龙目岛 + 吉利三岛</span></a></nav>
   </div>
-</header><section class="shelf" id="highlights">
-  <div class="chap-eyebrow"><span class="k">精华速览</span>大多数人必去 · 先看这一屏</div>
-  <div class="shelf-scroll"><a class="hl" href="#A1">
-      <img class="hl-img" src="images/A1a.webp" alt="乌布 · 丛林与梯田" loading="lazy" decoding="async">
-      <figcaption class="hl-cap"><b>乌布 · 丛林与梯田</b><span class="hl-sub">梯田 / 圣猴森林 / 瀑布，巴厘的灵魂与文艺慢生活</span></figcaption></a><a class="hl" href="#B1">
-      <img class="hl-img" src="images/B1a.webp" alt="佩尼达 · 精灵坠崖" loading="lazy" decoding="async">
-      <figcaption class="hl-cap"><b>佩尼达 · 精灵坠崖</b><span class="hl-sub">全巴厘最壮观的悬崖海岸，俯瞰如霸王龙脊背伸入碧海</span></figcaption></a><a class="hl" href="#C1">
-      <img class="hl-img" src="images/C1c.webp" alt="科莫多 · Padar 三色海湾" loading="lazy" decoding="async">
-      <figcaption class="hl-cap"><b>科莫多 · Padar 三色海湾</b><span class="hl-sub">印尼海岛天花板，黑-白-粉三色海湾与史前巨兽的史诗级相遇</span></figcaption></a><a class="hl" href="#D1">
-      <img class="hl-img" src="images/D1f.webp" alt="布罗莫 · 月球表面日出" loading="lazy" decoding="async">
-      <figcaption class="hl-cap"><b>布罗莫 · 月球表面日出</b><span class="hl-sub">月球表面般的火山日出，地球上最不像地球的地方</span></figcaption></a><a class="hl" href="#B2">
-      <img class="hl-img" src="images/B2a.webp" alt="佩尼达 · 蝠鲼&amp;海龟浮潜点" loading="lazy" decoding="async">
-      <figcaption class="hl-cap"><b>佩尼达 · 蝠鲼&amp;海龟浮潜点</b><span class="hl-sub">与魔鬼鱼、海龟同游，旱季海水清透，能见度极佳</span></figcaption></a></div>
-  <p class="shelf-note">以上 + 佩尼达跳岛 = 稳妥不踩雷的「核心盘」；差异化项目再从下面 A–E 里挑。</p>
-</section><main><section class="chapter" id="hl-main">
+</header><main><section class="chapter" id="hl-main">
   <div class="chap-head">
-    <div class="chap-meta"><h2>精选景点</h2><span class="chap-region">Highlights</span></div>
-    <div class="chap-data"><span>精华优先看</span></div>
+    <div class="chap-meta"><h2>最热门景点</h2><span class="chap-region">第一章</span></div>
+    <div class="chap-data"><span>多数人必去</span></div>
   </div>
   <article class="spot" id="A1" data-id="A1">
   <div class="stamp" aria-hidden="true"></div>
@@ -484,35 +454,13 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     <button type="button" class="v v-maybe" data-v="maybe">可去</button>
     <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
-</article><article class="spot" id="B2" data-id="B2">
-  <div class="stamp" aria-hidden="true"></div>
-  <div class="spot-head">
-    <span class="code">B2</span>
-    <div class="spot-title"><h3>佩尼达 · 蝠鲼&amp;海龟浮潜点<span class="pick-star" title="精华">★</span></h3><span class="en">Manta &amp; Turtle Snorkel</span></div>
-  </div>
-  <div class="tags"><span class="tag">浮潜</span><span class="tag">海洋</span></div>
-  <div class="gallery"><figure class="shot"><img class="shot-img" src="images/B2a.webp" alt="蝠鲼浮潜点 (Manta Point)" loading="lazy" decoding="async">
-        <figcaption><b>蝠鲼浮潜点 (Manta Point)</b><span>Manta Point</span></figcaption></figure><figure class="shot"><img class="shot-img" src="images/B2b.webp" alt="海龟浮潜" loading="lazy" decoding="async">
-        <figcaption><b>海龟浮潜</b><span>Sea Turtle</span></figcaption></figure></div>
-  <div class="vid" data-bvid="BV1mN411c7tQ" role="button" tabindex="0" aria-label="播放影片 佩尼达岛一日游|环岛🌊➕浮潜🤿超详细解说">
-      <img class="vid-img" src="images/vid-B2_0.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
-      <span class="vid-badge">▶ 点击播放</span>
-      <span class="vid-cap">佩尼达岛一日游|环岛🌊➕浮潜🤿超详细解说<i>gabby7700 · 哔哩哔哩</i></span></div>
-  <div class="spot-meta"><span class="mt"><i>时间</i>半天</span><span class="mt"><i>人均</i>浮潜团人均约 ¥200–400</span></div>
-  <details class="notes"><summary><span>亮点 · 注意 · 串联</span><span class="chev"></span></summary><div class="note"><span class="note-k">亮点</span><p>Manta Point 蝠鲼浮潜、Crystal Bay/Gamat Bay 海龟与珊瑚浮潜。旱季海水透明度高。</p></div><div class="note"><span class="note-k">注意</span><p>Manta Point 有涌浪、需跟船听教练；晕船者提前服药；防晒用珊瑚友好型。</p></div><div class="note"><span class="note-k">串联</span><p>常与佩尼达陆地打卡拼成一日跳岛团。</p></div></details>
-  <div class="vote" role="group" aria-label="为 佩尼达 · 蝠鲼&amp;海龟浮潜点 投票">
-    <button type="button" class="v v-must" data-v="must">必去</button>
-    <button type="button" class="v v-maybe" data-v="maybe">可去</button>
-    <button type="button" class="v v-skip" data-v="skip">略过</button>
-  </div>
 </article>
 </section><section class="chapter" id="region-A">
   <div class="chap-head">
-    <div class="chap-meta"><h2>巴厘岛本岛 (Bali)</h2><span class="chap-region">Region A</span></div>
+    <div class="chap-meta"><h2>巴厘岛本岛 (Bali)</h2><span class="chap-region">第二章</span></div>
     <div class="chap-data"><span>首站 交通枢纽</span><i></i><span>建议 3–8 天</span><i></i><span>人均约 ¥700–1400</span></div>
   </div>
-  <p class="chap-desc">落地机场所在、向外辐射的枢纽；内部靠包车/摩托，跨区约 1–2 小时车程。节奏参考：时间紧凑 2–3 天（乌布核心 + 南巴厘断崖日落）；只逛精华 3–4 天（乌布深度 + 南巴厘全部 + 海神庙）；舒适加一个方向 5–6 天（精华 + 东或北任选其一）；四片区全覆盖 7–8 天。9–10 天的行程主要时间都在这里。</p>
-  <article class="spot" id="A2" data-id="A2">
+  <p class="chap-desc">落地机场所在、向外辐射的枢纽；内部靠包车/摩托，跨区约 1–2 小时车程。节奏参考：时间紧凑 2–3 天（乌布核心 + 南巴厘断崖日落）；只逛精华 3–4 天（乌布深度 + 南巴厘全部 + 海神庙）；舒适加一个方向 5–6 天（精华 + 东或北任选其一）；四片区全覆盖 7–8 天。9–10 天的行程主要时间都在这里。</p><article class="spot" id="A2" data-id="A2">
   <div class="stamp" aria-hidden="true"></div>
   <div class="spot-head">
     <span class="code">A2</span>
@@ -608,11 +556,31 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 </article>
 </section><section class="chapter" id="region-B">
   <div class="chap-head">
-    <div class="chap-meta"><h2>佩尼达三岛 (Nusa Penida/Lembongan/Ceningan)</h2><span class="chap-region">Region B</span></div>
+    <div class="chap-meta"><h2>佩尼达三岛 (Nusa Penida/Lembongan/Ceningan)</h2><span class="chap-region">第三章</span></div>
     <div class="chap-data"><span>无缝衔接 · 几乎必玩</span><i></i><span>建议 1–2 天</span><i></i><span>人均约 ¥300–800</span></div>
   </div>
-  <p class="chap-desc">从巴厘 Sanur 港快艇 30–45 分钟，与南巴厘紧密相连。可一日跟团或住岛 1–2 晚。</p>
-  <article class="spot" id="B3" data-id="B3">
+  <p class="chap-desc">从巴厘 Sanur 港快艇 30–45 分钟，与南巴厘紧密相连。可一日跟团或住岛 1–2 晚。</p><article class="spot" id="B2" data-id="B2">
+  <div class="stamp" aria-hidden="true"></div>
+  <div class="spot-head">
+    <span class="code">B2</span>
+    <div class="spot-title"><h3>佩尼达 · 蝠鲼&amp;海龟浮潜点</h3><span class="en">Manta &amp; Turtle Snorkel</span></div>
+  </div>
+  <div class="tags"><span class="tag">浮潜</span><span class="tag">海洋</span></div>
+  <div class="gallery"><figure class="shot"><img class="shot-img" src="images/B2a.webp" alt="蝠鲼浮潜点 (Manta Point)" loading="lazy" decoding="async">
+        <figcaption><b>蝠鲼浮潜点 (Manta Point)</b><span>Manta Point</span></figcaption></figure><figure class="shot"><img class="shot-img" src="images/B2b.webp" alt="海龟浮潜" loading="lazy" decoding="async">
+        <figcaption><b>海龟浮潜</b><span>Sea Turtle</span></figcaption></figure></div>
+  <div class="vid" data-bvid="BV1mN411c7tQ" role="button" tabindex="0" aria-label="播放影片 佩尼达岛一日游|环岛🌊➕浮潜🤿超详细解说">
+      <img class="vid-img" src="images/vid-B2_0.webp" alt="" loading="lazy"><span class="vid-play" aria-hidden="true"></span>
+      <span class="vid-badge">▶ 点击播放</span>
+      <span class="vid-cap">佩尼达岛一日游|环岛🌊➕浮潜🤿超详细解说<i>gabby7700 · 哔哩哔哩</i></span></div>
+  <div class="spot-meta"><span class="mt"><i>时间</i>半天</span><span class="mt"><i>人均</i>浮潜团人均约 ¥200–400</span></div>
+  <details class="notes"><summary><span>亮点 · 注意 · 串联</span><span class="chev"></span></summary><div class="note"><span class="note-k">亮点</span><p>Manta Point 蝠鲼浮潜、Crystal Bay/Gamat Bay 海龟与珊瑚浮潜。旱季海水透明度高。</p></div><div class="note"><span class="note-k">注意</span><p>Manta Point 有涌浪、需跟船听教练；晕船者提前服药；防晒用珊瑚友好型。</p></div><div class="note"><span class="note-k">串联</span><p>常与佩尼达陆地打卡拼成一日跳岛团。</p></div></details>
+  <div class="vote" role="group" aria-label="为 佩尼达 · 蝠鲼&amp;海龟浮潜点 投票">
+    <button type="button" class="v v-must" data-v="must">必去</button>
+    <button type="button" class="v v-maybe" data-v="maybe">可去</button>
+    <button type="button" class="v v-skip" data-v="skip">略过</button>
+  </div>
+</article><article class="spot" id="B3" data-id="B3">
   <div class="stamp" aria-hidden="true"></div>
   <div class="spot-head">
     <span class="code">B3</span>
@@ -635,27 +603,12 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     <button type="button" class="v v-skip" data-v="skip">略过</button>
   </div>
 </article>
-</section><section class="chapter" id="region-C">
-  <div class="chap-head">
-    <div class="chap-meta"><h2>科莫多 / 纳闽巴霍 (Komodo · Labuan Bajo)</h2><span class="chap-region">Region C</span></div>
-    <div class="chap-data"><span>海岛风光天花板 · 首选项</span><i></i><span>建议 2–3 天</span><i></i><span>人均约 ¥1000–2100（船宿更高）</span></div>
-  </div>
-  <p class="chap-desc">从巴厘 DPS 飞纳闽巴霍约 1–1.5 小时，含往返航班占 2–3 天，与龙目/吉利二选一。</p>
-  <p class="chap-empty">该区域景点已在上方「精选景点」中展示。</p>
-</section><section class="chapter" id="region-D">
-  <div class="chap-head">
-    <div class="chap-meta"><h2>东爪哇 · 布罗莫火山 (Bromo)</h2><span class="chap-region">Region D</span></div>
-    <div class="chap-data"><span>月球表面日出 · 世界级火山</span><i></i><span>建议 2 天（含往返飞行+包车）</span><i></i><span>人均约 ¥700–1200（含往返机票+包车+住宿+吉普团）</span></div>
-  </div>
-  <p class="chap-desc">从巴厘 DPS 飞泗水(SUB)约 1 小时，再包车 3–4 小时上布罗莫。凌晨乘吉普车登 Penanjakan 观景台看月球表面般的日出——被全球旅行者誉为印尼最震撼的火山景观。可与宜珍串联为东爪哇火山走廊（需 3–4 天）。</p>
-  <p class="chap-empty">该区域景点已在上方「精选景点」中展示。</p>
 </section><section class="chapter" id="region-E">
   <div class="chap-head">
-    <div class="chap-meta"><h2>东爪哇火山群 · 宜珍 (Ijen)</h2><span class="chap-region">Region E</span></div>
+    <div class="chap-meta"><h2>东爪哇火山群 · 宜珍 (Ijen)</h2><span class="chap-region">第四章</span></div>
     <div class="chap-data"><span>蓝火奇观 · 可串联布罗莫</span><i></i><span>建议 2 天（单独）/ 3–4 天（+布罗莫）</span><i></i><span>人均约 ¥500–900（加布罗莫 +¥700–1200）</span></div>
   </div>
-  <p class="chap-desc">离巴厘最近的火山：巴厘西端 Gilimanuk 渡轮过海到 Banyuwangi 即达。可与布罗莫串联为东爪哇火山走廊（布罗莫→宜珍→巴厘）。</p>
-  <article class="spot" id="E1" data-id="E1">
+  <p class="chap-desc">离巴厘最近的火山：巴厘西端 Gilimanuk 渡轮过海到 Banyuwangi 即达。可与布罗莫串联为东爪哇火山走廊（布罗莫→宜珍→巴厘）。</p><article class="spot" id="E1" data-id="E1">
   <div class="stamp" aria-hidden="true"></div>
   <div class="spot-head">
     <span class="code">E1</span>
@@ -681,11 +634,10 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 </article>
 </section><section class="chapter" id="region-F">
   <div class="chap-head">
-    <div class="chap-meta"><h2>龙目岛 + 吉利三岛 (Lombok + Gili)</h2><span class="chap-region">Region F</span></div>
+    <div class="chap-meta"><h2>龙目岛 + 吉利三岛 (Lombok + Gili)</h2><span class="chap-region">第五章</span></div>
     <div class="chap-data"><span>跨岛可行圈 · 备选</span><i></i><span>建议 2–3 天</span><i></i><span>人均约 ¥500–1000（加林贾尼更高）</span></div>
   </div>
-  <p class="chap-desc">从巴厘快艇约 1.5–2 小时，属可行圈，但会占掉一整段，与其他跨岛项目二选一。</p>
-  <article class="spot" id="F1" data-id="F1">
+  <p class="chap-desc">从巴厘快艇约 1.5–2 小时，属可行圈，但会占掉一整段，与其他跨岛项目二选一。</p><article class="spot" id="F1" data-id="F1">
   <div class="stamp" aria-hidden="true"></div>
   <div class="spot-head">
     <span class="code">F1</span>

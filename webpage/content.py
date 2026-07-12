@@ -139,7 +139,7 @@ ITEMS = [
         ],
     },
     {
-        "id": "B2", "region": "B", "zh": "佩尼达 · 蝠鲼&海龟浮潜点", "en": "Manta & Turtle Snorkel", "highlight": True,
+        "id": "B2", "region": "B", "zh": "佩尼达 · 蝠鲼&海龟浮潜点", "en": "Manta & Turtle Snorkel",
         "tags": ["浮潜", "海洋"], "time": "半天", "price": "浮潜团人均约 ¥200–400",
         "feature": "Manta Point 蝠鲼浮潜、Crystal Bay/Gamat Bay 海龟与珊瑚浮潜。旱季海水透明度高。",
         "caution": "Manta Point 有涌浪、需跟船听教练；晕船者提前服药；防晒用珊瑚友好型。",
@@ -267,14 +267,9 @@ ITEMS = [
     },
 ]
 
-# 精华速览 (references a subspot image + one-liner). order = display order.
-HIGHLIGHTS = [
-    {"item": "A1", "img": "A1a", "title": "乌布 · 丛林与梯田", "blurb": "梯田 / 圣猴森林 / 瀑布，巴厘的灵魂与文艺慢生活"},
-    {"item": "B1", "img": "B1a", "title": "佩尼达 · 精灵坠崖", "blurb": "全巴厘最壮观的悬崖海岸，俯瞰如霸王龙脊背伸入碧海"},
-    {"item": "C1", "img": "C1c", "title": "科莫多 · Padar 三色海湾", "blurb": "印尼海岛天花板，黑-白-粉三色海湾与史前巨兽的史诗级相遇"},
-    {"item": "D1", "img": "D1f", "title": "布罗莫 · 月球表面日出", "blurb": "月球表面般的火山日出，地球上最不像地球的地方"},
-    {"item": "B2", "img": "B2a", "title": "佩尼达 · 蝠鲼&海龟浮潜点", "blurb": "与魔鬼鱼、海龟同游，旱季海水清透，能见度极佳"},
-]
+# 第一章「最热门景点」成员 item id，按展示顺序。
+# （原「精华速览」横滑卡已下线；此列表现仅用于判定第一章成员 + ★星标。）
+HIGHLIGHTS = ["A1", "B1", "C1", "D1"]
 
 COMBOS = [
     {"no": "①", "name": "纯巴厘 + 佩尼达（最轻松）", "content": "A + B", "cross": "仅快艇 30–45 分",
