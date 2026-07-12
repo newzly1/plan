@@ -55,42 +55,48 @@
       return coll().doc(docId).set(data);
     }
 
+    function doSync(){
+      return readyP.then(function(){
+        var st = currentState();
+        var newId = IdentityLib.deriveDocId(st.name);
+        var syncedId = localStorage.getItem(SYNCED_KEY) || "";
+        var delP = (syncedId && syncedId !== newId)
+          ? coll().doc(syncedId).remove().catch(function(){})  // 改名/清名：删旧档
+          : Promise.resolve();
+        return delP.then(function(){
+          if (!newId){ localStorage.removeItem(SYNCED_KEY); refreshGroup(); return; } // 没名字：只本机
+          if (syncedId !== newId){
+            // 采纳并合并（换设备/撞名/首次绑定），防丢票
+            return getDoc(newId).then(function(existing){
+              var merged = IdentityLib.mergeState(st, existing || {});
+              return writeSet(newId, merged).then(function(){
+                localStorage.setItem(SYNCED_KEY, newId);
+                adoptLocal(merged);
+                refreshGroup();
+              });
+            }).catch(function(){
+              return writeSet(newId, { name: st.name, picks: st.picks, combo: st.combo }).then(function(){
+                localStorage.setItem(SYNCED_KEY, newId); refreshGroup();
+              });
+            });
+          } else {
+            // 常态：覆盖自己的文档，本机为准
+            return writeSet(newId, { name: st.name, picks: st.picks, combo: st.combo })
+              .then(function(){ refreshGroup(); });
+          }
+        });
+      });
+    }
     var syncT = null;
     function syncMine(){
       if (failed) return;
       clearTimeout(syncT);
-      syncT = setTimeout(function(){
-        readyP.then(function(){
-          var st = currentState();
-          var newId = IdentityLib.deriveDocId(st.name);
-          var syncedId = localStorage.getItem(SYNCED_KEY) || "";
-          var delP = (syncedId && syncedId !== newId)
-            ? coll().doc(syncedId).remove().catch(function(){})  // 改名/清名：删旧档
-            : Promise.resolve();
-          delP.then(function(){
-            if (!newId){ localStorage.removeItem(SYNCED_KEY); refreshGroup(); return; } // 没名字：只本机
-            if (syncedId !== newId){
-              // 采纳并合并（换设备/撞名/首次绑定），防丢票
-              getDoc(newId).then(function(existing){
-                var merged = IdentityLib.mergeState(st, existing || {});
-                writeSet(newId, merged).then(function(){
-                  localStorage.setItem(SYNCED_KEY, newId);
-                  adoptLocal(merged);
-                  refreshGroup();
-                }).catch(function(){});
-              }).catch(function(){
-                writeSet(newId, { name: st.name, picks: st.picks, combo: st.combo }).then(function(){
-                  localStorage.setItem(SYNCED_KEY, newId); refreshGroup();
-                }).catch(function(){});
-              });
-            } else {
-              // 常态：覆盖自己的文档，本机为准
-              writeSet(newId, { name: st.name, picks: st.picks, combo: st.combo })
-                .then(function(){ refreshGroup(); }).catch(function(){});
-            }
-          }).catch(function(){});
-        }).catch(function(){});
-      }, 800);
+      syncT = setTimeout(function(){ doSync().catch(function(){}); }, 800);
+    }
+    function syncNow(){
+      if (failed) return Promise.reject(new Error("offline"));
+      clearTimeout(syncT);
+      return doSync();
     }
 
     function fetchAll(){
@@ -107,6 +113,7 @@
     }
     return {
       syncMine: syncMine,
+      syncNow: syncNow,
       refreshGroup: refreshGroup,
       group: function(){ return groupTally; },
       offline: function(){ return failed; }
@@ -119,11 +126,7 @@
     save();
     if (merged.combo) localStorage.setItem(K.combo, merged.combo);
     paintAll();
-    if (sheetOpen()){
-      var c = localStorage.getItem(K.combo);
-      $$('input[name="combo"]').forEach(function(r){ r.checked = (r.value===c); });
-      renderPicks();
-    }
+    if (sheetOpen()){ renderPicks(); }
   }
 
   // 刷新依赖群体数据的视图
@@ -136,9 +139,21 @@
       b.setAttribute("aria-pressed", b.getAttribute("data-v")===st ? "true":"false");
     });
   }
-  function paintAll(){ $$(".spot").forEach(paintSpot); renderBar(); }
+  function paintCombos(){
+    var c = localStorage.getItem(K.combo) || "";
+    $$(".combo").forEach(function(el){
+      var pick = $(".combo-pick", el);
+      if (el.getAttribute("data-no") === c) {
+        el.setAttribute("data-selected","");
+        if (pick) pick.textContent = "✓ 已选为主线";
+      } else {
+        el.removeAttribute("data-selected");
+        if (pick) pick.textContent = "选为我的主线";
+      }
+    });
+  }
+  function paintAll(){ $$(".spot").forEach(paintSpot); paintCombos(); renderBar(); }
 
-  function pickCount(){ return Object.keys(votes).filter(function(k){ return votes[k]==="must"||votes[k]==="maybe"; }).length; }
   function decidedCount(){ return Object.keys(votes).filter(function(k){ var v=votes[k]; return v==="must"||v==="maybe"||v==="skip"; }).length; }
 
   // ---- voting (event delegation) ----
@@ -163,6 +178,15 @@
     if(shot && shot.tagName==="IMG" && shot.src){ openLB(shot.src, shot.alt); return; }
     var vid = e.target.closest(".vid");
     if(vid && !vid.hasAttribute("data-playing")){ playVid(vid); return; }
+    var comboEl = e.target.closest(".combo");
+    if(comboEl){
+      var no = comboEl.getAttribute("data-no");
+      var cur = localStorage.getItem(K.combo) || "";
+      if (cur === no){ localStorage.removeItem(K.combo); }
+      else { localStorage.setItem(K.combo, no); }
+      cloud.syncMine(); paintCombos();
+      return;
+    }
   });
   document.addEventListener("keydown", function(e){
     if((e.key==="Enter"||e.key===" ")){
@@ -195,8 +219,6 @@
   var sheet = $("#sheet");
   function openSheet(){
     $("#nameIn").value = localStorage.getItem(K.name)||"";
-    var c = localStorage.getItem(K.combo);
-    $$('input[name="combo"]').forEach(function(r){ r.checked = (r.value===c); });
     renderPicks(); renderSheetTally(); cloud.refreshGroup(); sheet.removeAttribute("hidden"); document.body.style.overflow="hidden";
   }
   function closeSheet(){ sheet.setAttribute("hidden",""); document.body.style.overflow=""; }
@@ -204,11 +226,9 @@
   $("#sheetX").addEventListener("click", closeSheet);
   sheet.addEventListener("click", function(e){ if(e.target===sheet) closeSheet(); });
   $("#nameIn").addEventListener("input", function(){ localStorage.setItem(K.name, this.value); cloud.syncMine(); });
-  $$('input[name="combo"]').forEach(function(r){
-    r.addEventListener("change", function(){ if(r.checked){ localStorage.setItem(K.combo, r.value); cloud.syncMine(); } });
-  });
 
-  function labelOf(id){ for(var i=0;i<ITEMS.length;i++){ if(ITEMS[i].id===id) return ITEMS[i].id+" "+ITEMS[i].zh; } return id; }
+
+
   function renderPicks(){
     var box = $("#picks"), must=[], maybe=[];
     ITEMS.forEach(function(it){ if(votes[it.id]==="must") must.push(it); else if(votes[it.id]==="maybe") maybe.push(it); });
@@ -245,7 +265,7 @@
   function renderSheetTally(){
     var body = $("#tallyBody");
     if (!body) return;
-    if (cloud.offline()){ body.innerHTML = '<p class="tally-empty">云同步暂不可用，可用下方「一键复制」发到群里。</p>'; return; }
+    if (cloud.offline()){ body.innerHTML = '<p class="tally-empty">云同步暂不可用，你的选择已保存在本机。</p>'; return; }
     var t = cloud.group();
     if (!t){ body.innerHTML = '<p class="tally-empty">加载中…</p>'; return; }
     body.innerHTML = renderTally(t);
@@ -259,13 +279,13 @@
     var total = ITEMS.length, decided = decidedCount();
     var name = (localStorage.getItem(K.name)||"").trim();
     if (cloud.offline()){
-      statEl.textContent = "你 " + decided + "/" + total;
-      subEl.textContent = "云同步暂不可用 · 可用「一键复制」发群里";
+      statEl.textContent = "你选 " + decided + "/" + total;
+      subEl.textContent = "云同步暂不可用 · 你的选择已保存在本机";
       subEl.className = "bar-sub warn"; return;
     }
     var g = cloud.group();
     var voters = g ? g.voterCount : 0;
-    statEl.textContent = "你 " + decided + "/" + total + " · 群 " + voters + "/6";
+    statEl.textContent = "你选 " + decided + "/" + total + " · 群 " + voters + "/6 已投";
     if (decided > 0 && !name){
       subEl.textContent = "⚠ 填个名字才能加入大家的汇总 →";
       subEl.className = "bar-sub warn";
@@ -282,32 +302,28 @@
     }
   }
 
-  function summary(){
-    var name = (localStorage.getItem(K.name)||"").trim() || "匿名";
-    var must=[], maybe=[];
-    ITEMS.forEach(function(it){ if(votes[it.id]==="must") must.push(labelOf(it.id)); else if(votes[it.id]==="maybe") maybe.push(labelOf(it.id)); });
-    var c = localStorage.getItem(K.combo);
-    var combo = (c && COMBOS[c]) ? COMBOS[c] : "未选";
-    return "【我的印尼投票】@"+name+"\n"
-      + "必去："+(must.length?must.join("、"):"—")+"\n"
-      + "可去："+(maybe.length?maybe.join("、"):"—")+"\n"
-      + "主线偏好："+combo;
-  }
-  $("#copyBtn").addEventListener("click", function(){
-    var text = summary();
-    function ok(){ toast("已复制，去微信群粘贴吧"); }
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(text).then(ok).catch(function(){ legacy(text); });
-    } else { legacy(text); }
-    function legacy(t){
-      var ta=document.createElement("textarea"); ta.value=t; ta.style.position="fixed"; ta.style.opacity="0";
-      document.body.appendChild(ta); ta.select();
-      try{ document.execCommand("copy"); ok(); }catch(e){ toast("复制失败，请长按选择"); }
-      document.body.removeChild(ta);
-    }
+  $("#submitBtn").addEventListener("click", function(){
+    if (cloud.offline()){ toast("云同步暂不可用，无法提交"); return; }
+    var name = (localStorage.getItem(K.name)||"").trim();
+    if (!name){ toast("请先填名字再提交"); var n=$("#nameIn"); if(n) n.focus(); return; }
+    var decided = decidedCount();
+    var btn = this, orig = btn.textContent;
+    btn.disabled = true; btn.textContent = "提交中…";
+    cloud.syncNow().then(function(){
+      btn.disabled = false; btn.textContent = orig;
+      toast(decided > 0 ? "已提交！"+name+" 的选择已同步到群汇总" : "已提交！当前无标记，已退出群汇总");
+    }).catch(function(){
+      btn.disabled = false; btn.textContent = orig;
+      toast("提交失败，请检查网络后重试");
+    });
   });
   $("#resetBtn").addEventListener("click", function(){
-    if(!pickCount() || confirm("清空你标记的所有必去/可去？")){ votes={}; save(); cloud.syncMine(); paintAll(); renderPicks(); }
+    if(!decidedCount() || confirm("清空所有标记与主线偏好？")){
+      votes={}; save();
+      localStorage.removeItem(K.combo);
+      cloud.syncMine(); paintAll(); renderPicks();
+      toast("已清空");
+    }
   });
 
   // ---- lightbox ----

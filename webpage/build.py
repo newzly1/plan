@@ -69,8 +69,10 @@ def img_tag(key, cls, alt, lazy=True):
 # ---------- body ----------
 def hero():
     m = C.META
+    chs = spot_chapters()
     idx = "".join(f'<a class="idx" href="#{ch["anchor"]}"><b>{cn_chapter(i)}</b><span>{esc(ch["nav"])}</span></a>'
-                  for i, ch in enumerate(spot_chapters(), 1))
+                  for i, ch in enumerate(chs, 1))
+    idx += f'<a class="idx" href="#combos"><b>{cn_chapter(len(chs)+1)}</b><span>组合建议</span></a>'
     return f'''<header class="hero">
   <div class="masthead"><span class="mast-l">INDONESIA</span><span class="mast-r">FIELD NOTES · 2026</span></div>
   <div class="hero-title">
@@ -178,18 +180,19 @@ def chapters_html():
     return "".join(render_chapter(i, ch) for i, ch in enumerate(spot_chapters(), 1))
 
 def combos():
+    combo_n = len(spot_chapters()) + 1
     cards = ""
     for c in C.COMBOS:
-        cards += f'''<div class="combo">
+        cards += f'''<div class="combo" data-no="{c['no']}">
       <div class="combo-no">{c['no']}</div>
-      <div class="combo-b"><h3>{esc(c['name'])}</h3>
+      <div class="combo-b"><h3>{esc(c['name'])}<span class="combo-pick">选为我的主线</span></h3>
         <div class="combo-row"><span><i>区域</i>{esc(c['content'])}</span><span><i>跨岛</i>{esc(c['cross'])}</span></div>
         <div class="combo-row"><span><i>天数</i>{esc(c['days'])}</span><span><i>人均</i>{esc(c['budget'])}</span></div>
         <p>{esc(c['note'])}</p></div></div>'''
     return f'''<section class="chapter combos-sec" id="combos">
   <div class="chap-head">
-    <div class="chap-meta"><h2>组合建议 · 主线①–④</h2><span class="chap-region">Routes</span></div>
-    <div class="chap-data"><span>9–10 天 · 二选一即可</span></div>
+    <div class="chap-meta"><h2>组合建议 · 主线①–⑦</h2><span class="chap-region">{cn_chapter(combo_n)}</span></div>
+    <div class="chap-data"><span>①–④ 全程 9–10 天 · ⑤–⑦ 精简 6 天 · 点击选择你的主线</span></div>
   </div>
   <p class="chap-desc">{esc(C.COMBO_HINT)}</p>
   <div class="combos">{cards}</div></section>'''
@@ -224,22 +227,20 @@ def footer():
     <p class="made">巴厘岛及周边 · 选点手册 · 为你此行制作</p></footer>'''
 
 def mylist():
-    combo_opts = "".join(f'<label class="cr"><input type="radio" name="combo" value="{c["no"]}"><span>组{c["no"]} {esc(c["name"])}</span></label>' for c in C.COMBOS)
     return f'''<button type="button" class="bar" id="bar">
-  <span class="bar-top"><span class="bar-l"><span class="bar-dot"></span>我的清单 ›</span><span class="bar-stat" id="barStat">你 0/{len(C.ITEMS)}</span></span>
+  <span class="bar-top"><span class="bar-l"><span class="bar-dot"></span>我的清单 ›</span><span class="bar-stat" id="barStat">你选 0/{len(C.ITEMS)}</span></span>
   <span class="bar-sub" id="barSub">还没人投票 · 你可以抢先标记</span>
 </button>
 <div class="sheet" id="sheet" hidden>
   <div class="sheet-card" role="dialog" aria-label="我的清单" aria-modal="true">
     <div class="sheet-head"><b>我的清单</b><button type="button" class="x" id="sheetX" aria-label="关闭">×</button></div>
     <label class="fld"><span>你的名字</span><input type="text" id="nameIn" placeholder="填个名字，方便群里对号" maxlength="16"></label>
-    <div class="fld"><span>主线偏好</span><div class="crs">{combo_opts}</div></div>
     <div class="picks" id="picks"></div>
     <div class="tally" id="tally">
       <div class="tally-head"><b>大家的选择 · 实时汇总</b><button type="button" class="tally-refresh" id="tallyRefresh">刷新</button></div>
       <div class="tally-body" id="tallyBody"><p class="tally-empty">加载中…</p></div>
     </div>
-    <div class="sheet-act"><button type="button" class="copy" id="copyBtn">一键复制汇总</button><button type="button" class="reset" id="resetBtn">清空</button></div>
+    <div class="sheet-act"><button type="button" class="submit" id="submitBtn">提交我的选择</button><button type="button" class="reset" id="resetBtn">清空所有标记</button></div>
   </div>
 </div>
 <div class="lb" id="lb" hidden><img id="lbImg" src="" alt=""><button type="button" class="lb-x" aria-label="关闭">×</button></div>

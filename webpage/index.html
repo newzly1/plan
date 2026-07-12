@@ -51,7 +51,7 @@
 
 html{-webkit-text-size-adjust:100%}
 body{margin:0}
-.hero,.shelf,main,.bar,.sheet,.lb,.toast{font-family:var(--font-cjk)}
+.hero,main,.bar,.sheet,.lb,.toast{font-family:var(--font-cjk)}
 body,.hero{background:var(--ground);color:var(--ink)}
 img{display:block;max-width:100%}
 h1,h2,h3,h4,p{margin:0}
@@ -60,7 +60,7 @@ button{font-family:inherit;cursor:pointer}
 :focus-visible{outline:2.5px solid var(--pine);outline-offset:2px;border-radius:2px}
 
 /* 衬线标题域：仅这些标题走宋体，正文与数据保持黑体/等宽 */
-.hero h1,.chap-meta h2,.spot-title h3,.combo-b h3,.hl-cap b,.sheet-head b,.stamp::after{
+.hero h1,.chap-meta h2,.spot-title h3,.combo-b h3,.sheet-head b,.stamp::after{
   font-family:var(--serif);font-weight:600;letter-spacing:.03em}
 
 /* placeholders while media loads */
@@ -97,7 +97,6 @@ button{font-family:inherit;cursor:pointer}
   border-right:1px solid var(--line);border-top:1px solid var(--line);white-space:nowrap}
 .idx b{color:var(--ink);font-size:14px;font-weight:700}
 .idx span{font-size:12.5px;color:var(--ink)}
-.idx-star b{color:var(--pine)}
 
 /* ============ shared chapter bits ============ */
 main{display:block;max-width:var(--maxw);margin:0 auto;padding:0 16px}
@@ -203,11 +202,21 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 /* ============ COMBOS（细线列表 + 宋体大编号）============ */
 .combos{display:flex;flex-direction:column;margin-top:8px}
 .combo{display:flex;gap:16px;background:transparent;border:0;border-top:1px solid var(--line);
-  border-radius:0;padding:18px 0;box-shadow:none}
+  border-radius:0;padding:18px 0;box-shadow:none;cursor:pointer;position:relative;
+  transition:background .2s}
 .combo:first-child{border-top:0}
+.combo:hover{background:var(--surface)}
+.combo[data-selected]{background:var(--pine-soft)}
+.combo[data-selected] .combo-no{color:var(--pine)}
+.combo-pick{display:inline-flex;align-items:center;padding:4px 12px;border:1.5px solid var(--line);
+  font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--ink-soft);font-family:var(--font-mono);
+  background:var(--ground);transition:all .2s;pointer-events:none;border-radius:0;
+  flex-shrink:0}
+.combo:hover .combo-pick{border-color:var(--pine);color:var(--pine)}
+.combo[data-selected] .combo-pick{border-color:var(--pine);background:var(--pine);color:#F6F3EA}
 .combo-no{flex:0 0 auto;font-family:var(--serif);font-size:30px;font-weight:600;color:var(--brass);line-height:1}
 .combo-b{min-width:0}
-.combo-b h3{font-size:16.5px;margin-bottom:11px;text-wrap:balance}
+.combo-b h3{font-size:16.5px;margin-bottom:11px;text-wrap:balance;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .combo-row{display:flex;flex-wrap:wrap;gap:6px 22px;margin-bottom:6px}
 .combo-row span{font-size:12.5px;color:var(--ink)}
 .combo-row i{font-style:normal;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-right:7px}
@@ -264,11 +273,6 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 .fld>span{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:9px}
 #nameIn{width:100%;padding:13px 14px;border-radius:0;border:1px solid var(--line-strong);background:var(--surface-2);
   color:var(--ink);font-size:15px;font-family:inherit}
-.crs{display:flex;flex-direction:column;gap:8px}
-.cr{display:flex;align-items:center;gap:11px;padding:12px 13px;border:1px solid var(--line);border-radius:0;
-  background:transparent;font-size:13.5px}
-.cr:has(input:checked){border-color:var(--pine);background:var(--pine-soft)}
-.cr input{accent-color:var(--pine);width:18px;height:18px;flex:0 0 auto}
 .picks{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
 .picks-grp{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin:8px 0 2px}
 .pick{display:flex;align-items:center;gap:10px;font-size:14px;padding:3px 0}
@@ -277,10 +281,11 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 .pick.maybe .pc{color:var(--ground);background:var(--ink)}
 .picks-empty{font-size:13.5px;color:var(--ink-faint);line-height:1.7;padding:8px 0}
 .sheet-act{display:flex;gap:10px;position:sticky;bottom:0;background:var(--ground);padding:14px 0 4px;border-top:1px solid var(--line)}
-.copy{flex:1;padding:15px;border-radius:0;border:1px solid var(--pine);background:var(--pine);color:#F6F3EA;
-  font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.submit{flex:1;padding:15px;border-radius:0;border:1px solid var(--pine);background:var(--pine);color:#F6F3EA;
+  font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.submit:disabled{opacity:.5;cursor:default}
 .reset{flex:0 0 auto;padding:15px 18px;border-radius:0;border:1px solid var(--line-2);background:transparent;color:var(--ink-soft);
-  font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
 
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:60;display:grid;place-items:center;background:rgba(15,12,8,.94);padding:20px}
@@ -299,8 +304,8 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 
 /* reveal */
 @media (prefers-reduced-motion:no-preference){
-  .spot,.combo,.hl{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
-  .spot.in,.combo.in,.hl.in{opacity:1;transform:none}
+  .spot,.combo{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  .spot.in,.combo.in{opacity:1;transform:none}
 }
 @media (min-width:720px){
   .hero-img{aspect-ratio:16/10;max-height:74vh}
@@ -341,8 +346,8 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     <figcaption class="cap-line"><span>Kelingking · Nusa Penida</span><span>Fig. 01</span></figcaption>
   </figure>
   <div class="hero-foot">
-    <p class="howto">每个景点看图/看视频了解它长什么样，点「必去 / 可去」标记，底部一键复制你的选择发到群里。</p>
-    <nav class="index" aria-label="章节导航"><a class="idx" href="#hl-main"><b>第一章</b><span>最热门</span></a><a class="idx" href="#region-A"><b>第二章</b><span>巴厘岛本岛</span></a><a class="idx" href="#region-B"><b>第三章</b><span>佩尼达三岛</span></a><a class="idx" href="#region-E"><b>第四章</b><span>东爪哇火山群 · 宜珍</span></a><a class="idx" href="#region-F"><b>第五章</b><span>龙目岛 + 吉利三岛</span></a></nav>
+    <p class="howto">每个景点看图/看视频了解它长什么样，点「必去 / 可去」标记，底部「我的清单」实时看大家的汇总。</p>
+    <nav class="index" aria-label="章节导航"><a class="idx" href="#hl-main"><b>第一章</b><span>最热门</span></a><a class="idx" href="#region-A"><b>第二章</b><span>巴厘岛本岛</span></a><a class="idx" href="#region-B"><b>第三章</b><span>佩尼达三岛</span></a><a class="idx" href="#region-E"><b>第四章</b><span>东爪哇火山群 · 宜珍</span></a><a class="idx" href="#region-F"><b>第五章</b><span>龙目岛 + 吉利三岛</span></a><a class="idx" href="#combos"><b>第六章</b><span>组合建议</span></a></nav>
   </div>
 </header><main><section class="chapter" id="hl-main">
   <div class="chap-head">
@@ -704,49 +709,63 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 </article>
 </section><section class="chapter combos-sec" id="combos">
   <div class="chap-head">
-    <div class="chap-meta"><h2>组合建议 · 主线①–④</h2><span class="chap-region">Routes</span></div>
-    <div class="chap-data"><span>9–10 天 · 二选一即可</span></div>
+    <div class="chap-meta"><h2>组合建议 · 主线①–⑦</h2><span class="chap-region">第六章</span></div>
+    <div class="chap-data"><span>①–④ 全程 9–10 天 · ⑤–⑦ 精简 6 天 · 点击选择你的主线</span></div>
   </div>
-  <p class="chap-desc">终极推荐 ④ 号线路：四大核心愿望一站满足，10 天走完科莫多+佩尼达+乌布+布罗莫。分段备选：如果布罗莫太赶改选 ②（科莫多+巴厘），如果不想跑科莫多改选 ③（布罗莫+巴厘），如果只想轻松度假改选 ①（纯巴厘+佩尼达）。跨岛交通含门到门实际耗时约半天到 1 天，请将游玩天数相应压缩。</p>
-  <div class="combos"><div class="combo">
+  <p class="chap-desc">终极推荐 ④ 号线路：四大核心愿望一站满足，10 天走完科莫多+佩尼达+乌布+布罗莫。分段备选：如果布罗莫太赶改选 ②（科莫多+巴厘），如果不想跑科莫多改选 ③（布罗莫+巴厘），如果只想轻松度假改选 ①（纯巴厘+佩尼达）。只有 6 天的队员看 ⑤–⑦ 精简版：⑤ 巴厘+佩尼达最从容，⑥ 加科莫多，⑦ 加布罗莫。所有线路均含佩尼达一日跳岛。跨岛交通含门到门实际耗时约半天到 1 天，请将游玩天数相应压缩。</p>
+  <div class="combos"><div class="combo" data-no="①">
       <div class="combo-no">①</div>
-      <div class="combo-b"><h3>纯巴厘 + 佩尼达（最轻松）</h3>
+      <div class="combo-b"><h3>纯巴厘 + 佩尼达 9–10 天（最轻松）<span class="combo-pick">选为我的主线</span></h3>
         <div class="combo-row"><span><i>区域</i>A + B</span><span><i>跨岛</i>仅快艇 30–45 分</span></div>
-        <div class="combo-row"><span><i>天数</i>巴厘 7–8 + 佩尼达 1–2</span><span><i>人均</i>¥1000–1800</span></div>
-        <p>零跨岛航班、节奏最舒服，适合想放松、不折腾的分队。</p></div></div><div class="combo">
+        <div class="combo-row"><span><i>天数</i>共 8–10 天（巴厘 7–8 + 佩尼达 1–2）</span><span><i>人均</i>¥1000–1800</span></div>
+        <p>零跨岛航班、节奏最舒服，适合想放松、不折腾的分队。</p></div></div><div class="combo" data-no="②">
       <div class="combo-no">②</div>
-      <div class="combo-b"><h3>巴厘 + 佩尼达 + 科莫多（海岛天花板 🔥）</h3>
+      <div class="combo-b"><h3>巴厘 + 佩尼达 + 科莫多 9–10 天（海岛天花板 🔥）<span class="combo-pick">选为我的主线</span></h3>
         <div class="combo-row"><span><i>区域</i>A + B + C</span><span><i>跨岛</i>飞机 1–1.5h</span></div>
-        <div class="combo-row"><span><i>天数</i>巴厘 4–5 + 佩尼达 1–2 + 科莫多 2–3</span><span><i>人均</i>¥2500–4500</span></div>
-        <p>科莫多巨蜥 + Padar 三色海湾 + 粉色沙滩一次打包。科莫多船宿不建议选 4 天方案。推荐行程：Day1 落地巴厘→Day2–4 科莫多→Day5–6 佩尼达→Day7–9 乌布+南巴厘→Day10 返程。</p></div></div><div class="combo">
+        <div class="combo-row"><span><i>天数</i>共 8–10 天（巴厘 4–5 + 佩尼达 1–2 + 科莫多 2–3）</span><span><i>人均</i>¥2500–4500</span></div>
+        <p>科莫多巨蜥 + Padar 三色海湾 + 粉色沙滩一次打包。科莫多船宿不建议选 4 天方案。推荐行程：Day1 落地巴厘→Day2–4 科莫多→Day5–6 佩尼达→Day7–9 乌布+南巴厘→Day10 返程。</p></div></div><div class="combo" data-no="③">
       <div class="combo-no">③</div>
-      <div class="combo-b"><h3>巴厘 + 佩尼达 + 布罗莫（月球表面版）</h3>
+      <div class="combo-b"><h3>巴厘 + 佩尼达 + 布罗莫 9–10 天（月球表面版）<span class="combo-pick">选为我的主线</span></h3>
         <div class="combo-row"><span><i>区域</i>A + B + D</span><span><i>跨岛</i>飞机 1h + 包车 3–4h</span></div>
-        <div class="combo-row"><span><i>天数</i>巴厘 5–6 + 佩尼达 1–2 + 布罗莫 2</span><span><i>人均</i>¥2000–3500</span></div>
-        <p>用布罗莫替代科莫多：一座世界级火山 + 巴厘海岛，差异化体验拉满。推荐将布罗莫放在行程中段，前后留足休息。布罗莫需凌晨 3 点出发。</p></div></div><div class="combo">
+        <div class="combo-row"><span><i>天数</i>共 8–10 天（巴厘 5–6 + 佩尼达 1–2 + 布罗莫 2）</span><span><i>人均</i>¥2000–3500</span></div>
+        <p>用布罗莫替代科莫多：一座世界级火山 + 巴厘海岛，差异化体验拉满。推荐将布罗莫放在行程中段，前后留足休息。布罗莫需凌晨 3 点出发。</p></div></div><div class="combo" data-no="④">
       <div class="combo-no">④</div>
-      <div class="combo-b"><h3>科莫多 + 佩尼达 + 乌布 + 布罗莫（终极全景 🔥 推荐）</h3>
+      <div class="combo-b"><h3>科莫多 + 佩尼达 + 乌布 + 布罗莫 9–10 天（终极全景 🔥 推荐）<span class="combo-pick">选为我的主线</span></h3>
         <div class="combo-row"><span><i>区域</i>A + B + C + D</span><span><i>跨岛</i>两段航班 + 包车</span></div>
-        <div class="combo-row"><span><i>天数</i>科莫多 2–3 + 佩尼达 1–2 + 乌布/巴厘 2–3 + 布罗莫 2</span><span><i>人均</i>¥3500–6000</span></div>
-        <p>完整覆盖四大核心愿望！推荐行程：Day1 落地巴厘(DPS)→Day2 飞科莫多(LBJ)→Day3–4 科莫多跳岛→Day5 飞回巴厘→Day6 佩尼达一日→Day7–8 乌布+海神庙→Day9 飞泗水(SUB)转布罗莫→Day10 布罗莫日出→飞回巴厘→返程。全程 3 段航班、节奏紧凑但精心排布可从容走完。</p></div></div></div></section><details class="fold" id="prices"><summary><span>单项参考价 · 人民币粗估</span><span class="chev"></span></summary>
+        <div class="combo-row"><span><i>天数</i>共 9–10 天（科莫多 2–3 + 佩尼达 1–2 + 巴厘 2–3 + 布罗莫 2）</span><span><i>人均</i>¥3500–6000</span></div>
+        <p>完整覆盖四大核心愿望！推荐行程：Day1 落地巴厘(DPS)→Day2 飞科莫多(LBJ)→Day3–4 科莫多跳岛→Day5 飞回巴厘→Day6 佩尼达一日→Day7–8 乌布+海神庙→Day9 飞泗水(SUB)转布罗莫→Day10 布罗莫日出→飞回巴厘→返程。全程 3 段航班、节奏紧凑但精心排布可从容走完。</p></div></div><div class="combo" data-no="⑤">
+      <div class="combo-no">⑤</div>
+      <div class="combo-b"><h3>巴厘 + 佩尼达 6 天（最从容）<span class="combo-pick">选为我的主线</span></h3>
+        <div class="combo-row"><span><i>区域</i>A + B</span><span><i>跨岛</i>仅快艇 30–45 分</span></div>
+        <div class="combo-row"><span><i>天数</i>共 6 天（巴厘 5 + 佩尼达 1）</span><span><i>人均</i>¥1000–1800</span></div>
+        <p>6 天玩巴厘精华 + 佩尼达一日跳岛，零航班不折腾。推荐行程：Day1 落地住南巴厘→Day2 佩尼达一日跳岛(精灵坠崖/破碎沙滩/浮潜)→Day3–4 乌布(梯田/猴林/圣泉庙)→Day5 南巴厘(情人崖/Kecak 火舞/金巴兰日落)+海神庙→Day6 返程。</p></div></div><div class="combo" data-no="⑥">
+      <div class="combo-no">⑥</div>
+      <div class="combo-b"><h3>巴厘 + 佩尼达 + 科莫多 6 天（海岛天花板）<span class="combo-pick">选为我的主线</span></h3>
+        <div class="combo-row"><span><i>区域</i>A + B + C</span><span><i>跨岛</i>飞机 1–1.5h</span></div>
+        <div class="combo-row"><span><i>天数</i>共 6 天（巴厘 3 + 佩尼达 1 + 科莫多 2）</span><span><i>人均</i>¥2000–3800</span></div>
+        <p>6 天也能玩科莫多！巴厘留 3 天精华 + 佩尼达一日，飞纳闽巴霍 2 天跳岛看巨蜥 + 粉色沙滩 + Padar。推荐行程：Day1 落地巴厘→Day2 佩尼达一日跳岛→Day3 飞科莫多(LBJ)→Day4–5 科莫多跳岛→Day6 飞回巴厘返程。节奏紧凑但海岛天花板一次拿下。</p></div></div><div class="combo" data-no="⑦">
+      <div class="combo-no">⑦</div>
+      <div class="combo-b"><h3>巴厘 + 佩尼达 + 布罗莫 6 天（火山打卡）<span class="combo-pick">选为我的主线</span></h3>
+        <div class="combo-row"><span><i>区域</i>A + B + D</span><span><i>跨岛</i>飞机 1h + 包车 3–4h</span></div>
+        <div class="combo-row"><span><i>天数</i>共 6 天（巴厘 3 + 佩尼达 1 + 布罗莫 2）</span><span><i>人均</i>¥1500–3000</span></div>
+        <p>6 天打卡世界级火山 + 佩尼达一日！巴厘留 3 天精华，飞泗水往返布罗莫看月球表面日出。推荐行程：Day1 落地巴厘→Day2 佩尼达一日跳岛→Day3 飞泗水(SUB)转布罗莫→Day4 布罗莫日出→飞回巴厘→Day5 乌布/南巴厘→Day6 返程。布罗莫需凌晨 3 点出发。</p></div></div></div></section><details class="fold" id="prices"><summary><span>单项参考价 · 人民币粗估</span><span class="chev"></span></summary>
     <p class="fold-note">价格为人均活动费(不含机票住宿)，1 万印尼盾 ≈ ¥4.5，旺季粗估，仅供参考。</p><div class="ptable"><h4>巴厘门票 &amp; 活动 (人均)</h4><div class="tw"><table><tr><td>德格拉朗梯田</td><td class="num">¥12（秋千另 ¥90–230）</td></tr><tr><td>圣猴森林</td><td class="num">¥40</td></tr><tr><td>Tirta Empul 圣泉庙</td><td class="num">¥35</td></tr><tr><td>Tegenungan/Tibumana 瀑布</td><td class="num">¥10–12</td></tr><tr><td>Ayung 河漂流</td><td class="num">¥250–350</td></tr><tr><td>ATV 四驱越野</td><td class="num">¥250–400</td></tr><tr><td>巴图尔火山日出徒步</td><td class="num">¥160–230</td></tr><tr><td>Lempuyang 天堂之门</td><td class="num">¥25–50</td></tr><tr><td>Besakih 母庙</td><td class="num">¥30–70</td></tr><tr><td>水神庙 (Ulun Danu Beratan)</td><td class="num">¥35</td></tr><tr><td>Handara Gate 拍照</td><td class="num">¥15</td></tr><tr><td>Sekumpul 瀑布(含向导)</td><td class="num">¥45</td></tr><tr><td>塔那罗海神庙</td><td class="num">¥30</td></tr><tr><td>乌鲁瓦图庙</td><td class="num">¥25</td></tr><tr><td>Kecak 火祭舞</td><td class="num">¥60–80</td></tr><tr><td>金巴兰沙滩海鲜</td><td class="num">¥100–200</td></tr><tr><td>Tirta Gangga 水宫</td><td class="num">¥25</td></tr><tr><td>USS Liberty 沉船 浮潜/潜水</td><td class="num">¥100–150 / ¥350–500</td></tr></table></div></div><div class="ptable"><h4>包车 &amp; 市内交通</h4><div class="tw"><table><tr><td>巴厘包车+司机(约10h)</td><td class="num">¥350–500/车/天（同行分摊≈¥60–90/人）</td></tr><tr><td>机场接送</td><td class="num">¥100–150/车</td></tr><tr><td>Grab/Gojek 市区</td><td class="num">¥15–40/程</td></tr></table></div></div><div class="ptable"><h4>跨岛交通 (人均往返)</h4><div class="tw"><table><tr><td>Sanur ⇆ 佩尼达 快艇</td><td class="num">¥120–200</td></tr><tr><td>巴厘 ⇆ 吉利/龙目 快艇</td><td class="num">¥350–600</td></tr><tr><td>巴厘(DPS) ⇆ 纳闽巴霍(LBJ) 机票</td><td class="num">¥600–1200</td></tr><tr><td>巴厘(DPS) ⇆ 泗水(SUB) 机票</td><td class="num">¥400–800</td></tr><tr><td>巴厘 ⇆ Banyuwangi 渡轮(宜珍)</td><td class="num">多含在宜珍团内</td></tr></table></div></div><div class="ptable"><h4>跟团 / 一日游 / 多日 (人均)</h4><div class="tw"><table><tr><td>佩尼达一日跳岛团(含快艇)</td><td class="num">¥250–450</td></tr><tr><td>佩尼达蝠鲼/海龟浮潜</td><td class="num">¥200–400</td></tr><tr><td>吉利浮潜团</td><td class="num">¥150–300</td></tr><tr><td>林贾尼 2 天 1 夜徒步</td><td class="num">¥800–1500</td></tr><tr><td>科莫多跳岛 1 日/2 日 1 夜</td><td class="num">¥300–500 / ¥600–1200</td></tr><tr><td>科莫多船宿 2 天</td><td class="num">¥1500–3000+</td></tr><tr><td>宜珍蓝火 2 天团</td><td class="num">¥500–900</td></tr><tr><td>布罗莫吉普日出团</td><td class="num">¥150–250</td></tr></table></div></div></details><details class="fold" id="tips"><summary><span>全程通用注意事项</span><span class="chev"></span></summary><div class="tips"><div class="tip"><span class="tip-k">签证</span><p>印尼对中国公民实行落地签(VOA)，停留期 30 天，9–10 天行程完全在范围内。抵达后办理即可，建议备好返程票与住宿信息。</p></div><div class="tip"><span class="tip-k">货币</span><p>印尼盾(IDR)，小岛与村镇 ATM 少，多备现金、认准正规换汇点；大城市多数商户可刷卡。</p></div><div class="tip"><span class="tip-k">交通</span><p>市区用 Grab/Gojek；巴厘常见『包车+司机』(几人同行分摊更划算)；跨岛靠快艇或航班，旺季务必提前订票。</p></div><div class="tip"><span class="tip-k">网络</span><p>落地即买电话卡，Telkomsel 信号覆盖最好。</p></div><div class="tip"><span class="tip-k">健康</span><p>防『巴厘肚』——只喝瓶装水、慎吃生冷；强防晒且用珊瑚友好防晒霜；常备晕船药与肠胃药。</p></div><div class="tip"><span class="tip-k">安全</span><p>海滩看旗帜、防离岸流；火山务必听向导、备保暖与防毒面具；摩托事故高发，租车需国际驾照并确认保险。</p></div><div class="tip"><span class="tip-k">礼仪</span><p>进寺庙须围纱笼、遮肩盖膝；宗教场合与传统仪式保持尊重。</p></div><div class="tip"><span class="tip-k">季节</span><p>10 月为旱季尾/肩季，天气仍佳、宜海岛与火山，仍属旺季——热门船宿/徒步/潜水越早订越好。</p></div></div></details><footer class="foot">
-    <p class="cred">图片来源(Unsplash / Pixabay / Wikimedia Commons 等)：Aaron Thomas · Unsplash License；Alexander Nrjwolf · Unsplash License；Andrey Bond · Unsplash License；Anton Rymarev · Unsplash License；Asap PANG · Unsplash License；Astri nina sanderiana · CC BY-SA 4.0；Aurelia Teslaru · CC BY-SA 4.0；CEphoto, Uwe Aranas · CC BY-SA 3.0；Clement Duf · Unsplash License；DEZALB · Pixabay License；Denissa Devy · Unsplash License；Devagonal · CC BY-SA 4.0；Dmitry Kropachev · Unsplash License；Dragon_XXC · Pixabay License；Flickr user: yeowatzup  https://www.flickr.com/photos/yeowatzup/ · CC BY 2.0；G patkar · CC BY-SA 3.0；Gabriel Federa · Unsplash License；Heri Gunawan · Unsplash License；Hyparxis · Pixabay License；IqbalStock · Pixabay License；Ishan @seefromthesky · Unsplash License；Ismail Hamzah · Unsplash License；Jakub Hałun · CC BY 4.0；Jayde Keroi · Unsplash License；Jessica Wong · Unsplash License；Johnny Africa · Unsplash License；Jonathan-Smit · Pixabay License；Joshua Kettle · Unsplash License；Juan Cruz Mountford · Unsplash License；Marek Piwnicki · Unsplash License；Mario La Pergola · Unsplash License；Nastia Petruk · Unsplash License；Pexels · Pixabay License；Pinterpandai · CC BY-SA 4.0；Polina Kuzovkova · Unsplash License；René Riegal · Unsplash License；Robert Euro Djojoseputro · Unsplash License；RobertSzilagyi · Pixabay License；Ryan Brayoga · Unsplash License；Sebastian Pena Lambarri · Unsplash License；Shankara42 · CC BY-SA 4.0；Simon Spring · Unsplash License；Sora Sagano · Unsplash License；Stefano Magini · Unsplash License；Steve Douglas · Unsplash License；Tilonaut · CC BY 3.0；Tom Donders · Unsplash License；Vicki Garside · Unsplash License；Vyacheslav Argenberg · CC BY 4.0；Wahde Stock · Unsplash License；WonderfulBali · Pixabay License；ZPhotoo · Pixabay License；ajuprasetyo · Pixabay License；giusti596 · Pixabay License；https://firstlomboktour.com · CC BY-SA 4.0；jovanel · Pixabay License；loli mass · Unsplash License；max4ex · Pixabay License。版权归原作者，依各自许可使用。</p>
+    <p class="cred">图片来源(Unsplash / Pixabay / Wikimedia Commons 等)：Aaron Thomas · Unsplash License；Andrey Bond · Unsplash License；Anton Rymarev · Unsplash License；Asap PANG · Unsplash License；Astri nina sanderiana · CC BY-SA 4.0；Aurelia Teslaru · CC BY-SA 4.0；CEphoto, Uwe Aranas · CC BY-SA 3.0；Clement Duf · Unsplash License；DEZALB · Pixabay License；Denissa Devy · Unsplash License；Devagonal · CC BY-SA 4.0；Dmitry Kropachev · Unsplash License；Dragon_XXC · Pixabay License；Flickr user: yeowatzup  https://www.flickr.com/photos/yeowatzup/ · CC BY 2.0；G patkar · CC BY-SA 3.0；Gabriel Federa · Unsplash License；Heri Gunawan · Unsplash License；Hyparxis · Pixabay License；IqbalStock · Pixabay License；Ishan @seefromthesky · Unsplash License；Ismail Hamzah · Unsplash License；Jakub Hałun · CC BY 4.0；Jayde Keroi · Unsplash License；Jessica Wong · Unsplash License；Johnny Africa · Unsplash License；Jonathan-Smit · Pixabay License；Joshua Kettle · Unsplash License；Juan Cruz Mountford · Unsplash License；Lesya Soboleva · Unsplash License；Marek Piwnicki · Unsplash License；Mario La Pergola · Unsplash License；Nastia Petruk · Unsplash License；Pexels · Pixabay License；Pinterpandai · CC BY-SA 4.0；Polina Kuzovkova · Unsplash License；René Riegal · Unsplash License；Robert Euro Djojoseputro · Unsplash License；RobertSzilagyi · Pixabay License；Ryan Brayoga · Unsplash License；Sebastian Pena Lambarri · Unsplash License；Shankara42 · CC BY-SA 4.0；Simon Spring · Unsplash License；Sora Sagano · Unsplash License；Stefano Magini · Unsplash License；Steve Douglas · Unsplash License；Tilonaut · CC BY 3.0；Tom Donders · Unsplash License；Vicki Garside · Unsplash License；Vyacheslav Argenberg · CC BY 4.0；Wahde Stock · Unsplash License；WonderfulBali · Pixabay License；ZPhotoo · Pixabay License；ajuprasetyo · Pixabay License；giusti596 · Pixabay License；https://firstlomboktour.com · CC BY-SA 4.0；jovanel · Pixabay License；loli mass · Unsplash License；max4ex · Pixabay License。版权归原作者，依各自许可使用。</p>
     <p class="disc">价格/时间为 2026-07-07 粗略估算，随季节、汇率与政策浮动，具体以出行前官方渠道为准。本页为同行投票参考，非商业用途。</p>
     <p class="made">巴厘岛及周边 · 选点手册 · 为你此行制作</p></footer></main><button type="button" class="bar" id="bar">
-  <span class="bar-top"><span class="bar-l"><span class="bar-dot"></span>我的清单 ›</span><span class="bar-stat" id="barStat">你 0/14</span></span>
+  <span class="bar-top"><span class="bar-l"><span class="bar-dot"></span>我的清单 ›</span><span class="bar-stat" id="barStat">你选 0/14</span></span>
   <span class="bar-sub" id="barSub">还没人投票 · 你可以抢先标记</span>
 </button>
 <div class="sheet" id="sheet" hidden>
   <div class="sheet-card" role="dialog" aria-label="我的清单" aria-modal="true">
     <div class="sheet-head"><b>我的清单</b><button type="button" class="x" id="sheetX" aria-label="关闭">×</button></div>
     <label class="fld"><span>你的名字</span><input type="text" id="nameIn" placeholder="填个名字，方便群里对号" maxlength="16"></label>
-    <div class="fld"><span>主线偏好</span><div class="crs"><label class="cr"><input type="radio" name="combo" value="①"><span>组① 纯巴厘 + 佩尼达（最轻松）</span></label><label class="cr"><input type="radio" name="combo" value="②"><span>组② 巴厘 + 佩尼达 + 科莫多（海岛天花板 🔥）</span></label><label class="cr"><input type="radio" name="combo" value="③"><span>组③ 巴厘 + 佩尼达 + 布罗莫（月球表面版）</span></label><label class="cr"><input type="radio" name="combo" value="④"><span>组④ 科莫多 + 佩尼达 + 乌布 + 布罗莫（终极全景 🔥 推荐）</span></label></div></div>
     <div class="picks" id="picks"></div>
     <div class="tally" id="tally">
       <div class="tally-head"><b>大家的选择 · 实时汇总</b><button type="button" class="tally-refresh" id="tallyRefresh">刷新</button></div>
       <div class="tally-body" id="tallyBody"><p class="tally-empty">加载中…</p></div>
     </div>
-    <div class="sheet-act"><button type="button" class="copy" id="copyBtn">一键复制汇总</button><button type="button" class="reset" id="resetBtn">清空</button></div>
+    <div class="sheet-act"><button type="button" class="submit" id="submitBtn">提交我的选择</button><button type="button" class="reset" id="resetBtn">清空所有标记</button></div>
   </div>
 </div>
 <div class="lb" id="lb" hidden><img id="lbImg" src="" alt=""><button type="button" class="lb-x" aria-label="关闭">×</button></div>
@@ -858,7 +877,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 (function(){
   "use strict";
   var ITEMS = [{"id": "A1", "zh": "乌布 · 丛林与梯田"}, {"id": "A2", "zh": "南巴厘海岸线"}, {"id": "A3", "zh": "塔那罗海神庙"}, {"id": "A4", "zh": "东巴厘 · 巴图尔火山"}, {"id": "A5", "zh": "北巴厘 & 中部高地"}, {"id": "B1", "zh": "佩尼达悬崖海岸"}, {"id": "B2", "zh": "佩尼达 · 蝠鲼&海龟浮潜点"}, {"id": "B3", "zh": "蓝梦岛 Lembongan/Ceningan"}, {"id": "C1", "zh": "船宿/跳岛"}, {"id": "D1", "zh": "布罗莫火山 · 月球表面日出"}, {"id": "E1", "zh": "宜珍火山 · 蓝色火焰"}, {"id": "F1", "zh": "吉利三岛 Gili"}, {"id": "F2", "zh": "龙目岛南岸"}, {"id": "F3", "zh": "林贾尼火山徒步"}];
-  var COMBOS = {"①": "组① 纯巴厘 + 佩尼达（最轻松）", "②": "组② 巴厘 + 佩尼达 + 科莫多（海岛天花板 🔥）", "③": "组③ 巴厘 + 佩尼达 + 布罗莫（月球表面版）", "④": "组④ 科莫多 + 佩尼达 + 乌布 + 布罗莫（终极全景 🔥 推荐）"};
+  var COMBOS = {"①": "组① 纯巴厘 + 佩尼达 9–10 天（最轻松）", "②": "组② 巴厘 + 佩尼达 + 科莫多 9–10 天（海岛天花板 🔥）", "③": "组③ 巴厘 + 佩尼达 + 布罗莫 9–10 天（月球表面版）", "④": "组④ 科莫多 + 佩尼达 + 乌布 + 布罗莫 9–10 天（终极全景 🔥 推荐）", "⑤": "组⑤ 巴厘 + 佩尼达 6 天（最从容）", "⑥": "组⑥ 巴厘 + 佩尼达 + 科莫多 6 天（海岛天花板）", "⑦": "组⑦ 巴厘 + 佩尼达 + 布罗莫 6 天（火山打卡）"};
   var K = { votes:"bali_votes", name:"bali_name", combo:"bali_combo" };
   var $ = function(s,r){ return (r||document).querySelector(s); };
   var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
@@ -912,42 +931,48 @@ details[open]>summary .chev{transform:rotate(-135deg)}
       return coll().doc(docId).set(data);
     }
 
+    function doSync(){
+      return readyP.then(function(){
+        var st = currentState();
+        var newId = IdentityLib.deriveDocId(st.name);
+        var syncedId = localStorage.getItem(SYNCED_KEY) || "";
+        var delP = (syncedId && syncedId !== newId)
+          ? coll().doc(syncedId).remove().catch(function(){})  // 改名/清名：删旧档
+          : Promise.resolve();
+        return delP.then(function(){
+          if (!newId){ localStorage.removeItem(SYNCED_KEY); refreshGroup(); return; } // 没名字：只本机
+          if (syncedId !== newId){
+            // 采纳并合并（换设备/撞名/首次绑定），防丢票
+            return getDoc(newId).then(function(existing){
+              var merged = IdentityLib.mergeState(st, existing || {});
+              return writeSet(newId, merged).then(function(){
+                localStorage.setItem(SYNCED_KEY, newId);
+                adoptLocal(merged);
+                refreshGroup();
+              });
+            }).catch(function(){
+              return writeSet(newId, { name: st.name, picks: st.picks, combo: st.combo }).then(function(){
+                localStorage.setItem(SYNCED_KEY, newId); refreshGroup();
+              });
+            });
+          } else {
+            // 常态：覆盖自己的文档，本机为准
+            return writeSet(newId, { name: st.name, picks: st.picks, combo: st.combo })
+              .then(function(){ refreshGroup(); });
+          }
+        });
+      });
+    }
     var syncT = null;
     function syncMine(){
       if (failed) return;
       clearTimeout(syncT);
-      syncT = setTimeout(function(){
-        readyP.then(function(){
-          var st = currentState();
-          var newId = IdentityLib.deriveDocId(st.name);
-          var syncedId = localStorage.getItem(SYNCED_KEY) || "";
-          var delP = (syncedId && syncedId !== newId)
-            ? coll().doc(syncedId).remove().catch(function(){})  // 改名/清名：删旧档
-            : Promise.resolve();
-          delP.then(function(){
-            if (!newId){ localStorage.removeItem(SYNCED_KEY); refreshGroup(); return; } // 没名字：只本机
-            if (syncedId !== newId){
-              // 采纳并合并（换设备/撞名/首次绑定），防丢票
-              getDoc(newId).then(function(existing){
-                var merged = IdentityLib.mergeState(st, existing || {});
-                writeSet(newId, merged).then(function(){
-                  localStorage.setItem(SYNCED_KEY, newId);
-                  adoptLocal(merged);
-                  refreshGroup();
-                }).catch(function(){});
-              }).catch(function(){
-                writeSet(newId, { name: st.name, picks: st.picks, combo: st.combo }).then(function(){
-                  localStorage.setItem(SYNCED_KEY, newId); refreshGroup();
-                }).catch(function(){});
-              });
-            } else {
-              // 常态：覆盖自己的文档，本机为准
-              writeSet(newId, { name: st.name, picks: st.picks, combo: st.combo })
-                .then(function(){ refreshGroup(); }).catch(function(){});
-            }
-          }).catch(function(){});
-        }).catch(function(){});
-      }, 800);
+      syncT = setTimeout(function(){ doSync().catch(function(){}); }, 800);
+    }
+    function syncNow(){
+      if (failed) return Promise.reject(new Error("offline"));
+      clearTimeout(syncT);
+      return doSync();
     }
 
     function fetchAll(){
@@ -964,6 +989,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     }
     return {
       syncMine: syncMine,
+      syncNow: syncNow,
       refreshGroup: refreshGroup,
       group: function(){ return groupTally; },
       offline: function(){ return failed; }
@@ -976,11 +1002,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     save();
     if (merged.combo) localStorage.setItem(K.combo, merged.combo);
     paintAll();
-    if (sheetOpen()){
-      var c = localStorage.getItem(K.combo);
-      $$('input[name="combo"]').forEach(function(r){ r.checked = (r.value===c); });
-      renderPicks();
-    }
+    if (sheetOpen()){ renderPicks(); }
   }
 
   // 刷新依赖群体数据的视图
@@ -993,9 +1015,21 @@ details[open]>summary .chev{transform:rotate(-135deg)}
       b.setAttribute("aria-pressed", b.getAttribute("data-v")===st ? "true":"false");
     });
   }
-  function paintAll(){ $$(".spot").forEach(paintSpot); renderBar(); }
+  function paintCombos(){
+    var c = localStorage.getItem(K.combo) || "";
+    $$(".combo").forEach(function(el){
+      var pick = $(".combo-pick", el);
+      if (el.getAttribute("data-no") === c) {
+        el.setAttribute("data-selected","");
+        if (pick) pick.textContent = "✓ 已选为主线";
+      } else {
+        el.removeAttribute("data-selected");
+        if (pick) pick.textContent = "选为我的主线";
+      }
+    });
+  }
+  function paintAll(){ $$(".spot").forEach(paintSpot); paintCombos(); renderBar(); }
 
-  function pickCount(){ return Object.keys(votes).filter(function(k){ return votes[k]==="must"||votes[k]==="maybe"; }).length; }
   function decidedCount(){ return Object.keys(votes).filter(function(k){ var v=votes[k]; return v==="must"||v==="maybe"||v==="skip"; }).length; }
 
   // ---- voting (event delegation) ----
@@ -1020,6 +1054,15 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     if(shot && shot.tagName==="IMG" && shot.src){ openLB(shot.src, shot.alt); return; }
     var vid = e.target.closest(".vid");
     if(vid && !vid.hasAttribute("data-playing")){ playVid(vid); return; }
+    var comboEl = e.target.closest(".combo");
+    if(comboEl){
+      var no = comboEl.getAttribute("data-no");
+      var cur = localStorage.getItem(K.combo) || "";
+      if (cur === no){ localStorage.removeItem(K.combo); }
+      else { localStorage.setItem(K.combo, no); }
+      cloud.syncMine(); paintCombos();
+      return;
+    }
   });
   document.addEventListener("keydown", function(e){
     if((e.key==="Enter"||e.key===" ")){
@@ -1052,8 +1095,6 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   var sheet = $("#sheet");
   function openSheet(){
     $("#nameIn").value = localStorage.getItem(K.name)||"";
-    var c = localStorage.getItem(K.combo);
-    $$('input[name="combo"]').forEach(function(r){ r.checked = (r.value===c); });
     renderPicks(); renderSheetTally(); cloud.refreshGroup(); sheet.removeAttribute("hidden"); document.body.style.overflow="hidden";
   }
   function closeSheet(){ sheet.setAttribute("hidden",""); document.body.style.overflow=""; }
@@ -1061,11 +1102,9 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   $("#sheetX").addEventListener("click", closeSheet);
   sheet.addEventListener("click", function(e){ if(e.target===sheet) closeSheet(); });
   $("#nameIn").addEventListener("input", function(){ localStorage.setItem(K.name, this.value); cloud.syncMine(); });
-  $$('input[name="combo"]').forEach(function(r){
-    r.addEventListener("change", function(){ if(r.checked){ localStorage.setItem(K.combo, r.value); cloud.syncMine(); } });
-  });
 
-  function labelOf(id){ for(var i=0;i<ITEMS.length;i++){ if(ITEMS[i].id===id) return ITEMS[i].id+" "+ITEMS[i].zh; } return id; }
+
+
   function renderPicks(){
     var box = $("#picks"), must=[], maybe=[];
     ITEMS.forEach(function(it){ if(votes[it.id]==="must") must.push(it); else if(votes[it.id]==="maybe") maybe.push(it); });
@@ -1102,7 +1141,7 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   function renderSheetTally(){
     var body = $("#tallyBody");
     if (!body) return;
-    if (cloud.offline()){ body.innerHTML = '<p class="tally-empty">云同步暂不可用，可用下方「一键复制」发到群里。</p>'; return; }
+    if (cloud.offline()){ body.innerHTML = '<p class="tally-empty">云同步暂不可用，你的选择已保存在本机。</p>'; return; }
     var t = cloud.group();
     if (!t){ body.innerHTML = '<p class="tally-empty">加载中…</p>'; return; }
     body.innerHTML = renderTally(t);
@@ -1116,13 +1155,13 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     var total = ITEMS.length, decided = decidedCount();
     var name = (localStorage.getItem(K.name)||"").trim();
     if (cloud.offline()){
-      statEl.textContent = "你 " + decided + "/" + total;
-      subEl.textContent = "云同步暂不可用 · 可用「一键复制」发群里";
+      statEl.textContent = "你选 " + decided + "/" + total;
+      subEl.textContent = "云同步暂不可用 · 你的选择已保存在本机";
       subEl.className = "bar-sub warn"; return;
     }
     var g = cloud.group();
     var voters = g ? g.voterCount : 0;
-    statEl.textContent = "你 " + decided + "/" + total + " · 群 " + voters + "/6";
+    statEl.textContent = "你选 " + decided + "/" + total + " · 群 " + voters + "/6 已投";
     if (decided > 0 && !name){
       subEl.textContent = "⚠ 填个名字才能加入大家的汇总 →";
       subEl.className = "bar-sub warn";
@@ -1139,32 +1178,28 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     }
   }
 
-  function summary(){
-    var name = (localStorage.getItem(K.name)||"").trim() || "匿名";
-    var must=[], maybe=[];
-    ITEMS.forEach(function(it){ if(votes[it.id]==="must") must.push(labelOf(it.id)); else if(votes[it.id]==="maybe") maybe.push(labelOf(it.id)); });
-    var c = localStorage.getItem(K.combo);
-    var combo = (c && COMBOS[c]) ? COMBOS[c] : "未选";
-    return "【我的印尼投票】@"+name+"\n"
-      + "必去："+(must.length?must.join("、"):"—")+"\n"
-      + "可去："+(maybe.length?maybe.join("、"):"—")+"\n"
-      + "主线偏好："+combo;
-  }
-  $("#copyBtn").addEventListener("click", function(){
-    var text = summary();
-    function ok(){ toast("已复制，去微信群粘贴吧"); }
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(text).then(ok).catch(function(){ legacy(text); });
-    } else { legacy(text); }
-    function legacy(t){
-      var ta=document.createElement("textarea"); ta.value=t; ta.style.position="fixed"; ta.style.opacity="0";
-      document.body.appendChild(ta); ta.select();
-      try{ document.execCommand("copy"); ok(); }catch(e){ toast("复制失败，请长按选择"); }
-      document.body.removeChild(ta);
-    }
+  $("#submitBtn").addEventListener("click", function(){
+    if (cloud.offline()){ toast("云同步暂不可用，无法提交"); return; }
+    var name = (localStorage.getItem(K.name)||"").trim();
+    if (!name){ toast("请先填名字再提交"); var n=$("#nameIn"); if(n) n.focus(); return; }
+    var decided = decidedCount();
+    var btn = this, orig = btn.textContent;
+    btn.disabled = true; btn.textContent = "提交中…";
+    cloud.syncNow().then(function(){
+      btn.disabled = false; btn.textContent = orig;
+      toast(decided > 0 ? "已提交！"+name+" 的选择已同步到群汇总" : "已提交！当前无标记，已退出群汇总");
+    }).catch(function(){
+      btn.disabled = false; btn.textContent = orig;
+      toast("提交失败，请检查网络后重试");
+    });
   });
   $("#resetBtn").addEventListener("click", function(){
-    if(!pickCount() || confirm("清空你标记的所有必去/可去？")){ votes={}; save(); cloud.syncMine(); paintAll(); renderPicks(); }
+    if(!decidedCount() || confirm("清空所有标记与主线偏好？")){
+      votes={}; save();
+      localStorage.removeItem(K.combo);
+      cloud.syncMine(); paintAll(); renderPicks();
+      toast("已清空");
+    }
   });
 
   // ---- lightbox ----

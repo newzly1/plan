@@ -43,7 +43,7 @@
 
 html{-webkit-text-size-adjust:100%}
 body{margin:0}
-.hero,.shelf,main,.bar,.sheet,.lb,.toast{font-family:var(--font-cjk)}
+.hero,main,.bar,.sheet,.lb,.toast{font-family:var(--font-cjk)}
 body,.hero{background:var(--ground);color:var(--ink)}
 img{display:block;max-width:100%}
 h1,h2,h3,h4,p{margin:0}
@@ -52,7 +52,7 @@ button{font-family:inherit;cursor:pointer}
 :focus-visible{outline:2.5px solid var(--pine);outline-offset:2px;border-radius:2px}
 
 /* 衬线标题域：仅这些标题走宋体，正文与数据保持黑体/等宽 */
-.hero h1,.chap-meta h2,.spot-title h3,.combo-b h3,.hl-cap b,.sheet-head b,.stamp::after{
+.hero h1,.chap-meta h2,.spot-title h3,.combo-b h3,.sheet-head b,.stamp::after{
   font-family:var(--serif);font-weight:600;letter-spacing:.03em}
 
 /* placeholders while media loads */
@@ -89,7 +89,6 @@ button{font-family:inherit;cursor:pointer}
   border-right:1px solid var(--line);border-top:1px solid var(--line);white-space:nowrap}
 .idx b{color:var(--ink);font-size:14px;font-weight:700}
 .idx span{font-size:12.5px;color:var(--ink)}
-.idx-star b{color:var(--pine)}
 
 /* ============ shared chapter bits ============ */
 main{display:block;max-width:var(--maxw);margin:0 auto;padding:0 16px}
@@ -195,11 +194,21 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 /* ============ COMBOS（细线列表 + 宋体大编号）============ */
 .combos{display:flex;flex-direction:column;margin-top:8px}
 .combo{display:flex;gap:16px;background:transparent;border:0;border-top:1px solid var(--line);
-  border-radius:0;padding:18px 0;box-shadow:none}
+  border-radius:0;padding:18px 0;box-shadow:none;cursor:pointer;position:relative;
+  transition:background .2s}
 .combo:first-child{border-top:0}
+.combo:hover{background:var(--surface)}
+.combo[data-selected]{background:var(--pine-soft)}
+.combo[data-selected] .combo-no{color:var(--pine)}
+.combo-pick{display:inline-flex;align-items:center;padding:4px 12px;border:1.5px solid var(--line);
+  font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--ink-soft);font-family:var(--font-mono);
+  background:var(--ground);transition:all .2s;pointer-events:none;border-radius:0;
+  flex-shrink:0}
+.combo:hover .combo-pick{border-color:var(--pine);color:var(--pine)}
+.combo[data-selected] .combo-pick{border-color:var(--pine);background:var(--pine);color:#F6F3EA}
 .combo-no{flex:0 0 auto;font-family:var(--serif);font-size:30px;font-weight:600;color:var(--brass);line-height:1}
 .combo-b{min-width:0}
-.combo-b h3{font-size:16.5px;margin-bottom:11px;text-wrap:balance}
+.combo-b h3{font-size:16.5px;margin-bottom:11px;text-wrap:balance;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .combo-row{display:flex;flex-wrap:wrap;gap:6px 22px;margin-bottom:6px}
 .combo-row span{font-size:12.5px;color:var(--ink)}
 .combo-row i{font-style:normal;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-right:7px}
@@ -256,11 +265,6 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 .fld>span{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:9px}
 #nameIn{width:100%;padding:13px 14px;border-radius:0;border:1px solid var(--line-strong);background:var(--surface-2);
   color:var(--ink);font-size:15px;font-family:inherit}
-.crs{display:flex;flex-direction:column;gap:8px}
-.cr{display:flex;align-items:center;gap:11px;padding:12px 13px;border:1px solid var(--line);border-radius:0;
-  background:transparent;font-size:13.5px}
-.cr:has(input:checked){border-color:var(--pine);background:var(--pine-soft)}
-.cr input{accent-color:var(--pine);width:18px;height:18px;flex:0 0 auto}
 .picks{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
 .picks-grp{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin:8px 0 2px}
 .pick{display:flex;align-items:center;gap:10px;font-size:14px;padding:3px 0}
@@ -269,10 +273,11 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 .pick.maybe .pc{color:var(--ground);background:var(--ink)}
 .picks-empty{font-size:13.5px;color:var(--ink-faint);line-height:1.7;padding:8px 0}
 .sheet-act{display:flex;gap:10px;position:sticky;bottom:0;background:var(--ground);padding:14px 0 4px;border-top:1px solid var(--line)}
-.copy{flex:1;padding:15px;border-radius:0;border:1px solid var(--pine);background:var(--pine);color:#F6F3EA;
-  font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.submit{flex:1;padding:15px;border-radius:0;border:1px solid var(--pine);background:var(--pine);color:#F6F3EA;
+  font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.submit:disabled{opacity:.5;cursor:default}
 .reset{flex:0 0 auto;padding:15px 18px;border-radius:0;border:1px solid var(--line-2);background:transparent;color:var(--ink-soft);
-  font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
 
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:60;display:grid;place-items:center;background:rgba(15,12,8,.94);padding:20px}
@@ -291,8 +296,8 @@ details[open]>summary .chev{transform:rotate(-135deg)}
 
 /* reveal */
 @media (prefers-reduced-motion:no-preference){
-  .spot,.combo,.hl{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
-  .spot.in,.combo.in,.hl.in{opacity:1;transform:none}
+  .spot,.combo{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  .spot.in,.combo.in{opacity:1;transform:none}
 }
 @media (min-width:720px){
   .hero-img{aspect-ratio:16/10;max-height:74vh}

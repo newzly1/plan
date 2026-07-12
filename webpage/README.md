@@ -31,7 +31,7 @@ wrote images/     : 60 files
 |---|---|
 | 景点文字、价格、注意事项、组合线路、精华速览 | `content.py`（唯一内容源） |
 | 配色、排版、卡片样式、深浅色主题 | `style.css` |
-| 投票逻辑、「我的清单」、一键复制、灯箱 | `app.js` |
+| 投票逻辑、「我的清单」、灯箱 | `app.js` |
 | 实时汇总的算分/排序逻辑 | `tally.js`（纯函数，浏览器与 `node --test` 共用） |
 | 换同一景点/视频下的一张图（key 不变） | 见下方「重新抓取媒体」——只需重新部署那一张图，`index.html` 不用动 |
 | 新增/删除景点或视频（key 变化） | 见下方「重新抓取媒体」，之后 `images/` 和 `index.html` 都要重新部署 |
@@ -70,7 +70,7 @@ tcb hosting deploy index.html index.html -e plan-d0gstt7r6507aa319  # 文字/样
 
 6 人投票现在会实时汇总：每人投票/改名/改组合线路后，浏览器把自己那条记录同步到云数据库，
 「我的清单」浮层里的「大家的选择 · 实时汇总」面板拉取全部记录、按加权分排行展示。本地
-`localStorage` 投票与「一键复制」原样保留，作为 SDK 未加载 / 断网时的兜底。
+`localStorage` 投票原样保留，作为 SDK 未加载 / 断网时的兜底（数据保存在本机，联网后自动同步）。
 
 **数据流**：打开页面即匿名登录（CloudBase 匿名登录，身份跨会话稳定）→ 每次投票/改名/改组合，
 防抖后把自己那条文档 upsert 进云数据库集合 `votes`（文档 id 存在 `localStorage` 的 `bali_docid`，
@@ -116,8 +116,8 @@ tcb hosting deploy cloudbase.js cloudbase.js -e plan-d0gstt7r6507aa319
 node --test webpage/test/tally.test.js   # 零依赖，Node 内置测试框架
 ```
 
-**兜底**：SDK 未加载或断网时，本地投票、「我的清单」与「一键复制」照常可用；「实时汇总」面板会
-显示「云同步暂不可用，可用下方『一键复制』发到群里」，不影响其余功能。
+**兜底**：SDK 未加载或断网时，本地投票与「我的清单」照常可用（数据保存在本机）；「实时汇总」面板会
+显示「云同步暂不可用，你的选择已保存在本机」，不影响其余功能。
 
 ---
 
@@ -126,7 +126,7 @@ node --test webpage/test/tally.test.js   # 零依赖，Node 内置测试框架
 **源码（手改这些）**
 - `content.py` — 全部内容数据：`META / REGIONS / ITEMS / HIGHLIGHTS / COMBOS / PRICES / NOTES`。每个景点含子点 `subspots`（带英文 Commons 检索词 `q`）和视频检索词 `video_q`。
 - `style.css` — 全部样式（"印尼群岛 · 选点手册"田野图鉴风格，火山深色 / 石灰岩浅色双主题）。
-- `app.js` — 前端交互：护照盖章式投票（必去/可去）、本地「我的清单」、一键复制汇总、图片灯箱。纯 `localStorage`，无后端。
+- `app.js` — 前端交互：护照盖章式投票（必去/可去/略过）、本地「我的清单」、提交同步、实时云汇总、图片灯箱。纯 `localStorage`，无后端。
 - `build.py` — 渲染器：把上面几样拼成自包含 `index.html`。
 
 **媒体数据（`build.py` 读取，通常不用手改）**
