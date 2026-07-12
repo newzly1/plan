@@ -79,7 +79,7 @@ def hero():
     <span class="rule" aria-hidden="true"></span>
     <h1>{esc(m["title"])}</h1>
     <p class="sub">{esc(m["subtitle"])}</p>
-    <div class="facts"><span>10.2 – 10.11</span><span>9–10 天</span><span>6 人同行</span><span>起止 DPS</span></div>
+    <div class="facts"><span>10.2 – 10.11 或 10.2 – 10.7</span><span>6–10 天</span><span>6 人同行</span><span>起止 DPS</span></div>
   </div>
   <figure class="hero-media">
     {img_tag("B1a","hero-img","佩尼达 Kelingking 霸王龙海滩",lazy=False)}
