@@ -16,7 +16,7 @@ cd webpage && python3 src/build.py
 ```bash
 node --test webpage/test/tally.test.js      # 汇总算法
 node --test webpage/test/identity.test.js   # 身份派生/合并
-node --test webpage/test/                   # 跑全部
+node --test webpage/test/*.test.js          # 跑全部（勿用 `test/` 目录形式，Node 会当模块加载而报错）
 ```
 
 **部署到 CloudBase（环境 ID `plan-d0gstt7r6507aa319`，国内可直连，链接不变）**
