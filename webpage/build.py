@@ -243,6 +243,20 @@ def mylist():
     <div class="sheet-act"><button type="button" class="submit" id="submitBtn">提交我的选择</button><button type="button" class="reset" id="resetBtn">清空所有标记</button></div>
   </div>
 </div>
+<div class="dup" id="dup" hidden>
+  <div class="dup-card" role="dialog" aria-modal="true" aria-labelledby="dupTitle">
+    <p class="dup-title" id="dupTitle">「<span id="dupName"></span>」这个名字已经有人投过票了</p>
+    <p class="dup-sub">云端有一份用这个名字投的选择<br><span class="dup-meta" id="dupMeta"></span></p>
+    <ul class="dup-guide">
+      <li>如果那是你本人（换了手机或浏览器），选「就是我」把旧票找回来一起算。</li>
+      <li>如果不是你，继续会盖掉对方的票——请「换个名字」。</li>
+    </ul>
+    <div class="dup-act">
+      <button type="button" class="dup-yes" id="dupMerge">就是我，找回旧票</button>
+      <button type="button" class="dup-no" id="dupRename">不是我，换个名字</button>
+    </div>
+  </div>
+</div>
 <div class="lb" id="lb" hidden><img id="lbImg" src="" alt=""><button type="button" class="lb-x" aria-label="关闭">×</button></div>
 <div class="toast" id="toast" hidden></div>'''
 
