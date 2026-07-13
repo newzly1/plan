@@ -355,7 +355,7 @@
   });
 
   // ---- 撞名弹窗 ----
-  var dup = $("#dup");
+  var dup = $("#dup"), dupBusy = false;   // dupBusy: 合并请求在途时锁住其它关闭路径，防竞态误删已合并文档
   function fmtTime(ts){
     if(!ts) return "";
     var d=new Date(ts), now=new Date();
@@ -375,22 +375,26 @@
     document.body.style.overflow = sheetOpen() ? "hidden" : "";
   }
   $("#dupMerge").addEventListener("click", function(){
-    var btn=this, orig=btn.textContent; btn.disabled=true; btn.textContent="合并中…";
+    if(dupBusy) return;
+    dupBusy = true;
+    var btn=this, orig=btn.textContent, rn=$("#dupRename");
+    btn.disabled=true; btn.textContent="合并中…"; if(rn) rn.disabled=true;
     cloud.mergeAdopt().then(function(){
-      btn.disabled=false; btn.textContent=orig; hideDup();
-      toast("已合并，你的选择已同步到群汇总");
+      dupBusy=false; btn.disabled=false; btn.textContent=orig; if(rn) rn.disabled=false;
+      hideDup(); toast("已合并，你的选择已同步到群汇总");
     }).catch(function(){
-      btn.disabled=false; btn.textContent=orig;
+      dupBusy=false; btn.disabled=false; btn.textContent=orig; if(rn) rn.disabled=false;
       toast("合并失败，请检查网络后重试");
     });
   });
   $("#dupRename").addEventListener("click", function(){
+    if(dupBusy) return;
     hideDup();
     if(!sheetOpen()) openSheet();
     var n=$("#nameIn"); if(n){ n.focus(); n.select(); }
     toast("这个名字已被占用，换一个再提交");
   });
-  dup.addEventListener("click", function(e){ if(e.target===dup) hideDup(); });
+  dup.addEventListener("click", function(e){ if(e.target===dup && !dupBusy) hideDup(); });
 
   // ---- lightbox ----
   var lb=$("#lb"), lbImg=$("#lbImg");
@@ -399,7 +403,7 @@
   lb.addEventListener("click", closeLB);
   document.addEventListener("keydown", function(e){
     if(e.key==="Escape"){
-      if(!dup.hasAttribute("hidden")){ hideDup(); return; }
+      if(!dup.hasAttribute("hidden")){ if(!dupBusy) hideDup(); return; }
       if(!lb.hasAttribute("hidden")) closeLB();
       else if(!sheet.hasAttribute("hidden")) closeSheet();
     }
