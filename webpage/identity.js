@@ -41,7 +41,24 @@
     };
   }
 
-  var api = { normalizeName: normalizeName, deriveDocId: deriveDocId, mergePicks: mergePicks, mergeState: mergeState };
+  function countDecided(picks) {
+    picks = picks || {};
+    var n = 0, k;
+    for (k in picks) {
+      if (!Object.prototype.hasOwnProperty.call(picks, k) || k === "__proto__") continue;
+      if (RANK[picks[k]]) n++;
+    }
+    return n;
+  }
+
+  function classifyBind(syncedId, newId, existing) {
+    if (!newId) return "noname";
+    if (newId === syncedId) return "self";
+    if (existing && countDecided(existing.picks) > 0) return "occupied";
+    return "free";
+  }
+
+  var api = { normalizeName: normalizeName, deriveDocId: deriveDocId, mergePicks: mergePicks, mergeState: mergeState, countDecided: countDecided, classifyBind: classifyBind };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.IdentityLib = api;
 })(typeof self !== "undefined" ? self : this);

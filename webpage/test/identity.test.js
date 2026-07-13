@@ -1,7 +1,7 @@
 "use strict";
 const test = require("node:test");
 const assert = require("node:assert");
-const { normalizeName, deriveDocId, mergePicks, mergeState } = require("../identity.js");
+const { normalizeName, deriveDocId, mergePicks, mergeState, countDecided, classifyBind } = require("../identity.js");
 
 test("normalizeName: 去空白+折叠+小写", () => {
   assert.strictEqual(normalizeName("  Bob  "), "bob");
@@ -63,4 +63,28 @@ test("deriveDocId: 浏览器 btoa 路径与 Node Buffer 路径派生一致（跨
   } finally {
     global.Buffer = saved;
   }
+});
+
+test("countDecided: 统计 must/maybe/skip，忽略非法值与空", () => {
+  assert.strictEqual(countDecided({ A1: "must", B1: "maybe", C1: "skip" }), 3);
+  assert.strictEqual(countDecided({ A1: "must", B1: "no", C1: "weird" }), 1);
+  assert.strictEqual(countDecided({}), 0);
+  assert.strictEqual(countDecided(null), 0);
+  assert.strictEqual(countDecided(undefined), 0);
+});
+
+test("countDecided: 忽略 __proto__ 键", () => {
+  const evil = JSON.parse('{"__proto__":{"x":1},"A1":"must"}');
+  assert.strictEqual(countDecided(evil), 1);
+});
+
+test("classifyBind: noname / self / free / occupied", () => {
+  assert.strictEqual(classifyBind("", "", null), "noname");
+  assert.strictEqual(classifyBind("u_a", "", null), "noname");
+  assert.strictEqual(classifyBind("u_a", "u_a", { picks: { A1: "must" } }), "self");
+  assert.strictEqual(classifyBind("", "u_a", null), "free");
+  assert.strictEqual(classifyBind("", "u_a", { picks: {} }), "free");
+  assert.strictEqual(classifyBind("", "u_a", { picks: { A1: "no" } }), "free");
+  assert.strictEqual(classifyBind("", "u_a", { picks: { A1: "must" } }), "occupied");
+  assert.strictEqual(classifyBind("u_b", "u_a", { picks: { A1: "maybe" } }), "occupied");
 });
