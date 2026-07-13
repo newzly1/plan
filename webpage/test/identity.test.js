@@ -88,3 +88,12 @@ test("classifyBind: noname / self / free / occupied", () => {
   assert.strictEqual(classifyBind("", "u_a", { picks: { A1: "must" } }), "occupied");
   assert.strictEqual(classifyBind("u_b", "u_a", { picks: { A1: "maybe" } }), "occupied");
 });
+
+test("countDecided: 忽略与 Object.prototype 同名的伪值（toString/constructor 等）", () => {
+  assert.strictEqual(countDecided({ A1: "toString", B1: "constructor", C1: "hasOwnProperty" }), 0);
+  assert.strictEqual(countDecided({ A1: "must", B1: "toString" }), 1);
+});
+
+test("classifyBind: existing 里全是伪值应视为 free 而非 occupied", () => {
+  assert.strictEqual(classifyBind("", "u_a", { picks: { A1: "toString" } }), "free");
+});

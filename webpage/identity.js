@@ -46,7 +46,7 @@
     var n = 0, k;
     for (k in picks) {
       if (!Object.prototype.hasOwnProperty.call(picks, k) || k === "__proto__") continue;
-      if (RANK[picks[k]]) n++;
+      if (Object.prototype.hasOwnProperty.call(RANK, picks[k])) n++;
     }
     return n;
   }
