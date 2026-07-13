@@ -8,15 +8,18 @@ Subspots with 0 kept keep their existing (old) image. Preserves vid:* covers.
 
     python apply_review.py
 """
-import os, json, base64, io
+import os, sys, json, base64, io
 from PIL import Image, ImageFile, ImageOps
 ImageFile.LOAD_TRUNCATED_IMAGES = True
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # webpage/
+sys.path.insert(0, os.path.join(ROOT, "src"))
 from content import ITEMS
 
-BUILD = os.path.dirname(os.path.abspath(__file__))
-REVIEW = os.path.join(BUILD, "review")
-MEDIA_P = os.path.join(BUILD, "media.json")
-CRED_P = os.path.join(BUILD, "credits.json")
+ASSETS = os.path.join(ROOT, "assets")
+DATA = os.path.join(ROOT, "data")
+REVIEW = os.path.join(ASSETS, "review")
+MEDIA_P = os.path.join(DATA, "media.json")
+CRED_P = os.path.join(DATA, "credits.json")
 IMG_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".tif", ".tiff")
 
 media = json.load(open(MEDIA_P, encoding="utf-8"))

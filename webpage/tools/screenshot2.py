@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 from playwright.sync_api import sync_playwright
-BUILD = os.path.dirname(os.path.abspath(__file__)); URL = "file://" + os.path.join(BUILD, "index.html")
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); URL = "file://" + os.path.join(ROOT, "dist", "index.html")
 with sync_playwright() as p:
     b = p.chromium.launch()
     for theme in ["light", "dark"]:

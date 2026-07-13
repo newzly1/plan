@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 from playwright.sync_api import sync_playwright
-BUILD = os.path.dirname(os.path.abspath(__file__))
-URL = "file://" + os.path.join(BUILD, "index.html")
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # webpage/
+URL = "file://" + os.path.join(ROOT, "dist", "index.html")
 
 def shots():
     with sync_playwright() as p:

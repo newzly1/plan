@@ -4,9 +4,12 @@ Media missing (still fetching) degrades to a labeled placeholder so the page alw
 import json, os, html, base64
 import content as C
 
-BUILD = os.path.dirname(os.path.abspath(__file__))
+SRC = os.path.dirname(os.path.abspath(__file__))   # webpage/src（构建源 + 本脚本）
+ROOT = os.path.dirname(SRC)                         # webpage/
+DATA = os.path.join(ROOT, "data")                   # 编码后的 JSON（media/videos/credits/font）
+DIST = os.path.join(ROOT, "dist")                   # 部署产物（index.html + images/，与 vendored cloudbase.js 同处）
 def load(name):
-    p = os.path.join(BUILD, name)
+    p = os.path.join(DATA, name)
     return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
 MEDIA = load("media.json")       # {subspotId: dataURI, "vid:A1": dataURI}
 VIDEOS = load("videos.json")     # {itemId: {yt_id,title,author}}
@@ -14,7 +17,7 @@ CREDITS = load("credits.json")   # {subspotId: {artist,license}}
 FONT = load("font.json")         # {"serif_woff2": "<b64>"} 或 {"serif_woff": "<b64>"}；缺失则降级系统宋体栈
 HL_IDS = list(C.HIGHLIGHTS)  # 第一章「最热门景点」成员 item id（有序）
 
-IMAGES_DIR = os.path.join(BUILD, "images")
+IMAGES_DIR = os.path.join(DIST, "images")
 USED_KEYS = set()   # img_uri 记录 index.html 实际引用到的 key，write_images 只写这些
 def _fname(key):
     """'A1a' -> 'A1a.webp'；'vid:A1' -> 'vid-A1.webp'（冒号在 Windows 文件名里非法）。"""
@@ -269,10 +272,10 @@ BODY = (hero() + '<main>' + chapters_html()
 N_IMAGES = write_images()   # BODY 里所有 img_uri 已调用完，USED_KEYS 就绪，此时才落盘
 
 # ---------- assemble ----------
-STYLE = open(os.path.join(BUILD,"style.css"), encoding="utf-8").read()
-TALLY = open(os.path.join(BUILD,"tally.js"), encoding="utf-8").read()
-IDENTITY = open(os.path.join(BUILD,"identity.js"), encoding="utf-8").read()
-SCRIPT = open(os.path.join(BUILD,"app.js"), encoding="utf-8").read()
+STYLE = open(os.path.join(SRC,"style.css"), encoding="utf-8").read()
+TALLY = open(os.path.join(SRC,"tally.js"), encoding="utf-8").read()
+IDENTITY = open(os.path.join(SRC,"identity.js"), encoding="utf-8").read()
+SCRIPT = open(os.path.join(SRC,"app.js"), encoding="utf-8").read()
 SCRIPT = SCRIPT.replace("/*__ITEMS__*/", ITEMS_JS).replace("/*__COMBOS__*/", COMBOS_JS)
 
 OUT = f'''<!DOCTYPE html>
@@ -296,7 +299,8 @@ OUT = f'''<!DOCTYPE html>
 </body>
 </html>'''
 
-open(os.path.join(BUILD,"index.html"),"w",encoding="utf-8").write(OUT)
+os.makedirs(DIST, exist_ok=True)
+open(os.path.join(DIST,"index.html"),"w",encoding="utf-8").write(OUT)
 kb = len(OUT.encode("utf-8"))/1024
 print(f"wrote index.html : {kb:.0f} KB  (media keys: {len(MEDIA)}, videos: {len(VIDEOS)})")
 print(f"wrote images/     : {N_IMAGES} files")

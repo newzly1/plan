@@ -1,7 +1,7 @@
 "use strict";
 const test = require("node:test");
 const assert = require("node:assert");
-const { computeTally } = require("../tally.js");
+const { computeTally } = require("../src/tally.js");
 
 const ITEMS = [
   { id: "A1", zh: "巴厘岛门户" },

@@ -4,9 +4,11 @@ build.py 的 font_face() 会内嵌为 @font-face 'Trip Serif'。
 依赖 fonttools（已装）；woff2 需 brotli，缺则自动退 woff。下载走 curl（本机 urllib 会卡）。
 用法：python3 fetch_font.py"""
 import os, sys, json, base64, subprocess, tempfile, io
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # webpage/
+sys.path.insert(0, os.path.join(ROOT, "src"))
 import content as C
 
-BUILD = os.path.dirname(os.path.abspath(__file__))
+DATA = os.path.join(ROOT, "data")
 # 主源 + 镜像（github raw 在本地代理下常被限流 429，jsdelivr 走同一 GitHub 仓库/同一文件内容）
 OTF_URLS = [
     "https://github.com/adobe-fonts/source-han-serif/raw/release/SubsetOTF/CN/SourceHanSerifCN-SemiBold.otf",
@@ -64,7 +66,7 @@ def main():
     buf = io.BytesIO(); font.save(buf); data = buf.getvalue()
 
     b64 = base64.b64encode(data).decode()
-    json.dump({key: b64}, open(os.path.join(BUILD, "font.json"), "w"))
+    json.dump({key: b64}, open(os.path.join(DATA, "font.json"), "w"))
     print(f"wrote font.json : {flavor} {len(data)//1024} KB, base64 {len(b64)//1024} KB (key={key})")
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 "use strict";
 const test = require("node:test");
 const assert = require("node:assert");
-const { normalizeName, deriveDocId, mergePicks, mergeState, countDecided, classifyBind } = require("../identity.js");
+const { normalizeName, deriveDocId, mergePicks, mergeState, countDecided, classifyBind } = require("../src/identity.js");
 
 test("normalizeName: 去空白+折叠+小写", () => {
   assert.strictEqual(normalizeName("  Bob  "), "bob");

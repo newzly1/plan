@@ -7,11 +7,13 @@ Run after fetch_review_candidates.py, and again any time you delete files
     python make_review_index.py
 Then open review/index.html in a browser.
 """
-import os, json, html, base64
+import os, sys, json, html, base64
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # webpage/
+sys.path.insert(0, os.path.join(ROOT, "src"))
 from content import ITEMS, REGIONS
 
-BUILD = os.path.dirname(os.path.abspath(__file__))
-REVIEW = os.path.join(BUILD, "review")
+ASSETS = os.path.join(ROOT, "assets")
+REVIEW = os.path.join(ASSETS, "review")
 IMG_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".tif", ".tiff")
 
 def data_uri(path):

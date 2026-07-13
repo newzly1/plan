@@ -1,17 +1,20 @@
 # -*- coding: utf-8 -*-
 """Encode downloaded raw images -> WebP data URIs; fetch+encode Bilibili covers; collect Commons credits.
 Outputs media.json + credits.json."""
-import os, json, base64, io, subprocess, urllib.parse, re
+import os, sys, json, base64, io, subprocess, urllib.parse, re
 from PIL import Image, ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # webpage/
+sys.path.insert(0, os.path.join(ROOT, "src"))
 import content as C
 
-BUILD = os.path.dirname(os.path.abspath(__file__))
-RAW = os.path.join(BUILD, "raw")
-VRAW = os.path.join(BUILD, "vraw"); os.makedirs(VRAW, exist_ok=True)
+DATA = os.path.join(ROOT, "data")
+ASSETS = os.path.join(ROOT, "assets")
+RAW = os.path.join(ASSETS, "raw")
+VRAW = os.path.join(ASSETS, "vraw"); os.makedirs(VRAW, exist_ok=True)
 UA = "BaliTripPlanner/1.0 (personal trip research; mail2zhangly@gmail.com)"
-cand = json.load(open(os.path.join(BUILD, "candidates.json"), encoding="utf-8"))
-videos = json.load(open(os.path.join(BUILD, "videos.json"), encoding="utf-8"))
+cand = json.load(open(os.path.join(ASSETS, "candidates.json"), encoding="utf-8"))
+videos = json.load(open(os.path.join(DATA, "videos.json"), encoding="utf-8"))
 
 def curl(url, out, timeout=45):
     subprocess.run(["curl","-s","--max-time",str(timeout),"-A",UA,"-L","--retry","2","-o",out,url])
@@ -26,7 +29,7 @@ def webp(path, maxw=850, maxh=850, q=68):
 def uri(b): return "data:image/webp;base64," + base64.b64encode(b).decode()
 
 media, sizes = {}, {}
-_mediap = os.path.join(BUILD, "media.json")
+_mediap = os.path.join(DATA, "media.json")
 if os.path.exists(_mediap):
     try: media = json.load(open(_mediap, encoding="utf-8"))
     except Exception: media = {}
@@ -69,7 +72,7 @@ for iid, v in videos.items():
         except Exception as e: print("VID ERR", iid, e)
     else: print("VID MISS", iid, bvid)
 
-json.dump(media, open(os.path.join(BUILD, "media.json"), "w", encoding="utf-8"))
+json.dump(media, open(os.path.join(DATA, "media.json"), "w", encoding="utf-8"))
 
 # credits: one batched Commons call for chosen titles
 def strip(x): return re.sub("<[^>]+>", "", x or "").replace("\n"," ").strip()
@@ -77,7 +80,7 @@ titles = {}
 for s in subspots:
     cs = cand.get(s["id"], {}).get("cands") or []
     if cs and s["id"] in media: titles[s["id"]] = cs[0]["title"]
-_credp = os.path.join(BUILD, "credits.json")
+_credp = os.path.join(DATA, "credits.json")
 creds = {}
 if os.path.exists(_credp):
     try: creds = json.load(open(_credp, encoding="utf-8"))

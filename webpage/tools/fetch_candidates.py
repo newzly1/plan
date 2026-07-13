@@ -2,11 +2,13 @@
 """Query Wikimedia Commons for each subspot, store top candidates, download top-1 original.
 Uses curl (urllib hangs through the local proxy)."""
 import json, subprocess, urllib.parse, os, sys
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # webpage/
+sys.path.insert(0, os.path.join(ROOT, "src"))
 from content import ITEMS
 
 UA = "BaliTripPlanner/1.0 (personal trip research; mail2zhangly@gmail.com)"
-BUILD = os.path.dirname(os.path.abspath(__file__))
-RAW = os.path.join(BUILD, "raw")
+ASSETS = os.path.join(ROOT, "assets")
+RAW = os.path.join(ASSETS, "raw")
 os.makedirs(RAW, exist_ok=True)
 
 def curl_bytes(url, timeout=40):
@@ -55,6 +57,6 @@ for i, (s, it) in enumerate(subspots, 1):
         got = curl_download(res[0]["thumb"], os.path.join(RAW, s["id"] + ".img"))
     ok += got; fail += (not got)
     print(f"[{i:2}/{len(subspots)}] {s['id']:4} {s['en']:22} -> {'OK ' if got else 'MISS'} {title}", flush=True)
-    json.dump(cand, open(os.path.join(BUILD, "candidates.json"), "w"), ensure_ascii=False, indent=1)
+    json.dump(cand, open(os.path.join(ASSETS, "candidates.json"), "w"), ensure_ascii=False, indent=1)
 
 print(f"\nDONE. downloaded {ok}, missed {fail}", flush=True)

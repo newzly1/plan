@@ -20,12 +20,14 @@ Usage:
     set PIXABAY_KEY=yyy        # -> direct mode (Pixabay)
     set REVIEW_PROXY=http://127.0.0.1:7897
 """
-import os, json, subprocess, urllib.parse, time, re, argparse
+import os, sys, json, subprocess, urllib.parse, time, re, argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # webpage/
+sys.path.insert(0, os.path.join(ROOT, "src"))
 from content import ITEMS
 
-BUILD = os.path.dirname(os.path.abspath(__file__))
-REVIEW = os.path.join(BUILD, "review")
+ASSETS = os.path.join(ROOT, "assets")
+REVIEW = os.path.join(ASSETS, "review")
 PROXY = os.environ.get("REVIEW_PROXY", "http://127.0.0.1:7897")
 UA = "BaliTripPlanner/1.0 (personal trip research; mail2hangly@gmail.com)"
 UNSPLASH_KEY = os.environ.get("UNSPLASH_KEY", "").strip()
