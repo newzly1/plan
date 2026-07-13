@@ -943,7 +943,8 @@ details[open]>summary .chev{transform:rotate(-135deg)}
   function sheetOpen(){ return sheet && !sheet.hasAttribute("hidden"); }
 
   var cloud = (function(){
-    var db = null, failed = false, groupTally = null;
+    var db = null, failed = false, groupTally = null, syncT = null;
+    var pendingExisting = null; // 撞名时暂存云端已有文档，供“合并”复用，避免二次读取竞态
     function currentState(){
       return {
         name: (localStorage.getItem(K.name)||"").trim(),
@@ -976,53 +977,77 @@ details[open]>summary .chev{transform:rotate(-135deg)}
         return Array.isArray(d) ? (d[0] || null) : (d || null);
       });
     }
+    function plainState(st){ return { name: st.name, picks: st.picks, combo: st.combo }; }
     function writeSet(docId, data){
       data.updatedAt = Date.now();
       return coll().doc(docId).set(data);
     }
 
-    function doSync(){
+    // 已绑定当前名字时的自动同步：只覆盖“自己”那条文档；未绑定/改名未提交 → 只本机
+    function syncMine(){
+      if (failed) return;
+      clearTimeout(syncT);
+      syncT = setTimeout(function(){
+        readyP.then(function(){
+          var st = currentState();
+          var newId = IdentityLib.deriveDocId(st.name);
+          var syncedId = localStorage.getItem(SYNCED_KEY) || "";
+          if (newId && newId === syncedId){
+            return writeSet(newId, plainState(st)).then(function(){ refreshGroup(); });
+          }
+          if (!newId && syncedId){ // 已绑定后清空名字：撤下自己那条、退回本机（只动自己的文档）
+            return coll().doc(syncedId).remove().catch(function(){}).then(function(){
+              localStorage.removeItem(SYNCED_KEY); refreshGroup();
+            });
+          }
+          refreshGroup(); // 未绑定 / 改名但未提交：只存本机
+        }).catch(function(){});
+      }, 800);
+    }
+
+    // 落定绑定并写入云端；existingForMerge 非空时把云端已有选票并入本机
+    function commitBind(newId, syncedId, st, existingForMerge){
+      var data = existingForMerge ? IdentityLib.mergeState(st, existingForMerge) : plainState(st);
+      return writeSet(newId, data).then(function(){
+        localStorage.setItem(SYNCED_KEY, newId);
+        if (syncedId && syncedId !== newId) coll().doc(syncedId).remove().catch(function(){});
+        if (existingForMerge) adoptLocal(data);
+        return refreshGroup().then(function(){ return { status: existingForMerge ? "merged" : "bound" }; });
+      });
+    }
+
+    // 点“提交”：首次绑定/改名在此发生，并做撞名探测（清名撤档由 syncMine 负责，此处只处理有名字的提交）
+    function submit(){
       return readyP.then(function(){
         var st = currentState();
         var newId = IdentityLib.deriveDocId(st.name);
         var syncedId = localStorage.getItem(SYNCED_KEY) || "";
-        var delP = (syncedId && syncedId !== newId)
-          ? coll().doc(syncedId).remove().catch(function(){})  // 改名/清名：删旧档
-          : Promise.resolve();
-        return delP.then(function(){
-          if (!newId){ localStorage.removeItem(SYNCED_KEY); refreshGroup(); return; } // 没名字：只本机
-          if (syncedId !== newId){
-            // 采纳并合并（换设备/撞名/首次绑定），防丢票
-            return getDoc(newId).then(function(existing){
-              var merged = IdentityLib.mergeState(st, existing || {});
-              return writeSet(newId, merged).then(function(){
-                localStorage.setItem(SYNCED_KEY, newId);
-                adoptLocal(merged);
-                refreshGroup();
-              });
-            }).catch(function(){
-              return writeSet(newId, { name: st.name, picks: st.picks, combo: st.combo }).then(function(){
-                localStorage.setItem(SYNCED_KEY, newId); refreshGroup();
-              });
-            });
-          } else {
-            // 常态：覆盖自己的文档，本机为准
-            return writeSet(newId, { name: st.name, picks: st.picks, combo: st.combo })
-              .then(function(){ refreshGroup(); });
+        if (!newId){ return refreshGroup().then(function(){ return { status: "noname" }; }); } // 保险：调用方（提交按钮）已挡空名
+        if (newId === syncedId){ // 已是自己：正常覆盖
+          return writeSet(newId, plainState(st)).then(function(){
+            return refreshGroup().then(function(){ return { status: "self" }; });
+          });
+        }
+        return getDoc(newId).then(function(existing){ // 首次绑定/改名：先探测
+          if (IdentityLib.classifyBind(syncedId, newId, existing) === "occupied"){
+            pendingExisting = existing;
+            return { status: "collision", name: st.name,
+                     count: IdentityLib.countDecided(existing.picks),
+                     updatedAt: existing.updatedAt || 0 };
           }
+          return commitBind(newId, syncedId, st, null);
         });
       });
     }
-    var syncT = null;
-    function syncMine(){
-      if (failed) return;
-      clearTimeout(syncT);
-      syncT = setTimeout(function(){ doSync().catch(function(){}); }, 800);
-    }
-    function syncNow(){
-      if (failed) return Promise.reject(new Error("offline"));
-      clearTimeout(syncT);
-      return doSync();
+
+    // 撞名后用户点“就是我，找回旧票”
+    function mergeAdopt(){
+      return readyP.then(function(){
+        var st = currentState();
+        var newId = IdentityLib.deriveDocId(st.name);
+        var syncedId = localStorage.getItem(SYNCED_KEY) || "";
+        return commitBind(newId, syncedId, st, pendingExisting || {});
+      });
     }
 
     function fetchAll(){
@@ -1039,7 +1064,9 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     }
     return {
       syncMine: syncMine,
-      syncNow: syncNow,
+      submit: submit,
+      mergeAdopt: mergeAdopt,
+      clearPending: function(){ pendingExisting = null; },
       refreshGroup: refreshGroup,
       group: function(){ return groupTally; },
       offline: function(){ return failed; }
@@ -1235,8 +1262,9 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     var decided = decidedCount();
     var btn = this, orig = btn.textContent;
     btn.disabled = true; btn.textContent = "提交中…";
-    cloud.syncNow().then(function(){
+    cloud.submit().then(function(res){
       btn.disabled = false; btn.textContent = orig;
+      if (res && res.status === "collision"){ showDupModal(res); return; }
       toast(decided > 0 ? "已提交！"+name+" 的选择已同步到群汇总" : "已提交！当前无标记，已退出群汇总");
     }).catch(function(){
       btn.disabled = false; btn.textContent = orig;
@@ -1252,13 +1280,55 @@ details[open]>summary .chev{transform:rotate(-135deg)}
     }
   });
 
+  // ---- 撞名弹窗 ----
+  var dup = $("#dup");
+  function fmtTime(ts){
+    if(!ts) return "";
+    var d=new Date(ts), now=new Date();
+    var hh=("0"+d.getHours()).slice(-2), mm=("0"+d.getMinutes()).slice(-2);
+    var sameDay = d.getFullYear()===now.getFullYear() && d.getMonth()===now.getMonth() && d.getDate()===now.getDate();
+    return (sameDay ? "今天 " : (d.getMonth()+1)+"月"+d.getDate()+"日 ") + hh + ":" + mm;
+  }
+  function showDupModal(info){
+    var t = fmtTime(info.updatedAt);
+    $("#dupName").textContent = info.name;
+    $("#dupMeta").textContent = info.count + " 个标记" + (t ? " · 上次提交：" + t : "");
+    dup.removeAttribute("hidden"); document.body.style.overflow="hidden";
+    var yes=$("#dupMerge"); if(yes) yes.focus();
+  }
+  function hideDup(){
+    dup.setAttribute("hidden",""); cloud.clearPending();
+    document.body.style.overflow = sheetOpen() ? "hidden" : "";
+  }
+  $("#dupMerge").addEventListener("click", function(){
+    var btn=this, orig=btn.textContent; btn.disabled=true; btn.textContent="合并中…";
+    cloud.mergeAdopt().then(function(){
+      btn.disabled=false; btn.textContent=orig; hideDup();
+      toast("已合并，你的选择已同步到群汇总");
+    }).catch(function(){
+      btn.disabled=false; btn.textContent=orig;
+      toast("合并失败，请检查网络后重试");
+    });
+  });
+  $("#dupRename").addEventListener("click", function(){
+    hideDup();
+    if(!sheetOpen()) openSheet();
+    var n=$("#nameIn"); if(n){ n.focus(); n.select(); }
+    toast("这个名字已被占用，换一个再提交");
+  });
+  dup.addEventListener("click", function(e){ if(e.target===dup) hideDup(); });
+
   // ---- lightbox ----
   var lb=$("#lb"), lbImg=$("#lbImg");
   function openLB(src,alt){ lbImg.src=src; lbImg.alt=alt||""; lb.removeAttribute("hidden"); document.body.style.overflow="hidden"; }
   function closeLB(){ lb.setAttribute("hidden",""); lbImg.src=""; if(sheet.hasAttribute("hidden")) document.body.style.overflow=""; }
   lb.addEventListener("click", closeLB);
   document.addEventListener("keydown", function(e){
-    if(e.key==="Escape"){ if(!lb.hasAttribute("hidden")) closeLB(); else if(!sheet.hasAttribute("hidden")) closeSheet(); }
+    if(e.key==="Escape"){
+      if(!dup.hasAttribute("hidden")){ hideDup(); return; }
+      if(!lb.hasAttribute("hidden")) closeLB();
+      else if(!sheet.hasAttribute("hidden")) closeSheet();
+    }
   });
 
   // ---- toast ----
