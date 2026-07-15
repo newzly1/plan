@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="100%"
+     font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+  <!-- ===== 背景 ===== -->
+  <rect x="0" y="0" width="1200" height="900" fill="#ffffff"/>
+
+  <!-- ===== 两 panel 背景框 ===== -->
+  <!-- 巴厘 panel（暖陆） -->
+  <rect x="12" y="72" width="576" height="648" rx="12" fill="#FBF6EC" stroke="#D8C9A8" stroke-width="1.5"/>
+  <!-- 科摩多 panel（冷海） -->
+  <rect x="612" y="72" width="576" height="648" rx="12" fill="#EAF4FA" stroke="#A9CFE3" stroke-width="1.5"/>
+
+  <!-- ===== 标题带 ===== -->
+  <text x="300" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#3A3A3A">巴厘岛 Bali · 10.2–10.6</text>
+  <text x="900" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#3A3A3A">科摩多 Komodo · 10.7–10.10</text>
+
+  <!-- ===== 复用定义 ===== -->
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+      <path d="M0,0 L6.5,3 L0,6 Z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- ============================================================= -->
+  <!-- 巴厘组：岛体轮廓 + 七处景点                                    -->
+  <!-- ============================================================= -->
+  <g id="bali">
+    <!-- 巴厘岛体（南端 Bukit 半岛下垂）示意 -->
+    <path d="M120,225 C170,150 330,145 430,195 C475,218 480,268 438,305
+             C400,335 360,322 332,352 L305,405 C288,470 258,520 245,562
+             C240,588 214,602 199,586 C184,566 205,520 214,492
+             C192,472 150,452 132,412 C102,362 92,292 120,225 Z"
+          fill="#EDE4CE" stroke="#D6C29A" stroke-width="1.4"/>
+    <!-- 努沙佩尼达 离岛体 -->
+    <path d="M438,428 q34,-6 50,16 q12,22 -10,38 q-32,12 -52,-8 q-14,-24 12,-46 Z"
+          fill="#E6DABB" stroke="#D6C29A" stroke-width="1.2"/>
+
+    <!-- 德格拉朗梯田 + 圣泉寺（乌布北） -->
+    <circle cx="250" cy="152" r="6" fill="#6B4F2A"/>
+    <text x="264" y="149" font-size="14" fill="#3A3A3A">德格拉朗梯田</text>
+    <text x="264" y="166" font-size="12" fill="#5A5A5A">圣泉寺 Tirta Empul</text>
+
+    <!-- 乌布 大本营 -->
+    <circle cx="250" cy="252" r="9" fill="#6B4F2A"/>
+    <text x="266" y="257" font-size="17" font-weight="600" fill="#3A3A3A">乌布 Ubud</text>
+
+    <!-- 海神庙（西岸） -->
+    <circle cx="100" cy="322" r="6" fill="#6B4F2A"/>
+    <text x="60" y="345" font-size="14" fill="#3A3A3A">海神庙 Tanah Lot</text>
+
+    <!-- Sanur 码头（▷） -->
+    <polygon points="332,354 332,370 348,362" fill="#1E88C7"/>
+    <text x="352" y="367" font-size="13" fill="#3A3A3A">Sanur 码头</text>
+
+    <!-- 努沙佩尼达（◆ 离岛） -->
+    <polygon points="463,436 479,452 463,468 447,452" fill="#2E7D9A"/>
+    <text x="392" y="497" font-size="14" fill="#3A3A3A">努沙佩尼达</text>
+    <text x="382" y="514" font-size="10.5" fill="#5A5A5A">Kelingking · Broken Beach · Crystal Bay</text>
+
+    <!-- 金巴兰 / DPS 机场（●+✈） -->
+    <circle cx="220" cy="560" r="7" fill="#6B4F2A"/>
+    <text x="206" y="551" font-size="14">✈</text>
+    <text x="240" y="565" font-size="14" fill="#3A3A3A">金巴兰 · DPS 机场</text>
+
+    <!-- 乌鲁瓦图（南端） -->
+    <circle cx="152" cy="620" r="6" fill="#6B4F2A"/>
+    <text x="70" y="640" font-size="14" fill="#3A3A3A">乌鲁瓦图 Uluwatu</text>
+  </g>
+
+  <!-- ============================================================= -->
+  <!-- 科摩多组：弗洛勒斯西端陆地 + 群岛景点 + 镇上活动               -->
+  <!-- ============================================================= -->
+  <g id="komodo">
+    <!-- 弗洛勒斯岛西端陆地（右侧） -->
+    <path d="M1188,90 L1050,120 C1020,260 1028,470 1078,650 L1188,668 Z"
+          fill="#EDE4CE" stroke="#D6C29A" stroke-width="1.4"/>
+    <!-- 科莫多岛体 -->
+    <path d="M648,455 q34,-14 62,6 q16,24 -10,44 q-40,18 -66,-8 q-12,-26 14,-42 Z"
+          fill="#E6DABB" stroke="#D6C29A" stroke-width="1.2"/>
+    <!-- 帕达尔岛体 -->
+    <path d="M752,452 q30,-8 44,14 q8,20 -14,32 q-28,8 -42,-12 q-8,-22 12,-34 Z"
+          fill="#E6DABB" stroke="#D6C29A" stroke-width="1.2"/>
+
+    <!-- 镇上活动 面板说明（顶部空白带） -->
+    <text x="632" y="118" font-size="12" fill="#5A5A5A">镇上活动：Bukit Cinta 观景台日落 · 镜石洞 Batu Cermin</text>
+    <text x="632" y="138" font-size="12" fill="#5A5A5A">Kampung Ujung 海鲜夜市 · 飞狐岛 Kalong 看蝙蝠出巢</text>
+
+    <!-- LBJ 镇 + 机场 母港 -->
+    <circle cx="1090" cy="430" r="9" fill="#154360"/>
+    <text x="1076" y="421" font-size="14">✈</text>
+    <text x="966" y="454" font-size="17" font-weight="600" fill="#3A3A3A">拉布安巴焦 LBJ</text>
+
+    <!-- 飞狐岛 Kalong -->
+    <circle cx="985" cy="340" r="5" fill="#154360"/>
+    <text x="996" y="344" font-size="12" fill="#3A3A3A">飞狐岛 Kalong</text>
+
+    <!-- Kelor -->
+    <circle cx="930" cy="272" r="5" fill="#154360"/>
+    <text x="942" y="276" font-size="12" fill="#3A3A3A">Kelor</text>
+
+    <!-- Kanawa -->
+    <circle cx="855" cy="216" r="5" fill="#154360"/>
+    <text x="867" y="220" font-size="12" fill="#3A3A3A">Kanawa</text>
+
+    <!-- Taka Makassar 白沙洲（~） -->
+    <text x="762" y="212" font-size="16" fill="#C9A24B">〜</text>
+    <text x="666" y="200" font-size="12" fill="#3A3A3A">Taka Makassar 白沙洲</text>
+
+    <!-- Manta Point（◇ 潜点） -->
+    <polygon points="835,368 846,380 835,392 824,380" fill="none" stroke="#154360" stroke-width="1.6"/>
+    <text x="852" y="384" font-size="12" fill="#3A3A3A">Manta Point</text>
+
+    <!-- 帕达尔岛 Padar（▲ 登顶） -->
+    <polygon points="775,456 788,478 762,478" fill="#8A6D3B"/>
+    <text x="700" y="500" font-size="14" font-weight="600" fill="#3A3A3A">帕达尔岛 Padar</text>
+
+    <!-- 科莫多龙岛 -->
+    <circle cx="676" cy="486" r="6" fill="#154360"/>
+    <text x="636" y="474" font-size="13" fill="#3A3A3A">科莫多龙岛</text>
+
+    <!-- 粉沙滩 Pink Beach（~） -->
+    <text x="726" y="546" font-size="16" fill="#E39AA8">〜</text>
+    <text x="700" y="564" font-size="12" fill="#3A3A3A">粉沙滩 Pink Beach</text>
+  </g>
+
+  <!-- ============================================================= -->
+  <!-- 路线组：巴厘每日 10.2–10.6 + 科摩多 10.7–10.10                -->
+  <!-- ============================================================= -->
+  <g id="routes" fill="none">
+    <!-- 10.2 南部落地→金巴兰日落（短线） -->
+    <path d="M262,586 Q236,602 222,570" stroke="#E8843C" stroke-width="3"/>
+    <text x="262" y="600" font-size="12" fill="#E8843C" font-weight="700">10.2</text>
+
+    <!-- 10.3 Sanur→佩尼达→回→移住乌布 -->
+    <path d="M348,362 L462,450" stroke="#1E88C7" stroke-width="3" stroke-dasharray="2 3" marker-end="url(#arrow)"/>
+    <path d="M456,448 C400,372 320,300 262,262" stroke="#1E88C7" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="372" y="404" font-size="12" fill="#1E88C7" font-weight="700">10.3</text>
+
+    <!-- 10.4 乌布→梯田/圣泉→乌布（北小环） -->
+    <path d="M244,244 C210,205 210,190 244,162" stroke="#3FA34D" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M256,162 C290,190 290,210 258,244" stroke="#3FA34D" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="196" y="205" font-size="12" fill="#3FA34D" font-weight="700">10.4</text>
+
+    <!-- 10.5 乌布松弛（就地小圈） -->
+    <circle cx="250" cy="252" r="22" stroke="#8E6BB0" stroke-width="2.5" stroke-dasharray="4 3"/>
+    <text x="278" y="238" font-size="12" fill="#8E6BB0" font-weight="700">10.5</text>
+
+    <!-- 10.6 乌布→乌鲁瓦图→金巴兰；海神庙二选一虚线支线 -->
+    <path d="M242,262 L156,610 L214,566" stroke="#D64545" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M232,262 L108,318" stroke="#D64545" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="150" y="440" font-size="12" fill="#D64545" font-weight="700">10.6</text>
+    <text x="112" y="300" font-size="10" fill="#D64545">海神庙（二选一）</text>
+  </g>
+
+  <!-- ===== 10.7 跨 panel 飞行弧 ===== -->
+  <g id="flight" fill="none">
+    <path d="M235,575 Q650,760 1078,448" stroke="#F2B705" stroke-width="3.5" stroke-dasharray="11 8"/>
+    <text x="646" y="694" text-anchor="middle" font-size="16" font-weight="700" fill="#C98A00">✈ 10.7　DPS → LBJ　AirAsia 11:25→12:40</text>
+  </g>
+
+  <!-- ===== 科摩多路线（在 routes 之外单列，靠 LBJ） ===== -->
+  <g id="komodo-routes" fill="none">
+    <!-- 10.7 抵港→镇上（就地小圈） -->
+    <circle cx="1090" cy="430" r="27" stroke="#F2B705" stroke-width="2.5" stroke-dasharray="4 3"/>
+    <text x="1096" y="392" font-size="12" fill="#C98A00" font-weight="700">10.7 镇上</text>
+
+    <!-- 10.8 出海①经典线 闭合环 -->
+    <path d="M1090,430 L788,472 L690,486 L742,540 L840,382 Z" stroke="#0E6BA8" stroke-width="3"/>
+    <text x="1002" y="512" font-size="12" fill="#0E6BA8" font-weight="700">10.8 出海①经典线</text>
+
+    <!-- 10.9 出海②浮潜线 闭合环 -->
+    <path d="M1090,430 L935,272 L860,216 L782,214 Z" stroke="#16A0A0" stroke-width="3" stroke-dasharray="7 4"/>
+    <text x="1006" y="322" font-size="12" fill="#16A0A0" font-weight="700">10.9 出海②浮潜线</text>
+
+    <!-- 10.10 镇上收尾→离港回国 -->
+    <path d="M1100,430 L1168,410" stroke="#6B7F99" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="1150" y="400" font-size="13">✈</text>
+    <text x="1010" y="558" font-size="12" fill="#6B7F99" font-weight="700">10.10 收尾 · 15:00 联程回国</text>
+  </g>
+
+  <!-- ============================================================= -->
+  <!-- 图例组：9 天一色 + 当天主活动                                  -->
+  <!-- ============================================================= -->
+  <g id="legend">
+    <line x1="30" y1="742" x2="1170" y2="742" stroke="#E0E0E0" stroke-width="1"/>
+    <text x="30" y="736" font-size="13" font-weight="700" fill="#888">每日路线图例</text>
+
+    <!-- 左列 10.2–10.6 -->
+    <rect x="30" y="756" width="20" height="20" fill="#E8843C"/>
+    <text x="58" y="771" font-size="13.5" fill="#3A3A3A">10.2 (五)　南部落地 · 傍晚金巴兰日落海鲜</text>
+    <rect x="30" y="786" width="20" height="20" fill="#1E88C7"/>
+    <text x="58" y="801" font-size="13.5" fill="#3A3A3A">10.3 (六)　佩尼达一日（全员）→ 移住乌布</text>
+    <rect x="30" y="816" width="20" height="20" fill="#3FA34D"/>
+    <text x="58" y="831" font-size="13.5" fill="#3A3A3A">10.4 (日)　乌布观光：德格拉朗梯田 · 圣泉寺</text>
+    <rect x="30" y="846" width="20" height="20" fill="#8E6BB0"/>
+    <text x="58" y="861" font-size="13.5" fill="#3A3A3A">10.5 (一)　乌布松弛：SPA · 圣猴森林 · 山脊步道</text>
+    <rect x="30" y="876" width="20" height="20" fill="#D64545"/>
+    <text x="58" y="891" font-size="13.5" fill="#3A3A3A">10.6 (二)　乌鲁瓦图断崖庙+火舞（或海神庙）</text>
+
+    <!-- 右列 10.7–10.10 -->
+    <rect x="620" y="756" width="20" height="20" fill="#F2B705"/>
+    <text x="648" y="771" font-size="13.5" fill="#3A3A3A">10.7 (三)　飞 DPS→LBJ · 傍晚 Bukit Cinta 日落</text>
+    <rect x="620" y="786" width="20" height="20" fill="#0E6BA8"/>
+    <text x="648" y="801" font-size="13.5" fill="#3A3A3A">10.8 (四)　出海①经典线：帕达尔·龙·粉沙滩·Manta</text>
+    <rect x="620" y="816" width="20" height="20" fill="#16A0A0"/>
+    <text x="648" y="831" font-size="13.5" fill="#3A3A3A">10.9 (五)　出海②浮潜线：Kelor·Kanawa·Taka 白沙洲</text>
+    <rect x="620" y="846" width="20" height="20" fill="#6B7F99"/>
+    <text x="648" y="861" font-size="13.5" fill="#3A3A3A">10.10 (六)　镇上收尾 · 15:00 联程回国</text>
+  </g>
+</svg>
