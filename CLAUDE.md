@@ -10,7 +10,7 @@
   - `assets/` — 保留的原始素材：`raw/` `vraw/` `review/` `image_sourcing/` `candidates.json`
   - `dist/` — 部署产物：`index.html` `images/` `cloudbase.js`（前两者由 build 生成，后者 vendored；勿整目录删）
   - `test/` — 单测
-- `docs/` — 设计说明（`superpowers/specs`·`plans`）、`research/`（调研）、`archive/`（历史文档）
+- `docs/` — 设计说明（`superpowers/specs`·`plans`）、`research/`（调研）、`archive/`（历史文档）、`itinerary/`（实际行程安排：机票查价、路线与游玩地点，持续更新）
 - ⚠️ **内容事实源头是 `webpage/src/content.py`**（不是 `docs/archive/印尼旅行项目投票清单.md`——那份已冻结于 2026-07-09、与现网页严重错位，仅存作早期背景）。
 
 ## 构建与部署
